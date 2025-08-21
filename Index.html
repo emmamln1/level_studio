@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="hy">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Pure CSS/JS</title>
+    <link rel="stylesheet" href="Index.css">
+</head>
+
+<body>
+
+    <header id="site-header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo"><img src="image/Screenshot 2025-08-20 161348.png" alt="Logo"></div>
+
+            <!-- Desktop Navigation -->
+            <nav>
+                <ul>
+                    <li><button data-nav="#services" data-arm="Ծառայություններ" data-rus="Услуги"
+                            data-eng="Services">Ծառայություններ</button></li>
+                    <li><button data-nav="#portfolio" data-arm="Պորտֆոլիո" data-rus="Портфолио"
+                            data-eng="Portfolio">Պորտֆոլիո</button></li>
+                    <li><button data-nav="#partners" data-arm="Փարթներներ" data-rus="Партнеры"
+                            data-eng="Partners">Գործընկերներ</button></li>
+                    <li><button data-nav="#about" data-arm="Մեր մասին" data-rus="О нас" data-eng="About Us">Մեր
+                            մասին</button></li>
+                    <li><button data-nav="#contact" data-arm="Կոնտակներ" data-rus="Контакты"
+                            data-eng="Contact">Կապ</button></li>
+                    <div class="lang-switch">
+                        <button class="active" data-lang="ARM">ARM</button>
+                        <button data-lang="RUS">RUS</button>
+                        <button data-lang="ENG">ENG</button>
+                    </div>
+                </ul>
+            </nav>
+
+            <!-- Desktop Language -->
+
+
+            <!-- Mobile Controls -->
+            <div class="mobile-controls">
+                <div class="mobile-lang">
+                    <button class="active" data-lang="ARM">ARM</button>
+                    <button data-lang="RUS">RUS</button>
+                    <button data-lang="ENG">ENG</button>
+                </div>
+                <div class="hamburger" id="menu-btn">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <button data-nav="#services" data-arm="Ծառայություններ" data-rus="Услуги"
+                data-eng="Services">Ծառայություններ</button>
+            <button data-nav="#portfolio" data-arm="Պորտֆոլիո" data-rus="Портфолио"
+                data-eng="Portfolio">Պորտֆոլիո</button>
+            <button data-nav="#partners" data-arm="Փարթներներ" data-rus="Партнеры"
+                data-eng="Partners">Փարթներներ</button>
+            <button data-nav="#about" data-arm="Մեր մասին" data-rus="О нас" data-eng="About Us">Մեր մասին</button>
+            <button data-nav="#contact" data-arm="Կոնտակներ" data-rus="Контакты" data-eng="Contact">Կոնտակներ</button>
+        </div>
+
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <section class="about-section" id="aboutSection">
+        <div class="content-wrapper">
+            <h1 class="main-title">Մեր մասին</h1>
+            <p class="about-text">
+                Այստեղ կարող եք գրել ձեր ընկերության կամ կազմակերպության մասին տեղեկություններ։ 
+                Մեր նպատակներն ու արժեքները, մեր թիմը և այն ամենը, ինչ կուզենաք կիսվել այցելուների հետ։
+            </p>
+            <a href="#contact" class="contact-btn">Կապ մեզ հետ</a>
+        </div>
+    </section>
+
+    <section class="xaiQuantumContainer" id="xaiQuantumContainer">
+        <!-- Animated background -->
+        <div class="xaiNebulaField" id="xaiNebulaField"></div>
+        
+        <!-- Progress bar -->
+        <div class="xaiProgressGauge">
+            <div class="xaiProgressGauge" id="xaiProgressGauge"></div>
+        </div>
+
+        <!-- Main content -->
+        <div class="xaiCoreMatrix">
+            <div class="xaiServiceNexus" id="xaiServiceNexus">
+                <!-- Services will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="xaiNavigationHub" id="xaiNavigationHub">
+            <!-- Navigation dots will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <div class="portfolio-section">
+        <div class="grid-background"></div>
+        <div class="floating-dots"></div>
+        
+        <div class="portfolio-container">
+            <div class="portfolio-title">
+                <h2>Պորտֆոլիո</h2>
+                <p class="portfolio-subtitle">Ինովացիոն լուծումներ և հաջողված նախագծեր</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <!-- Placeholder - replace with actual image -->
+                        <div class="image-placeholder loading-shimmer">
+                            <div class="placeholder-icon">🤖</div>
+                            <div class="placeholder-text">AI Analytics Platform</div>
+                        </div>
+                        <div class="project-status status-completed">Completed</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title-text">AI Analytics Platform</h3>
+                            <span class="project-category">Machine Learning</span>
+                        </div>
+                        <p class="project-description">Խելացի վերլուծական համակարգ՝ մեքենայական ուսուցմամբ և իրական ժամանակի տվյալների մշակմամբ։ Ապահովում է ճշգրիտ կանխատեսումներ և տվյալների վիզուալիզացիա։</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">98.5%</span>
+                                <span class="stat-label">Accuracy</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">50K+</span>
+                                <span class="stat-label">Users</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">1.2s</span>
+                                <span class="stat-label">Response</span>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Live Demo</a>
+                            <a href="#" class="project-link">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder loading-shimmer">
+                            <div class="placeholder-icon">📱</div>
+                            <div class="placeholder-text">FinTech Mobile App</div>
+                        </div>
+                        <div class="project-status status-completed">Completed</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title-text">FinTech Mobile App</h3>
+                            <span class="project-category">Mobile Development</span>
+                        </div>
+                        <p class="project-description">Անվտանգ բանկային բջջային հավելված բլոքչեյն տեխնոլոգիայով և բիոմետրիկ նույնացմամբ։ Ապահովում է արագ և անվտանգ գործարքներ։</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">4.8★</span>
+                                <span class="stat-label">Rating</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100K+</span>
+                                <span class="stat-label">Downloads</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">99.9%</span>
+                                <span class="stat-label">Uptime</span>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Blockchain</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">App Store</a>
+                            <a href="#" class="project-link">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder loading-shimmer">
+                            <div class="placeholder-icon">🛒</div>
+                            <div class="placeholder-text">E-Commerce Platform</div>
+                        </div>
+                        <div class="project-status status-completed">Completed</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title-text">E-Commerce Platform</h3>
+                            <span class="project-category">Web Development</span>
+                        </div>
+                        <p class="project-description">Ամբողջական առևտրային հարթակ AI-powered առաջարկությունների համակարգով, ռեալ-թայմ ինվենտարի կառավարմամբ և բազմալեզու աջակցությամբ։</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">$2.5M</span>
+                                <span class="stat-label">Revenue</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">25K+</span>
+                                <span class="stat-label">Products</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">2.1s</span>
+                                <span class="stat-label">Load Time</span>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Visit Site</a>
+                            <a href="#" class="project-link">Case Study</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder loading-shimmer">
+                            <div class="placeholder-icon">🌐</div>
+                            <div class="placeholder-text">Social Media Platform</div>
+                        </div>
+                        <div class="project-status status-in-progress">In Progress</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title-text">Social Media Platform</h3>
+                            <span class="project-category">Full Stack</span>
+                        </div>
+                        <p class="project-description">Ժամանակակից սոցիալական ցանցային հարթակ իրական ժամանակի չատով, կոնտենտի մոդերացմամբ և ալգորիթմական ֆիդով։</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">75K</span>
+                                <span class="stat-label">Beta Users</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">500K</span>
+                                <span class="stat-label">Daily Posts</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">85%</span>
+                                <span class="stat-label">Complete</span>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Beta Access</a>
+                            <a href="#" class="project-link">Updates</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder loading-shimmer">
+                            <div class="placeholder-icon">📚</div>
+                            <div class="placeholder-text">Learning Management System</div>
+                        </div>
+                        <div class="project-status status-completed">Completed</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title-text">Learning Management System</h3>
+                            <span class="project-category">EdTech</span>
+                        </div>
+                        <p class="project-description">Ինտերակտիվ կրթական համակարգ վիդեո դասընթացներով, ինտելեկտուալ գնահատմամբ և ուսանողների առաջադիմության հետևությամբ։</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">15K</span>
+                                <span class="stat-label">Students</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">200+</span>
+                                <span class="stat-label">Courses</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">92%</span>
+                                <span class="stat-label">Success Rate</span>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">FFmpeg</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Platform</a>
+                            <a href="#" class="project-link">Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder loading-shimmer">
+                            <div class="placeholder-icon">🔗</div>
+                            <div class="placeholder-text">IoT Management Dashboard</div>
+                        </div>
+                        <div class="project-status status-completed">Completed</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title-text">IoT Management Dashboard</h3>
+                            <span class="project-category">IoT Development</span>
+                        </div>
+                        <p class="project-description">Ինտերնետային իրեր կառավարման համակարգ սենսորների մոնիտորինգով, հեռակառավարմամբ և պատմական տվյալների վերլուծությամբ։</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">5K+</span>
+                                <span class="stat-label">Devices</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">99.5%</span>
+                                <span class="stat-label">Reliability</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Monitoring</span>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MQTT</span>
+                            <span class="tech-tag">InfluxDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Dashboard</a>
+                            <a href="#" class="project-link">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Index.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,406 @@
+let currentLang = "ARM";
+const header = document.getElementById("site-header");
+const menuBtn = document.getElementById("menu-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+const overlay = document.getElementById("overlay");
+const langBtns = document.querySelectorAll("[data-lang]");
+const navBtns = document.querySelectorAll("[data-nav]");
+
+// scroll style
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+
+// menu toggle
+menuBtn.addEventListener("click", () => {
+    menuBtn.classList.toggle("open");
+    mobileMenu.classList.toggle("open");
+    overlay.classList.toggle("show");
+});
+overlay.addEventListener("click", () => {
+    menuBtn.classList.remove("open");
+    mobileMenu.classList.remove("open");
+    overlay.classList.remove("show");
+});
+
+// smooth scroll
+navBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-nav");
+        const el = document.querySelector(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+        // close mobile
+        menuBtn.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        overlay.classList.remove("show");
+    });
+});
+
+// language
+langBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        currentLang = btn.getAttribute("data-lang");
+        langBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        // update nav texts
+        navBtns.forEach(nb => {
+            const arm = nb.getAttribute("data-arm");
+            const rus = nb.getAttribute("data-rus");
+            const eng = nb.getAttribute("data-eng");
+            nb.textContent = currentLang === "RUS" ? rus : (currentLang === "ENG" ? eng : arm);
+        });
+    });
+});
+
+const xaiServiceRegistry = [
+    {
+        number: "01",
+        title: "Web Development",
+        description: "Կայքերի և վեբ հավելվածների մշակում ժամանակակից տեխնոլոգիաներով",
+        features: ["React", "Node.js", "TypeScript", "Next.js"],
+        bgImage: "image/1.jpg" // Replace with your image path
+    },
+    {
+        number: "02",
+        title: "Mobile Apps",
+        description: "iOS և Android հավելվածների ստեղծում նատիվ և cross-platform",
+        features: ["React Native", "Flutter", "Swift", "Kotlin"],
+        bgImage: "image/2.jpg" // Replace with your image path
+    },
+    {
+        number: "03",
+        title: "UI/UX Design",
+        description: "Օգտահարմար և գեղեցիկ դիզայնի ստեղծում բրենդի համար",
+        features: ["Figma", "Adobe XD", "Prototyping", "User Research"],
+        bgImage: "image/3.jpg" // Replace with your image path
+    },
+    {
+        number: "04",
+        title: "Branding",
+        description: "Բրենդի ինքնություն և կորպորատիվ դիզայնի մշակում",
+        features: ["Logo Design", "Brand Identity", "Style Guide", "Marketing"],
+        bgImage: "image/4.jpg" // Replace with your image path
+    },
+    {
+        number: "05",
+        title: "Consulting",
+        description: "Տեխնոլոգիական խորհրդատվություն և ռազմավարություն",
+        features: ["Strategy", "Architecture", "Code Review", "Mentoring"],
+        bgImage: "image/5.jpg" // Replace with your image path
+    },
+    {
+        number: "06",
+        title: "Maintenance",
+        description: "Տեխնիկական սպասարկում և պրոյեկտների աջակցություն",
+        features: ["Updates", "Security", "Performance", "Monitoring"],
+        bgImage: "image/5.jpg" // Replace with your image path
+    }
+];
+
+let xaiCurrentServiceIndex = 0;
+let xaiIsProcessing = false;
+let xaiLastInteractionTime = 0;
+let xaiSectionIsActive = false;
+
+// DOM elements
+const xaiQuantumContainer = document.getElementById('xaiQuantumContainer');
+const xaiServiceNexus = document.getElementById('xaiServiceNexus');
+const xaiNavigationHub = document.getElementById('xaiNavigationHub');
+const xaiProgressGauge = document.getElementById('xaiProgressGauge');
+const xaiNebulaField = document.getElementById('xaiNebulaField');
+
+// Initialize
+function xaiInitializeSystem() {
+    xaiCreateModules();
+    xaiCreateNavigationBeacons();
+    xaiGenerateCosmicFragments();
+    xaiUpdateNexus();
+    setupIntersectionObserver();
+}
+
+// Create service elements
+function xaiCreateModules() {
+    xaiServiceRegistry.forEach((service, index) => {
+        const moduleEl = document.createElement('div');
+        moduleEl.className = 'xaiModuleInstance';
+        moduleEl.innerHTML = `
+            <div class="xaiSequenceMarker">${service.number}</div>
+            <h2 class="xaiPrimaryDescriptor">${service.title}</h2>
+            <p class="xaiDetailNarrative">${service.description}</p>
+            <div class="xaiAttributeCluster">
+                ${service.features.map(feature => `<span class="xaiTraitNode">${feature}</span>`).join('')}
+            </div>
+        `;
+        xaiServiceNexus.appendChild(moduleEl);
+    });
+
+    xaiServiceRegistry.forEach((service, index) => {
+        const previewEl = document.createElement('div');
+        previewEl.className = 'xaiPreviewHologram';
+        previewEl.innerHTML = `<div class="xaiHologramLabel">${service.title}</div>`;
+        xaiServiceNexus.appendChild(previewEl);
+    });
+}
+
+// Create navigation dots
+function xaiCreateNavigationBeacons() {
+    xaiServiceRegistry.forEach((_, index) => {
+        const beacon = document.createElement('div');
+        beacon.className = 'xaiNavBeacon';
+        if (index === 0) beacon.classList.add('xaiActiveState');
+        beacon.addEventListener('click', () => xaiNavigateToModule(index));
+        xaiNavigationHub.appendChild(beacon);
+    });
+}
+
+// Create floating particles
+function xaiGenerateCosmicFragments() {
+    for (let i = 0; i < 50; i++) {
+        const fragment = document.createElement('div');
+        fragment.className = 'xaiCosmicFragment';
+        fragment.style.left = Math.random() * 100 + '%';
+        fragment.style.animationDelay = Math.random() * 20 + 's';
+        fragment.style.animationDuration = (15 + Math.random() * 10) + 's';
+        xaiNebulaField.appendChild(fragment);
+    }
+}
+
+// Update display
+function xaiUpdateNexus() {
+    const moduleInstances = xaiServiceNexus.querySelectorAll('.xaiModuleInstance');
+    const previewHolograms = xaiServiceNexus.querySelectorAll('.xaiPreviewHologram');
+    const navBeacons = xaiNavigationHub.querySelectorAll('.xaiNavBeacon');
+    
+    moduleInstances.forEach((item, index) => {
+        item.className = 'xaiModuleInstance';
+        if (index === xaiCurrentServiceIndex) {
+            item.classList.add('xaiActiveState');
+        } else {
+            item.classList.add('xaiObscuredState');
+        }
+    });
+
+    previewHolograms.forEach((preview, index) => {
+        preview.className = 'xaiPreviewHologram';
+        
+        const prevIndex = (xaiCurrentServiceIndex - 1 + xaiServiceRegistry.length) % xaiServiceRegistry.length;
+        const nextIndex = (xaiCurrentServiceIndex + 1) % xaiServiceRegistry.length;
+        
+        if (index === prevIndex) {
+            preview.classList.add('xaiPreviousCycle');
+            preview.innerHTML = `<div class="xaiHologramLabel">${xaiServiceRegistry[index].title}</div>`;
+        } else if (index === nextIndex) {
+            preview.classList.add('xaiNextCycle');
+            preview.innerHTML = `<div class="xaiHologramLabel">${xaiServiceRegistry[index].title}</div>`;
+        } else {
+            preview.style.opacity = '0';
+        }
+    });
+
+    navBeacons.forEach((beacon, index) => {
+        beacon.classList.toggle('xaiActiveState', index === xaiCurrentServiceIndex);
+    });
+
+    // Apply background image instead of gradient
+    xaiQuantumContainer.style.backgroundImage = `url('${xaiServiceRegistry[xaiCurrentServiceIndex].bgImage}')`;
+    xaiQuantumContainer.style.backgroundSize = 'cover';
+    xaiQuantumContainer.style.backgroundPosition = 'center';
+    xaiQuantumContainer.style.backgroundRepeat = 'no-repeat';
+
+    const progress = ((xaiCurrentServiceIndex + 1) / xaiServiceRegistry.length) * 100;
+    xaiProgressGauge.style.width = progress + '%';
+}
+
+// Go to specific service
+function xaiNavigateToModule(index) {
+    if (xaiIsProcessing || index === xaiCurrentServiceIndex) return;
+    
+    xaiIsProcessing = true;
+    xaiCurrentServiceIndex = index;
+    xaiUpdateNexus();
+    
+    setTimeout(() => {
+        xaiIsProcessing = false;
+    }, 800);
+}
+
+// Intersection Observer to detect when section is in view
+function setupIntersectionObserver() {
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                xaiSectionIsActive = entry.isIntersecting;
+                if (xaiSectionIsActive) {
+                    xaiQuantumContainer.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        },
+        { threshold: 0.5 }
+    );
+    observer.observe(xaiQuantumContainer);
+}
+
+// Handle scroll
+function xaiHandleScrollInteraction(e) {
+    if (!xaiSectionIsActive) return;
+
+    e.preventDefault();
+
+    const now = Date.now();
+    if (xaiIsProcessing || now - xaiLastInteractionTime < 1000) return;
+
+    const delta = e.deltaY;
+
+    if (delta > 0) {
+        if (xaiCurrentServiceIndex < xaiServiceRegistry.length - 1) {
+            xaiLastInteractionTime = now;
+            xaiNavigateToModule(xaiCurrentServiceIndex + 1);
+        } else {
+            xaiSectionIsActive = false;
+            const nextSection = xaiQuantumContainer.nextElementSibling;
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    } else if (delta < 0) {
+        if (xaiCurrentServiceIndex > 0) {
+            xaiLastInteractionTime = now;
+            xaiNavigateToModule(xaiCurrentServiceIndex - 1);
+        } else {
+            xaiSectionIsActive = false;
+            const prevSection = xaiQuantumContainer.previousElementSibling;
+            if (prevSection) {
+                prevSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }
+}
+
+// Handle touch events
+let xaiTouchOriginY = 0;
+function xaiHandleTouchInitiation(e) {
+    xaiTouchOriginY = e.touches[0].clientY;
+}
+
+function xaiHandleTouchCompletion(e) {
+    if (!xaiSectionIsActive || xaiIsProcessing) return;
+
+    const touchEndY = e.changedTouches[0].clientY;
+    const touchDelta = xaiTouchOriginY - touchEndY;
+
+    if (Math.abs(touchDelta) > 50) {
+        if (touchDelta > 0) {
+            if (xaiCurrentServiceIndex < xaiServiceRegistry.length - 1) {
+                xaiNavigateToModule(xaiCurrentServiceIndex + 1);
+            } else {
+                xaiSectionIsActive = false;
+                const nextSection = xaiQuantumContainer.nextElementSibling;
+                if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        } else {
+            if (xaiCurrentServiceIndex > 0) {
+                xaiNavigateToModule(xaiCurrentServiceIndex - 1);
+            } else {
+                xaiSectionIsActive = false;
+                const prevSection = xaiQuantumContainer.previousElementSibling;
+                if (prevSection) {
+                    prevSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+    }
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (!xaiSectionIsActive) return;
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        if (xaiCurrentServiceIndex < xaiServiceRegistry.length - 1) {
+            xaiNavigateToModule(xaiCurrentServiceIndex + 1);
+        } else {
+            xaiSectionIsActive = false;
+            const nextSection = xaiQuantumContainer.nextElementSibling;
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        if (xaiCurrentServiceIndex > 0) {
+            xaiNavigateToModule(xaiCurrentServiceIndex - 1);
+        } else {
+            xaiSectionIsActive = false;
+            const prevSection = xaiQuantumContainer.previousElementSibling;
+            if (prevSection) {
+                prevSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }
+});
+
+// Event listeners
+window.addEventListener('wheel', xaiHandleScrollInteraction, { passive: false });
+document.addEventListener('touchstart', xaiHandleTouchInitiation, { passive: true });
+document.addEventListener('touchend', xaiHandleTouchCompletion, { passive: true });
+
+// Initialize everything when page loads
+window.addEventListener('load', () => {
+    xaiInitializeSystem();
+});
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    xaiUpdateNexus();
+});
+
+window.addEventListener('scroll', function() {
+    const section = document.getElementById('aboutSection');
+    const rect = section.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    
+    if (isVisible) {
+        section.classList.add('scroll-animate');
+    } else {
+        section.classList.remove('scroll-animate');
+    }
+});
+
+// Button click handler
+document.querySelector('.contact-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    alert('Կապ մեզ հետ!');
+});
+
+function createFloatingDot() {
+    const dot = document.createElement('div');
+    dot.className = 'floating-dot';
+    dot.style.left = Math.random() * 100 + '%';
+    dot.style.animationDelay = Math.random() * 2 + 's';
+    
+    document.querySelector('.floating-dots').appendChild(dot);
+    
+    setTimeout(() => {
+        dot.remove();
+    }, 12000);
+}
+
+// Create dots periodically
+setInterval(createFloatingDot, 800);
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+        }
+    });
+}, { threshold: 0.1 });
+
+// Observe all project cards
+document.quer
