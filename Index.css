@@ -5,26 +5,26 @@
 }
 
 body::-webkit-scrollbar {
-    display: none; /* Թաքցնում է սքրոլ բարը */
+    display: none; 
 }
 body {
     width: 100%;
-    
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #fff;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    overflow-x: hidden;
-    top: 0px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* header  */
 header {
-    width: 100%;
+    width: 100vw;
     height: 10vh;
     position: fixed;
-    top: 0;
     z-index: 10000;
     background: rgba(0, 0, 0, 1);
     transition: all 0.3s ease;
+    border-bottom: 1px solid white;
 }
 
 header.scrolled {
@@ -33,8 +33,8 @@ header.scrolled {
 }
 
 .container {
-    max-width: 90%;
-    margin: 0 auto;
+    width: 90vw;
+    margin: 0 10vh;
     height: 10vh;
     display: flex;
     align-items: center;
@@ -42,12 +42,13 @@ header.scrolled {
 }
 
 .logo img {
-    height: 44px;
+    height: 45px;
     transition: transform .3s;
 }
 
 .logo:hover img {
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 nav {
@@ -94,7 +95,8 @@ nav ul li button:hover::after {
     width: 100%;
 }
 
-/* Language Switcher */
+
+/* Language */
 .lang-switch {
     display: flex;
     gap: 0.25rem;
@@ -120,6 +122,8 @@ nav ul li button:hover::after {
 .lang-switch button:hover:not(.active) {
     color: #22c55e;
 }
+
+
 
 /* Mobile */
 .mobile-controls {
@@ -254,14 +258,10 @@ nav ul li button:hover::after {
 }
 
 
-
+/* about  */
 .about-section {
     height: 100vh;
-    width: 100%;
-    /* background-image: url('image/5a67be59ab0edf14e16b67ad52fbcb50.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
+    width: 100vw;
     background-color: black;
     display: flex;
     align-items: center;
@@ -270,7 +270,6 @@ nav ul li button:hover::after {
     color: white;
     position: sticky;
     overflow: hidden;
-    margin-top: 10vh;
 }
 
 .content-wrapper {
@@ -302,7 +301,7 @@ nav ul li button:hover::after {
 .contact-btn {
     display: inline-block;
     padding: 15px 40px;
-    background: linear-gradient(135deg, #E22E2C, #00BE61);
+    background: linear-gradient(135deg, red, green);
     color: white;
     text-decoration: none;
     border-radius: 50px;
@@ -314,9 +313,8 @@ nav ul li button:hover::after {
 }
 
 .contact-btn:hover {
-    background: linear-gradient(135deg, #00BE61, #E22E2C);
+    background: linear-gradient(135deg, green, red);
     transform: translateY(-3px);
-  
     border-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -436,8 +434,9 @@ nav ul li button:hover::after {
 /* ... (keep all existing CSS up to .xaiQuantumContainer) */
 
 .xaiQuantumContainer {
+    background: black;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     position: relative;
     display: flex;
     align-items: center;
@@ -731,9 +730,9 @@ nav ul li button:hover::after {
 /* Remove gradient classes since we're using images now */
 
 .portfolio-section {
-    min-height: 100vh;
-    width: 100%;
-    padding: 11vh 10vh 2vh 10vh;
+    height: 100vh;
+    width: 100vw;
+    /* padding: 11vh 10vh 2vh 10vh; */
     background: radial-gradient(ellipse at center, #1a0a0a 0%, #0a0a0a 70%);
 }
 
@@ -758,7 +757,7 @@ nav ul li button:hover::after {
 }
 
 .portfolio-container {
-    max-width: 1400px;
+    width: 100vw;
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -768,17 +767,14 @@ nav ul li button:hover::after {
 .portfolio-title {
     text-align: center;
     margin-bottom: 4rem;
-    opacity: 0;
     animation: fadeInUp 1s ease-out 0.2s forwards;
+    color: white !important; /* Explicitly set color to white with !important */
 }
 
 .portfolio-title h2 {
     font-size: clamp(3rem, 3vw, 5rem);
     font-weight: 800;
-    background: linear-gradient(135deg, #FD3130 0%, #ffffff 50%, #00BE61 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: white !important; /* Explicitly set color to white for h2 with !important */
     letter-spacing: -0.02em;
 }
 
@@ -2135,7 +2131,7 @@ nav ul li button:hover::after {
 /* Portfolio Carousel */
 #portfolioSection {
     padding: 4rem 2rem;
-    background: #0a0a0b; /* Համապատասխան Ձեր դիզայնին */
+    background: #0a0a0b;
     position: relative;
     overflow: hidden;
 }
@@ -2144,6 +2140,7 @@ nav ul li button:hover::after {
     position: relative;
     max-width: 100%;
     margin: 0 auto;
+    overflow: hidden; /* Թաքցնել ավելորդ card-երը */
 }
 
 .projects-grid {
@@ -2153,7 +2150,9 @@ nav ul li button:hover::after {
     gap: 2rem;
     padding: 1rem;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling iOS-ի համար */
+    -webkit-overflow-scrolling: touch;
+    max-width: calc(2 * 320px + 2rem); /* 2 card (300px + 10px padding մի կողմից) + gap */
+    margin: 0 auto; /* Կենտրոնացնել */
 }
 
 .projects-grid::-webkit-scrollbar {
@@ -2501,10 +2500,8 @@ nav ul li button:hover::after {
 
 
 #portfolioSection {
-    height: 100vh; /* Ճիշտ 90vh բարձրություն */
-    width: 100%;
+    width: 100vw;
     background: #0a0a0b;
-    position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -2517,14 +2514,13 @@ nav ul li button:hover::after {
 /* Portfolio Title */
 .portfolio-title {
     text-align: center;
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: clamp(2rem, 3vw, 2.5rem);
     font-weight: 800;
     margin-bottom: 1rem; /* Փոքր margin, որպեսզի տարածք չվատնվի */
-    background: linear-gradient(135deg, #ff453a, #30d158);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: initial; /* Reset to default */
+    -webkit-text-fill-color: initial; /* Reset to default */
+    background-clip: initial; /* Reset to default */
 }
 
 /* Carousel Container */
@@ -2693,30 +2689,24 @@ nav ul li button:hover::after {
 
 /* Portfolio Section */
 #portfolioSection {
-    height: 100vh; /* Ճիշտ 90vh բարձրություն */
-    width: 100%;
+
+    /* width: 100vw;
     background: #0a0a0b;
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Կենտրոնացնել բովանդակությունը ուղղահայաց */
-    align-items: center; /* Կենտրոնացնել հորիզոնական */
-    padding: 1.5rem 1rem; /* Կոմպակտ padding */
-    box-sizing: border-box;
+    box-sizing: border-box; */
 }
 
 /* Portfolio Title */
 .portfolio-title {
     text-align: center;
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: clamp(1.8rem, 2.5vw, 2.2rem); /* Փոքրացրինք font-ը */
     font-weight: 800;
     margin-bottom: 0.5rem; /* Նվազեցրինք margin-ը */
-    background: linear-gradient(135deg, #ff453a, #30d158);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: initial; /* Reset to default */
+    -webkit-text-fill-color: initial; /* Reset to default */
+    background-clip: initial; /* Reset to default */
 }
 
 /* Carousel Container */
@@ -2738,7 +2728,7 @@ nav ul li button:hover::after {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 2rem;
-    padding: 0.5rem 0; /* Նվազեցրինք padding-ը */
+    padding: 3rem 0; /* Նվազեցրինք padding-ը */
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     width: 100%;
@@ -2754,7 +2744,6 @@ nav ul li button:hover::after {
 .project-card {
     flex: 0 0 auto;
     width: 600px;
-    min-width: 300px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 1rem; /* Նվազեցրինք padding-ը */
@@ -2792,8 +2781,9 @@ nav ul li button:hover::after {
     overflow: hidden;
     text-overflow: ellipsis; /* Կտրել երկար տեքստը */
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Սահմանափակել 2 տողով */
+    -webkit-line-clamp: 1; /* 1 տող փոքր էկրաններում */
     -webkit-box-orient: vertical;
+    line-clamp: 1;
 }
 
 /* Stats */

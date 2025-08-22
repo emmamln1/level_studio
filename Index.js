@@ -71,42 +71,42 @@ const xaiServiceRegistry = [
         title: "Web Development",
         description: "Կայքերի և վեբ հավելվածների մշակում ժամանակակից տեխնոլոգիաներով",
         features: ["React", "Node.js", "TypeScript", "Next.js"],
-        bgImage: "image/1.jpg" // Replace with your image path
+        bgImage: "" // Replace with your image path
     },
     {
         number: "02",
         title: "Mobile Apps",
         description: "iOS և Android հավելվածների ստեղծում նատիվ և cross-platform",
         features: ["React Native", "Flutter", "Swift", "Kotlin"],
-        bgImage: "image/2.jpg" // Replace with your image path
+        bgImage: "" // Replace with your image path
     },
     {
         number: "03",
         title: "UI/UX Design",
         description: "Օգտահարմար և գեղեցիկ դիզայնի ստեղծում բրենդի համար",
         features: ["Figma", "Adobe XD", "Prototyping", "User Research"],
-        bgImage: "image/3.jpg" // Replace with your image path
+        bgImage: "" // Replace with your image path
     },
     {
         number: "04",
         title: "Branding",
         description: "Բրենդի ինքնություն և կորպորատիվ դիզայնի մշակում",
         features: ["Logo Design", "Brand Identity", "Style Guide", "Marketing"],
-        bgImage: "image/4.jpg" // Replace with your image path
+        bgImage: "" // Replace with your image path
     },
     {
         number: "05",
         title: "Consulting",
         description: "Տեխնոլոգիական խորհրդատվություն և ռազմավարություն",
         features: ["Strategy", "Architecture", "Code Review", "Mentoring"],
-        bgImage: "image/5.jpg" // Replace with your image path
+        bgImage: "" // Replace with your image path
     },
     {
         number: "06",
         title: "Maintenance",
         description: "Տեխնիկական սպասարկում և պրոյեկտների աջակցություն",
         features: ["Updates", "Security", "Performance", "Monitoring"],
-        bgImage: "image/5.jpg" // Replace with your image path
+        bgImage: "" // Replace with your image path
     }
 ];
 
