@@ -404,3 +404,333 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe all project cards
 document.quer
+
+
+// partners
+class LandingPartners {
+    constructor() {
+        this.partners = [
+            { icon: 'TM', name: 'TechMaster', status: 'Ակտիվ', desc: 'Ներդրումային տեխնոլոգիական լուծումներ և ծրագրային ապահovում' },
+            { icon: 'DV', name: 'DevVision', status: 'Գործընկեր', desc: 'Վեբ և մոբայլ հավելվածների մշակում' },
+            { icon: 'AI', name: 'AI Innovation', status: 'Ակտիվ', desc: 'Արհեստական բանականություն և մեքենայական ուսուցում' },
+            { icon: 'CS', name: 'CloudSphere', status: 'Գործընկեր', desc: 'Ամպային ծառայություններ և DevOps լուծումներ' },
+            { icon: 'DL', name: 'DataLink Pro', status: 'Ակտիվ', desc: 'Մեծ տվյալների վերլուծություն և վիզուալիզացիա' },
+            { icon: 'IoT', name: 'SmartTech', status: 'Գործընկեր', desc: 'IoT և խելացի տան տեխնոլոգիաներ' },
+            { icon: 'DM', name: 'DigiMarketing', status: 'Ակտիվ', desc: 'Դիջիտալ մարկետինգ և բրենդինգ' },
+            { icon: 'BC', name: 'BlockChain Hub', status: 'Գործընկեր', desc: 'Բլոկչեյն տեխնոլոգիաներ և Web3' },
+            { icon: 'FT', name: 'FinTech Solutions', status: 'Ակտիվ', desc: 'Ֆինանսական տեխնոլոգիաներ և ֆինտեխ' },
+            { icon: 'VR', name: 'VirtReality', status: 'Գործընկեր', desc: 'VR/AR տեխնոլոգիաներ և մետավերս' },
+            { icon: 'ED', name: 'EduTech Global', status: 'Ակտիվ', desc: 'Կրթական պլատֆորմներ և e-learning' },
+            { icon: 'MT', name: 'MedTech Innovations', status: 'Գործընկեր', desc: 'Բժշկական տեխնոլոգիաներ և տելեմեդիցինա' }
+        ];
+        
+        this.observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        this.init();
+    }
+
+    init() {
+        this.renderPartners();
+        this.setupScrollAnimations();
+        this.setupCarousel();
+        this.addParallaxEffects();
+        
+        // Performance optimization
+        this.throttledScrollHandler = this.throttle(this.handleScroll.bind(this), 16);
+        window.addEventListener('scroll', this.throttledScrollHandler);
+    }
+
+    renderPartners() {
+        const grid = document.getElementById('partnersGrid');
+        grid.innerHTML = '';
+        
+        this.partners.forEach((partner, index) => {
+            const card = this.createPartnerCard(partner, index);
+            grid.appendChild(card);
+        });
+    }
+
+    createPartnerCard(partner, index) {
+        const card = document.createElement('div');
+        card.className = 'partner-card';
+        card.style.transitionDelay = `${index * 0.1}s`;
+        
+        card.innerHTML = `
+            <div class="card-header">
+                <div class="partner-icon">${partner.icon}</div>
+                <div class="partner-info">
+                    <h3>${partner.name}</h3>
+                    <div class="partner-status">${partner.status}</div>
+                </div>
+            </div>
+            <div class="partner-description">${partner.desc}</div>
+        `;
+        
+        // Add click interaction
+        card.addEventListener('click', (e) => this.handleCardClick(e, partner));
+        
+        return card;
+    }
+
+    handleCardClick(e, partner) {
+        e.currentTarget.style.transform = 'scale(0.98) translateY(-8px)';
+        setTimeout(() => {
+            e.currentTarget.style.transform = '';
+        }, 150);
+        
+        console.log('Partner selected:', partner.name);
+    }
+
+    setupScrollAnimations() {
+        // Intersection Observer for scroll animations
+        this.cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-animate');
+                }
+            });
+        }, this.observerOptions);
+
+        // Header animation observer
+        this.headerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        // Observe elements
+        const header = document.getElementById('sectionHeader');
+        this.headerObserver.observe(header);
+
+        // Observe cards (after they're rendered)
+        setTimeout(() => {
+            document.querySelectorAll('.partner-card').forEach(card => {
+                this.cardObserver.observe(card);
+            });
+        }, 100);
+    }
+
+    setupCarousel() {
+        const grid = document.getElementById('partnersGrid');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        // Setup navigation
+        prevBtn.addEventListener('click', () => this.scrollCarousel('prev'));
+        nextBtn.addEventListener('click', () => this.scrollCarousel('next'));
+        
+        // Setup dots
+        this.renderDots();
+        this.updateActiveDot();
+        
+        // Scroll event for progress and dots
+        grid.addEventListener('scroll', this.throttle(() => {
+            this.updateScrollProgress();
+            this.updateActiveDot();
+        }, 16));
+
+        // Touch/mouse drag
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        grid.addEventListener('mousedown', (e) => {
+            isDown = true;
+            grid.classList.add('grabbing');
+            startX = e.pageX - grid.offsetLeft;
+            scrollLeft = grid.scrollLeft;
+        });
+
+        grid.addEventListener('mouseleave', () => {
+            isDown = false;
+            grid.classList.remove('grabbing');
+        });
+
+        grid.addEventListener('mouseup', () => {
+            isDown = false;
+            grid.classList.remove('grabbing');
+        });
+
+        grid.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - grid.offsetLeft;
+            const walk = (x - startX) * 2;
+            grid.scrollLeft = scrollLeft - walk;
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') this.scrollCarousel('prev');
+            if (e.key === 'ArrowRight') this.scrollCarousel('next');
+        });
+    }
+
+    scrollCarousel(direction) {
+        const grid = document.getElementById('partnersGrid');
+        const cardWidth = 300 + 32; // card width + gap
+        const scrollAmount = direction === 'next' ? cardWidth : -cardWidth;
+        
+        grid.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+
+    renderDots() {
+        const dotsContainer = document.getElementById('carouselDots');
+        const visibleCards = Math.floor(window.innerWidth / 332); // card + gap
+        const totalDots = Math.max(1, this.partners.length - visibleCards + 1);
+        
+        dotsContainer.innerHTML = '';
+        
+        for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'carousel-dot';
+            dot.addEventListener('click', () => this.goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    goToSlide(index) {
+        const grid = document.getElementById('partnersGrid');
+        const cardWidth = 332; // card width + gap
+        const scrollPosition = index * cardWidth;
+        
+        grid.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+    }
+
+    updateActiveDot() {
+        const grid = document.getElementById('partnersGrid');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const cardWidth = 332;
+        const currentIndex = Math.round(grid.scrollLeft / cardWidth);
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    updateScrollProgress() {
+        const grid = document.getElementById('partnersGrid');
+        const progressFill = document.getElementById('scrollProgress');
+        
+        if (grid.scrollWidth <= grid.clientWidth) {
+            progressFill.style.width = '100%';
+            return;
+        }
+        
+        const progress = (grid.scrollLeft / (grid.scrollWidth - grid.clientWidth)) * 100;
+        progressFill.style.width = Math.min(Math.max(progress, 0), 100) + '%';
+    }
+
+    addParallaxEffects() {
+        const orbs = document.querySelectorAll('.floating-orb');
+        const gridBg = document.querySelector('.grid-background');
+        
+        const handleParallax = () => {
+            const scrolled = window.pageYOffset;
+            const section = document.getElementById('partnersSection');
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            // Only apply parallax when section is in view
+            if (scrolled >= sectionTop - window.innerHeight && 
+                scrolled <= sectionTop + sectionHeight) {
+                
+                const parallaxFactor = (scrolled - sectionTop) * 0.5;
+                
+                // Parallax orbs
+                orbs.forEach((orb, index) => {
+                    const speed = (index + 1) * 0.3;
+                    orb.style.transform = `translateY(${parallaxFactor * speed}px)`;
+                });
+                
+                // Parallax grid
+                if (gridBg) {
+                    gridBg.style.transform = `translate(-10%, calc(-10% + ${parallaxFactor * 0.2}px))`;
+                }
+            }
+        };
+
+        window.addEventListener('scroll', this.throttle(handleParallax, 16));
+    }
+
+    handleScroll() {
+        // Additional scroll-based animations can be added here
+        const scrolled = window.pageYOffset;
+        const section = document.getElementById('partnersSection');
+        
+        if (section) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            // Add dynamic classes based on scroll position
+            if (scrolled >= sectionTop - window.innerHeight * 0.5 && 
+                scrolled <= sectionTop + sectionHeight * 0.5) {
+                section.classList.add('in-view');
+            } else {
+                section.classList.remove('in-view');
+            }
+        }
+    }
+
+    // Performance optimization utilities
+    throttle(func, delay) {
+        let timeoutId;
+        let lastExecTime = 0;
+        return function (...args) {
+            const currentTime = Date.now();
+            
+            if (currentTime - lastExecTime > delay) {
+                func.apply(this, args);
+                lastExecTime = currentTime;
+            } else {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    func.apply(this, args);
+                    lastExecTime = Date.now();
+                }, delay - (currentTime - lastExecTime));
+            }
+        };
+    }
+
+    // Cleanup method for performance
+    destroy() {
+        window.removeEventListener('scroll', this.throttledScrollHandler);
+        if (this.cardObserver) this.cardObserver.disconnect();
+        if (this.headerObserver) this.headerObserver.disconnect();
+    }
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const landingPartners = new LandingPartners();
+    
+    // Performance monitoring
+    window.addEventListener('load', () => {
+        const loadTime = performance.now();
+        console.log(`⚡ Landing section loaded in ${Math.round(loadTime)}ms`);
+    });
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+        if (landingPartners) {
+            landingPartners.destroy();
+        }
+    });
+});
+
+// Smooth scrolling for better UX
+document.documentElement.style.scrollBehavior = 'smooth';
+
+
+// contact 
