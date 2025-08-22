@@ -19,13 +19,13 @@
             <!-- Desktop Navigation -->
             <nav>
                 <ul>
-                    <li><button data-nav="#services" data-arm="Ծառայություններ" data-rus="Услуги"
+                    <li><button data-nav="#xaiQuantumContainer" data-arm="Ծառայություններ" data-rus="Услуги"
                             data-eng="Services">Ծառայություններ</button></li>
-                    <li><button data-nav="#portfolio" data-arm="Պորտֆոլիո" data-rus="Портфолио"
+                    <li><button data-nav="#portfolioSection" data-arm="Պորտֆոլիո" data-rus="Портфолио"
                             data-eng="Portfolio">Պորտֆոլիո</button></li>
-                    <li><button data-nav="#partners" data-arm="Փարթներներ" data-rus="Партнеры"
+                    <li><button data-nav="#partnersSection" data-arm="Փարթներներ" data-rus="Партнеры"
                             data-eng="Partners">Գործընկերներ</button></li>
-                    <li><button data-nav="#about" data-arm="Մեր մասին" data-rus="О нас" data-eng="About Us">Մեր
+                    <li><button data-nav="#aboutSection" data-arm="Մեր մասին" data-rus="О нас" data-eng="About Us">Մեր
                             մասին</button></li>
                     <li><button data-nav="#contact" data-arm="Կոնտակներ" data-rus="Контакты"
                             data-eng="Contact">Կապ</button></li>
@@ -55,13 +55,13 @@
 
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
-            <button data-nav="#services" data-arm="Ծառայություններ" data-rus="Услуги"
+            <button data-nav="#xaiQuantumContainer" data-arm="Ծառայություններ" data-rus="Услуги"
                 data-eng="Services">Ծառայություններ</button>
-            <button data-nav="#portfolio" data-arm="Պորտֆոլիո" data-rus="Портфолио"
+            <button data-nav="#portfolioSection" data-arm="Պորտֆոլիո" data-rus="Портфолио"
                 data-eng="Portfolio">Պորտֆոլիո</button>
-            <button data-nav="#partners" data-arm="Փարթներներ" data-rus="Партнеры"
+            <button data-nav="#partnersSection" data-arm="Փարթներներ" data-rus="Партнеры"
                 data-eng="Partners">Փարթներներ</button>
-            <button data-nav="#about" data-arm="Մեր մասին" data-rus="О нас" data-eng="About Us">Մեր մասին</button>
+            <button data-nav="#aboutSection" data-arm="Մեր մասին" data-rus="О нас" data-eng="About Us">Մեր մասին</button>
             <button data-nav="#contact" data-arm="Կոնտակներ" data-rus="Контакты" data-eng="Contact">Կոնտակներ</button>
         </div>
 
@@ -101,13 +101,14 @@
         </div>
     </section>
 
-    <div class="portfolio-section">
+    <div class="portfolio-section" id="portfolioSection">
+        <h2 class="portfolio-title" style="font-size: 50px;">Պորտֆոլիո</h2>
         <div class="grid-background"></div>
         <div class="floating-dots"></div>
         
         <div class="portfolio-container">
             
-            <div class="projects-grid">
+            <div class="projects-grid" id="projectsGrid">
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-image">
@@ -122,7 +123,7 @@
                         <div class="project-header">
                             <h3 class="project-title-text">AI Analytics Platform</h3>
                         </div>
-                        <p class="project-description">Խելացի վերլուծական համակարգ՝ մեքենայական ուսուցմամբ և իրական ժամանակի տվյալների</p>
+                        <p class="project-description">Խելացի վերլուծական համակարգ՝ մեքենայական ուսուցմամբ և իրական</p>
                         <div class="project-stats">
                             <div class="stat-item">
                                 <span class="stat-number">98.5%</span>
@@ -238,6 +239,9 @@
                
             </div>
         </div>
+        <button class="carousel-btn prev" id="portfolioPrevBtn">←</button>
+        <button class="carousel-btn next" id="portfolioNextBtn">→</button>
+        <div class="carousel-dots" id="portfolioDots"></div>
     </div>
 
 
@@ -246,13 +250,10 @@
         <div class="grid-background"></div>
         
         <!-- Floating orbs -->
-        <div class="floating-orb orb-1"></div>
-        <div class="floating-orb orb-2"></div>
-        <div class="floating-orb orb-3"></div>
 
         <div class="section-header" id="sectionHeader">
             <h2 class="section-title">Մեր Գործընկերները</h2>
-            <p class="section-subtitle">Միացե՛ք մեր նվիրյալ գործընկերների ընտանիքին և ստեղծե՛ք ապագայի տեխնոլոգիաները</p>
+            
         </div>
 
         <div class="partners-container">
@@ -274,13 +275,12 @@
             </div>
             
             <!-- Carousel dots -->
-            <div class="carousel-dots" id="carouselDots"></div>
+            <div class="carousel-dots" id="partnersCarouselDots"></div>
         </div>
 
         <!-- Scroll progress -->
-        <div class="scroll-progress">
-            <div class="progress-fill" id="scrollProgress"></div>
-        </div>
+        <div class="scroll-progress-bar"><div class="scroll-progress-fill" id="scrollProgress"></div></div>
+   
     </section>
 
 
@@ -288,18 +288,7 @@
 
     <!-- contact  -->
     <section class="interface-contact-module-xyz" id="contact">
-        <!-- Floating particles -->
-        <div class="dynamic-particle-system">
-            <div class="animated-particle-unit" style="left: 10%; animation-delay: 0s;"></div>
-            <div class="animated-particle-unit" style="left: 20%; animation-delay: 2s;"></div>
-            <div class="animated-particle-unit" style="left: 30%; animation-delay: 4s;"></div>
-            <div class="animated-particle-unit" style="left: 40%; animation-delay: 1s;"></div>
-            <div class="animated-particle-unit" style="left: 50%; animation-delay: 3s;"></div>
-            <div class="animated-particle-unit" style="left: 60%; animation-delay: 5s;"></div>
-            <div class="animated-particle-unit" style="left: 70%; animation-delay: 1.5s;"></div>
-            <div class="animated-particle-unit" style="left: 80%; animation-delay: 3.5s;"></div>
-            <div class="animated-particle-unit" style="left: 90%; animation-delay: 2.5s;"></div>
-        </div>
+        
 
         <h2 class="primary-title-component-abc">Կապ</h2>
        
@@ -356,7 +345,7 @@
                 
                 <div class="success-notification-display" id="successMessage">
                     <i class="fas fa-check-circle"></i>
-                    Ձեր հաղորդագրությունը հաջողությամբ ուղարկվեց։ Մենք շուտով կկապվենք ձեզ հետ։
+                    Ձեր հաղորդագրությունը հաջողությամբ ուղարկվեց։
                 </div>
 
                 <form id="contactForm">
@@ -398,7 +387,17 @@
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="Index.js"></script>
+    <!-- Call Button -->
+    <a href="tel:YOUR_PHONE_NUMBER" class="call-button" aria-label="Call Us">
+        <i class="fas fa-phone"></i>
+    </a>
+    <div id="google_translate_element" style="display: none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'hy', includedLanguages: 'hy,ru,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-
 </html>
