@@ -385,21 +385,9 @@ document.querySelector('.contact-btn').addEventListener('click', function(e) {
     alert('Կապ մեզ հետ!');
 });
 
-function createFloatingDot() {
-    const dot = document.createElement('div');
-    dot.className = 'floating-dot';
-    dot.style.left = Math.random() * 100 + '%';
-    dot.style.animationDelay = Math.random() * 2 + 's';
-    
-    document.querySelector('.floating-dots').appendChild(dot);
-    
-    setTimeout(() => {
-        dot.remove();
-    }, 12000);
-}
+
 
 // Create dots periodically
-setInterval(createFloatingDot, 800);
 
 // Intersection Observer for scroll animations
 const observer = new IntersectionObserver((entries) => {
@@ -912,3 +900,60 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('message').value = formData.message || '';
     }
 });
+
+function initImageCarousel() {
+    const carouselSlide = document.querySelector('.carousel-slide');
+    const carouselImages = document.querySelectorAll('.carousel-slide img');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const dotsContainer = document.querySelector('.carousel-dots');
+
+    let currentIndex = 0;
+    const totalImages = carouselImages.length;
+
+    // Create dots dynamically if not already in HTML
+    if (dotsContainer && dotsContainer.children.length === 0) {
+        for (let i = 0; i < totalImages; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+
+    function showSlide(index) {
+        if (carouselSlide) {
+            carouselSlide.style.transform = `translateX(${-index * 100}%)`;
+            // Update active dot
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        showSlide(currentIndex);
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        showSlide(currentIndex);
+    }
+
+    // Event listeners for buttons
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+    // Initialize carousel
+    showSlide(currentIndex);
+}
+
+// Call the image carousel initialization function
+document.addEventListener('DOMContentLoaded', initImageCarousel);

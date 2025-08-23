@@ -729,54 +729,17 @@ nav ul li button:hover::after {
 
 /* Remove gradient classes since we're using images now */
 
-.portfolio-section {
-    height: 100vh;
-    width: 100vw;
-    /* padding: 11vh 10vh 2vh 10vh; */
-    background: radial-gradient(ellipse at center, #1a0a0a 0%, #0a0a0a 70%);
-}
-
-/* Animated Background Grid */
-.grid-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: gridMove 20s linear infinite;
-    opacity: 0.3;
-}
-
-@keyframes gridMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
-}
 
 .portfolio-container {
     width: 100vw;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 8vh; */
 }
 
 /* Modern Title */
-.portfolio-title {
-    text-align: center;
-    margin-bottom: 4rem;
-    animation: fadeInUp 1s ease-out 0.2s forwards;
-    color: white !important; /* Explicitly set color to white with !important */
-}
 
-.portfolio-title h2 {
-    font-size: clamp(3rem, 3vw, 5rem);
-    font-weight: 800;
-    color: white !important; /* Explicitly set color to white for h2 with !important */
-    letter-spacing: -0.02em;
-}
 
 .portfolio-subtitle {
     font-size: clamp(1rem, 1vw, 1.2rem);
@@ -784,16 +747,6 @@ nav ul li button:hover::after {
     font-weight: 400;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* Projects Grid */
 .projects-grid {
@@ -803,19 +756,7 @@ nav ul li button:hover::after {
 }
 
 /* Project Card */
-.project-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    transform: translateY(50px);
-    animation: slideUp 0.8s ease-out forwards;
-    backdrop-filter: blur(20px);
-    cursor: pointer;
-}
+
 
 .project-card:nth-child(1) { animation-delay: 0.1s; }
 .project-card:nth-child(2) { animation-delay: 0.2s; }
@@ -832,9 +773,7 @@ nav ul li button:hover::after {
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
     border-color: rgba(255, 255, 255, 0.2);
- 
 }
 
 
@@ -844,7 +783,7 @@ nav ul li button:hover::after {
 /* Project Image */
 .project-image {
     position: relative;
-    height: 200px;
+    height: 310px;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.05));
 }
@@ -858,10 +797,6 @@ nav ul li button:hover::after {
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
-}
-
-.project-card:hover .project-image img {
-    transform: scale(1.05);
 }
 
 /* Image Placeholder with Icon */
@@ -939,7 +874,7 @@ nav ul li button:hover::after {
 }
 
 .project-category {
-    font-size: 0.4rem;
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -947,7 +882,6 @@ nav ul li button:hover::after {
 }
 
 .project-description {
-    font-size: 0.88rem;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 1.5rem;
@@ -957,7 +891,7 @@ nav ul li button:hover::after {
 .project-stats {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.6rem;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
@@ -970,10 +904,12 @@ nav ul li button:hover::after {
 
 .stat-number {
     display: block;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    color: #FD3130;
-    margin-bottom: 0.25rem;
+    background: linear-gradient(to right, red, green);
+    background-clip: text;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 0.6rem;
 }
 
 .project-card:nth-child(even) .stat-number {
@@ -981,7 +917,7 @@ nav ul li button:hover::after {
 }
 
 .stat-label {
-    font-size: 0.7rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
 }
@@ -995,11 +931,11 @@ nav ul li button:hover::after {
 }
 
 .tech-tag {
-    padding: 0.4rem 0.8rem;
+    padding: 0.8rem 1rem;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
@@ -1625,9 +1561,6 @@ nav ul li button:hover::after {
     100% { background-position: 200% 0; }
 }
 
-
-
-
 /* contact  */
 .interface-contact-module-xyz {
     height: 100vh;
@@ -1873,8 +1806,7 @@ nav ul li button:hover::after {
     z-index: 1;
 }
 
-
-
+/* Form Input Container */
 .form-input-container {
     margin-bottom: 1.5rem;
     position: relative;
@@ -1914,7 +1846,6 @@ nav ul li button:hover::after {
     outline: none;
     border-color: #ff453a;
     background: rgba(0, 0, 0, 0.4);
-    
     transform: scale(1.01);
 }
 
@@ -1936,7 +1867,6 @@ nav ul li button:hover::after {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     text-transform: uppercase;
     letter-spacing: 1px;
-  
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -1960,7 +1890,6 @@ nav ul li button:hover::after {
 
 .action-submit-button:hover {
     transform: translateY(-3px) scale(1.02);
-   
     background: linear-gradient(135deg, #30d158, #ff453a);
 }
 
@@ -1984,7 +1913,6 @@ nav ul li button:hover::after {
     text-align: center;
     display: none;
     animation: success-animation-pulse 0.8s ease;
-  
     font-weight: 600;
     position: relative;
     z-index: 1;
@@ -2126,404 +2054,20 @@ nav ul li button:hover::after {
     }
 }
 
-
-
 /* Portfolio Carousel */
 #portfolioSection {
-    padding: 4rem 2rem;
-    background: #0a0a0b;
-    position: relative;
-    overflow: hidden;
-}
-
-.portfolio-carousel-container {
-    position: relative;
-    max-width: 100%;
-    margin: 0 auto;
-    overflow: hidden; /* Թաքցնել ավելորդ card-երը */
-}
-
-.projects-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 2rem;
-    padding: 1rem;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    max-width: calc(2 * 320px + 2rem); /* 2 card (300px + 10px padding մի կողմից) + gap */
-    margin: 0 auto; /* Կենտրոնացնել */
-}
-
-.projects-grid::-webkit-scrollbar {
-    display: none; /* Թաքցնել scrollbar-ը */
-}
-
-.project-card {
-    flex: 0 0 auto;
-    width: 1000px; /* Ձեր card-երի լայնությունը, կարող եք փոխել */
-    min-width: 300px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 1.5rem;
-    scroll-snap-align: start;
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: scale(1.05);
-}
-
-/* Carousel Buttons */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-btn.prev {
-    left: 1rem;
-}
-
-.carousel-btn.next {
-    right: 1rem;
-}
-
-/* Carousel Dots */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.carousel-dot {
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    background: white;
-    transform: scale(1.3);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .project-card {
-        width: 280px;
-        min-width: 280px;
-    }
-
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .project-card {
-        width: 240px;
-        min-width: 240px;
-    }
-}
-
-/* Portfolio Carousel */
-#portfolioSection {
-    padding: 4rem 2rem;
-    background: #0a0a0b;
-    position: relative;
-    overflow: hidden;
-}
-
-.portfolio-carousel-container {
-    position: relative;
-    max-width: 100%;
-    margin: 0 auto;
-    overflow: hidden; /* Թաքցնել ավելորդ card-երը */
-}
-
-.projects-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 2rem;
-    padding: 1rem;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    max-width: calc(2 * 320px + 2rem); /* 2 card (300px + 10px padding մի կողմից) + gap */
-    margin: 0 auto; /* Կենտրոնացնել */
-}
-
-.projects-grid::-webkit-scrollbar {
-    display: none;
-}
-
-.project-card {
-    flex: 0 0 auto;
-    width: 00px; /* Card-ի լայնությունը */
-    min-width: 300px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 1.5rem;
-    scroll-snap-align: start;
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: scale(1.05);
-}
-
-/* Carousel Buttons */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-btn.prev {
-    left: 1rem;
-}
-
-.carousel-btn.next {
-    right: 1rem;
-}
-
-/* Carousel Dots */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.carousel-dot {
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    background: white;
-    transform: scale(1.3);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .projects-grid {
-        max-width: calc(2 * 280px + 2rem); /* 2 card 280px + gap */
-    }
-
-    .project-card {
-        width: 280px;
-        min-width: 280px;
-    }
-
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .projects-grid {
-        max-width: 300px; /* 1 card միայն փոքր էկրանների համար */
-    }
-
-    .project-card {
-        width: 280px;
-        min-width: 280px;
-    }
-}
-
-/* Portfolio Carousel */
-#portfolioSection {
-    padding: 4rem 2rem;
-    background: #0a0a0b;
-    position: relative;
-    overflow: hidden;
-}
-
-.portfolio-carousel-container {
-    position: relative;
-    max-width: 100%;
-    margin: 0 auto;
-    overflow: hidden; /* Թաքցնել ավելորդ card-երը */
-}
-
-.projects-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 2rem;
-    padding: 1rem;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    max-width: calc(2 * 600px + 2rem); /* 2 card (300px + 10px padding մի կողմից) + gap */
-    margin: 0 auto; /* Կենտրոնացնել */
-}
-
-.projects-grid::-webkit-scrollbar {
-    display: none;
-}
-
-.project-card {
-    flex: 0 0 auto;
-    width: 600px; /* Card-ի լայնությունը */
-    min-width: 300px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 1.5rem;
-    scroll-snap-align: start;
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: scale(1.05);
-}
-
-/* Carousel Buttons */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-btn.prev {
-    left: 1rem;
-}
-
-.carousel-btn.next {
-    right: 1rem;
-}
-
-/* Carousel Dots */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.carousel-dot {
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    background: white;
-    transform: scale(1.3);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .projects-grid {
-        max-width: calc(2 * 280px + 2rem); /* 2 card 280px + gap */
-    }
-
-    .project-card {
-        width: 280px;
-        min-width: 280px;
-    }
-
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .projects-grid {
-        max-width: 300px; /* 1 card միայն փոքր էկրանների համար */
-    }
-
-    .project-card {
-        width: 280px;
-        min-width: 280px;
-    }
-}
-
-
-#portfolioSection {
+    min-height: 140vh; 
     width: 100vw;
     background: #0a0a0b;
+    position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Կենտրոնացնել բովանդակությունը ուղղահայաց */
-    align-items: center; /* Կենտրոնացնել հորիզոնական */
-    padding: 2rem 1rem; /* Կոմպակտ padding, որպեսզի տեղավորվի 90vh-ում */
-    box-sizing: border-box;
+    justify-content: space-evenly; 
+    align-items: center; 
+    padding: 10vh 10vh 0 10vh;
 }
 
-/* Portfolio Title */
-.portfolio-title {
-    text-align: center;
-    color: #ffffff !important;
-    font-size: clamp(2rem, 3vw, 2.5rem);
-    font-weight: 800;
-    margin-bottom: 1rem; /* Փոքր margin, որպեսզի տարածք չվատնվի */
-    -webkit-background-clip: initial; /* Reset to default */
-    -webkit-text-fill-color: initial; /* Reset to default */
-    background-clip: initial; /* Reset to default */
-}
-
-/* Carousel Container */
 .portfolio-carousel-container {
     position: relative;
     width: 100%;
@@ -2536,7 +2080,6 @@ nav ul li button:hover::after {
     align-items: center;
 }
 
-/* Projects Grid (Carousel) */
 .projects-grid {
     display: flex;
     overflow-x: auto;
@@ -2553,26 +2096,10 @@ nav ul li button:hover::after {
     display: none;
 }
 
-/* Project Card */
-.project-card {
-    flex: 0 0 auto;
-    width: 300px;
-    min-width: 300px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 1.5rem;
-    scroll-snap-align: start;
-    transition: transform 0.3s ease;
-    max-height: 100%; /* Ամբողջ տարածքը լցնել, բայց չգերազանցել */
-    overflow-y: auto; /* Եթե բովանդակությունը մեծ է, թույլ տալ scroll-y */
-    box-sizing: border-box;
-}
 
-.project-card:hover {
-    transform: scale(1.05);
-}
 
-/* Carousel Buttons */
+
+
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -2595,19 +2122,16 @@ nav ul li button:hover::after {
 }
 
 .carousel-btn.prev {
-    left: 0;
+    left: -50;
 }
 
-.carousel-btn.next {
-    right: 0;
-}
 
-/* Carousel Dots */
+
 .carousel-dots {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-    margin-top: 0.5rem; /* Փոքր margin, որպեսզի տեղավորվի 90vh-ում */
+    margin-top: 0.5rem; /* Փոքր margin, որպեսզի տեղավորվի */
     margin-bottom: 0;
 }
 
@@ -2687,26 +2211,14 @@ nav ul li button:hover::after {
 }
 
 
-/* Portfolio Section */
-#portfolioSection {
 
-    /* width: 100vw;
-    background: #0a0a0b;
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box; */
-}
 
 /* Portfolio Title */
 .portfolio-title {
     text-align: center;
-    color: #ffffff !important;
+    color: #ffffff;
     font-size: clamp(1.8rem, 2.5vw, 2.2rem); /* Փոքրացրինք font-ը */
     font-weight: 800;
-    margin-bottom: 0.5rem; /* Նվազեցրինք margin-ը */
-    -webkit-background-clip: initial; /* Reset to default */
-    -webkit-text-fill-color: initial; /* Reset to default */
-    background-clip: initial; /* Reset to default */
 }
 
 /* Carousel Container */
@@ -2728,7 +2240,7 @@ nav ul li button:hover::after {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 2rem;
-    padding: 3rem 0; /* Նվազեցրինք padding-ը */
+    padding: 0.5rem 0; /* Նվազեցրինք padding-ը */
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     width: 100%;
@@ -2744,16 +2256,16 @@ nav ul li button:hover::after {
 .project-card {
     flex: 0 0 auto;
     width: 600px;
+    min-width: 300px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 1rem; /* Նվազեցրինք padding-ը */
     scroll-snap-align: start;
     transition: transform 0.3s ease;
-    max-height: 100%; /* Ամբողջ տարածքը լցնել */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Տարածել բովանդակությունը */
-    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.8s ease-out forwards;
+    backdrop-filter: blur(20px);
+    cursor: pointer;
 }
 
 /* Card-ի ներքին էլեմենտներ */
@@ -2763,7 +2275,7 @@ nav ul li button:hover::after {
 }
 
 .project-card h3 {
-    font-size: 1.2rem; /* Փոքրացրինք title-ի font-ը */
+    font-size: 1.5rem; /* Փոքրացրինք title-ի font-ը */
     font-weight: 700;
     margin-bottom: 0.3rem;
 }
@@ -2775,15 +2287,9 @@ nav ul li button:hover::after {
 }
 
 .project-card p {
-    font-size: 0.9rem; /* Փոքրացրինք description-ի font-ը */
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Կտրել երկար տեքստը */
+    font-size: 1.2rem; 
     display: -webkit-box;
-    -webkit-line-clamp: 1; /* 1 տող փոքր էկրաններում */
     -webkit-box-orient: vertical;
-    line-clamp: 1;
 }
 
 /* Stats */
@@ -2839,9 +2345,7 @@ nav ul li button:hover::after {
 }
 
 /* Card Hover Effect */
-.project-card:hover {
-    transform: scale(1.05);
-}
+
 
 /* Carousel Buttons */
 .carousel-btn {
@@ -2866,11 +2370,13 @@ nav ul li button:hover::after {
 }
 
 .carousel-btn.prev {
-    left: 0;
+    left: 50px;
+    color: red;
 }
 
 .carousel-btn.next {
-    right: 0;
+    right: 50px;
+    color: green;
 }
 
 /* Carousel Dots */
@@ -3061,4 +2567,75 @@ nav ul li button:hover::after {
 .goog-text-highlight {
     background-color: transparent !important;
     box-shadow: none !important;
+}
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+    height: 350px; /* Adjust as needed */
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-slide {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: white;
 }
