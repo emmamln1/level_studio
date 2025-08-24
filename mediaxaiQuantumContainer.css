@@ -1,0 +1,143 @@
+/* Media Queries for xaiQuantumContainer */
+@media (max-width: 1024px) {
+    .xaiQuantumContainer {
+        height: 90vh; /* Slightly shorter height for tablets */
+        padding: 0 30px; /* Reduced padding */
+    }
+
+    .xaiCoreMatrix {
+        max-width: 1000px; /* Adjust max-width for smaller screens */
+        padding: 0 20px;
+    }
+
+    .xaiServiceNexus {
+        height: 450px; /* Adjust height for content */
+    }
+
+    .xaiPrimaryDescriptor {
+        font-size: clamp(28px, 4vw, 60px); /* Smaller font size */
+        letter-spacing: -1.5px;
+    }
+
+    .xaiDetailNarrative {
+        font-size: clamp(13px, 1.6vw, 18px); /* Adjusted font size */
+        max-width: 500px; /* Narrower text width */
+        line-height: 1.5;
+    }
+
+    .xaiSequenceMarker {
+        font-size: clamp(11px, 1.4vw, 16px); /* Smaller marker font */
+        margin-bottom: 15px;
+    }
+
+    .xaiTraitNode {
+        font-size: clamp(11px, 1.3vw, 14px); /* Smaller feature font */
+        padding: 5px 14px;
+    }
+
+    .xaiHologramLabel {
+        font-size: clamp(18px, 2.5vw, 36px); /* Adjusted hologram font */
+    }
+
+    .xaiCosmicFragment {
+        width: 3px; /* Smaller particles */
+        height: 3px;
+        animation-duration: 18s; /* Slightly faster animation */
+    }
+}
+
+@media (max-width: 768px) {
+    .xaiQuantumContainer {
+        height: 85vh; /* Shorter height for smaller tablets */
+        padding: 0 20px;
+    }
+
+    .xaiCoreMatrix {
+        max-width: 700px;
+        padding: 0 15px;
+    }
+
+    .xaiServiceNexus {
+        height: 400px; /* Reduced height */
+    }
+
+    .xaiPrimaryDescriptor {
+        font-size: clamp(24px, 3.5vw, 48px); /* Further reduced font size */
+        letter-spacing: -1px;
+        margin: 15px auto;
+    }
+
+    .xaiDetailNarrative {
+        font-size: clamp(12px, 1.5vw, 16px); /* Smaller font */
+        max-width: 400px;
+        line-height: 1.4;
+    }
+
+    .xaiSequenceMarker {
+        font-size: clamp(10px, 1.3vw, 14px); /* Smaller marker font */
+        margin-bottom: 12px;
+    }
+
+    .xaiTraitNode {
+        font-size: clamp(10px, 1.2vw, 13px); /* Smaller feature font */
+        padding: 4px 12px;
+    }
+
+    .xaiHologramLabel {
+        font-size: clamp(16px, 2vw, 32px); /* Smaller hologram font */
+    }
+
+    .xaiCosmicFragment {
+        width: 2.5px; /* Smaller particles */
+        height: 2.5px;
+        animation-duration: 16s; /* Faster animation */
+    }
+}
+
+@media (max-width: 480px) {
+    .xaiQuantumContainer {
+        height: 80vh; /* Compact height for mobile */
+        padding: 0 15px;
+    }
+
+    .xaiCoreMatrix {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .xaiServiceNexus {
+        height: 350px; /* Compact height for mobile */
+    }
+
+    .xaiPrimaryDescriptor {
+        font-size: clamp(20px, 3vw, 36px); /* Smallest font size */
+        letter-spacing: -0.8px;
+        margin: 10px auto;
+    }
+
+    .xaiDetailNarrative {
+        font-size: clamp(11px, 1.4vw, 14px); /* Smallest font */
+        max-width: 300px;
+        line-height: 1.3;
+    }
+
+    .xaiSequenceMarker {
+        font-size: clamp(9px, 1.2vw, 12px); /* Smallest marker font */
+        margin-bottom: 10px;
+    }
+
+    .xaiTraitNode {
+        font-size: clamp(9px, 1.1vw, 12px); /* Smallest feature font */
+        padding: 3px 10px;
+    }
+
+    .xaiHologramLabel {
+        font-size: clamp(14px, 1.8vw, 28px); /* Smallest hologram font */
+    }
+
+    .xaiCosmicFragment {
+        width: 2px; /* Smallest particles */
+        height: 2px;
+        animation-duration: 14s; /* Fastest animation */
+    }
+}

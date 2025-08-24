@@ -30,6 +30,11 @@ overlay.addEventListener("click", () => {
 // smooth scroll
 navBtns.forEach(btn => {
     btn.addEventListener("click", () => {
+        // Remove active-nav from all buttons
+        navBtns.forEach(b => b.classList.remove("active-nav"));
+        // Add active-nav to the clicked button
+        btn.classList.add("active-nav");
+
         const id = btn.getAttribute("data-nav");
         const el = document.querySelector(id);
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -846,9 +851,72 @@ function initPortfolioCarousel() {
     window.addEventListener('resize', renderDots); // Update dots on resize
 }
 
-// Initialize carousel on page load
+// Initialize a single image carousel
+function initImageCarousel(carouselContainer) {
+    const carouselSlide = carouselContainer.querySelector('.carousel-slide');
+    const carouselImages = carouselContainer.querySelectorAll('.carousel-slide img');
+    const prevBtn = carouselContainer.querySelector('.prev-btn');
+    const nextBtn = carouselContainer.querySelector('.next-btn');
+    const dotsContainer = carouselContainer.querySelector('.carousel-dots');
+
+    let currentIndex = 0;
+    const totalImages = carouselImages.length;
+
+    // Create dots dynamically if not already in HTML
+    if (dotsContainer && dotsContainer.children.length === 0) {
+        for (let i = 0; i < totalImages; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+    const dots = dotsContainer.querySelectorAll('.carousel-dots .dot');
+
+    function showSlide(index) {
+        if (carouselSlide) {
+            carouselSlide.style.transform = `translateX(${-index * 100}%)`;
+            // Update active dot
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        showSlide(currentIndex);
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        showSlide(currentIndex);
+    }
+
+    // Event listeners for buttons
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+    // Initialize carousel
+    showSlide(currentIndex);
+}
+
+// Initialize all image carousels on page load
+function initializeAllImageCarousels() {
+    const allCarouselContainers = document.querySelectorAll('.project-card .carousel-container');
+    allCarouselContainers.forEach(container => {
+        initImageCarousel(container);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initPortfolioCarousel();
+    initializeAllImageCarousels(); // Call the new function here
 
     // Initialize Email.js (replace with your actual service ID, template ID, and Public Key)
     (function() {
@@ -901,59 +969,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function initImageCarousel() {
-    const carouselSlide = document.querySelector('.carousel-slide');
-    const carouselImages = document.querySelectorAll('.carousel-slide img');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const dotsContainer = document.querySelector('.carousel-dots');
-
-    let currentIndex = 0;
-    const totalImages = carouselImages.length;
-
-    // Create dots dynamically if not already in HTML
-    if (dotsContainer && dotsContainer.children.length === 0) {
-        for (let i = 0; i < totalImages; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        }
-    }
-    const dots = document.querySelectorAll('.carousel-dots .dot');
-
-    function showSlide(index) {
-        if (carouselSlide) {
-            carouselSlide.style.transform = `translateX(${-index * 100}%)`;
-            // Update active dot
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalImages;
-        showSlide(currentIndex);
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-        showSlide(currentIndex);
-    }
-
-    function goToSlide(index) {
-        currentIndex = index;
-        showSlide(currentIndex);
-    }
-
-    // Event listeners for buttons
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-
-    // Initialize carousel
-    showSlide(currentIndex);
-}
-
-// Call the image carousel initialization function
-document.addEventListener('DOMContentLoaded', initImageCarousel);

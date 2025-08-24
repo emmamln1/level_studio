@@ -1,0 +1,240 @@
+/* Media Queries for portfolioSection */
+@media (max-width: 1024px) {
+    #portfolioSection {
+        min-height: 120vh; /* Adjusted height for tablets */
+        padding: 8vh 8vh 0 8vh; /* Reduced padding */
+    }
+
+    .portfolio-title {
+        font-size: clamp(2.5rem, 3.5vw, 2.8rem); /* Smaller title font */
+        padding: 4vh;
+    }
+
+    .portfolio-carousel-container {
+        max-width: calc(2 * 280px + 1.5rem); /* Adjusted for smaller cards */
+    }
+
+    .project-card {
+        width: 560px; /* Smaller card width */
+        min-width: 280px; /* Adjusted min-width */
+        padding: 0.8rem; /* Reduced padding */
+    }
+
+    .project-card h3 {
+        font-size: clamp(1.3rem, 2vw, 1.4rem); /* Smaller title font */
+        margin-bottom: 0.2rem;
+    }
+
+    .project-card .project-status {
+        font-size: clamp(0.7rem, 1vw, 0.75rem); /* Smaller status font */
+        margin-bottom: 0.2rem;
+    }
+
+    .project-card p {
+        font-size: clamp(1rem, 1.5vw, 1.1rem); /* Smaller description font */
+        line-height: 1.4;
+    }
+
+    .project-card .stats div {
+        font-size: clamp(0.7rem, 0.9vw, 0.75rem); /* Smaller stats font */
+        padding: 0.25rem 0.5rem;
+    }
+
+    .project-card .tech span {
+        font-size: clamp(0.65rem, 0.85vw, 0.7rem); /* Smaller tech tags font */
+        padding: 0.25rem 0.5rem;
+    }
+
+    .project-card .links a {
+        font-size: clamp(0.7rem, 0.9vw, 0.75rem); /* Smaller links font */
+        padding: 0.25rem 0.5rem;
+    }
+
+    .carousel-btn {
+        width: 28px; /* Slightly smaller buttons */
+        height: 28px;
+        font-size: 1.1rem;
+    }
+
+    .carousel-btn.prev {
+        left: 40px; /* Adjusted positioning */
+    }
+
+    .carousel-btn.next {
+        right: 40px;
+    }
+
+    .carousel-dots {
+        gap: 0.4rem; /* Slightly smaller gap */
+        margin-top: 0.4rem;
+    }
+
+    .carousel-dot {
+        width: 9px; /* Smaller dots */
+        height: 9px;
+    }
+
+    .carousel-dot.active {
+        transform: scale(1.2); /* Slightly smaller scale */
+    }
+}
+
+@media (max-width: 768px) {
+    #portfolioSection {
+        min-height: 100vh; /* Shorter height for smaller tablets */
+        padding: 6vh 6vh 0 6vh;
+    }
+
+    .portfolio-title {
+        font-size: clamp(2rem, 3vw, 2.4rem); /* Further reduced title font */
+        padding: 3vh;
+    }
+
+    .portfolio-carousel-container {
+        max-width: calc(300px + 1rem); /* Single card width + gap */
+    }
+
+    .project-card {
+        width: 300px; /* Single card width */
+        min-width: 260px; /* Smaller min-width */
+        padding: 0.6rem;
+    }
+
+    .project-card h3 {
+        font-size: clamp(1.2rem, 1.8vw, 1.3rem); /* Smaller title font */
+        margin-bottom: 0.15rem;
+    }
+
+    .project-card .project-status {
+        font-size: clamp(0.65rem, 0.9vw, 0.7rem); /* Smaller status font */
+        margin-bottom: 0.15rem;
+    }
+
+    .project-card p {
+        font-size: clamp(0.9rem, 1.4vw, 1rem); /* Smaller description font */
+        line-height: 1.3;
+    }
+
+    .project-card .stats div {
+        font-size: clamp(0.65rem, 0.85vw, 0.7rem); /* Smaller stats font */
+        padding: 0.2rem 0.4rem;
+    }
+
+    .project-card .tech span {
+        font-size: clamp(0.6rem, 0.8vw, 0.65rem); /* Smaller tech tags font */
+        padding: 0.2rem 0.4rem;
+    }
+
+    .project-card .links a {
+        font-size: clamp(0.65rem, 0.85vw, 0.7rem); /* Smaller links font */
+        padding: 0.2rem 0.4rem;
+    }
+
+    .carousel-btn {
+        width: 26px; /* Smaller buttons */
+        height: 26px;
+        font-size: 1rem;
+    }
+
+    .carousel-btn.prev {
+        left: 30px;
+    }
+
+    .carousel-btn.next {
+        right: 30px;
+    }
+
+    .carousel-dots {
+        gap: 0.3rem;
+        margin-top: 0.3rem;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .carousel-dot.active {
+        transform: scale(1.15);
+    }
+}
+
+@media (max-width: 480px) {
+    #portfolioSection {
+        min-height: 90vh; /* Compact height for mobile */
+        padding: 5vh 5vh 0 5vh;
+    }
+
+    .portfolio-title {
+        font-size: clamp(1.6rem, 2.5vw, 1.8rem); /* Smallest title font */
+        padding: 2.5vh;
+    }
+
+    .portfolio-carousel-container {
+        max-width: calc(260px + 0.8rem); /* Adjusted for mobile */
+    }
+
+    .project-card {
+        width: 260px; /* Smaller card width */
+        min-width: 220px; /* Smallest min-width */
+        padding: 0.5rem;
+    }
+
+    .project-card h3 {
+        font-size: clamp(1rem, 1.6vw, 1.1rem); /* Smallest title font */
+        margin-bottom: 0.1rem;
+    }
+
+    .project-card .project-status {
+        font-size: clamp(0.6rem, 0.8vw, 0.65rem); /* Smallest status font */
+        margin-bottom: 0.1rem;
+    }
+
+    .project-card p {
+        font-size: clamp(0.8rem, 1.3vw, 0.9rem); /* Smallest description font */
+        line-height: 1.2;
+    }
+
+    .project-card .stats div {
+        font-size: clamp(0.6rem, 0.8vw, 0.65rem); /* Smallest stats font */
+        padding: 0.15rem 0.3rem;
+    }
+
+    .project-card .tech span {
+        font-size: clamp(0.55rem, 0.75vw, 0.6rem); /* Smallest tech tags font */
+        padding: 0.15rem 0.3rem;
+    }
+
+    .project-card .links a {
+        font-size: clamp(0.6rem, 0.8vw, 0.65rem); /* Smallest links font */
+        padding: 0.15rem 0.3rem;
+    }
+
+    .carousel-btn {
+        width: 24px; /* Smallest buttons */
+        height: 24px;
+        font-size: 0.9rem;
+    }
+
+    .carousel-btn.prev {
+        left: 20px;
+    }
+
+    .carousel-btn.next {
+        right: 20px;
+    }
+
+    .carousel-dots {
+        gap: 0.2rem;
+        margin-top: 0.2rem;
+    }
+
+    .carousel-dot {
+        width: 7px;
+        height: 7px;
+    }
+
+    .carousel-dot.active {
+        transform: scale(1.1);
+    }
+}

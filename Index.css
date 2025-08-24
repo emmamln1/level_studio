@@ -8,12 +8,14 @@ body::-webkit-scrollbar {
     display: none; 
 }
 body {
-    width: 100%;
+    width: 100vw;
+    min-width: 100vw;
+    overflow-x: hidden;
     color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;  /* Changed from 'center' to 'stretch' to ensure children fill horizontally without centering gaps */
 }
 
 /* header  */
@@ -33,12 +35,11 @@ header.scrolled {
 }
 
 .container {
-    width: 90vw;
-    margin: 0 10vh;
+    width: 100vw;
     height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .logo img {
@@ -52,7 +53,7 @@ header.scrolled {
 }
 
 nav {
-    display: none;
+    display: block; /* Fixed: Show nav in desktop by default */
 }
 
 nav ul {
@@ -80,6 +81,14 @@ nav ul li button:hover {
     color: #fff;
 }
 
+nav ul li button:focus, 
+nav ul li button.active-nav {
+    outline: none; /* Remove default focus outline */
+    border: 2px solid transparent; /* Required for border-image to work */
+    border-image: linear-gradient(to right, red, green) 1;
+    padding: calc(0.5rem - 2px) calc(0.75rem - 2px); /* Adjust padding to keep size consistent */
+}
+
 nav ul li button::after {
     content: "";
     position: absolute;
@@ -95,13 +104,10 @@ nav ul li button:hover::after {
     width: 100%;
 }
 
-
 /* Language */
 .lang-switch {
     display: flex;
     gap: 0.25rem;
-    margin-left: 1.5rem;
-    padding-left: 1.5rem;
     border-left: 1px solid #444;
 }
 
@@ -123,11 +129,9 @@ nav ul li button:hover::after {
     color: #22c55e;
 }
 
-
-
 /* Mobile */
 .mobile-controls {
-    display: flex;
+    display: none; /* Fixed: Hide mobile controls in desktop by default */
     align-items: center;
     gap: 0.5rem;
 }
@@ -241,22 +245,6 @@ nav ul li button:hover::after {
 .overlay.show {
     display: block;
 }
-
-/* Responsive */
-@media(min-width:768px) {
-    nav {
-        display: block;
-    }
-
-    .mobile-controls {
-        display: none;
-    }
-
-    .mobile-menu {
-        display: none;
-    }
-}
-
 
 /* about  */
 .about-section {
@@ -390,45 +378,6 @@ nav ul li button:hover::after {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .about-section {
-        height: 70vh;
-    }
-    
-    .content-wrapper {
-        padding: 1.5rem;
-    }
-
-    .main-title {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .about-text {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-    }
-
-    .contact-btn {
-        padding: 12px 30px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .main-title {
-        font-size: 2rem;
-    }
-    
-    .about-text {
-        font-size: 1rem;
-    }
-
-    .contact-btn {
-        padding: 10px 25px;
-        font-size: 0.9rem;
-    }
-}
 
 
 /* ... (keep all existing CSS up to .xaiQuantumContainer) */
@@ -516,7 +465,7 @@ nav ul li button:hover::after {
     font-size: clamp(32px, 5vw, 72px);
     font-weight: 800;
     line-height: 0.9;
-    margin: 20px 0;
+    margin: 20px auto;
     background: linear-gradient(135deg, #ffffff, #f0f0f0);
     -webkit-background-clip: text;
     background-clip: text;
@@ -678,64 +627,21 @@ nav ul li button:hover::after {
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-    .xaiCoreMatrix {
-        padding: 0 20px;
-    }
-    
-    .xaiAttributeCluster {
-        gap: 20px;
-    }
-    
-    .xaiTraitNode {
-        font-size: 14px;
-        padding: 6px 16px;
-    }
-    
-    .xaiServiceNexus {
-        height: 400px;
-    }
-    
-    .xaiPreviewHologram.xaiPreviousCycle {
-        top: -80px;
-    }
-    
-    .xaiPreviewHologram.xaiNextCycle {
-        bottom: -80px;
-    }
-}
 
-@media (max-width: 480px) {
-    .xaiAttributeCluster {
-        gap: 15px;
-    }
-    
-    .xaiNavigationHub {
-        bottom: 40px;
-    }
-    
-    .xaiServiceNexus {
-        height: 320px;
-    }
-    
-    .xaiPreviewHologram.xaiPreviousCycle {
-        top: -60px;
-    }
-    
-    .xaiPreviewHologram.xaiNextCycle {
-        bottom: -60px;
-    }
-}
 
 /* Remove gradient classes since we're using images now */
 
 
 .portfolio-container {
-    width: 100vw;
+    position: relative;
+    width: 100%;
+    max-width: 1235px; /* Adjusted to accommodate two cards and a gap */
+    margin: 0 auto;
+    flex-grow: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* margin-top: 8vh; */
 }
 
 /* Modern Title */
@@ -749,15 +655,41 @@ nav ul li button:hover::after {
 
 
 /* Projects Grid */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 2rem;
+
+
+.projects-grid::-webkit-scrollbar {
+    display: none;
 }
 
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Portfolio Carousel Dots */
+.portfolio-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem;
+}
+
+.portfolio-carousel-dots .dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.portfolio-carousel-dots .dot.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+
+
 /* Project Card */
-
-
 .project-card:nth-child(1) { animation-delay: 0.1s; }
 .project-card:nth-child(2) { animation-delay: 0.2s; }
 .project-card:nth-child(3) { animation-delay: 0.3s; }
@@ -785,7 +717,7 @@ nav ul li button:hover::after {
     position: relative;
     height: 310px;
     overflow: hidden;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.05));
+    /* Removed background gradients to make way for carousel */
 }
 
 .project-card:nth-child(even) .project-image {
@@ -927,7 +859,6 @@ nav ul li button:hover::after {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
 }
 
 .tech-tag {
@@ -950,7 +881,8 @@ nav ul li button:hover::after {
 /* Project Links */
 .project-links {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .project-link {
@@ -1039,69 +971,7 @@ nav ul li button:hover::after {
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-    .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 1.5rem;
-    }
-}
 
-@media (max-width: 768px) {
-    .portfolio-section {
-        min-height: 140vh;
-        padding: 2rem 0;
-    }
-    
-    .portfolio-container {
-        padding: 0 1rem;
-    }
-    
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .project-image {
-        height: 180px;
-    }
-    
-    .project-content {
-        padding: 1.5rem;
-    }
-    
-    .project-stats {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .stat-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .stat-number {
-        margin-bottom: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .portfolio-section {
-        min-height: 160vh;
-    }
-    
-    .project-content {
-        padding: 1rem;
-    }
-    
-    .project-links {
-        flex-direction: column;
-    }
-    
-    .tech-stack {
-        justify-content: center;
-    }
-}
 
 /* Loading Animation */
 .loading-shimmer {
@@ -1124,7 +994,7 @@ nav ul li button:hover::after {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0a0a0b 0%, #1a1a1c 50%, #0a0a0b 100%);
+    background: black;
     overflow: hidden;
 }
 
@@ -1140,13 +1010,7 @@ nav ul li button:hover::after {
         linear-gradient(rgba(255,0,0,0.3) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0,255,0,0.3) 1px, transparent 1px);
     background-size: 60px 60px;
-    animation: gridFloat 25s linear infinite;
     transform: translate(-10%, -10%);
-}
-
-@keyframes gridFloat {
-    0% { transform: translate(-10%, -10%); }
-    100% { transform: translate(-10%, calc(-10% + 60px)); }
 }
 
 /* Parallax orbs */
@@ -1171,11 +1035,9 @@ nav ul li button:hover::after {
 /* Section header with scroll animations */
 .section-header {
     text-align: center;
-    margin-bottom: clamp(2rem, 4vw, 4rem);
+    margin-top: 10vh;
     position: relative;
     z-index: 5;
-    opacity: 0;
-    transform: translateY(50px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1189,10 +1051,8 @@ nav ul li button:hover::after {
     font-weight: 900;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #FD3130 0%, #FD3130 25%, #00BE61 50%, #44ff44 75%, #FD3130 100%);
     background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: white;
     background-clip: text;
     position: relative;
 }
@@ -1221,7 +1081,7 @@ nav ul li button:hover::after {
 
 /* Partners container with scroll animations */
 .partners-container {
-    width: 100%;
+    width: 93%;
     max-width: 1400px;
     position: relative;
     z-index: 3;
@@ -1235,7 +1095,6 @@ nav ul li button:hover::after {
     display: flex;
     gap: clamp(1rem, 3vw, 2rem);
     width: 80%;
-    max-width: none;
     overflow-x: auto;
     overflow-y: hidden;
     padding: 1rem;
@@ -1477,77 +1336,7 @@ nav ul li button:hover::after {
 }
 
 /* Responsive design */
-@media (max-width: 1200px) {
-    .partner-card {
-        min-width: 280px;
-        width: 280px;
-    }
-}
 
-@media (max-width: 768px) {
-    .partners-section {
-        padding: 1rem;
-    }
-
-    .partner-card {
-        min-width: 260px;
-        width: 260px;
-        height: 180px;
-        padding: 1.5rem;
-    }
-
-    .carousel-nav {
-        width: 45px;
-        height: 45px;
-    }
-
-    .carousel-nav.prev {
-        left: 0.5rem;
-    }
-
-    .carousel-nav.next {
-        right: 0.5rem;
-    }
-
-    .scroll-progress {
-        width: 150px;
-        bottom: 1rem;
-    }
-
-    .carousel-dots {
-        bottom: 3rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .partner-card {
-        min-width: 240px;
-        width: 240px;
-        height: 160px;
-    }
-
-    .card-header {
-        gap: 0.8rem;
-    }
-
-    .carousel-nav {
-        width: 40px;
-        height: 40px;
-    }
-
-    .carousel-dots {
-        bottom: 2.5rem;
-    }
-}
-
-/* High performance animations */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
 
 /* Loading states */
 .loading-skeleton {
@@ -1564,8 +1353,8 @@ nav ul li button:hover::after {
 /* contact  */
 .interface-contact-module-xyz {
     height: 100vh;
-    width: 100%;
-    background: linear-gradient(135deg, #0a0a0b 0%, #1a1a1c 50%, #0a0a0b 100%);
+    width: 100vw;
+    background: black;
     padding: 10vh 5% 8vh 5%;
     display: flex;
     flex-direction: column;
@@ -1632,15 +1421,10 @@ nav ul li button:hover::after {
     font-size: clamp(2.5rem, 2vw, 4.5rem);
     font-weight: 800;
     margin-bottom: 1rem;
-    opacity: 0;
-    transform: translateY(50px);
+    margin-top: 5rem;
     animation: reveal-upwards 1.2s ease forwards;
     position: relative;
     z-index: 2;
-    background: linear-gradient(135deg, #ff453a, #30d158);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .secondary-info-text-element {
@@ -1991,74 +1775,13 @@ nav ul li button:hover::after {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .contact-orchestration-container {
-        gap: 3rem;
-    }
-    
-    .interface-contact-module-xyz {
-        padding: 3rem 4% 2rem 4%;
-    }
-}
 
-@media (max-width: 768px) {
-    .interface-contact-module-xyz {
-        min-height: 100vh;
-        padding: 2rem 5% 2rem 5%;
-    }
-
-    .contact-orchestration-container {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-
-    .message-transmission-interface {
-        padding: 2rem;
-    }
-
-    .interaction-unit-contact {
-        padding: 1.2rem;
-        gap: 1.2rem;
-    }
-
-    .interaction-unit-contact:hover {
-        transform: translateY(-5px) scale(1.02);
-    }
-
-    .communication-hub-panel,
-    .message-transmission-interface {
-        animation: reveal-upwards 1.2s ease 0.4s forwards;
-        transform: translateY(40px);
-    }
-}
-
-@media (max-width: 480px) {
-    .interface-contact-module-xyz {
-        padding: 1.5rem 3% 2rem 3%;
-    }
-
-    .message-transmission-interface {
-        padding: 1.5rem;
-    }
-
-    .interaction-unit-contact {
-        flex-direction: column;
-        text-align: center;
-        padding: 1.5rem;
-    }
-
-    .contact-icon-visualization {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-    }
-}
 
 /* Portfolio Carousel */
 #portfolioSection {
     min-height: 140vh; 
     width: 100vw;
-    background: #0a0a0b;
+    background: black;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -2080,51 +1803,14 @@ nav ul li button:hover::after {
     align-items: center;
 }
 
-.projects-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 2rem;
-    padding: 1rem 0; /* Փոքր padding, որպեսզի տեղավորվի */
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-    max-height: calc(90vh - 10rem); /* Հաշվարկված max-height վերնագրի, dots-երի և padding-ի համար (ճշգրտեք եթե պետք է) */
-}
-
 .projects-grid::-webkit-scrollbar {
     display: none;
-}
-
-
-
-
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10; /* Buttons-ները վերևում պահել */
 }
 
 .carousel-btn:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-50%) scale(1.1);
 }
-
-.carousel-btn.prev {
-    left: -50;
-}
-
 
 
 .carousel-dots {
@@ -2149,66 +1835,7 @@ nav ul li button:hover::after {
     transform: scale(1.3);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    #portfolioSection {
-        padding: 1.5rem 1rem;
-    }
 
-    .portfolio-title {
-        font-size: clamp(1.8rem, 2.5vw, 2rem);
-        margin-bottom: 0.5rem;
-    }
-
-    .portfolio-carousel-container {
-        max-width: calc(2 * 280px + 2rem);
-    }
-
-    .projects-grid {
-        gap: 1.5rem;
-        padding: 0.5rem 0;
-        max-height: calc(90vh - 8rem);
-    }
-
-    .project-card {
-        width: 280px;
-        min-width: 280px;
-        padding: 1rem;
-    }
-
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 600px) {
-    #portfolioSection {
-        padding: 1rem;
-    }
-
-    .portfolio-carousel-container {
-        max-width: 300px; /* 1 card փոքր էկրանների համար */
-    }
-
-    .projects-grid {
-        max-height: calc(90vh - 6rem);
-    }
-
-    .project-card {
-        width: 280px;
-        min-width: 280px;
-    }
-
-    .carousel-btn.prev {
-        left: -1rem; /* Ավելի լավ տեղադրում փոքր էկրաններում */
-    }
-
-    .carousel-btn.next {
-        right: -1rem;
-    }
-}
 
 
 
@@ -2217,8 +1844,8 @@ nav ul li button:hover::after {
 .portfolio-title {
     text-align: center;
     color: #ffffff;
-    font-size: clamp(1.8rem, 2.5vw, 2.2rem); /* Փոքրացրինք font-ը */
     font-weight: 800;
+    padding: 5vh;
 }
 
 /* Carousel Container */
@@ -2244,7 +1871,6 @@ nav ul li button:hover::after {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     width: 100%;
-    max-height: calc(90vh - 7rem); /* Հաշվարկված max-height վերնագրի և dots-երի համար */
 }
 
 /* Թաքցնել scrollbar-ը */
@@ -2257,7 +1883,7 @@ nav ul li button:hover::after {
     flex: 0 0 auto;
     width: 600px;
     min-width: 300px;
-    background: rgba(255, 255, 255, 0.05);
+    background: #0a0a0b;
     border-radius: 20px;
     padding: 1rem; /* Նվազեցրինք padding-ը */
     scroll-snap-align: start;
@@ -2354,14 +1980,16 @@ nav ul li button:hover::after {
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.1);
     border: none;
-    color: white;
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
+    font-size: 1.2rem;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .carousel-btn:hover {
@@ -2403,103 +2031,7 @@ nav ul li button:hover::after {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    #portfolioSection {
-        padding: 1rem;
-    }
 
-    .portfolio-title {
-        font-size: clamp(1.6rem, 2vw, 1.8rem);
-        margin-bottom: 0.3rem;
-    }
-
-    .portfolio-carousel-container {
-        max-width: calc(2 * 280px + 1.5rem);
-    }
-
-    .projects-grid {
-        gap: 1.5rem;
-        padding: 0.3rem 0;
-        max-height: calc(90vh - 6rem);
-    }
-
-    .project-card {
-        width: 280px;
-        min-width: 280px;
-        padding: 0.8rem;
-    }
-
-    .project-card .project-icon {
-        font-size: 1.8rem;
-        margin-bottom: 0.3rem;
-    }
-
-    .project-card h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.2rem;
-    }
-
-    .project-card .project-status {
-        font-size: 0.7rem;
-        margin-bottom: 0.2rem;
-    }
-
-    .project-card p {
-        font-size: 0.8rem;
-        margin-bottom: 0.3rem;
-        -webkit-line-clamp: 1; /* 1 տող փոքր էկրաններում */
-    }
-
-    .project-card .stats div {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.5rem;
-    }
-
-    .project-card .tech span {
-        font-size: 0.65rem;
-        padding: 0.2rem 0.5rem;
-    }
-
-    .project-card .links a {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.5rem;
-    }
-
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 600px) {
-    #portfolioSection {
-        padding: 0.8rem;
-    }
-
-    .portfolio-carousel-container {
-        max-width: 300px; /* 1 card փոքր էկրանների համար */
-    }
-
-    .projects-grid {
-        max-height: calc(90vh - 5rem);
-        gap: 1rem;
-    }
-
-    .project-card {
-        width: 280px;
-        min-width: 280px;
-        padding: 0.6rem;
-    }
-
-    .carousel-btn.prev {
-        left: -0.5rem;
-    }
-
-    .carousel-btn.next {
-        right: -0.5rem;
-    }
-}
 
 /* Call Button Styling */
 .call-button {
@@ -2537,25 +2069,6 @@ nav ul li button:hover::after {
 }
 
 /* Responsive adjustments for the call button */
-@media (max-width: 768px) {
-    .call-button {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .call-button {
-        width: 45px;
-        height: 45px;
-        bottom: 15px;
-        right: 15px;
-        font-size: 1rem;
-    }
-}
 
 /* Hide Google Translate widget UI */
 .goog-te-banner-frame.skiptranslate {
@@ -2639,3 +2152,4 @@ nav ul li button:hover::after {
 .dot.active {
     background-color: white;
 }
+
