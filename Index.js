@@ -42,8 +42,104 @@ navBtns.forEach(btn => {
         menuBtn.classList.remove("open");
         mobileMenu.classList.remove("open");
         overlay.classList.remove("show");
+        // remove focus to avoid sticky highlight
+        btn.blur();
     });
 });
+
+// Highlight nav based on section in view
+function setupActiveNavOnScroll() {
+    // Collect unique section selectors from nav buttons
+    const selectors = Array.from(new Set(Array.from(navBtns).map(b => b.getAttribute('data-nav'))));
+    const sections = selectors
+        .map(function (sel) { return document.querySelector(sel); })
+        .filter(function (el) { return !!el; });
+
+    if (!sections.length) return;
+
+    var lastActiveId = null;
+
+    const io = new IntersectionObserver(function (entries) {
+        // Find the most visible section among intersecting ones
+        var maxRatio = 0;
+        var topId = null;
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting && entry.intersectionRatio >= maxRatio) {
+                maxRatio = entry.intersectionRatio;
+                topId = entry.target.id;
+            }
+        });
+
+        if (topId && topId !== lastActiveId) {
+            lastActiveId = topId;
+            navBtns.forEach(function (b) {
+                const target = b.getAttribute('data-nav');
+                b.classList.toggle('active-nav', target === '#' + topId);
+            });
+        }
+    }, {
+        // Multiple thresholds to get smooth updates on tall sections
+        threshold: [0.15, 0.25, 0.35, 0.5],
+        // Account for fixed header and give earlier activation
+        rootMargin: '-12% 0px -45% 0px'
+    });
+
+    sections.forEach(function (sec) { io.observe(sec); });
+
+    // Initial sync on load (pick the section closest to top)
+    function initialSync() {
+        var vh = window.innerHeight;
+        var best = { id: null, visible: 0 };
+        sections.forEach(function (sec) {
+            var rect = sec.getBoundingClientRect();
+            var visible = Math.max(0, Math.min(rect.bottom, vh) - Math.max(rect.top, 0));
+            if (visible > best.visible) {
+                best.id = sec.id;
+                best.visible = visible;
+            }
+        });
+        if (best.id) {
+            navBtns.forEach(function (b) {
+                const target = b.getAttribute('data-nav');
+                b.classList.toggle('active-nav', target === '#' + best.id);
+            });
+        }
+    }
+    initialSync();
+
+    // Fallback: update by proximity on scroll/resize (helps with very tall sections)
+    function updateByProximity() {
+        var vh = window.innerHeight;
+        var best = { id: null, visible: 0 };
+        sections.forEach(function (sec) {
+            var rect = sec.getBoundingClientRect();
+            var visible = Math.max(0, Math.min(rect.bottom, vh) - Math.max(rect.top, 0));
+            if (visible > best.visible) {
+                best.id = sec.id;
+                best.visible = visible;
+            }
+        });
+        if (best.id && best.id !== lastActiveId) {
+            lastActiveId = best.id;
+            navBtns.forEach(function (b) {
+                const target = b.getAttribute('data-nav');
+                b.classList.toggle('active-nav', target === '#' + best.id);
+            });
+        }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(function () {
+                ticking = false;
+                updateByProximity();
+            });
+        }
+    });
+    window.addEventListener('resize', updateByProximity);
+}
 
 // language
 langBtns.forEach(btn => {
@@ -73,45 +169,80 @@ langBtns.forEach(btn => {
 const xaiServiceRegistry = [
     {
         number: "01",
-        title: "Web Development",
-        description: "Կայքերի և վեբ հավելվածների մշակում ժամանակակից տեխնոլոգիաներով",
-        features: ["React", "Node.js", "TypeScript", "Next.js"],
-        bgImage: "" // Replace with your image path
+        title: "Թվային մարքեթինգ",
+        description: "Ամբողջական թվային մարքեթինգ ծառայություններ՝ ճանաչելիության բարձրացման և վաճառքի աճի համար",
+        features: ["SMM", "Copywriting", "SEO", "Email Marketing"],
+        bgImage: ""
     },
     {
         number: "02",
-        title: "Mobile Apps",
-        description: "iOS և Android հավելվածների ստեղծում նատիվ և cross-platform",
-        features: ["React Native", "Flutter", "Swift", "Kotlin"],
-        bgImage: "" // Replace with your image path
+        title: "Վեբ կայքերի պատրաստում",
+        description: "Կայքերի և վեբ հավելվածների մշակում ժամանակակից տեխնոլոգիաներով",
+        features: ["React", "Node.js", "TypeScript", "Next.js"],
+        bgImage: ""
     },
     {
         number: "03",
-        title: "UI/UX Design",
-        description: "Օգտահարմար և գեղեցիկ դիզայնի ստեղծում բրենդի համար",
-        features: ["Figma", "Adobe XD", "Prototyping", "User Research"],
-        bgImage: "" // Replace with your image path
+        title: "Վեբ դիզայն",
+        description: "Գեղեցիկ և ֆունկցիոնալ վեբ դիզայնի ստեղծում՝ օգտատերերի լավագույն փորձառության համար",
+        features: ["UI/UX Design", "Responsive Design", "Adobe Creative Suite", "Figma"],
+        bgImage: ""
     },
     {
         number: "04",
-        title: "Branding",
-        description: "Բրենդի ինքնություն և կորպորատիվ դիզայնի մշակում",
-        features: ["Logo Design", "Brand Identity", "Style Guide", "Marketing"],
-        bgImage: "" // Replace with your image path
+        title: "Կայքերի առաջխաղացում",
+        description: "Կայքերի SEO օպտիմիզացիա և դիրքավորում Google-ում բարձր արդյունքների համար",
+        features: ["SEO օպտիմիզացիա", "Google Ads", "Analytics", "Բանալի բառեր"],
+        bgImage: ""
     },
     {
         number: "05",
-        title: "Consulting",
-        description: "Տեխնոլոգիական խորհրդատվություն և ռազմավարություն",
-        features: ["Strategy", "Architecture", "Code Review", "Mentoring"],
-        bgImage: "" // Replace with your image path
+        title: "Առցանց գնումների խանութ",
+        description: "Լիարժեք E-commerce պլատֆորմների մշակում վաճառքի և գնումների համար",
+        features: ["WooCommerce", "Shopify", "Վճարման համակարգեր", "Պահեստի կառավարում"],
+        bgImage: ""
     },
     {
         number: "06",
-        title: "Maintenance",
-        description: "Տեխնիկական սպասարկում և պրոյեկտների աջակցություն",
-        features: ["Updates", "Security", "Performance", "Monitoring"],
-        bgImage: "" // Replace with your image path
+        title: "Բիզնեսի ավտոմատացում",
+        description: "Բիզնես գործընթացների ավտոմատացում և CRM համակարգերի ներդրում",
+        features: ["CRM համակարգեր", "Workflow ավտոմատացում", "API ինտեգրացիա", "Դատաբազների կառավարում"],
+        bgImage: ""
+    },
+    {
+        number: "07",
+        title: "Մոբայլ հավելվածներ",
+        description: "iOS և Android հավելվածների մշակում բիզնեսի գործընթացների բարելավման համար",
+        features: ["React Native", "Flutter", "iOS/Android", "Push Notifications"],
+        bgImage: ""
+    },
+    {
+        number: "08",
+        title: "Դոմեյն և հոսթինգ",
+        description: "Հուսալի դոմեյն և հոսթինգ ծառայություններ կայքերի անխափան աշխատանքի համար",
+        features: ["SSL վկայագրեր", "Օրական backup", "24/7 մոնիտորինգ", "CDN ծառայություններ"],
+        bgImage: ""
+    },
+    {
+        number: "09",
+        title: "Տեխնիկական սպասարկում",
+        description: "24/7 տեխնիկական աջակցություն և կայքերի պարբերական թարմացում",
+        features: ["24/7 Support", "Անվտանգության թարմացումներ", "Կատարողականության օպտիմիզացիա", "Backup ծառայություններ"],
+        bgImage: ""
+    },
+    {
+        number: "10",
+        title: "Գրաֆիկական դիզայն",
+        description: "Ստեղծագործական գրաֆիկական լուծումներ ապրանքանիշի ճանաչելիության համար",
+        features: ["Լոգո դիզայն", "Այցեքարտեր", "Ֆլայերներ", "Բրենդինգ"],
+        bgImage: ""
+    },
+    {
+        number: "11",
+        title: "Վեբ դասընթացներ",
+        description: "Լիցենզավորված մասնագիտական վեբ դասընթացներ տեխնոլոգիական հմտությունների զարգացման համար",
+        features: ["Հավաստագրված դասընթացներ", "Փորձարկված մանկավարժներ", "Գործնական նախագծեր", "Կարիերային աջակցություն"],
+        bgImage: ""
     }
 ];
 
@@ -365,6 +496,7 @@ document.addEventListener('touchend', xaiHandleTouchCompletion, { passive: true 
 // Initialize everything when page loads
 window.addEventListener('load', () => {
     xaiInitializeSystem();
+    setupActiveNavOnScroll();
 });
 
 // Handle window resize
@@ -429,7 +561,11 @@ class LandingPartners {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-        
+        // Pagination state
+        this.currentPage = 0;
+        this.itemsPerPage = 1;
+        this.totalPages = 1;
+
         this.init();
     }
 
@@ -517,120 +653,134 @@ class LandingPartners {
     }
 
     setupCarousel() {
-        const grid = document.getElementById('partnersGrid');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        
-        // Setup navigation
-        prevBtn.addEventListener('click', () => this.scrollCarousel('prev'));
-        nextBtn.addEventListener('click', () => this.scrollCarousel('next'));
-        
-        // Setup dots
+        // Cache elements
+        this.grid = document.getElementById('partnersGrid');
+        this.prevBtn = document.getElementById('prevBtn');
+        this.nextBtn = document.getElementById('nextBtn');
+        this.dotsContainer = document.getElementById('partnersCarouselDots');
+        this.progressFill = document.getElementById('scrollProgress');
+
+        // Navigation handlers
+        this.prevBtn.addEventListener('click', () => this.goPrev());
+        this.nextBtn.addEventListener('click', () => this.goNext());
+
+        // Calculate initial layout and render UI
+        this.calculateLayout();
         this.renderDots();
-        this.updateActiveDot();
-        
-        // Scroll event for progress and dots
-        grid.addEventListener('scroll', this.throttle(() => {
-            this.updateScrollProgress();
-            this.updateActiveDot();
-        }, 16));
+        this.updateUI();
 
-        // Touch/mouse drag
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        grid.addEventListener('mousedown', (e) => {
-            isDown = true;
-            grid.classList.add('grabbing');
-            startX = e.pageX - grid.offsetLeft;
-            scrollLeft = grid.scrollLeft;
-        });
-
-        grid.addEventListener('mouseleave', () => {
-            isDown = false;
-            grid.classList.remove('grabbing');
-        });
-
-        grid.addEventListener('mouseup', () => {
-            isDown = false;
-            grid.classList.remove('grabbing');
-        });
-
-        grid.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - grid.offsetLeft;
-            const walk = (x - startX) * 2;
-            grid.scrollLeft = scrollLeft - walk;
-        });
-
-        // Keyboard navigation
+        // Keyboard navigation for accessibility
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') this.scrollCarousel('prev');
-            if (e.key === 'ArrowRight') this.scrollCarousel('next');
+            if (e.key === 'ArrowLeft') this.goPrev();
+            if (e.key === 'ArrowRight') this.goNext();
         });
+
+        // Recalculate on resize
+        window.addEventListener('resize', this.throttle(() => {
+            this.calculateLayout();
+            this.renderDots();
+            this.updateUI();
+        }, 100));
     }
 
-    scrollCarousel(direction) {
-        const grid = document.getElementById('partnersGrid');
-        const cardWidth = 300 + 32; // card width + gap
-        const scrollAmount = direction === 'next' ? cardWidth : -cardWidth;
-        
-        grid.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
+    // Layout calculation to ensure only full cards per page
+    calculateLayout() {
+        const cards = Array.from(this.grid.querySelectorAll('.partner-card'));
+        if (!cards.length) {
+            this.itemsPerPage = 1;
+            this.totalPages = 1;
+            return;
+        }
+
+        // Measure card width and gap
+        const firstCard = cards[0];
+        const cardRect = firstCard.getBoundingClientRect();
+        const cardW = Math.round(cardRect.width);
+        const styles = window.getComputedStyle(this.grid);
+        const gapVal = styles.gap.split(' ')[0] || '0px';
+        const gap = Math.round(parseFloat(gapVal)) || 0;
+        const padL = parseFloat(styles.paddingLeft) || 0;
+        const padR = parseFloat(styles.paddingRight) || 0;
+
+        // content box width (exclude padding)
+        const available = Math.max(0, this.grid.clientWidth - padL - padR);
+
+        // Find max number of full cards that fit
+        let n = 1;
+        while (true) {
+            const needed = n * cardW + (n - 1) * gap;
+            if (needed > available) break;
+            n++;
+        }
+        this.itemsPerPage = Math.max(1, n - 1);
+
+        this.totalPages = Math.max(1, Math.ceil(this.partners.length / this.itemsPerPage));
+        // Clamp current page
+        this.currentPage = Math.min(this.currentPage, this.totalPages - 1);
     }
 
     renderDots() {
-        const dotsContainer = document.getElementById('partnersCarouselDots');
-        const visibleCards = Math.floor(window.innerWidth / 332); // card + gap
-        const totalDots = Math.max(1, this.partners.length - visibleCards + 1);
-        
-        dotsContainer.innerHTML = '';
-        
-        for (let i = 0; i < totalDots; i++) {
+        if (!this.dotsContainer) return;
+        this.dotsContainer.innerHTML = '';
+        for (let i = 0; i < this.totalPages; i++) {
             const dot = document.createElement('div');
             dot.className = 'carousel-dot';
-            dot.addEventListener('click', () => this.goToSlide(i));
-            dotsContainer.appendChild(dot);
+            dot.addEventListener('click', () => this.setPage(i));
+            this.dotsContainer.appendChild(dot);
         }
+        this.updateActiveDot();
     }
 
-    goToSlide(index) {
-        const grid = document.getElementById('partnersGrid');
-        const cardWidth = 332; // card width + gap
-        const scrollPosition = index * cardWidth;
-        
-        grid.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-        });
+    setPage(index) {
+        const clamped = Math.max(0, Math.min(index, this.totalPages - 1));
+        if (clamped === this.currentPage) return;
+        this.currentPage = clamped;
+        this.updateUI();
     }
 
     updateActiveDot() {
-        const grid = document.getElementById('partnersGrid');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const cardWidth = 332;
-        const currentIndex = Math.round(grid.scrollLeft / cardWidth);
-        
+        if (!this.dotsContainer) return;
+        const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
         dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
+            dot.classList.toggle('active', index === this.currentPage);
         });
     }
 
     updateScrollProgress() {
-        const grid = document.getElementById('partnersGrid');
-        const progressFill = document.getElementById('scrollProgress');
-        
-        if (grid.scrollWidth <= grid.clientWidth) {
-            progressFill.style.width = '100%';
-            return;
-        }
-        
-        const progress = (grid.scrollLeft / (grid.scrollWidth - grid.clientWidth)) * 100;
-        progressFill.style.width = Math.min(Math.max(progress, 0), 100) + '%';
+        if (!this.progressFill) return;
+        const pct = (this.currentPage + 1) / this.totalPages * 100;
+        this.progressFill.style.width = pct + '%';
+    }
+
+    // Apply visibility and controls state for current page
+    updateUI() {
+        const cards = Array.from(this.grid.querySelectorAll('.partner-card'));
+        const start = this.currentPage * this.itemsPerPage;
+        const end = start + this.itemsPerPage;
+        cards.forEach((card, idx) => {
+            const onPage = idx >= start && idx < end;
+            card.classList.toggle('hidden', !onPage);
+        });
+
+        // Buttons state
+        const atStart = this.currentPage === 0;
+        const atEnd = this.currentPage >= this.totalPages - 1;
+        this.prevBtn.disabled = atStart;
+        this.nextBtn.disabled = atEnd;
+        this.prevBtn.classList.toggle('disabled', atStart);
+        this.nextBtn.classList.toggle('disabled', atEnd);
+
+        // Dots and progress
+        this.updateActiveDot();
+        this.updateScrollProgress();
+    }
+
+    goPrev() {
+        this.setPage(this.currentPage - 1);
+    }
+
+    goNext() {
+        this.setPage(this.currentPage + 1);
     }
 
     addParallaxEffects() {
@@ -742,45 +892,85 @@ function initPortfolioCarousel() {
     const prevBtn = document.getElementById('portfolioPrevBtn');
     const nextBtn = document.getElementById('portfolioNextBtn');
     const dotsContainer = document.getElementById('portfolioDots');
-    const cardWidth = 320; // Card width (300px) + padding/gap (10px + 10px)
+    if (!carousel || !prevBtn || !nextBtn || !dotsContainer) return;
 
-    // Render dots
+    let cardEls = Array.from(carousel.querySelectorAll('.project-card'));
+    let cardWidth = 0;
+    let gap = 0;
+    let itemsPerPage = 1;
+    let totalPages = 1;
+    let currentPage = 0;
+    let resizing = false;
+
+    function calculateLayout() {
+        cardEls = Array.from(carousel.querySelectorAll('.project-card'));
+        const firstCard = cardEls[0];
+        if (!firstCard) {
+            itemsPerPage = 1;
+            totalPages = 1;
+            currentPage = 0;
+            return;
+        }
+        cardWidth = firstCard.getBoundingClientRect().width;
+        const styles = window.getComputedStyle(carousel);
+        gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+        const available = carousel.clientWidth;
+        itemsPerPage = Math.max(1, Math.floor((available + gap) / (cardWidth + gap)));
+        totalPages = Math.max(1, Math.ceil(cardEls.length / itemsPerPage));
+    }
+
     function renderDots() {
-        const cards = carousel.querySelectorAll('.project-card').length;
-        const visibleCards = 2; // Ֆիքսված 2 card տեսանելի
-        const totalDots = Math.max(1, cards - visibleCards + 1);
         dotsContainer.innerHTML = '';
-        for (let i = 0; i < totalDots; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'carousel-dot';
-            dot.addEventListener('click', () => goToSlide(i));
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'dot'; // matches .portfolio-carousel-dots .dot styles
+            dot.addEventListener('click', () => setPage(i));
             dotsContainer.appendChild(dot);
         }
-        updateActiveDot();
+        updateUI();
     }
 
-    // Update active dot
-    function updateActiveDot() {
-        const dots = dotsContainer.querySelectorAll('.carousel-dot');
-        const currentIndex = Math.round(carousel.scrollLeft / cardWidth);
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+    function updateUI() {
+        const dots = dotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentPage));
+        if (prevBtn) {
+            const disabled = currentPage <= 0;
+            prevBtn.disabled = disabled;
+            prevBtn.classList.toggle('disabled', disabled);
+        }
+        if (nextBtn) {
+            const disabled = currentPage >= totalPages - 1;
+            nextBtn.disabled = disabled;
+            nextBtn.classList.toggle('disabled', disabled);
+        }
     }
 
-    // Go to specific slide
-    function goToSlide(index) {
-        carousel.scrollTo({
-            left: index * cardWidth,
-            behavior: 'smooth'
-        });
+    function setPage(page) {
+        const clamped = Math.max(0, Math.min(page, totalPages - 1));
+        currentPage = clamped;
+        const startIndex = clamped * itemsPerPage;
+        const targetCard = cardEls[startIndex];
+        if (targetCard) {
+            const cardRect = targetCard.getBoundingClientRect();
+            const containerRect = carousel.getBoundingClientRect();
+            const delta = cardRect.left - containerRect.left;
+            const targetLeft = carousel.scrollLeft + delta;
+            carousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
+        }
+        updateUI();
     }
 
-    // Scroll carousel
-    function scrollCarousel(direction) {
-        const scrollAmount = direction === 'next' ? cardWidth : -cardWidth;
-        carousel.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
+    function syncFromScroll() {
+        if (!cardWidth) return;
+        const pageWidth = itemsPerPage * (cardWidth + gap);
+        const page = Math.min(
+            totalPages - 1,
+            Math.round(carousel.scrollLeft / Math.max(1, pageWidth))
+        );
+        if (page !== currentPage) {
+            currentPage = page;
+            updateUI();
+        }
     }
 
     // Mouse drag
@@ -831,24 +1021,35 @@ function initPortfolioCarousel() {
         touchStartX = null;
     });
 
-    // Scroll event to update dots
-    carousel.addEventListener('scroll', () => {
-        updateActiveDot();
-    });
+    // Scroll event to update current page and dots
+    carousel.addEventListener('scroll', syncFromScroll);
 
-    // Button events
-    prevBtn.addEventListener('click', () => scrollCarousel('prev'));
-    nextBtn.addEventListener('click', () => scrollCarousel('next'));
+    // Button events (page-based)
+    prevBtn.addEventListener('click', () => setPage(currentPage - 1));
+    nextBtn.addEventListener('click', () => setPage(currentPage + 1));
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') scrollCarousel('prev');
-        if (e.key === 'ArrowRight') scrollCarousel('next');
+        if (e.key === 'ArrowLeft') setPage(currentPage - 1);
+        if (e.key === 'ArrowRight') setPage(currentPage + 1);
     });
 
     // Initialize
+    calculateLayout();
     renderDots();
-    window.addEventListener('resize', renderDots); // Update dots on resize
+    setPage(0);
+
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+        if (resizing) return;
+        resizing = true;
+        setTimeout(() => {
+            calculateLayout();
+            renderDots();
+            setPage(Math.min(currentPage, totalPages - 1));
+            resizing = false;
+        }, 150);
+    });
 }
 
 // Initialize a single image carousel

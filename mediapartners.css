@@ -5,7 +5,7 @@
         padding: 8vh 8vh 0 8vh; /* Reduced padding */
     }
 
-    .partners-title {
+    .section-title {
         font-size: clamp(2.5rem, 3.5vw, 2.8rem); /* Smaller title font */
         padding: 4vh;
     }
@@ -13,6 +13,7 @@
     .partners-grid {
         gap: 1.5rem; /* Reduced gap */
         padding: 0.4rem 0; /* Reduced padding */
+        justify-content: center;
     }
 
     .partner-card {
@@ -31,17 +32,17 @@
         line-height: 1.4;
     }
 
-    .carousel-btn {
+    .carousel-nav {
         width: 28px; /* Slightly smaller buttons */
         height: 28px;
         font-size: 1.1rem;
     }
 
-    .carousel-btn.prev {
+    .carousel-nav.prev {
         left: 40px; /* Adjusted positioning */
     }
 
-    .carousel-btn.next {
+    .carousel-nav.next {
         right: 40px;
     }
 
@@ -71,7 +72,7 @@
         padding: 6vh 6vh 0 6vh;
     }
 
-    .partners-title {
+    .section-title {
         font-size: clamp(2rem, 3vw, 2.4rem); /* Further reduced title font */
         padding: 3vh;
     }
@@ -79,6 +80,7 @@
     .partners-grid {
         gap: 1rem; /* Further reduced gap */
         padding: 0.3rem 0;
+        justify-content: center;
     }
 
     .partner-card {
@@ -97,17 +99,17 @@
         line-height: 1.3;
     }
 
-    .carousel-btn {
+    .carousel-nav {
         width: 26px; /* Smaller buttons */
         height: 26px;
         font-size: 1rem;
     }
 
-    .carousel-btn.prev {
+    .carousel-nav.prev {
         left: 30px;
     }
 
-    .carousel-btn.next {
+    .carousel-nav.next {
         right: 30px;
     }
 
@@ -137,7 +139,7 @@
         padding: 5vh 5vh 0 5vh;
     }
 
-    .partners-title {
+    .section-title {
         font-size: clamp(1.6rem, 2.5vw, 1.8rem); /* Smallest title font */
         padding: 2.5vh;
     }
@@ -145,6 +147,7 @@
     .partners-grid {
         gap: 0.8rem; /* Smallest gap */
         padding: 0.2rem 0;
+        justify-content: center;
     }
 
     .partner-card {
@@ -163,17 +166,17 @@
         line-height: 1.2;
     }
 
-    .carousel-btn {
+    .carousel-nav {
         width: 24px; /* Smallest buttons */
         height: 24px;
         font-size: 0.9rem;
     }
 
-    .carousel-btn.prev {
+    .carousel-nav.prev {
         left: 20px;
     }
 
-    .carousel-btn.next {
+    .carousel-nav.next {
         right: 20px;
     }
 

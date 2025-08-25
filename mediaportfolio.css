@@ -6,11 +6,11 @@
     }
 
     .portfolio-title {
-        font-size: clamp(2.5rem, 3.5vw, 2.8rem); /* Smaller title font */
+        font-size: clamp(2.5rem, 3.5vw, 2.8rem) !important; /* Smaller title font */
         padding: 4vh;
     }
 
-    .portfolio-carousel-container {
+    .portfolio-container {
         max-width: calc(2 * 280px + 1.5rem); /* Adjusted for smaller cards */
     }
 
@@ -35,12 +35,12 @@
         line-height: 1.4;
     }
 
-    .project-card .stats div {
+    .project-stats .stat-item {
         font-size: clamp(0.7rem, 0.9vw, 0.75rem); /* Smaller stats font */
         padding: 0.25rem 0.5rem;
     }
 
-    .project-card .tech span {
+    .tech-stack .tech-tag {
         font-size: clamp(0.65rem, 0.85vw, 0.7rem); /* Smaller tech tags font */
         padding: 0.25rem 0.5rem;
     }
@@ -86,11 +86,11 @@
     }
 
     .portfolio-title {
-        font-size: clamp(2rem, 3vw, 2.4rem); /* Further reduced title font */
+        font-size: clamp(2rem, 3vw, 2.4rem) !important; /* Further reduced title font */
         padding: 3vh;
     }
 
-    .portfolio-carousel-container {
+    .portfolio-container {
         max-width: calc(300px + 1rem); /* Single card width + gap */
     }
 
@@ -115,12 +115,12 @@
         line-height: 1.3;
     }
 
-    .project-card .stats div {
+    .project-stats .stat-item {
         font-size: clamp(0.65rem, 0.85vw, 0.7rem); /* Smaller stats font */
         padding: 0.2rem 0.4rem;
     }
 
-    .project-card .tech span {
+    .tech-stack .tech-tag {
         font-size: clamp(0.6rem, 0.8vw, 0.65rem); /* Smaller tech tags font */
         padding: 0.2rem 0.4rem;
     }
@@ -128,6 +128,17 @@
     .project-card .links a {
         font-size: clamp(0.65rem, 0.85vw, 0.7rem); /* Smaller links font */
         padding: 0.2rem 0.4rem;
+    }
+
+    /* Allow project stats to wrap on small tablets */
+    .project-stats {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    .project-stats .stat-item {
+        flex: 1 1 45%;
+        min-width: 120px;
     }
 
     .carousel-btn {
@@ -166,11 +177,11 @@
     }
 
     .portfolio-title {
-        font-size: clamp(1.6rem, 2.5vw, 1.8rem); /* Smallest title font */
+        font-size: clamp(1.6rem, 2.5vw, 1.8rem) !important; /* Smallest title font */
         padding: 2.5vh;
     }
 
-    .portfolio-carousel-container {
+    .portfolio-container {
         max-width: calc(260px + 0.8rem); /* Adjusted for mobile */
     }
 
@@ -195,12 +206,26 @@
         line-height: 1.2;
     }
 
-    .project-card .stats div {
+    .project-stats .stat-item {
         font-size: clamp(0.6rem, 0.8vw, 0.65rem); /* Smallest stats font */
         padding: 0.15rem 0.3rem;
     }
 
-    .project-card .tech span {
+    /* Stack project stats vertically on narrow mobile */
+    .project-stats {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    .project-stats .stat-item {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+    .project-stats .stat-number,
+    .project-stats .stat-label {
+        word-break: break-word;
+    }
+
+    .tech-stack .tech-tag {
         font-size: clamp(0.55rem, 0.75vw, 0.6rem); /* Smallest tech tags font */
         padding: 0.15rem 0.3rem;
     }

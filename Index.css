@@ -3,9 +3,56 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* ==== Header layout stabilization (prevent shifting on language change) ==== */
+
+#site-header .logo img {
+    display: block;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+html, body {
+    scroll-snap-type: y proximity;
+}
+section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;/* keep section start visible below header */
+}
+#site-header .navigation-bar ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: nowrap;
+    /* keep in one line on desktop */
+}
+
+#site-header .navigation-bar ul li button {
+    white-space: nowrap;
+    /* avoid multi-line labels that cause jumps */
+}
+
+#site-header .lang-switch {
+    width: 180px;
+    /* fixed language switch area */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#site-header .lang-switch button {
+    width: 56px;
+    /* make all lang buttons same width */
+    text-align: center;
+}
+
 body::-webkit-scrollbar {
     display: none;
 }
+
 body {
     width: 100vw;
     min-width: 100vw;
@@ -15,8 +62,9 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-   /* Changed from 'center' to 'stretch' to ensure children fill horizontally without centering gaps */
+    /* Changed from 'center' to 'stretch' to ensure children fill horizontally without centering gaps */
 }
+
 /* header */
 header {
     width: 100vw;
@@ -27,10 +75,12 @@ header {
     transition: all 0.3s ease;
     border-bottom: 1px solid white;
 }
+
 header.scrolled {
     background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(6px);
 }
+
 .container {
     width: 100vw;
     height: 10vh;
@@ -38,26 +88,32 @@ header.scrolled {
     align-items: center;
     justify-content: space-around;
 }
+
 .logo img {
     height: 45px;
     transition: transform .3s;
 }
+
 .logo:hover img {
     transform: scale(1.05);
     cursor: pointer;
 }
+
 nav {
     display: block;
-   /* Fixed: Show nav in desktop by default */
+    /* Fixed: Show nav in desktop by default */
 }
+
 nav ul {
     display: flex;
     gap: 2rem;
     list-style: none;
 }
+
 nav ul li {
     position: relative;
 }
+
 nav ul li button {
     background: none;
     border: none;
@@ -68,18 +124,26 @@ nav ul li button {
     padding: 0.5rem 0.75rem;
     transition: color .3s;
 }
+
 nav ul li button:hover {
     color: #fff;
 }
-nav ul li button:focus, nav ul li button.active-nav {
+
+nav ul li button.active-nav {
     outline: none;
-   /* Remove default focus outline */
+    /* Remove default focus outline */
     border: 2px solid transparent;
-   /* Required for border-image to work */
+    /* Required for border-image to work */
     border-image: linear-gradient(to right, red, green) 1;
     padding: calc(0.5rem - 2px) calc(0.75rem - 2px);
-   /* Adjust padding to keep size consistent */
+    /* Adjust padding to keep size consistent */
 }
+
+/* Keep focus minimal to avoid sticky active look after clicking */
+nav ul li button:focus {
+    outline: none;
+}
+
 nav ul li button::after {
     content: "";
     position: absolute;
@@ -90,15 +154,18 @@ nav ul li button::after {
     background: linear-gradient(to right, #ef4444, #22c55e);
     transition: width .3s;
 }
+
 nav ul li button:hover::after {
     width: 100%;
 }
+
 /* Language */
 .lang-switch {
     display: flex;
     gap: 0.25rem;
     border-left: 1px solid #444;
 }
+
 .lang-switch button {
     background: none;
     border: none;
@@ -108,23 +175,28 @@ nav ul li button:hover::after {
     color: #ccc;
     transition: color .3s;
 }
+
 .lang-switch button.active {
     color: #22c55e;
 }
+
 .lang-switch button:hover:not(.active) {
     color: #22c55e;
 }
+
 /* Mobile */
 .mobile-controls {
     display: none;
-   /* Fixed: Hide mobile controls in desktop by default */
+    /* Fixed: Hide mobile controls in desktop by default */
     align-items: center;
     gap: 0.5rem;
 }
+
 .mobile-lang {
     display: flex;
     gap: 0.25rem;
 }
+
 .mobile-lang button {
     background: none;
     border: none;
@@ -134,18 +206,22 @@ nav ul li button:hover::after {
     color: #ccc;
     transition: color .3s;
 }
+
 .mobile-lang button.active {
     color: #ef4444;
 }
+
 .mobile-lang button:hover:not(.active) {
     color: #22c55e;
 }
+
 .hamburger {
     width: 24px;
     height: 24px;
     position: relative;
     cursor: pointer;
 }
+
 .hamburger span {
     position: absolute;
     left: 0;
@@ -154,26 +230,33 @@ nav ul li button:hover::after {
     background: #ccc;
     transition: all .3s;
 }
+
 .hamburger span:nth-child(1) {
     top: 4px;
 }
+
 .hamburger span:nth-child(2) {
     top: 11px;
 }
+
 .hamburger span:nth-child(3) {
     top: 18px;
 }
+
 .hamburger.open span:nth-child(1) {
     transform: rotate(45deg);
     top: 11px;
 }
+
 .hamburger.open span:nth-child(2) {
     opacity: 0;
 }
+
 .hamburger.open span:nth-child(3) {
     transform: rotate(-45deg);
     top: 11px;
 }
+
 .mobile-menu {
     max-height: 0;
     opacity: 0;
@@ -183,10 +266,15 @@ nav ul li button:hover::after {
     border-top: 1px solid #333;
     transition: all .3s ease;
 }
+
 .mobile-menu.open {
     max-height: 400px;
     opacity: 1;
+    margin-top: 150px;
+    margin-right: 45px;
+    min-width: 154px;
 }
+
 .mobile-menu button {
     display: block;
     width: 100%;
@@ -199,10 +287,12 @@ nav ul li button:hover::after {
     color: #ccc;
     transition: all .3s;
 }
+
 .mobile-menu button:hover {
     color: #fff;
     background: #333;
 }
+
 .overlay {
     position: fixed;
     inset: 0;
@@ -210,9 +300,11 @@ nav ul li button:hover::after {
     backdrop-filter: blur(4px);
     display: none;
 }
+
 .overlay.show {
     display: block;
 }
+
 /* about */
 .about-section {
     height: 100vh;
@@ -226,13 +318,15 @@ nav ul li button:hover::after {
     position: sticky;
     overflow: hidden;
 }
+
 .content-wrapper {
     position: relative;
     z-index: 2;
     max-width: 800px;
     padding: 2rem;
-   /* Removed default animations */
+    /* Removed default animations */
 }
+
 .main-title {
     font-size: 3rem;
     font-weight: bold;
@@ -240,15 +334,17 @@ nav ul li button:hover::after {
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-   /* Removed default animations */
+    /* Removed default animations */
 }
+
 .about-text {
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 2.5rem;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-   /* Removed default animations */
+    /* Removed default animations */
 }
+
 .contact-btn {
     display: inline-block;
     padding: 15px 40px;
@@ -261,73 +357,91 @@ nav ul li button:hover::after {
     text-transform: uppercase;
     transition: all 0.3s ease;
 }
+
 .contact-btn:hover {
     background: linear-gradient(135deg, green, red);
     transform: translateY(-3px);
     border-color: rgba(255, 255, 255, 0.3);
 }
+
 /* Animations */
 @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(50px);
-   }
+    }
+
     to {
         opacity: 1;
         transform: translateY(0);
-   }
+    }
 }
+
 @keyframes slideDown {
     from {
         opacity: 0;
         transform: translateY(-30px);
-   }
+    }
+
     to {
         opacity: 1;
         transform: translateY(0);
-   }
+    }
 }
+
 @keyframes slideUp {
     from {
         opacity: 0;
         transform: translateY(30px);
-   }
+    }
+
     to {
         opacity: 1;
         transform: translateY(0);
-   }
+    }
 }
+
 @keyframes zoomIn {
     from {
         opacity: 0;
         transform: scale(0.8);
-   }
+    }
+
     to {
         opacity: 1;
         transform: scale(1);
-   }
+    }
 }
+
 /* Scroll Animation - only when scrolling */
 .scroll-animate .content-wrapper {
     animation: fadeInUp 1.5s ease-out;
 }
+
 .scroll-animate .main-title {
     animation: slideDown 1s ease-out 0.3s both;
 }
+
 .scroll-animate .about-text {
     animation: slideUp 1s ease-out 0.6s both;
 }
+
 .scroll-animate .contact-btn {
     animation: zoomIn 1s ease-out 0.9s both;
 }
+
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px);
-   }
+    }
+
     50% {
         transform: translateY(-10px);
-   }
+    }
 }
+
 /* Responsive Design */
 /* ... (keep all existing CSS up to .xaiQuantumContainer) */
 .xaiQuantumContainer {
@@ -339,13 +453,14 @@ nav ul li button:hover::after {
     align-items: center;
     justify-content: center;
     background-size: cover;
-   /* Ensure images cover the container */
+    /* Ensure images cover the container */
     background-position: center;
     background-repeat: no-repeat;
     transition: background-image 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-   /* Smooth transition for images */
+    /* Smooth transition for images */
     overflow: hidden;
 }
+
 /* Animated background particles */
 .xaiNebulaField {
     position: absolute;
@@ -353,6 +468,7 @@ nav ul li button:hover::after {
     height: 100%;
     pointer-events: none;
 }
+
 .xaiCosmicFragment {
     position: absolute;
     width: 4px;
@@ -361,22 +477,27 @@ nav ul li button:hover::after {
     border-radius: 50%;
     animation: xaiDriftOrbit 20s infinite linear;
 }
+
 @keyframes xaiDriftOrbit {
     0% {
         transform: translateY(100vh) rotate(0deg);
         opacity: 0;
-   }
+    }
+
     10% {
         opacity: 1;
-   }
+    }
+
     90% {
         opacity: 1;
-   }
+    }
+
     100% {
         transform: translateY(-100vh) rotate(360deg);
         opacity: 0;
-   }
+    }
 }
+
 /* Main content container */
 .xaiCoreMatrix {
     position: relative;
@@ -386,6 +507,7 @@ nav ul li button:hover::after {
     max-width: 1400px;
     padding: 0 40px;
 }
+
 .xaiServiceNexus {
     position: relative;
     height: 500px;
@@ -394,6 +516,7 @@ nav ul li button:hover::after {
     align-items: center;
     justify-content: center;
 }
+
 /* Service items */
 .xaiModuleInstance {
     position: absolute;
@@ -405,6 +528,7 @@ nav ul li button:hover::after {
     justify-content: center;
     height: 100%;
 }
+
 .xaiSequenceMarker {
     font-size: clamp(12px, 1.5vw, 18px);
     font-weight: 300;
@@ -413,6 +537,7 @@ nav ul li button:hover::after {
     opacity: 0.6;
     color: rgba(255, 255, 255, 0.7);
 }
+
 .xaiPrimaryDescriptor {
     font-size: clamp(32px, 5vw, 72px);
     font-weight: 800;
@@ -423,6 +548,7 @@ nav ul li button:hover::after {
     background-clip: text;
     letter-spacing: -2px;
 }
+
 .xaiDetailNarrative {
     font-size: clamp(14px, 1.8vw, 20px);
     font-weight: 300;
@@ -431,6 +557,7 @@ nav ul li button:hover::after {
     margin: 20px auto;
     line-height: 1.4;
 }
+
 .xaiAttributeCluster {
     display: flex;
     gap: 20px;
@@ -438,6 +565,7 @@ nav ul li button:hover::after {
     flex-wrap: wrap;
     margin-top: 20px;
 }
+
 .xaiTraitNode {
     font-size: clamp(12px, 1.4vw, 16px);
     color: rgba(255, 255, 255, 0.6);
@@ -447,6 +575,7 @@ nav ul li button:hover::after {
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.05);
 }
+
 /* Background service previews */
 .xaiPreviewHologram {
     position: absolute;
@@ -455,22 +584,26 @@ nav ul li button:hover::after {
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     pointer-events: none;
 }
+
 .xaiHologramLabel {
     font-size: clamp(20px, 3vw, 40px);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.15);
     letter-spacing: -1px;
 }
+
 .xaiPreviewHologram.xaiPreviousCycle {
     top: -120px;
     opacity: 0.4;
     transform: scale(0.7);
 }
+
 .xaiPreviewHologram.xaiNextCycle {
     bottom: -120px;
     opacity: 0.4;
     transform: scale(0.7);
 }
+
 /* Animation states */
 .xaiModuleInstance.xaiActiveState {
     opacity: 1;
@@ -478,18 +611,21 @@ nav ul li button:hover::after {
     filter: blur(0px);
     z-index: 10;
 }
+
 .xaiModuleInstance.xaiNextState {
     opacity: 0;
     transform: translateY(100px) scale(0.8);
     filter: blur(2px);
     z-index: 1;
 }
+
 .xaiModuleInstance.xaiPreviousState {
     opacity: 0;
     transform: translateY(-100px) scale(0.8);
     filter: blur(3px);
     z-index: 1;
 }
+
 .xaiModuleInstance.xaiObscuredState {
     opacity: 0;
     transform: translateY(200px) scale(0.6);
@@ -497,6 +633,7 @@ nav ul li button:hover::after {
     pointer-events: none;
     z-index: 0;
 }
+
 /* Navigation */
 .xaiNavigationHub {
     position: absolute;
@@ -507,6 +644,7 @@ nav ul li button:hover::after {
     gap: 20px;
     z-index: 20;
 }
+
 .xaiNavBeacon {
     width: 12px;
     height: 12px;
@@ -516,10 +654,12 @@ nav ul li button:hover::after {
     transition: all 0.3s ease;
     position: relative;
 }
+
 .xaiNavBeacon.xaiActiveState {
     background: white;
     transform: scale(1.3);
 }
+
 .xaiNavBeacon.xaiActiveState::before {
     content: '';
     position: absolute;
@@ -527,20 +667,24 @@ nav ul li button:hover::after {
     height: 24px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    top: -6px;
-    left: -6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     animation: xaiPulseWave 2s infinite;
 }
+
 @keyframes xaiPulseWave {
     0% {
-        transform: scale(1);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
-   }
+    }
+
     100% {
-        transform: scale(1.5);
+        transform: translate(-50%, -50%) scale(1.5);
         opacity: 0;
-   }
+    }
 }
+
 /* Progress indicator */
 .xaiProgressGauge {
     height: 100%;
@@ -548,6 +692,7 @@ nav ul li button:hover::after {
     border-radius: 1px;
     transition: width 0.8s ease;
 }
+
 /* Scroll hint */
 .xaiScrollCue {
     position: absolute;
@@ -559,24 +704,33 @@ nav ul li button:hover::after {
     letter-spacing: 1px;
     animation: xaiBounceVector 2s infinite;
 }
+
 @keyframes xaiBounceVector {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateX(-50%) translateY(0);
-   }
+    }
+
     40% {
         transform: translateX(-50%) translateY(-10px);
-   }
+    }
+
     60% {
         transform: translateX(-50%) translateY(-5px);
-   }
+    }
 }
+
 /* Responsive design */
 /* Remove gradient classes since we're using images now */
 .portfolio-container {
     position: relative;
     width: 100%;
     max-width: 1235px;
-   /* Adjusted to accommodate two cards and a gap */
+    /* Adjusted to accommodate two cards and a gap */
     margin: 0 auto;
     flex-grow: 1;
     display: flex;
@@ -584,12 +738,14 @@ nav ul li button:hover::after {
     justify-content: center;
     align-items: center;
 }
+
 /* Modern Title */
 .portfolio-subtitle {
     font-size: clamp(1rem, 1vw, 1.2rem);
     color: rgba(255, 255, 255, 0.6);
     font-weight: 400;
 }
+
 /* Projects Grid */
 .projects-grid {
     display: flex;
@@ -603,9 +759,11 @@ nav ul li button:hover::after {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
 }
+
 .projects-grid::-webkit-scrollbar {
     display: none;
 }
+
 /* Portfolio Carousel Dots */
 .portfolio-carousel-dots {
     display: flex;
@@ -613,6 +771,7 @@ nav ul li button:hover::after {
     gap: 0.5rem;
     margin: 1.5rem;
 }
+
 .portfolio-carousel-dots .dot {
     width: 10px;
     height: 10px;
@@ -621,54 +780,67 @@ nav ul li button:hover::after {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
 .portfolio-carousel-dots .dot.active {
     background-color: white;
     transform: scale(1.2);
 }
+
 /* Project Card */
 .project-card:nth-child(1) {
     animation-delay: 0.1s;
 }
+
 .project-card:nth-child(2) {
     animation-delay: 0.2s;
 }
+
 .project-card:nth-child(3) {
     animation-delay: 0.3s;
 }
+
 .project-card:nth-child(4) {
     animation-delay: 0.4s;
 }
+
 .project-card:nth-child(5) {
     animation-delay: 0.5s;
 }
+
 .project-card:nth-child(6) {
     animation-delay: 0.6s;
 }
+
 @keyframes slideUp {
     to {
         opacity: 1;
         transform: translateY(0);
-   }
+    }
 }
+
 .project-card:hover {
     border-color: rgba(255, 255, 255, 0.2);
 }
+
 /* Project Image */
 .project-image {
     position: relative;
     height: 310px;
     overflow: hidden;
-   /* Removed background gradients to make way for carousel */
+    /* Removed background gradients to make way for carousel */
 }
+
 .project-card:nth-child(even) .project-image {
     background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0.05));
 }
+
 .project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
 }
+
 /* Image Placeholder with Icon */
 .image-placeholder {
     width: 100%;
@@ -680,18 +852,22 @@ nav ul li button:hover::after {
     background: linear-gradient(135deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));
     transition: all 0.4s ease;
 }
+
 .project-card:nth-child(even) .image-placeholder {
     background: linear-gradient(135deg, rgba(0, 255, 0, 0.15), rgba(0, 255, 0, 0.05));
 }
+
 .placeholder-icon {
     font-size: 3rem;
     margin-bottom: 0.5rem;
     opacity: 0.7;
 }
+
 .placeholder-text {
     font-size: 0.9rem;
     opacity: 0.5;
 }
+
 /* Project Status Badge */
 .project-status {
     position: absolute;
@@ -706,33 +882,42 @@ nav ul li button:hover::after {
     text-transform: uppercase;
     color: #00BE61;
     backdrop-filter: blur(10px);
+    /* Better readability on bright images */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
+
 .status-in-progress {
-    background: rgba(255, 165, 0, 0.2);
-    border-color: rgba(255, 165, 0, 0.3);
-    color: #ffa500;
+    background: #ffa500;
+    border-color: #cc8400;
+    color: #ffffff;
 }
+
 .status-completed {
-    background: rgba(0, 255, 0, 0.2);
-    border-color: rgba(0, 255, 0, 0.3);
-    color: #00BE61;
+    background: #00BE61;
+    border-color: #009e52;
+    color: #ffffff;
 }
+
 /* Project Content */
 .project-content {
     padding: 1.5rem;
 }
+
 .project-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0.7rem;
 }
+
 .project-title-text {
     font-size: 1rem;
     font-weight: 700;
     color: #fff;
     margin: 0;
 }
+
 .project-category {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.5);
@@ -740,11 +925,14 @@ nav ul li button:hover::after {
     letter-spacing: 0.05em;
     font-weight: 500;
 }
+
 .project-description {
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 1.5rem;
+    min-height: 65px;
 }
+
 /* Project Stats */
 .project-stats {
     display: flex;
@@ -754,10 +942,12 @@ nav ul li button:hover::after {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
 }
+
 .stat-item {
     text-align: center;
     flex: 1;
 }
+
 .stat-number {
     display: block;
     font-size: 1.3rem;
@@ -767,20 +957,24 @@ nav ul li button:hover::after {
     -webkit-text-fill-color: transparent !important;
     margin-bottom: 0.6rem;
 }
+
 .project-card:nth-child(even) .stat-number {
     color: #00BE61;
 }
+
 .stat-label {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
 }
+
 /* Technology Stack */
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
+
 .tech-tag {
     padding: 0.8rem 1rem;
     background: rgba(255, 255, 255, 0.08);
@@ -791,17 +985,20 @@ nav ul li button:hover::after {
     color: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
 }
+
 .tech-tag:hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
+
 /* Project Links */
 .project-links {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
+
 .project-link {
     flex: 1;
     padding: 0.8rem 1.5rem;
@@ -817,13 +1014,16 @@ nav ul li button:hover::after {
     position: relative;
     overflow: hidden;
 }
+
 .project-card:nth-child(even) .project-link {
     border-color: rgba(0, 255, 0, 0.3);
     color: #00BE61;
 }
+
 .project-link:hover {
     transform: translateY(-2px);
 }
+
 .project-link::before {
     content: '';
     position: absolute;
@@ -834,12 +1034,15 @@ nav ul li button:hover::after {
     background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
     transition: left 0.5s ease;
 }
+
 .project-card:nth-child(even) .project-link::before {
     background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
 }
+
 .project-link:hover::before {
     left: 100%;
 }
+
 /* Floating Dots */
 .floating-dots {
     position: absolute;
@@ -850,6 +1053,7 @@ nav ul li button:hover::after {
     pointer-events: none;
     z-index: 1;
 }
+
 .floating-dot {
     position: absolute;
     width: 3px;
@@ -859,23 +1063,29 @@ nav ul li button:hover::after {
     opacity: 0.4;
     animation: floatUp 10s linear infinite;
 }
+
 .floating-dot:nth-child(even) {
     background: #00BE61;
     animation-duration: 12s;
 }
+
 @keyframes floatUp {
     0% {
         transform: translateY(120vh) rotate(0deg);
         opacity: 0;
-   }
-    10%, 90% {
+    }
+
+    10%,
+    90% {
         opacity: 0.4;
-   }
+    }
+
     100% {
         transform: translateY(-20vh) rotate(360deg);
         opacity: 0;
-   }
+    }
 }
+
 /* Responsive Design */
 /* Loading Animation */
 .loading-shimmer {
@@ -883,14 +1093,17 @@ nav ul li button:hover::after {
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
 }
+
 @keyframes shimmer {
     0% {
         background-position: -200% 0;
-   }
+    }
+
     100% {
         background-position: 200% 0;
-   }
+    }
 }
+
 /* partners */
 .partners-section {
     height: 100vh;
@@ -903,6 +1116,7 @@ nav ul li button:hover::after {
     background: black;
     overflow: hidden;
 }
+
 /* Animated grid background */
 .grid-background {
     position: absolute;
@@ -911,18 +1125,20 @@ nav ul li button:hover::after {
     width: 120%;
     height: 120%;
     opacity: 0.02;
-    background-image: linear-gradient(rgba(255,0,0,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,0,0.3) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(255, 0, 0, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 0, 0.3) 1px, transparent 1px);
     background-size: 60px 60px;
     transform: translate(-10%, -10%);
 }
+
 /* Parallax orbs */
 .floating-orb {
     position: absolute;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(0,255,0,0.1));
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(0, 255, 0, 0.1));
     filter: blur(1px);
     animation: orbFloat 8s ease-in-out infinite;
 }
+
 .orb-1 {
     width: 200px;
     height: 200px;
@@ -930,6 +1146,7 @@ nav ul li button:hover::after {
     left: 5%;
     animation-delay: 0s;
 }
+
 .orb-2 {
     width: 150px;
     height: 150px;
@@ -937,6 +1154,7 @@ nav ul li button:hover::after {
     right: 10%;
     animation-delay: -2s;
 }
+
 .orb-3 {
     width: 100px;
     height: 100px;
@@ -944,17 +1162,23 @@ nav ul li button:hover::after {
     right: 20%;
     animation-delay: -4s;
 }
+
 @keyframes orbFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px) translateX(0px) scale(1);
-   }
+    }
+
     33% {
         transform: translateY(-30px) translateX(20px) scale(1.1);
-   }
+    }
+
     66% {
         transform: translateY(20px) translateX(-15px) scale(0.9);
-   }
+    }
 }
+
 /* Section header with scroll animations */
 .section-header {
     text-align: center;
@@ -963,10 +1187,12 @@ nav ul li button:hover::after {
     z-index: 5;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .section-header.animate-in {
     opacity: 1;
     transform: translateY(0);
 }
+
 .section-title {
     font-size: clamp(2rem, 4vw, 4.5rem);
     font-weight: 900;
@@ -977,9 +1203,11 @@ nav ul li button:hover::after {
     background-clip: text;
     position: relative;
 }
+
 .section-header.animate-in .section-title::after {
     width: 80px;
 }
+
 .section-subtitle {
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: #888;
@@ -988,10 +1216,12 @@ nav ul li button:hover::after {
     transform: translateY(20px);
     transition: all 0.6s ease 0.3s;
 }
+
 .section-header.animate-in .section-subtitle {
     opacity: 1;
     transform: translateY(0);
 }
+
 /* Partners container with scroll animations */
 .partners-container {
     width: 93%;
@@ -1003,22 +1233,25 @@ nav ul li button:hover::after {
     align-items: center;
     justify-content: center;
 }
+
 .partners-grid {
     display: flex;
     gap: clamp(1rem, 3vw, 2rem);
     width: 80%;
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: hidden;
     padding: 1rem;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: none;
     scroll-behavior: smooth;
+    justify-content: space-between;
 }
+
 /* Partner cards with enhanced scroll animations */
 .partner-card {
-    background: linear-gradient(135deg, rgba(25,25,26,0.8) 0%, rgba(15,15,16,0.9) 100%);
-    border: 1px solid rgba(255,255,255,0.05);
+    background: linear-gradient(135deg, rgba(25, 25, 26, 0.8) 0%, rgba(15, 15, 16, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: clamp(1.5rem, 3vw, 2rem);
     position: relative;
@@ -1034,26 +1267,29 @@ nav ul li button:hover::after {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
     scroll-snap-align: start;
-   /* Initial state for scroll animation */
+    /* Initial state for scroll animation */
     opacity: 0;
     transform: translateX(60px) scale(0.9);
 }
+
 .partner-card.scroll-animate {
     opacity: 1;
     transform: translateX(0) scale(1);
 }
+
 .partner-card::before {
     content: '';
     position: absolute;
     inset: 0;
     padding: 1px;
-    background: linear-gradient(135deg, transparent, rgba(255,0,0,0.2), transparent, rgba(0,255,0,0.2));
+    background: linear-gradient(135deg, transparent, rgba(255, 0, 0, 0.2), transparent, rgba(0, 255, 0, 0.2));
     border-radius: 20px;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: xor;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+
 .partner-card::after {
     content: '';
     position: absolute;
@@ -1061,20 +1297,24 @@ nav ul li button:hover::after {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
     transition: left 0.6s ease;
 }
+
 .partner-card:hover {
     transform: translateY(-8px) scale(1.02);
-    border-color: rgba(255,0,0,0.2);
+    border-color: rgba(255, 0, 0, 0.2);
     z-index: 2;
 }
+
 .partner-card:hover::before {
     opacity: 1;
 }
+
 .partner-card:hover::after {
     left: 100%;
 }
+
 /* Card content */
 .card-header {
     display: flex;
@@ -1082,6 +1322,7 @@ nav ul li button:hover::after {
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
+
 .partner-icon {
     width: clamp(40px, 8vw, 56px);
     height: clamp(40px, 8vw, 56px);
@@ -1097,17 +1338,20 @@ nav ul li button:hover::after {
     overflow: hidden;
     flex-shrink: 0;
 }
+
 .partner-icon::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
     transform: translateX(-100%) skewX(-20deg);
     transition: transform 0.8s ease;
 }
+
 .partner-card:hover .partner-icon::after {
     transform: translateX(200%) skewX(-20deg);
 }
+
 .partner-info h3 {
     font-size: clamp(1.1rem, 2.5vw, 1.4rem);
     font-weight: 700;
@@ -1115,9 +1359,11 @@ nav ul li button:hover::after {
     margin-bottom: 0.3rem;
     transition: color 0.3s ease;
 }
+
 .partner-card:hover .partner-info h3 {
     color: #ff4444;
 }
+
 .partner-status {
     font-size: clamp(0.7rem, 1.5vw, 0.9rem);
     color: #00BE61;
@@ -1126,15 +1372,18 @@ nav ul li button:hover::after {
     letter-spacing: 0.05em;
     opacity: 0.9;
 }
+
 .partner-description {
     font-size: clamp(0.85rem, 1.8vw, 1rem);
     color: #aaa;
     line-height: 1.6;
     transition: color 0.3s ease;
 }
+
 .partner-card:hover .partner-description {
     color: #ccc;
 }
+
 /* Navigation arrows */
 .carousel-nav {
     position: absolute;
@@ -1142,8 +1391,8 @@ nav ul li button:hover::after {
     transform: translateY(-50%);
     width: 50px;
     height: 50px;
-    background: rgba(25,25,26,0.9);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(25, 25, 26, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1154,22 +1403,42 @@ nav ul li button:hover::after {
     z-index: 5;
     color: #fff;
 }
+
 .carousel-nav:hover {
-    background: rgba(255,0,0,0.2);
-    border-color: rgba(255,0,0,0.3);
+    background: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.3);
     transform: translateY(-50%) scale(1.1);
 }
+
 .carousel-nav.prev {
     left: 1rem;
 }
+
 .carousel-nav.next {
     right: 1rem;
 }
+
 .carousel-nav svg {
     width: 24px;
     height: 24px;
     fill: currentColor;
 }
+
+/* Disabled state for nav buttons */
+.carousel-nav.disabled,
+.carousel-nav:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+    transform: translateY(-50%) scale(1);
+    background: rgba(25, 25, 26, 0.6);
+}
+
+/* Helper: hide off-page cards */
+.partner-card.hidden {
+    display: none !important;
+}
+
 /* Scroll progress indicator */
 .scroll-progress {
     position: absolute;
@@ -1178,11 +1447,12 @@ nav ul li button:hover::after {
     transform: translateX(-50%);
     width: 200px;
     height: 3px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 3px;
     z-index: 10;
     overflow: hidden;
 }
+
 .progress-fill {
     height: 100%;
     background: linear-gradient(90deg, #FD3130, #00BE61);
@@ -1190,6 +1460,7 @@ nav ul li button:hover::after {
     transition: width 0.3s ease;
     width: 0%;
 }
+
 /* Carousel dots */
 .carousel-dots {
     position: absolute;
@@ -1200,26 +1471,30 @@ nav ul li button:hover::after {
     gap: 0.5rem;
     z-index: 10;
 }
+
 .carousel-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 .carousel-dot.active {
     background: linear-gradient(45deg, #FD3130, #00BE61);
     width: 24px;
     border-radius: 4px;
 }
+
 /* Responsive design */
 /* Loading states */
 .loading-skeleton {
-    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 75%);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
 }
+
 /* contact */
 .interface-contact-module-xyz {
     height: 100vh;
@@ -1233,6 +1508,7 @@ nav ul li button:hover::after {
     overflow: hidden;
     position: relative;
 }
+
 /* Animated background particles */
 .interface-contact-module-xyz::before {
     content: '';
@@ -1245,6 +1521,7 @@ nav ul li button:hover::after {
     pointer-events: none;
     z-index: 0;
 }
+
 .dynamic-particle-system {
     position: absolute;
     width: 100%;
@@ -1252,6 +1529,7 @@ nav ul li button:hover::after {
     pointer-events: none;
     z-index: 1;
 }
+
 .animated-particle-unit {
     position: absolute;
     width: 3px;
@@ -1260,23 +1538,29 @@ nav ul li button:hover::after {
     border-radius: 50%;
     animation: particle-ascension 12s infinite linear;
 }
+
 .animated-particle-unit:nth-child(even) {
     background: rgba(48, 209, 88, 0.3);
     animation-duration: 15s;
 }
+
 @keyframes particle-ascension {
     0% {
         transform: translateY(100vh) rotate(0deg);
         opacity: 0;
-   }
-    10%, 90% {
+    }
+
+    10%,
+    90% {
         opacity: 1;
-   }
+    }
+
     100% {
         transform: translateY(-100vh) rotate(360deg);
         opacity: 0;
-   }
+    }
 }
+
 /* Section header */
 .primary-title-component-abc {
     text-align: center;
@@ -1289,6 +1573,7 @@ nav ul li button:hover::after {
     position: relative;
     z-index: 2;
 }
+
 .secondary-info-text-element {
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
@@ -1302,6 +1587,7 @@ nav ul li button:hover::after {
     z-index: 2;
     line-height: 1.6;
 }
+
 /* Main content container */
 .contact-orchestration-container {
     display: grid;
@@ -1313,17 +1599,23 @@ nav ul li button:hover::after {
     max-width: 1200px;
     width: 100%;
 }
+
 /* Left Side - Contact Info */
 .communication-hub-panel {
     opacity: 0;
     transform: translateX(-50px);
     animation: slide-from-left 1.2s ease 0.5s forwards;
+    height: 100%;
 }
+
 .contact-channels-collection {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    height: 100%;
+    justify-content: space-between;
 }
+
 .interaction-unit-contact {
     display: flex;
     align-items: center;
@@ -1341,18 +1633,23 @@ nav ul li button:hover::after {
     opacity: 0;
     transform: translateY(30px);
 }
+
 .interaction-unit-contact:nth-child(1) {
     animation: contact-reveal-animation 0.8s ease 0.7s forwards;
 }
+
 .interaction-unit-contact:nth-child(2) {
     animation: contact-reveal-animation 0.8s ease 0.8s forwards;
 }
+
 .interaction-unit-contact:nth-child(3) {
     animation: contact-reveal-animation 0.8s ease 0.9s forwards;
 }
+
 .interaction-unit-contact:nth-child(4) {
     animation: contact-reveal-animation 0.8s ease 1s forwards;
 }
+
 .interaction-unit-contact::before {
     content: '';
     position: absolute;
@@ -1363,14 +1660,17 @@ nav ul li button:hover::after {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transition: left 0.6s ease;
 }
+
 .interaction-unit-contact:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateX(10px) scale(1.02);
     border-color: rgba(255, 69, 58, 0.3);
 }
+
 .interaction-unit-contact:hover::before {
     left: 100%;
 }
+
 .contact-icon-visualization {
     width: 30px;
     height: 30px;
@@ -1384,32 +1684,40 @@ nav ul li button:hover::after {
     color: #000;
     font-weight: 600;
 }
+
 .phone-interaction-module .contact-icon-visualization {
     background: linear-gradient(135deg, #ff453a, #ff6b5a);
 }
+
 .email-interaction-module .contact-icon-visualization {
     background: linear-gradient(135deg, #30d158, #4ae072);
 }
+
 .instagram-interaction-module .contact-icon-visualization {
     background: linear-gradient(135deg, #e4405f, #fd1d1d, #fcb045);
 }
+
 .facebook-interaction-module .contact-icon-visualization {
     background: linear-gradient(135deg, #1877f2, #42a5f5);
 }
+
 .contact-metadata-details {
     flex: 1;
 }
+
 .contact-metadata-details h4 {
     font-size: 1rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
     color: #ffffff;
 }
+
 .contact-metadata-details p {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
     font-weight: 400;
 }
+
 /* Right Side - Contact Form */
 .message-transmission-interface {
     background: rgba(255, 255, 255, 0.05);
@@ -1422,6 +1730,7 @@ nav ul li button:hover::after {
     transform: translateX(50px);
     animation: slide-from-right 1.2s ease 0.7s forwards;
 }
+
 .message-transmission-interface::before {
     content: '';
     position: absolute;
@@ -1433,6 +1742,7 @@ nav ul li button:hover::after {
     border-radius: 24px;
     pointer-events: none;
 }
+
 .message-transmission-interface h3 {
     color: white;
     font-size: clamp(1.8rem, 1.9vw, 2.5rem);
@@ -1442,12 +1752,14 @@ nav ul li button:hover::after {
     position: relative;
     z-index: 1;
 }
+
 /* Form Input Container */
 .form-input-container {
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
 }
+
 .form-input-container label {
     display: block;
     color: white;
@@ -1455,7 +1767,9 @@ nav ul li button:hover::after {
     font-weight: 600;
     font-size: 1rem;
 }
-.form-input-container input, .form-input-container textarea {
+
+.form-input-container input,
+.form-input-container textarea {
     width: 100%;
     padding: 1rem 1.2rem;
     background: rgba(0, 0, 0, 0.3);
@@ -1468,19 +1782,25 @@ nav ul li button:hover::after {
     font-family: inherit;
     box-sizing: border-box;
 }
-.form-input-container input::placeholder, .form-input-container textarea::placeholder {
+
+.form-input-container input::placeholder,
+.form-input-container textarea::placeholder {
     color: rgba(255, 255, 255, 0.5);
 }
-.form-input-container input:focus, .form-input-container textarea:focus {
+
+.form-input-container input:focus,
+.form-input-container textarea:focus {
     outline: none;
     border-color: #ff453a;
     background: rgba(0, 0, 0, 0.4);
     transform: scale(1.01);
 }
+
 .form-input-container textarea {
     resize: vertical;
     min-height: 120px;
 }
+
 .action-submit-button {
     width: 100%;
     padding: 1rem;
@@ -1498,6 +1818,7 @@ nav ul li button:hover::after {
     overflow: hidden;
     z-index: 1;
 }
+
 .action-submit-button::before {
     content: '';
     position: absolute;
@@ -1509,21 +1830,26 @@ nav ul li button:hover::after {
     transition: left 0.6s ease;
     z-index: -1;
 }
+
 .action-submit-button:hover::before {
     left: 100%;
 }
+
 .action-submit-button:hover {
     transform: translateY(-3px) scale(1.02);
     background: linear-gradient(135deg, #30d158, #ff453a);
 }
+
 .action-submit-button:active {
     transform: translateY(-1px) scale(0.98);
 }
+
 .action-submit-button:disabled {
     opacity: 0.7;
     cursor: not-allowed;
     transform: none;
 }
+
 /* Success Message */
 .success-notification-display {
     background: linear-gradient(135deg, #30d158, #4ae072);
@@ -1538,14 +1864,17 @@ nav ul li button:hover::after {
     position: relative;
     z-index: 1;
 }
+
 .success-notification-display i {
     margin-right: 0.5rem;
     font-size: 1.2rem;
 }
+
 /* Loading State */
 .state-loading-indicator {
     position: relative;
 }
+
 .state-loading-indicator::after {
     content: '';
     position: absolute;
@@ -1559,52 +1888,62 @@ nav ul li button:hover::after {
     border-radius: 50%;
     animation: rotate-spinner 1s linear infinite;
 }
+
 @keyframes rotate-spinner {
     0% {
         transform: rotate(0deg);
-   }
+    }
+
     100% {
         transform: rotate(360deg);
-   }
+    }
 }
+
 /* Animations */
 @keyframes reveal-upwards {
     to {
         opacity: 1;
         transform: translateY(0);
-   }
+    }
 }
+
 @keyframes slide-from-left {
     to {
         opacity: 1;
         transform: translateX(0);
-   }
+    }
 }
+
 @keyframes slide-from-right {
     to {
         opacity: 1;
         transform: translateX(0);
-   }
+    }
 }
+
 @keyframes contact-reveal-animation {
     to {
         opacity: 1;
         transform: translateY(0);
-   }
+    }
 }
+
 @keyframes success-animation-pulse {
     0% {
         opacity: 0;
         transform: scale(0.8);
-   }
+    }
+
     50% {
         transform: scale(1.05);
-   }
+    }
+
     100% {
         opacity: 1;
         transform: scale(1);
-   }
+    }
 }
+
 /* Responsive Design */
 /* Portfolio Carousel */
 #portfolioSection {
@@ -1619,19 +1958,21 @@ nav ul li button:hover::after {
     align-items: center;
     padding: 10vh 10vh 0 10vh;
 }
+
 .portfolio-carousel-container {
     position: relative;
     width: 100%;
     max-width: calc(2 * 320px + 2rem);
-   /* 2 card (300px + 10px padding) + gap */
+    /* 2 card (300px + 10px padding) + gap */
     margin: 0 auto;
     flex-grow: 1;
-   /* Լրացնում է մնացած տարածքը վերնագրից հետո */
+    /* Լրացնում է մնացած տարածքը վերնագրից հետո */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -1649,26 +1990,39 @@ nav ul li button:hover::after {
     justify-content: center;
     align-items: center;
 }
+
 .carousel-btn:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-50%) scale(1.1);
 }
+
 .carousel-btn.prev {
     left: 50px;
     color: red;
 }
+
 .carousel-btn.next {
     right: 50px;
     color: green;
 }
+
+/* Disabled state for portfolio nav buttons */
+.carousel-btn.disabled,
+.carousel-btn:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+}
+
 .carousel-dots {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
     margin-top: 0.5rem;
-   /* Փոքր margin, որպեսզի տեղավորվի */
+    /* Փոքր margin, որպեսզի տեղավորվի */
     margin-bottom: 0;
 }
+
 .carousel-dot {
     width: 10px;
     height: 10px;
@@ -1677,10 +2031,12 @@ nav ul li button:hover::after {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 .carousel-dot.active {
     background: white;
     transform: scale(1.3);
 }
+
 /* Portfolio Title */
 .portfolio-title {
     text-align: center;
@@ -1688,6 +2044,7 @@ nav ul li button:hover::after {
     font-weight: 800;
     padding: 5vh;
 }
+
 /* Projects Grid (Carousel) */
 .projects-grid {
     display: flex;
@@ -1695,11 +2052,12 @@ nav ul li button:hover::after {
     scroll-snap-type: x mandatory;
     gap: 2rem;
     padding: 0.5rem 0;
-   /* Նվազեցրինք padding-ը */
+    /* Նվազեցրինք padding-ը */
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     width: 100%;
 }
+
 /* Project Card */
 .project-card {
     flex: 0 0 auto;
@@ -1708,7 +2066,7 @@ nav ul li button:hover::after {
     background: #0a0a0b;
     border-radius: 20px;
     padding: 1rem;
-   /* Նվազեցրինք padding-ը */
+    /* Նվազեցրինք padding-ը */
     scroll-snap-align: start;
     transition: transform 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1716,29 +2074,34 @@ nav ul li button:hover::after {
     backdrop-filter: blur(20px);
     cursor: pointer;
 }
+
 /* Card-ի ներքին էլեմենտներ */
 .project-card .project-icon {
     font-size: 2rem;
-   /* Փոքրացրինք icon-ի չափը */
+    /* Փոքրացրինք icon-ի չափը */
     margin-bottom: 0.5rem;
 }
+
 .project-card h3 {
     font-size: 1.5rem;
-   /* Փոքրացրինք title-ի font-ը */
+    /* Փոքրացրինք title-ի font-ը */
     font-weight: 700;
     margin-bottom: 0.3rem;
 }
+
 .project-card .project-status {
     font-size: 0.8rem;
-   /* Փոքրացրինք status-ի font-ը */
-    color: #30d158;
+    /* Փոքրացրինք status-ի font-ը */
+    color: #ffffff;
     margin-bottom: 0.3rem;
 }
+
 .project-card p {
     font-size: 1.2rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
+
 /* Stats */
 .project-card .stats {
     display: flex;
@@ -1746,13 +2109,15 @@ nav ul li button:hover::after {
     gap: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
 .project-card .stats div {
     font-size: 0.8rem;
-   /* Փոքրացրինք stats-ի font-ը */
+    /* Փոքրացրինք stats-ի font-ը */
     background: rgba(255, 255, 255, 0.1);
     padding: 0.3rem 0.6rem;
     border-radius: 12px;
 }
+
 /* Tech Tags */
 .project-card .tech {
     display: flex;
@@ -1760,22 +2125,25 @@ nav ul li button:hover::after {
     gap: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
 .project-card .tech span {
     font-size: 0.75rem;
-   /* Փոքրացրինք tech tags-ի font-ը */
+    /* Փոքրացրինք tech tags-ի font-ը */
     background: rgba(255, 255, 255, 0.1);
     padding: 0.3rem 0.6rem;
     border-radius: 12px;
 }
+
 /* Links */
 .project-card .links {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
+
 .project-card .links a {
     font-size: 0.8rem;
-   /* Փոքրացրինք links-ի font-ը */
+    /* Փոքրացրինք links-ի font-ը */
     color: #30d158;
     text-decoration: none;
     padding: 0.3rem 0.6rem;
@@ -1783,24 +2151,27 @@ nav ul li button:hover::after {
     border-radius: 12px;
     transition: all 0.3s ease;
 }
+
 .project-card .links a:hover {
     background: #30d158;
     color: #0a0a0b;
 }
+
 /* Card Hover Effect */
 /* Carousel Styles */
 .carousel-container {
     position: relative;
     width: 100%;
     max-width: 600px;
-   /* Adjust as needed */
+    /* Adjust as needed */
     height: 350px;
-   /* Adjust as needed */
+    /* Adjust as needed */
     margin: auto;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
+
 .carousel-container .carousel-dots {
     position: absolute;
     bottom: 10px;
@@ -1810,6 +2181,7 @@ nav ul li button:hover::after {
     gap: 8px;
     z-index: 100;
 }
+
 .carousel-container .dot {
     width: 12px;
     height: 12px;
@@ -1818,22 +2190,27 @@ nav ul li button:hover::after {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .carousel-container .dot.active {
     background-color: white;
 }
+
 .carousel-slide {
     display: flex;
     width: 100%;
     height: 100%;
     transition: transform 0.5s ease-in-out;
 }
+
 .carousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     flex-shrink: 0;
 }
-.prev-btn, .next-btn {
+
+.prev-btn,
+.next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1846,12 +2223,15 @@ nav ul li button:hover::after {
     border-radius: 5px;
     z-index: 100;
 }
+
 .prev-btn {
     left: 10px;
 }
+
 .next-btn {
     right: 10px;
 }
+
 /* Call Button Styling */
 .call-button {
     position: fixed;
@@ -1871,32 +2251,41 @@ nav ul li button:hover::after {
     z-index: 1000;
     transition: all 0.3s ease;
 }
+
 .call-button:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
+
 .call-button i {
     animation: pulse 2s infinite;
 }
+
 @keyframes pulse {
     0% {
         transform: scale(1);
-   }
+    }
+
     50% {
         transform: scale(1.1);
-   }
+    }
+
     100% {
         transform: scale(1);
-   }
+    }
 }
+
 /* Responsive adjustments for the call button */
 /* Hide Google Translate widget UI */
 .goog-te-banner-frame.skiptranslate {
     display: none !important;
 }
-.goog-tooltip, .goog-tooltip:hover {
+
+.goog-tooltip,
+.goog-tooltip:hover {
     display: none !important;
 }
+
 .goog-text-highlight {
     background-color: transparent !important;
     box-shadow: none !important;

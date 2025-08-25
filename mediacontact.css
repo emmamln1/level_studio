@@ -1,44 +1,46 @@
 /* Media Queries for contactSection */
 @media (max-width: 1024px) {
-    #contactSection {
-        min-height: 80vh; /* Adjusted height for tablets */
-        padding: 8vh 8vh 0 8vh; /* Reduced padding */
+    .interface-contact-module-xyz {
+        height: auto; /* allow content to define height on tablets */
+        min-height: initial; /* unset fixed min-height */
+        padding: 8vh 6vh 4vh 6vh; /* comfortable padding */
+        overflow: visible; /* prevent clipping */
     }
 
-    .contact-title {
+    .primary-title-component-abc {
         font-size: clamp(2.5rem, 3.5vw, 2.8rem); /* Smaller title font */
         padding: 4vh;
     }
 
-    .contact-info-container {
+    .contact-channels-collection {
         gap: 1.5rem; /* Reduced gap */
         padding: 0.8rem; /* Reduced padding */
     }
 
-    .contact-info-item {
+    .interaction-unit-contact {
         padding: 0.8rem; /* Reduced padding */
     }
 
-    .contact-info-item h3 {
+    .interaction-unit-contact .contact-metadata-details h4 {
         font-size: clamp(1.3rem, 2vw, 1.4rem); /* Smaller title font */
         margin-bottom: 0.2rem;
     }
 
-    .contact-info-item p {
+    .interaction-unit-contact .contact-metadata-details p {
         font-size: clamp(1rem, 1.5vw, 1.1rem); /* Smaller description font */
         line-height: 1.4;
     }
 
-    .contact-form-container {
+    .message-transmission-interface {
         padding: 0.8rem; /* Reduced padding */
     }
 
-    .contact-form-title {
+    .message-transmission-interface h3 {
         font-size: clamp(1.8rem, 2.5vw, 2rem); /* Smaller form title font */
         margin-bottom: 1.5rem;
     }
 
-    .contact-input, .contact-textarea {
+    .form-input-container input, .form-input-container textarea {
         font-size: clamp(0.9rem, 1.4vw, 1rem); /* Smaller input font */
         padding: 0.8rem; /* Reduced padding */
     }
@@ -56,45 +58,63 @@
 }
 
 @media (max-width: 768px) {
-    #contactSection {
-        min-height: 70vh; /* Shorter height for smaller tablets */
-        padding: 6vh 6vh 0 6vh;
+    .interface-contact-module-xyz {
+        height: auto; /* allow content to define height */
+        min-height: initial; /* unset fixed min-height */
+        padding: 8vh 4vh 6vh 4vh; /* comfortable padding on tablet */
+        overflow: visible; /* avoid clipping */
+        align-items: stretch; /* stack content naturally */
+        justify-content: flex-start;
     }
 
-    .contact-title {
+    .contact-orchestration-container {
+        grid-template-columns: 1fr; /* single column */
+        gap: 2rem; /* tighter gap */
+    }
+
+    .communication-hub-panel,
+    .contact-channels-collection {
+        height: auto; /* let items size naturally */
+    }
+
+    .message-transmission-interface {
+        width: 100%;
+    }
+
+    .primary-title-component-abc {
         font-size: clamp(2rem, 3vw, 2.4rem); /* Further reduced title font */
         padding: 3vh;
     }
 
-    .contact-info-container {
+    .contact-channels-collection {
         gap: 1rem; /* Further reduced gap */
         padding: 0.6rem;
     }
 
-    .contact-info-item {
+    .interaction-unit-contact {
         padding: 0.6rem;
     }
 
-    .contact-info-item h3 {
+    .interaction-unit-contact .contact-metadata-details h4 {
         font-size: clamp(1.2rem, 1.8vw, 1.3rem); /* Smaller title font */
         margin-bottom: 0.15rem;
     }
 
-    .contact-info-item p {
+    .interaction-unit-contact .contact-metadata-details p {
         font-size: clamp(0.9rem, 1.4vw, 1rem); /* Smaller description font */
         line-height: 1.3;
     }
 
-    .contact-form-container {
+    .message-transmission-interface {
         padding: 0.6rem;
     }
 
-    .contact-form-title {
+    .message-transmission-interface h3 {
         font-size: clamp(1.6rem, 2vw, 1.8rem); /* Smaller form title font */
         margin-bottom: 1.2rem;
     }
 
-    .contact-input, .contact-textarea {
+    .form-input-container input, .form-input-container textarea {
         font-size: clamp(0.8rem, 1.3vw, 0.9rem); /* Smaller input font */
         padding: 0.6rem;
     }
@@ -112,45 +132,64 @@
 }
 
 @media (max-width: 480px) {
-    #contactSection {
-        min-height: 60vh; /* Compact height for mobile */
-        padding: 5vh 5vh 0 5vh;
+    .interface-contact-module-xyz {
+        height: auto; /* allow full content to be visible */
+        min-height: initial; /* remove fixed min-height */
+        padding: 6vh 3vh 5vh 3vh; /* tighter padding on mobile */
+        overflow: visible; /* prevent clipping */
+        align-items: stretch;
+        justify-content: flex-start;
     }
 
-    .contact-title {
+    .primary-title-component-abc {
         font-size: clamp(1.6rem, 2.5vw, 1.8rem); /* Smallest title font */
         padding: 2.5vh;
+        margin-top: 2rem; /* reduce top offset under fixed header */
     }
 
-    .contact-info-container {
+    .contact-orchestration-container {
+        grid-template-columns: 1fr; /* stack panels */
+        gap: 1.5rem;
+    }
+
+    .communication-hub-panel,
+    .contact-channels-collection {
+        height: auto;
+    }
+
+    .message-transmission-interface {
+        width: 100%;
+    }
+
+    .contact-channels-collection {
         gap: 0.8rem; /* Smallest gap */
         padding: 0.5rem;
     }
 
-    .contact-info-item {
+    .interaction-unit-contact {
         padding: 0.5rem;
     }
 
-    .contact-info-item h3 {
+    .interaction-unit-contact .contact-metadata-details h4 {
         font-size: clamp(1rem, 1.6vw, 1.1rem); /* Smallest title font */
         margin-bottom: 0.1rem;
     }
 
-    .contact-info-item p {
+    .interaction-unit-contact .contact-metadata-details p {
         font-size: clamp(0.8rem, 1.3vw, 0.9rem); /* Smallest description font */
         line-height: 1.2;
     }
 
-    .contact-form-container {
+    .message-transmission-interface {
         padding: 0.5rem;
     }
 
-    .contact-form-title {
+    .message-transmission-interface h3 {
         font-size: clamp(1.4rem, 1.8vw, 1.6rem); /* Smallest form title font */
         margin-bottom: 1rem;
     }
 
-    .contact-input, .contact-textarea {
+    .form-input-container input, .form-input-container textarea {
         font-size: clamp(0.75rem, 1.2vw, 0.85rem); /* Smallest input font */
         padding: 0.5rem;
     }
