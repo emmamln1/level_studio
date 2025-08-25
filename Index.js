@@ -273,6 +273,7 @@ function xaiCreateModules() {
         const moduleEl = document.createElement('div');
         moduleEl.className = 'xaiModuleInstance';
         moduleEl.innerHTML = `
+        
             <h2 class="xaiPrimaryDescriptor">${service.title}</h2>
             <p class="xaiDetailNarrative">${service.description}</p>
             <div class="xaiAttributeCluster">
@@ -1115,9 +1116,62 @@ function initializeAllImageCarousels() {
     });
 }
 
+// Animated Counters (About Section)
+function initAboutCounters() {
+    const statsSection = document.getElementById('aboutStats');
+    if (!statsSection) return;
+
+    const numbers = statsSection.querySelectorAll('.stat-number');
+    let started = false;
+
+    function animateValue(el, target, duration = 1500) {
+        const suffix = el.getAttribute('data-suffix') || '';
+        const start = 0;
+        const startTime = performance.now();
+
+        function tick(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const value = Math.floor(start + (target - start) * progress);
+            el.textContent = value + suffix;
+            if (progress < 1) {
+                requestAnimationFrame(tick);
+            } else {
+                el.textContent = target + suffix;
+            }
+        }
+        requestAnimationFrame(tick);
+    }
+
+    function startAnimation() {
+        if (started) return;
+        started = true;
+        numbers.forEach(el => {
+            const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+            animateValue(el, target);
+        });
+    }
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startAnimation();
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.35 });
+        observer.observe(statsSection);
+    } else {
+        // Fallback for very old browsers
+        setTimeout(startAnimation, 800);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initPortfolioCarousel();
     initializeAllImageCarousels(); // Call the new function here
+    initAboutCounters();
 
     // Initialize Email.js (replace with your actual service ID, template ID, and Public Key)
     (function() {

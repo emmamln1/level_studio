@@ -315,6 +315,7 @@ nav ul li button:hover::after {
 /* about */
 .about-section {
     height: 100vh;
+    padding-top: 10vh;
     width: 100vw;
     background-color: black;
     display: flex;
@@ -329,9 +330,7 @@ nav ul li button:hover::after {
 .content-wrapper {
     position: relative;
     z-index: 2;
-    max-width: 800px;
-    padding: 2rem;
-    /* Removed default animations */
+    max-width: 960px;
 }
 
 .main-title {
@@ -344,8 +343,55 @@ nav ul li button:hover::after {
     /* Removed default animations */
 }
 
+.about-stats {
+    display: flex;
+    gap: clamp(1rem, 3vw, 2rem);
+    justify-content: center;
+    align-items: stretch;
+    margin: 1rem auto 2.5rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.about-stats .stat-card {
+    flex: 1 1 0;
+    border-radius: 16px;
+    background: black;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    transition: transform .25s ease, border-color .25s ease;
+}
+
+.about-stats .stat-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Override shared .stat-number/.stat-label for this section */
+.about-stats .stat-number {
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+    background: red;
+    background-clip: text;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.about-stats .stat-label {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+    .about-stats {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
 .about-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: 'Braind Yerevan';
     src: url('../fonts/BraindYerevan.otf') format('opentype');
     line-height: 1.6;
@@ -738,8 +784,7 @@ nav ul li button:hover::after {
 .portfolio-container {
     position: relative;
     width: 100%;
-    max-width: 1235px;
-    /* Adjusted to accommodate two cards and a gap */
+    max-width: 1250px;
     margin: 0 auto;
     flex-grow: 1;
     display: flex;
@@ -974,7 +1019,6 @@ nav ul li button:hover::after {
 .stat-label {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
 }
 
 /* Technology Stack */
@@ -989,7 +1033,7 @@ nav ul li button:hover::after {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
@@ -1116,7 +1160,7 @@ nav ul li button:hover::after {
 /* partners */
 .partners-section {
     height: 100vh;
-    padding: 10vh 2rem;
+    padding: 10vh 2rem 0 2rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1191,7 +1235,7 @@ nav ul li button:hover::after {
 /* Section header with scroll animations */
 .section-header {
     text-align: center;
-    margin-top: 10vh;
+    margin-top: 3vh;
     position: relative;
     z-index: 5;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1811,7 +1855,7 @@ nav ul li button:hover::after {
 .action-submit-button {
     width: 100%;
     padding: 1rem;
-    background: linear-gradient(135deg, #ff453a, #30d158);
+    background: linear-gradient(135deg, red, green);
     color: white;
     border: none;
     border-radius: 12px;
@@ -1954,7 +1998,7 @@ nav ul li button:hover::after {
 /* Responsive Design */
 /* Portfolio Carousel */
 #portfolioSection {
-    min-height: 140vh;
+    min-height: 100vh;
     width: 100vw;
     background: black;
     position: relative;
@@ -1963,7 +2007,7 @@ nav ul li button:hover::after {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    padding: 10vh 10vh 0 10vh;
+    padding-top: 10vh;
 }
 
 .portfolio-carousel-container {
@@ -1987,8 +2031,8 @@ nav ul li button:hover::after {
     background: rgba(255, 255, 255, 0.1);
     border: none;
     font-size: 1.2rem;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -2004,12 +2048,12 @@ nav ul li button:hover::after {
 }
 
 .carousel-btn.prev {
-    left: 50px;
+    left: -60px;
     color: red;
 }
 
 .carousel-btn.next {
-    right: 50px;
+    right: -60px;
     color: green;
 }
 
@@ -2065,8 +2109,7 @@ nav ul li button:hover::after {
 /* Project Card */
 .project-card {
     flex: 0 0 auto;
-    width: 600px;
-    min-width: 300px;
+   
     background: #0a0a0b;
     border-radius: 20px;
     padding: 1rem;
@@ -2101,7 +2144,7 @@ nav ul li button:hover::after {
 }
 
 .project-card p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
@@ -2243,7 +2286,7 @@ nav ul li button:hover::after {
     right: 30px;
     width: 45px;
     height: 45px;
-    background: linear-gradient(135deg, #ff453a, #30d158);
+    background: linear-gradient(135deg, red, green);
     color: white;
     border-radius: 50%;
     display: flex;
