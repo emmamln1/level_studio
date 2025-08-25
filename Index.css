@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Braind Yerevan', 'Arial Unicode MS', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Braind Yerevan', 'Arial Unicode MS', sans-serif;
+}
 /* ==== Header layout stabilization (prevent shifting on language change) ==== */
 
 #site-header .logo img {
@@ -339,6 +346,8 @@ nav ul li button:hover::after {
 
 .about-text {
     font-size: 1.2rem;
+    font-family: 'Braind Yerevan';
+    src: url('../fonts/BraindYerevan.otf') format('opentype');
     line-height: 1.6;
     margin-bottom: 2.5rem;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
@@ -1464,11 +1473,9 @@ nav ul li button:hover::after {
 /* Carousel dots */
 .carousel-dots {
     position: absolute;
-    bottom: 4rem;
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    gap: 0.5rem;
     z-index: 10;
 }
 
@@ -2018,9 +2025,6 @@ nav ul li button:hover::after {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-    margin-top: 0.5rem;
-    /* Փոքր margin, որպեսզի տեղավորվի */
-    margin-bottom: 0;
 }
 
 .carousel-dot {

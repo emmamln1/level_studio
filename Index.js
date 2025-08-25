@@ -178,7 +178,7 @@ const xaiServiceRegistry = [
         number: "02",
         title: "Վեբ կայքերի պատրաստում",
         description: "Կայքերի և վեբ հավելվածների մշակում ժամանակակից տեխնոլոգիաներով",
-        features: ["React", "Node.js", "TypeScript", "Next.js"],
+        features: ["React", "JavaScript", "PHP", "Next.js"],
         bgImage: ""
     },
     {
