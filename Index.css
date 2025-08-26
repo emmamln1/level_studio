@@ -72,89 +72,15 @@ body {
 
 /* Responsive design */
 /* Remove gradient classes since we're using images now */
-.portfolio-container {
-    position: relative;
-    width: 100%;
-    max-width: 1235px;
-    margin: 0 auto;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 
 /* Modern Title */
-.portfolio-subtitle {
-    font-size: clamp(1rem, 1vw, 1.2rem);
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 400;
-}
 
-/* Projects Grid */
-.projects-grid {
-    display: flex;
-    gap: clamp(1rem, 3vw, 2rem);
-    width: 80%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 1rem;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-}
 
-.projects-grid::-webkit-scrollbar {
-    display: none;
-}
 
-/* Portfolio Carousel Dots */
-.portfolio-carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin: 1.5rem;
-}
-
-.portfolio-carousel-dots .dot {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.portfolio-carousel-dots .dot.active {
-    background-color: white;
-    transform: scale(1.2);
-}
 
 /* Project Card */
-.project-card:nth-child(1) {
-    animation-delay: 0.1s;
-}
 
-.project-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.project-card:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-.project-card:nth-child(4) {
-    animation-delay: 0.4s;
-}
-
-.project-card:nth-child(5) {
-    animation-delay: 0.5s;
-}
-
-.project-card:nth-child(6) {
-    animation-delay: 0.6s;
-}
 
 @keyframes slideUp {
     to {
@@ -163,9 +89,7 @@ body {
     }
 }
 
-.project-card:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-}
+
 
 /* Project Image */
 .xaiQuantumContainer {
@@ -190,23 +114,10 @@ body {
     z-index: 1;
 }
 
-.project-image {
-    position: relative;
-    height: 310px;
-    overflow: hidden;
-    /* Removed background gradients to make way for carousel */
-}
 
-.project-card:nth-child(even) .project-image {
-    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0.05));
-}
 
-.project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
+
+
 
 /* Image Placeholder with Icon */
 .image-placeholder {
@@ -236,127 +147,8 @@ body {
 }
 
 /* Project Status Badge */
-.project-status {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.4rem 1rem;
-    background: rgba(0, 255, 0, 0.2);
-    border: 1px solid rgba(0, 255, 0, 0.3);
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #00BE61;
-    backdrop-filter: blur(10px);
-    /* Better readability on bright images */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-}
-
-.status-in-progress {
-    background: #ffa500;
-    border-color: #cc8400;
-    color: #ffffff;
-}
-
-.status-completed {
-    background: #00BE61;
-    border-color: #009e52;
-    color: #ffffff;
-}
 
 /* Project Content */
-.project-content {
-    padding: 1.5rem;
-}
-
-.project-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.7rem;
-}
-
-.project-title-text {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #fff;
-    margin: 0;
-}
-
-.project-category {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 500;
-}
-
-.project-description {
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 1.5rem;
-    min-height: 65px;
-}
-
-/* Project Stats */
-.project-stats {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.6rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-}
-
-.stat-item {
-    text-align: center;
-    flex: 1;
-}
-
-.stat-number {
-    display: block;
-    font-size: 1.3rem;
-    font-weight: 700;
-    background: linear-gradient(to right, #1dff00, green);
-    background-clip: text;
-    -webkit-text-fill-color: transparent !important;
-    margin-bottom: 0.6rem;
-}
-
-.project-card:nth-child(even) .stat-number {
-    color: #00BE61;
-}
-
-.stat-label {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-/* Technology Stack */
-.tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.tech-tag {
-    padding: 0.8rem 1rem;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    font-size: 1rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
-}
-
-.tech-tag:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
 
 /* Project Links */
 .project-links {
@@ -470,135 +262,16 @@ body {
     }
 }
 
-/* partners */
-.partners-section {
-    height: 100vh;
-    padding: 10vh 2rem 0 2rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: black;
-    overflow: hidden;
-}
 
 /* Animated grid background */
-.grid-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120%;
-    height: 120%;
-    opacity: 0.02;
-    background-image: linear-gradient(rgba(255, 0, 0, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 0, 0.3) 1px, transparent 1px);
-    background-size: 60px 60px;
-    transform: translate(-10%, -10%);
-}
 
-/* Parallax orbs */
-.floating-orb {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(0, 255, 0, 0.1));
-    filter: blur(1px);
-    animation: orbFloat 8s ease-in-out infinite;
-}
 
-.orb-1 {
-    width: 200px;
-    height: 200px;
-    top: 10%;
-    left: 5%;
-    animation-delay: 0s;
-}
 
-.orb-2 {
-    width: 150px;
-    height: 150px;
-    top: 60%;
-    right: 10%;
-    animation-delay: -2s;
-}
 
-.orb-3 {
-    width: 100px;
-    height: 100px;
-    top: 30%;
-    right: 20%;
-    animation-delay: -4s;
-}
 
-@keyframes orbFloat {
-
-    0%,
-    100% {
-        transform: translateY(0px) translateX(0px) scale(1);
-    }
-
-    33% {
-        transform: translateY(-30px) translateX(20px) scale(1.1);
-    }
-
-    66% {
-        transform: translateY(20px) translateX(-15px) scale(0.9);
-    }
-}
-
-/* Section header with scroll animations */
-.section-header {
-    text-align: center;
-    margin-top: 3vh;
-    position: relative;
-    z-index: 5;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.section-header.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.section-title {
-    font-size: clamp(2rem, 4vw, 4.5rem);
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
-    background-size: 300% 300%;
-    color: white;
-    background-clip: text;
-    position: relative;
-}
-
-.section-header.animate-in .section-title::after {
-    width: 80px;
-}
-
-.section-subtitle {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    color: #888;
-    font-weight: 400;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease 0.3s;
-}
-
-.section-header.animate-in .section-subtitle {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* Partners container with scroll animations */
-.partners-container {
-    width: 93%;
-    max-width: 1400px;
-    position: relative;
-    z-index: 3;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .partners-grid {
     display: flex;
@@ -612,243 +285,6 @@ body {
     scroll-snap-type: none;
     scroll-behavior: smooth;
     justify-content: space-between;
-}
-
-/* Partner cards with enhanced scroll animations */
-.partner-card {
-    background: linear-gradient(135deg, rgba(25, 25, 26, 0.8) 0%, rgba(15, 15, 16, 0.9) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: clamp(1.5rem, 3vw, 2rem);
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    backdrop-filter: blur(20px);
-    min-width: 300px;
-    width: 300px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    /* Initial state for scroll animation */
-    opacity: 0;
-    transform: translateX(60px) scale(0.9);
-}
-
-.partner-card.scroll-animate {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-}
-
-.partner-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    background: linear-gradient(135deg, transparent, rgba(255, 0, 0, 0.2), transparent, rgba(0, 255, 0, 0.2));
-    border-radius: 20px;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: xor;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.partner-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-    transition: left 0.6s ease;
-}
-
-.partner-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: rgba(255, 0, 0, 0.2);
-    z-index: 2;
-}
-
-.partner-card:hover::before {
-    opacity: 1;
-}
-
-.partner-card:hover::after {
-    left: 100%;
-}
-
-/* Card content */
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.partner-icon {
-    width: clamp(40px, 8vw, 56px);
-    height: clamp(40px, 8vw, 56px);
-    background: linear-gradient(135deg, #FD3130, #00BE61);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    color: #000;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.partner-icon::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
-    transform: translateX(-100%) skewX(-20deg);
-    transition: transform 0.8s ease;
-}
-
-.partner-card:hover .partner-icon::after {
-    transform: translateX(200%) skewX(-20deg);
-}
-
-.partner-info h3 {
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 0.3rem;
-    transition: color 0.3s ease;
-}
-
-.partner-card:hover .partner-info h3 {
-    color: #ff4444;
-}
-
-.partner-status {
-    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-    color: #00BE61;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    opacity: 0.9;
-}
-
-.partner-description {
-    font-size: clamp(0.85rem, 1.8vw, 1rem);
-    color: #aaa;
-    line-height: 1.6;
-    transition: color 0.3s ease;
-}
-
-.partner-card:hover .partner-description {
-    color: #ccc;
-}
-
-/* Navigation arrows */
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background: rgba(25, 25, 26, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    z-index: 5;
-    color: #fff;
-}
-
-.carousel-nav:hover {
-    background: rgba(255, 0, 0, 0.2);
-    border-color: rgba(255, 0, 0, 0.3);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-nav.prev {
-    left: 1rem;
-}
-
-.carousel-nav.next {
-    right: 1rem;
-}
-
-.carousel-nav svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-}
-
-/* Disabled state for nav buttons */
-.carousel-nav.disabled,
-.carousel-nav:disabled {
-    opacity: 0.4;
-    pointer-events: none;
-    cursor: default;
-    transform: translateY(-50%) scale(1);
-    background: rgba(25, 25, 26, 0.6);
-}
-
-/* Helper: hide off-page cards */
-.partner-card.hidden {
-    display: none !important;
-}
-
-/* Scroll progress indicator */
-.scroll-progress {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    z-index: 10;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #FD3130, #00BE61);
-    border-radius: 3px;
-    transition: width 0.3s ease;
-    width: 0%;
-}
-
-/* Carousel dots */
-.carousel-dots {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-}
-
-.carousel-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    background: linear-gradient(45deg, #FD3130, #00BE61);
-    width: 24px;
-    border-radius: 4px;
 }
 
 /* Responsive design */
@@ -1310,19 +746,7 @@ body {
 
 /* Responsive Design */
 /* Portfolio Carousel */
-#portfolioSection {
-    min-height: 100vh;
-    width: 100vw;
-    background: black;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    padding-top: 10vh;
-    padding-bottom: 4vh;
-}
+
 
 .portfolio-carousel-container {
     position: relative;
@@ -1338,46 +762,9 @@ body {
     align-items: center;
 }
 
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    font-size: 1.2rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.carousel-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-btn.prev {
-    left: -60px;
-    color: red;
-}
-
-.carousel-btn.next {
-    right: -60px;
-    color: green;
-}
 
 /* Disabled state for portfolio nav buttons */
-.carousel-btn.disabled,
-.carousel-btn:disabled {
-    opacity: 0.4;
-    pointer-events: none;
-    cursor: default;
-}
 
 .carousel-dots {
     display: flex;
@@ -1399,13 +786,6 @@ body {
     transform: scale(1.3);
 }
 
-/* Portfolio Title */
-.portfolio-title {
-    text-align: center;
-    color: #ffffff;
-    font-weight: 800;
-    padding: 5vh;
-}
 
 /* Projects Grid (Carousel) */
 .projects-grid {
@@ -1421,20 +801,7 @@ body {
 }
 
 /* Project Card */
-.project-card {
-    flex: 0 0 auto;
-   width: 600px;
-    background: #0a0a0b;
-    border-radius: 20px;
-    padding: 1rem;
-    /* Նվազեցրինք padding-ը */
-    scroll-snap-align: start;
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    animation: slideUp 0.8s ease-out forwards;
-    backdrop-filter: blur(20px);
-    cursor: pointer;
-}
+
 
 /* Card-ի ներքին էլեմենտներ */
 .project-card .project-icon {
@@ -1516,81 +883,6 @@ body {
 .project-card .links a:hover {
     background: #30d158;
     color: #0a0a0b;
-}
-
-/* Card Hover Effect */
-/* Carousel Styles */
-.carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    /* Adjust as needed */
-    height: 350px;
-    /* Adjust as needed */
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-.carousel-container .carousel-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 100;
-}
-
-.carousel-container .dot {
-    width: 12px;
-    height: 12px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.carousel-container .dot.active {
-    background-color: white;
-}
-
-.carousel-slide {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-.prev-btn,
-.next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-    z-index: 100;
-}
-
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
 }
 
 /* Call Button Styling */

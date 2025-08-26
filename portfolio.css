@@ -171,7 +171,7 @@
 
 .stat-number {
     display: block;
-    font-size: 1.3rem;
+    font-size: 2rem;
     font-weight: 700;
     background: linear-gradient(to right, #1dff00, green);
     background-clip: text;
