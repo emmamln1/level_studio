@@ -1,0 +1,387 @@
+/* Portfolio Section */
+#portfolioSection {
+    min-height: 100vh;
+    width: 100vw;
+    background: black;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 10vh;
+    padding-bottom: 4vh;
+}
+
+/* Portfolio Container */
+.portfolio-container {
+    position: relative;
+    width: 100%;
+    max-width: 1235px;
+    margin: 0 auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Portfolio Title */
+.portfolio-title {
+    text-align: center;
+    color: #ffffff;
+    font-weight: 800;
+    padding: 5vh;
+}
+
+/* Portfolio Subtitle */
+.portfolio-subtitle {
+    font-size: clamp(1rem, 1vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+}
+
+/* Projects Grid / Carousel */
+.projects-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 2rem;
+    padding: 0.5rem 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    width: 80%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.projects-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* Project Card */
+.project-card {
+    flex: 0 0 auto;
+    width: 600px;
+    background: #0a0a0b;
+    border-radius: 20px;
+    padding: 1rem;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.8s ease-out forwards;
+    backdrop-filter: blur(20px);
+    cursor: pointer;
+}
+
+.project-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.project-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.project-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.project-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.project-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.project-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.project-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Project Image */
+.project-image {
+    position: relative;
+    height: 310px;
+    overflow: hidden;
+}
+
+.project-card:nth-child(even) .project-image {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0.05));
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Project Content */
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+}
+
+.project-title-text {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+.project-category {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.project-description {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+    min-height: 65px;
+}
+
+/* Project Stats */
+.project-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.6rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #1dff00, green);
+    background-clip: text;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 0.6rem;
+}
+
+.project-card:nth-child(even) .stat-number {
+    color: #00BE61;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Technology Stack */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Project Status Badge */
+.project-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.4rem 1rem;
+    background: rgba(0, 255, 0, 0.2);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #00BE61;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.status-in-progress {
+    background: #ffa500;
+    border-color: #cc8400;
+    color: #ffffff;
+}
+
+.status-completed {
+    background: #00BE61;
+    border-color: #009e52;
+    color: #ffffff;
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    font-size: 1.2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+    left: -60px;
+    color: red;
+}
+
+.carousel-btn.next {
+    right: -60px;
+    color: green;
+}
+
+/* Disabled state for portfolio nav buttons */
+.carousel-btn.disabled,
+.carousel-btn:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Portfolio Carousel Dots */
+.portfolio-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem;
+}
+
+.portfolio-carousel-dots .dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.portfolio-carousel-dots .dot.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+/* Image Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-container .carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+}
+
+.carousel-container .dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-container .dot.active {
+    background-color: white;
+}
+
+.carousel-slide {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Animation for Slide Up */
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
