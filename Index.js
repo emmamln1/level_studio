@@ -523,22 +523,441 @@ document.querySelector('.contact-btn').addEventListener('click', function(e) {
     alert('Կապ մեզ հետ!');
 });
 
+// About Section Carousel
+function initAboutCarousel() {
+    const carousel = document.querySelector('.about-carousel');
+    if (!carousel) return;
 
+    const track = carousel.querySelector('.about-carousel__track');
+    const slides = Array.from(carousel.querySelectorAll('.about-carousel__slide'));
+    const dotsContainer = carousel.querySelector('.about-carousel__dots');
+    const prevBtn = carousel.querySelector('.about-carousel__btn--prev');
+    const nextBtn = carousel.querySelector('.about-carousel__btn--next');
+    
+    let currentIndex = 0;
+    let isAnimating = false;
+    const ANIMATION_DURATION = 500; // ms
 
-// Create dots periodically
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('about-carousel__dot');
+        if (index === 0) dot.classList.add('active');
+        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
 
-// Intersection Observer for scroll animations
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
+    const dots = Array.from(dotsContainer.children);
+
+    // Set initial position
+    updateCarousel();
+
+    // Navigation functions
+    function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        if (index === currentIndex || isAnimating) return;
+
+        isAnimating = true;
+        currentIndex = index;
+        updateCarousel();
+        
+        // Reset animation flag after transition
+        setTimeout(() => {
+            isAnimating = false;
+        }, ANIMATION_DURATION);
+    }
+
+    function updateCarousel() {
+        // Update track position
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+        
+        // Update button states
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === slides.length - 1;
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+    // Keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            goToSlide(currentIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+            goToSlide(currentIndex + 1);
         }
     });
-}, { threshold: 0.1 });
 
-// Observe all project cards
-document.quer
+    // Touch support
+    let touchStartX = 0;
+    let touchEndX = 0;
 
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+        touchEndX = e.touches[0].clientX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', () => {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                goToSlide(currentIndex + 1); // Swipe left
+            } else {
+                goToSlide(currentIndex - 1); // Swipe right
+            }
+        }
+    });
+
+    // Auto-advance (optional)
+    let autoSlideInterval;
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            goToSlide(currentIndex + 1);
+        }, 5000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    // Start auto-slide on mouse leave, stop on hover
+    carousel.addEventListener('mouseenter', stopAutoSlide);
+    carousel.addEventListener('mouseleave', startAutoSlide);
+    startAutoSlide();
+
+    // Make carousel focusable for keyboard navigation
+    carousel.setAttribute('tabindex', '0');
+}
+
+// Intersection Observer for scroll animation
+function setupAboutCarouselObserver() {
+    const carousel = document.querySelector('.about-carousel');
+    if (!carousel) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Initialize carousel only when visible
+                initAboutCarousel();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    observer.observe(carousel);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    setupAboutCarouselObserver();
+    // Other initializations...
+    initPortfolioCarousel();
+    initializeAllImageCarousels();
+    initAboutCounters();
+});
+
+// Smooth scrolling for better UX
+document.documentElement.style.scrollBehavior = 'smooth';
+
+// Portfolio Carousel
+function initPortfolioCarousel() {
+    const carousel = document.getElementById('projectsGrid');
+    const prevBtn = document.getElementById('portfolioPrevBtn');
+    const nextBtn = document.getElementById('portfolioNextBtn');
+    const dotsContainer = document.getElementById('portfolioDots');
+    if (!carousel || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    let cardEls = Array.from(carousel.querySelectorAll('.project-card'));
+    let cardWidth = 0;
+    let gap = 0;
+    let itemsPerPage = 1;
+    let totalPages = 1;
+    let currentPage = 0;
+    let resizing = false;
+
+    function calculateLayout() {
+        cardEls = Array.from(carousel.querySelectorAll('.project-card'));
+        const firstCard = cardEls[0];
+        if (!firstCard) {
+            itemsPerPage = 1;
+            totalPages = 1;
+            currentPage = 0;
+            return;
+        }
+        cardWidth = firstCard.getBoundingClientRect().width;
+        const styles = window.getComputedStyle(carousel);
+        gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+        const available = carousel.clientWidth;
+        itemsPerPage = Math.max(1, Math.floor((available + gap) / (cardWidth + gap)));
+        totalPages = Math.max(1, Math.ceil(cardEls.length / itemsPerPage));
+        // Clamp current page
+        currentPage = Math.min(currentPage, totalPages - 1);
+    }
+
+    function renderDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'dot'; // matches .portfolio-carousel-dots .dot styles
+            dot.addEventListener('click', () => setPage(i));
+            dotsContainer.appendChild(dot);
+        }
+        updateUI();
+    }
+
+    function updateUI() {
+        const dots = dotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentPage));
+        if (prevBtn) {
+            const disabled = currentPage <= 0;
+            prevBtn.disabled = disabled;
+            prevBtn.classList.toggle('disabled', disabled);
+        }
+        if (nextBtn) {
+            const disabled = currentPage >= totalPages - 1;
+            nextBtn.disabled = disabled;
+            nextBtn.classList.toggle('disabled', disabled);
+        }
+    }
+
+    function setPage(index) {
+        const clamped = Math.max(0, Math.min(index, totalPages - 1));
+        currentPage = clamped;
+        const startIndex = clamped * itemsPerPage;
+        const targetCard = cardEls[startIndex];
+        if (targetCard) {
+            const cardRect = targetCard.getBoundingClientRect();
+            const containerRect = carousel.getBoundingClientRect();
+            const delta = cardRect.left - containerRect.left;
+            const targetLeft = carousel.scrollLeft + delta;
+            carousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
+        }
+        updateUI();
+    }
+
+    function syncFromScroll() {
+        if (!cardWidth) return;
+        const pageWidth = itemsPerPage * (cardWidth + gap);
+        const page = Math.min(
+            totalPages - 1,
+            Math.round(carousel.scrollLeft / Math.max(1, pageWidth))
+        );
+        if (page !== currentPage) {
+            currentPage = page;
+            updateUI();
+        }
+    }
+
+    // Mouse drag
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    carousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        carousel.style.cursor = 'grabbing';
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        isDown = false;
+        carousel.style.cursor = 'grab';
+    });
+
+    carousel.addEventListener('mouseup', () => {
+        isDown = false;
+        carousel.style.cursor = 'grab';
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch support
+    let touchStartX;
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+        if (!touchStartX) return;
+        const touchX = e.touches[0].clientX;
+        const walk = (touchX - touchStartX) * 2;
+        carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    carousel.addEventListener('touchend', () => {
+        touchStartX = null;
+    });
+
+    // Scroll event to update current page and dots
+    carousel.addEventListener('scroll', syncFromScroll);
+
+    // Button events (page-based)
+    prevBtn.addEventListener('click', () => setPage(currentPage - 1));
+    nextBtn.addEventListener('click', () => setPage(currentPage + 1));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') setPage(currentPage - 1);
+        if (e.key === 'ArrowRight') setPage(currentPage + 1);
+    });
+
+    // Initialize
+    calculateLayout();
+    renderDots();
+    setPage(0);
+
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+        if (resizing) return;
+        resizing = true;
+        setTimeout(() => {
+            calculateLayout();
+            renderDots();
+            setPage(Math.min(currentPage, totalPages - 1));
+            resizing = false;
+        }, 150);
+    });
+}
+
+// Initialize a single image carousel
+function initImageCarousel(carouselContainer) {
+    const carouselSlide = carouselContainer.querySelector('.carousel-slide');
+    const carouselImages = carouselContainer.querySelectorAll('.carousel-slide img');
+    const prevBtn = carouselContainer.querySelector('.prev-btn');
+    const nextBtn = carouselContainer.querySelector('.next-btn');
+    const dotsContainer = carouselContainer.querySelector('.carousel-dots');
+
+    let currentIndex = 0;
+    const totalImages = carouselImages.length;
+
+    // Create dots dynamically if not already in HTML
+    if (dotsContainer && dotsContainer.children.length === 0) {
+        for (let i = 0; i < totalImages; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+    const dots = dotsContainer.querySelectorAll('.carousel-dots .dot');
+
+    function showSlide(index) {
+        if (carouselSlide) {
+            carouselSlide.style.transform = `translateX(-${index * 100}%)`;
+            // Update active dot
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        showSlide(currentIndex);
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        showSlide(currentIndex);
+    }
+
+    // Event listeners for buttons
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+    // Initialize carousel
+    showSlide(currentIndex);
+}
+
+// Initialize all image carousels on page load
+function initializeAllImageCarousels() {
+    const allCarouselContainers = document.querySelectorAll('.project-card .carousel-container');
+    allCarouselContainers.forEach(container => {
+        initImageCarousel(container);
+    });
+}
+
+// Animated Counters (About Section)
+function initAboutCounters() {
+    const statsSection = document.getElementById('aboutStats');
+    if (!statsSection) return;
+
+    const numbers = statsSection.querySelectorAll('.stat-number');
+    let started = false;
+
+    function animateValue(el, target, duration = 1500) {
+        const suffix = el.getAttribute('data-suffix') || '';
+        const start = 0;
+        const startTime = performance.now();
+
+        function tick(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const value = Math.floor(start + (target - start) * progress);
+            el.textContent = value + suffix;
+            if (progress < 1) {
+                requestAnimationFrame(tick);
+            } else {
+                el.textContent = target + suffix;
+            }
+        }
+        requestAnimationFrame(tick);
+    }
+
+    function startAnimation() {
+        if (started) return;
+        started = true;
+        numbers.forEach(el => {
+            const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+            animateValue(el, target);
+        });
+    }
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startAnimation();
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.35 });
+        observer.observe(statsSection);
+    } else {
+        // Fallback for very old browsers
+        setTimeout(startAnimation, 800);
+    }
+}
 
 // partners
 class LandingPartners {
@@ -881,346 +1300,70 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Smooth scrolling for better UX
-document.documentElement.style.scrollBehavior = 'smooth';
-
-
 // contact 
 
-// Portfolio Carousel
-function initPortfolioCarousel() {
-    const carousel = document.getElementById('projectsGrid');
-    const prevBtn = document.getElementById('portfolioPrevBtn');
-    const nextBtn = document.getElementById('portfolioNextBtn');
-    const dotsContainer = document.getElementById('portfolioDots');
-    if (!carousel || !prevBtn || !nextBtn || !dotsContainer) return;
+// Create dots periodically
 
-    let cardEls = Array.from(carousel.querySelectorAll('.project-card'));
-    let cardWidth = 0;
-    let gap = 0;
-    let itemsPerPage = 1;
-    let totalPages = 1;
-    let currentPage = 0;
-    let resizing = false;
-
-    function calculateLayout() {
-        cardEls = Array.from(carousel.querySelectorAll('.project-card'));
-        const firstCard = cardEls[0];
-        if (!firstCard) {
-            itemsPerPage = 1;
-            totalPages = 1;
-            currentPage = 0;
-            return;
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
         }
-        cardWidth = firstCard.getBoundingClientRect().width;
-        const styles = window.getComputedStyle(carousel);
-        gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
-        const available = carousel.clientWidth;
-        itemsPerPage = Math.max(1, Math.floor((available + gap) / (cardWidth + gap)));
-        totalPages = Math.max(1, Math.ceil(cardEls.length / itemsPerPage));
-    }
-
-    function renderDots() {
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i < totalPages; i++) {
-            const dot = document.createElement('span');
-            dot.className = 'dot'; // matches .portfolio-carousel-dots .dot styles
-            dot.addEventListener('click', () => setPage(i));
-            dotsContainer.appendChild(dot);
-        }
-        updateUI();
-    }
-
-    function updateUI() {
-        const dots = dotsContainer.querySelectorAll('.dot');
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentPage));
-        if (prevBtn) {
-            const disabled = currentPage <= 0;
-            prevBtn.disabled = disabled;
-            prevBtn.classList.toggle('disabled', disabled);
-        }
-        if (nextBtn) {
-            const disabled = currentPage >= totalPages - 1;
-            nextBtn.disabled = disabled;
-            nextBtn.classList.toggle('disabled', disabled);
-        }
-    }
-
-    function setPage(page) {
-        const clamped = Math.max(0, Math.min(page, totalPages - 1));
-        currentPage = clamped;
-        const startIndex = clamped * itemsPerPage;
-        const targetCard = cardEls[startIndex];
-        if (targetCard) {
-            const cardRect = targetCard.getBoundingClientRect();
-            const containerRect = carousel.getBoundingClientRect();
-            const delta = cardRect.left - containerRect.left;
-            const targetLeft = carousel.scrollLeft + delta;
-            carousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
-        }
-        updateUI();
-    }
-
-    function syncFromScroll() {
-        if (!cardWidth) return;
-        const pageWidth = itemsPerPage * (cardWidth + gap);
-        const page = Math.min(
-            totalPages - 1,
-            Math.round(carousel.scrollLeft / Math.max(1, pageWidth))
-        );
-        if (page !== currentPage) {
-            currentPage = page;
-            updateUI();
-        }
-    }
-
-    // Mouse drag
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    carousel.addEventListener('mousedown', (e) => {
-        isDown = true;
-        carousel.style.cursor = 'grabbing';
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
     });
+}, { threshold: 0.1 });
 
-    carousel.addEventListener('mouseleave', () => {
-        isDown = false;
-        carousel.style.cursor = 'grab';
-    });
-
-    carousel.addEventListener('mouseup', () => {
-        isDown = false;
-        carousel.style.cursor = 'grab';
-    });
-
-    carousel.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        carousel.scrollLeft = scrollLeft - walk;
-    });
-
-    // Touch support
-    let touchStartX;
-    carousel.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-        scrollLeft = carousel.scrollLeft;
-    });
-
-    carousel.addEventListener('touchmove', (e) => {
-        if (!touchStartX) return;
-        const touchX = e.touches[0].clientX;
-        const walk = (touchX - touchStartX) * 2;
-        carousel.scrollLeft = scrollLeft - walk;
-    });
-
-    carousel.addEventListener('touchend', () => {
-        touchStartX = null;
-    });
-
-    // Scroll event to update current page and dots
-    carousel.addEventListener('scroll', syncFromScroll);
-
-    // Button events (page-based)
-    prevBtn.addEventListener('click', () => setPage(currentPage - 1));
-    nextBtn.addEventListener('click', () => setPage(currentPage + 1));
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') setPage(currentPage - 1);
-        if (e.key === 'ArrowRight') setPage(currentPage + 1);
-    });
-
-    // Initialize
-    calculateLayout();
-    renderDots();
-    setPage(0);
-
-    // Recalculate on resize
-    window.addEventListener('resize', () => {
-        if (resizing) return;
-        resizing = true;
-        setTimeout(() => {
-            calculateLayout();
-            renderDots();
-            setPage(Math.min(currentPage, totalPages - 1));
-            resizing = false;
-        }, 150);
-    });
-}
-
-// Initialize a single image carousel
-function initImageCarousel(carouselContainer) {
-    const carouselSlide = carouselContainer.querySelector('.carousel-slide');
-    const carouselImages = carouselContainer.querySelectorAll('.carousel-slide img');
-    const prevBtn = carouselContainer.querySelector('.prev-btn');
-    const nextBtn = carouselContainer.querySelector('.next-btn');
-    const dotsContainer = carouselContainer.querySelector('.carousel-dots');
-
-    let currentIndex = 0;
-    const totalImages = carouselImages.length;
-
-    // Create dots dynamically if not already in HTML
-    if (dotsContainer && dotsContainer.children.length === 0) {
-        for (let i = 0; i < totalImages; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        }
-    }
-    const dots = dotsContainer.querySelectorAll('.carousel-dots .dot');
-
-    function showSlide(index) {
-        if (carouselSlide) {
-            carouselSlide.style.transform = `translateX(${-index * 100}%)`;
-            // Update active dot
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalImages;
-        showSlide(currentIndex);
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-        showSlide(currentIndex);
-    }
-
-    function goToSlide(index) {
-        currentIndex = index;
-        showSlide(currentIndex);
-    }
-
-    // Event listeners for buttons
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-
-    // Initialize carousel
-    showSlide(currentIndex);
-}
-
-// Initialize all image carousels on page load
-function initializeAllImageCarousels() {
-    const allCarouselContainers = document.querySelectorAll('.project-card .carousel-container');
-    allCarouselContainers.forEach(container => {
-        initImageCarousel(container);
-    });
-}
-
-// Animated Counters (About Section)
-function initAboutCounters() {
-    const statsSection = document.getElementById('aboutStats');
-    if (!statsSection) return;
-
-    const numbers = statsSection.querySelectorAll('.stat-number');
-    let started = false;
-
-    function animateValue(el, target, duration = 1500) {
-        const suffix = el.getAttribute('data-suffix') || '';
-        const start = 0;
-        const startTime = performance.now();
-
-        function tick(now) {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const value = Math.floor(start + (target - start) * progress);
-            el.textContent = value + suffix;
-            if (progress < 1) {
-                requestAnimationFrame(tick);
-            } else {
-                el.textContent = target + suffix;
-            }
-        }
-        requestAnimationFrame(tick);
-    }
-
-    function startAnimation() {
-        if (started) return;
-        started = true;
-        numbers.forEach(el => {
-            const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-            animateValue(el, target);
-        });
-    }
-
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    startAnimation();
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.35 });
-        observer.observe(statsSection);
-    } else {
-        // Fallback for very old browsers
-        setTimeout(startAnimation, 800);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    initPortfolioCarousel();
-    initializeAllImageCarousels(); // Call the new function here
-    initAboutCounters();
-
-    // Initialize Email.js (replace with your actual service ID, template ID, and Public Key)
-    (function() {
-        emailjs.init("b7GDWdZ4Eu-Xc5PFL"); 
-    })();
-
-    // Get the form and success message elements
-    const contactForm = document.getElementById('contactForm');
-    const successMessage = document.getElementById('successMessage');
-
-    // Add event listener for form submission
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        const serviceID = 'service_o1s9342'; // Replace with your Service ID
-        const templateID = 'template_xxt8o1u'; // Replace with your Template ID
-
-        // Collect form data
-        const formData = {
-            contact: this.contact.value,
-            message: this.message.value,
-            email: 'emma.yan03@gmail.com' // Updated to 'email' to match Email.js template
-        };
-
-        // Store data in local storage
-        localStorage.setItem('contactFormData', JSON.stringify(formData));
-
-        // Send the email
-        emailjs.send(serviceID, templateID, formData)
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                successMessage.style.display = 'block'; // Show success message
-                contactForm.reset(); // Clear the form
-                localStorage.removeItem('contactFormData'); // Clear local storage after successful send
-                setTimeout(() => {
-                    successMessage.style.display = 'none'; // Hide success message after a few seconds
-                }, 5000);
-            }, function(error) {
-                console.log('FAILED...', error);
-                alert('Failed to send message. Please try again later.'); // Show error message
-            });
-    });
-
-    // Check for previously stored data in local storage and pre-fill the form
-    const storedFormData = localStorage.getItem('contactFormData');
-    if (storedFormData) {
-        const formData = JSON.parse(storedFormData);
-        document.getElementById('contact').value = formData.contact || '';
-        document.getElementById('message').value = formData.message || '';
-    }
+// Observe all project cards
+document.querySelectorAll('.project-card').forEach(card => {
+    observer.observe(card);
 });
 
+// Initialize Email.js (replace with your actual service ID, template ID, and Public Key)
+(function() {
+    emailjs.init("b7GDWdZ4Eu-Xc5PFL"); 
+})();
+
+// Get the form and success message elements
+const contactForm = document.getElementById('contactForm');
+const successMessage = document.getElementById('successMessage');
+
+// Add event listener for form submission
+contactForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const serviceID = 'service_o1s9342'; // Replace with your Service ID
+    const templateID = 'template_xxt8o1u'; // Replace with your Template ID
+
+    // Collect form data
+    const formData = {
+        contact: this.contact.value,
+        message: this.message.value,
+        email: 'emma.yan03@gmail.com' // Updated to 'email' to match Email.js template
+    };
+
+    // Store data in local storage
+    localStorage.setItem('contactFormData', JSON.stringify(formData));
+
+    // Send the email
+    emailjs.send(serviceID, templateID, formData)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            successMessage.style.display = 'block'; // Show success message
+            contactForm.reset(); // Clear the form
+            localStorage.removeItem('contactFormData'); // Clear local storage after successful send
+            setTimeout(() => {
+                successMessage.style.display = 'none'; // Hide success message after a few seconds
+            }, 5000);
+        }, function(error) {
+            console.log('FAILED...', error);
+            alert('Failed to send message. Please try again later.'); // Show error message
+        });
+});
+
+// Check for previously stored data in local storage and pre-fill the form
+const storedFormData = localStorage.getItem('contactFormData');
+if (storedFormData) {
+    const formData = JSON.parse(storedFormData);
+    document.getElementById('contact').value = formData.contact || '';
+    document.getElementById('message').value = formData.message || '';
+}
