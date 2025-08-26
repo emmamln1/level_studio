@@ -1,40 +1,53 @@
-/* ==== Header layout stabilization (prevent shifting on language change) ==== */
-
-#site-header .logo img {
-    display: block;
-}
-
-#site-header .navigation-bar ul {
+#marketing-agency-header .main-navigation-menu ul {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.2rem;
     flex-wrap: nowrap;
-    /* keep in one line on desktop */
 }
 
-#site-header .navigation-bar ul li button {
+#marketing-agency-header .main-navigation-menu ul li button {
     white-space: nowrap;
-    /* avoid multi-line labels that cause jumps */
 }
 
-#site-header .lang-switch {
+#marketing-agency-header .multilingual-language-switcher {
     width: 180px;
-    /* fixed language switch area */
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 0.5rem;
 }
 
-#site-header .lang-switch button {
+#marketing-agency-header .multilingual-language-switcher button {
     width: 56px;
-    /* make all lang buttons same width */
     text-align: center;
+    background: transparent;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    border-radius: 4px;
 }
 
-/* header */
-header {
+#marketing-agency-header .multilingual-language-switcher button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#marketing-agency-header .multilingual-language-switcher button.active-language {
+    border: 2px solid transparent;
+    background: linear-gradient(black, black) padding-box,
+                linear-gradient(to right, #ef4444, #22c55e) border-box;
+    border-radius: 4px;
+}
+
+#marketing-agency-header .multilingual-language-switcher button:focus {
+    outline: none;
+}
+
+.sticky-website-header {
     width: 100vw;
     height: 10vh;
     position: fixed;
@@ -44,110 +57,141 @@ header {
     border-bottom: 1px solid white;
 }
 
-header.scrolled {
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(6px);
+/* Subtle style when scrolled */
+.sticky-website-header.scrolled {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
 }
 
-.container {
+.header-content-wrapper {
     width: 100vw;
     height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 6.25vw;
 }
 
-.logo img {
+.company-brand-logo img {
     height: 45px;
     transition: transform .3s;
 }
 
-.logo:hover img {
+.company-brand-logo:hover img {
     transform: scale(1.05);
     cursor: pointer;
 }
 
-nav {
-    display: block;
-    /* Fixed: Show nav in desktop by default */
-}
-
-nav ul {
-    display: flex;
-    gap: 2rem;
+.primary-site-navigation ul {
     list-style: none;
 }
 
-nav ul li {
+.primary-site-navigation ul li {
     position: relative;
 }
 
-nav ul li button {
+.primary-site-navigation ul li button {
     background: none;
     border: none;
     cursor: pointer;
     color: #ccc;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     padding: 0.5rem 0.75rem;
     transition: color .3s;
 }
 
-nav ul li button:hover {
+.primary-site-navigation ul li button:hover {
     color: #fff;
 }
 
-nav ul li button.active-nav {
+.primary-site-navigation ul li button.active-navigation-item {
     outline: none;
-    /* Remove default focus outline */
     border: 2px solid transparent;
-    /* Required for border-image to work */
     border-image: linear-gradient(to right, red, green) 1;
     padding: calc(0.5rem - 2px) calc(0.75rem - 2px);
-    /* Adjust padding to keep size consistent */
 }
 
-/* Keep focus minimal to avoid sticky active look after clicking */
-nav ul li button:focus {
+.primary-site-navigation ul li button:focus {
     outline: none;
 }
 
-nav ul li button::after {
+/* Underline grows from center on hover */
+.primary-site-navigation ul li button::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: 0;
-    width: 0;
+    width: 100%;
     height: 2px;
     background: linear-gradient(to right, #ef4444, #22c55e);
-    transition: width .3s;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    transition: transform .3s ease-in-out;
 }
 
-nav ul li button:hover::after {
-    width: 100%;
+.primary-site-navigation ul li button:hover::after {
+    transform: translateX(-50%) scaleX(1);
 }
 
-/* Language */
-.lang-switch {
-    display: flex;
-    gap: 0.25rem;
+.multilingual-language-switcher {
     border-left: 1px solid #444;
 }
 
-.lang-switch button {
-    background: none;
-    border: none;
+/* Hamburger button base (hidden on desktop) */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    width: 42px;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 14px;
-    padding: 0.25rem 0.75rem;
-    color: #ccc;
-    transition: color .3s;
+    background: transparent;
+    transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
-.lang-switch button.active {
-    color: #22c55e;
+.mobile-menu-btn:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.3);
 }
 
-.lang-switch button:hover:not(.active) {
-    color: #22c55e;
+.mobile-menu-btn .bar {
+    display: block;
+    width: 23px;
+    height: 1px;
+    background: #fff;
+    border-radius: 1px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.mobile-menu-btn .bar + .bar {
+    margin-top: 5px;
+}
+
+/* 3-line to X animation */
+.mobile-menu-btn.open .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.mobile-menu-btn.open .bar:nth-child(2) {
+    opacity: 0;
+}
+.mobile-menu-btn.open .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Screen overlay for mobile menu */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 9000;
+}
+.menu-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
 }

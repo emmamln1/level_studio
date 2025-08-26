@@ -1,0 +1,224 @@
+@media (max-width: 1080px) {
+    .sticky-website-header {
+        height: 8vh;
+    }
+
+    .header-content-wrapper {
+        height: 8vh;
+        padding: 0 4vw;
+    }
+
+    .company-brand-logo img {
+        height: 29px;
+    }
+
+    #marketing-agency-header .main-navigation-menu ul {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .primary-site-navigation ul li button {
+        font-size: 14px;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .primary-site-navigation ul li button::after {
+        height: 1.5px;
+    }
+
+    #marketing-agency-header .multilingual-language-switcher {
+        width: 140px;
+        gap: 0.3rem;
+    }
+
+    #marketing-agency-header .multilingual-language-switcher button {
+        width: 45px;
+        font-size: 13px;
+        padding: 3px 6px;
+    }
+
+    #marketing-agency-header .multilingual-language-switcher button.active-language,
+    .primary-site-navigation ul li button.active-navigation-item {
+        border-width: 1.5px;
+    }
+}
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex; /* Show hamburger button */
+    }
+    
+    .header-content-wrapper {
+        justify-content: space-between;
+    }
+    
+    .primary-site-navigation {
+        position: fixed;
+        top: 8vh;
+        left: -100%;
+        width: 80vw;
+        max-width: 300px;
+        height: calc(100vh - 8vh);
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
+        backdrop-filter: blur(10px);
+        transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 10000;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .primary-site-navigation.open {
+        left: 0; /* Slide in when open */
+    }
+    
+    .primary-site-navigation ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 2rem 0;
+        align-items: stretch;
+        height: 100%;
+    }
+    
+    .primary-site-navigation ul li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+    
+    .primary-site-navigation ul li:last-child {
+        border-bottom: none;
+    }
+    
+    .primary-site-navigation ul li button {
+        font-size: 16px;
+        padding: 1.2rem 2rem;
+        width: 100%;
+        text-align: left;
+        color: #ccc;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .primary-site-navigation ul li button:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.05);
+        padding-left: 2.5rem;
+    }
+    
+    .primary-site-navigation ul li button::before {
+        content: '';
+        position: absolute;
+        left: -100%;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(to bottom, #ef4444, #22c55e);
+        transition: left 0.3s ease;
+    }
+    
+    .primary-site-navigation ul li button:hover::before {
+        left: 0;
+    }
+    
+    .primary-site-navigation ul li button::after {
+        display: none; /* Remove desktop underline effect */
+    }
+    
+    .primary-site-navigation ul li button.active-navigation-item {
+        border: none;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.5rem 4rem;
+    }
+    
+    .primary-site-navigation ul li button.active-navigation-item::before {
+        left: 0;
+    }
+    
+    /* Language switcher stays visible */
+    #marketing-agency-header .multilingual-language-switcher {
+        width: 120px;
+        gap: 0.2rem;
+    }
+    
+    #marketing-agency-header .multilingual-language-switcher button {
+        width: 38px;
+        font-size: 12px;
+        padding: 3px 2px;
+    }
+
+    /* Staggered reveal of menu items */
+    .primary-site-navigation.open ul li {
+        animation: navItemFadeIn 0.35s ease-in-out forwards;
+    }
+    .primary-site-navigation.open ul li:nth-child(1) { animation-delay: 0.06s; }
+    .primary-site-navigation.open ul li:nth-child(2) { animation-delay: 0.12s; }
+    .primary-site-navigation.open ul li:nth-child(3) { animation-delay: 0.18s; }
+    .primary-site-navigation.open ul li:nth-child(4) { animation-delay: 0.24s; }
+    .primary-site-navigation.open ul li:nth-child(5) { animation-delay: 0.30s; }
+}
+
+@media (max-width: 480px) {
+    /* Header spacing */
+    .header-content-wrapper {
+        padding: 0 3.5vw;
+    }
+
+    /* Brand logo smaller */
+    .company-brand-logo img {
+        height: 24px;
+    }
+
+    /* Compact hamburger */
+    .mobile-menu-btn {
+        width: 36px;
+        height: 24px;
+    }
+    .mobile-menu-btn .bar {
+        width: 18px;
+    }
+    .mobile-menu-btn.open .bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+    .mobile-menu-btn.open .bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* Slide-out nav slightly narrower for breathing room */
+    .primary-site-navigation {
+        width: 86vw;
+    }
+
+    .primary-site-navigation ul {
+        padding: 1rem 0;
+    }
+
+    .primary-site-navigation ul li button {
+        font-size: 15px;
+        padding: 1rem 1.25rem;
+    }
+
+    .primary-site-navigation ul li button:hover {
+        padding-left: 1.75rem;
+    }
+
+    /* Override large active padding set at 768px to avoid overflow on very small screens */
+    .primary-site-navigation ul li button.active-navigation-item {
+        padding: 0.9rem 2rem;
+    }
+
+    /* Language switcher more compact */
+    #marketing-agency-header .multilingual-language-switcher {
+        width: 108px;
+        gap: 0.15rem;
+    }
+    #marketing-agency-header .multilingual-language-switcher button {
+        width: 34px;
+        font-size: 11px;
+        padding: 2px 0;
+    }
+}
+
+@keyframes navItemFadeIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to { opacity: 1; transform: translateX(0); }
+}

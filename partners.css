@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     background: black;
     overflow: hidden;
 }
@@ -118,7 +118,8 @@
 /* Partners container with scroll animations */
 .partners-container {
     width: 93%;
-    max-width: 1400 perspective: 0.3;
+    max-width: 1400px;
+    perspective: 0.3;
 }
 
 /* Partner cards with enhanced scroll animations */
@@ -261,7 +262,7 @@
 .carousel-nav {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(50%);
     width: 50px;
     height: 50px;
     background: rgba(25, 25, 26, 0.9);

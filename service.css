@@ -1,34 +1,20 @@
-/* xaiQuantumContainer and related service styles */
 .xaiQuantumContainer {
     background: black;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     transition: background-image 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     overflow: hidden;
 }
 
-/* Animated background particles */
 .xaiNebulaField {
     position: absolute;
     width: 100%;
     height: 100%;
     pointer-events: none;
-}
-
-.xaiCosmicFragment {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    animation: xaiDriftOrbit 20s infinite linear;
 }
 
 @keyframes xaiDriftOrbit {
@@ -50,8 +36,6 @@
         opacity: 0;
     }
 }
-
-/* Main content container */
 .xaiCoreMatrix {
     position: relative;
     z-index: 10;
@@ -69,8 +53,6 @@
     align-items: center;
     justify-content: center;
 }
-
-/* Service items */
 .xaiModuleInstance {
     position: absolute;
     width: 100%;
@@ -106,7 +88,7 @@
     font-size: clamp(14px, 1.8vw, 20px);
     font-weight: 300;
     color: rgba(255, 255, 255, 0.8);
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
     line-height: 1.4;
 }
@@ -129,7 +111,6 @@
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Background service previews */
 .xaiPreviewHologram {
     position: absolute;
     width: 100%;
@@ -156,8 +137,6 @@
     opacity: 0.4;
     transform: scale(0.7);
 }
-
-/* Animation states */
 .xaiModuleInstance.xaiActiveState {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -186,11 +165,9 @@
     pointer-events: none;
     z-index: 0;
 }
-
-/* Navigation */
 .xaiNavigationHub {
     position: absolute;
-    bottom: 60px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -237,8 +214,6 @@
         opacity: 0;
     }
 }
-
-/* Progress indicator */
 .xaiProgressGauge {
     height: 100%;
     background: linear-gradient(90deg, #ffffff, #f0f0f0);
