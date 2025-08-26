@@ -16,16 +16,19 @@ window.addEventListener("scroll", () => {
 });
 
 // menu toggle
-menuBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("open");
-    mobileMenu.classList.toggle("open");
-    overlay.classList.toggle("show");
-});
-overlay.addEventListener("click", () => {
-    menuBtn.classList.remove("open");
-    mobileMenu.classList.remove("open");
-    overlay.classList.remove("show");
-});
+if (menuBtn && mobileMenu && overlay) {
+    menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("open");
+        mobileMenu.classList.toggle("open");
+        overlay.classList.toggle("show");
+    });
+
+    overlay.addEventListener("click", () => {
+        menuBtn.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        overlay.classList.remove("show");
+    });
+}
 
 // smooth scroll
 navBtns.forEach(btn => {
@@ -39,9 +42,11 @@ navBtns.forEach(btn => {
         const el = document.querySelector(id);
         if (el) el.scrollIntoView({ behavior: "smooth" });
         // close mobile
-        menuBtn.classList.remove("open");
-        mobileMenu.classList.remove("open");
-        overlay.classList.remove("show");
+        if (menuBtn && mobileMenu && overlay) {
+            menuBtn.classList.remove("open");
+            mobileMenu.classList.remove("open");
+            overlay.classList.remove("show");
+        }
         // remove focus to avoid sticky highlight
         btn.blur();
     });
