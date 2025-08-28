@@ -1,0 +1,46 @@
+(function(){
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+})();
+
+const contactForm = document.getElementById('contactForm');
+const successMessage = document.getElementById('successMessage');
+
+if (contactForm) {
+    // Add event listener for form submission
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const serviceID = 'service_o1s9342'; // Replace with your Service ID
+        const templateID = 'template_xxt8o1u'; // Replace with your Template ID
+
+        // Collect form data
+        const formData = {
+            contact: this.contact?.value || '',
+            message: this.message?.value || '',
+            email: 'emma.yan03@gmail.com' // Updated to 'email' to match Email.js template
+        };
+
+        // Send the email
+        emailjs.send(serviceID, templateID, formData)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                if (successMessage) successMessage.style.display = 'block'; // Show success message
+                contactForm.reset(); // Clear the form
+                setTimeout(() => {
+                    if (successMessage) successMessage.style.display = 'none'; // Hide success message after a few seconds
+                }, 5000);
+            }, function(error) {
+                console.log('FAILED...', error);
+                alert('Failed to send message. Please try again later.'); // Show error message
+            });
+    });
+}
+
+// Add smooth scroll animation on load
+window.addEventListener('load', function() {
+    // Add staggered animation to contact info items
+    const infoItems = document.querySelectorAll('.info-item');
+    infoItems.forEach((item, index) => {
+        item.style.animationDelay = (1.5 + index * 0.2) + 's';
+    });
+});

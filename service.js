@@ -1,338 +1,340 @@
-const xaiServiceRegistry = [
+// Updated JavaScript for Services Section
+const marketingServicesData = [
     {
         number: "01",
         title: "Թվային մարքեթինգ",
         description: "Ամբողջական թվային մարքեթինգ ծառայություններ՝ ճանաչելիության բարձրացման և վաճառքի աճի համար",
         features: ["SMM", "Copywriting", "SEO", "Email Marketing"],
-        bgImage: ""
+        icon: "📱"
     },
     {
-        number: "02",
+        number: "02", 
         title: "Վեբ կայքերի պատրաստում",
         description: "Կայքերի և վեբ հավելվածների մշակում ժամանակակից տեխնոլոգիաներով",
         features: ["React", "JavaScript", "PHP", "Next.js"],
-        bgImage: ""
+        icon: "💻"
     },
     {
         number: "03",
-        title: "Վեբ դիզայն",
+        title: "Վեբ դիզայն", 
         description: "Գեղեցիկ և ֆունկցիոնալ վեբ դիզայնի ստեղծում՝ օգտատերերի լավագույն փորձառության համար",
         features: ["UI/UX Design", "Responsive Design", "Adobe Creative Suite", "Figma"],
-        bgImage: ""
+        icon: "🎨"
     },
     {
         number: "04",
         title: "Կայքերի առաջխաղացում",
-        description: "Կայքերի SEO օպտիմիզացիա և դիրքավորում Google-ում բարձր արդյունքների համար",
+        description: "Կայքերի SEO օպտիմիզացիա և դիրքավորում Google-ում բարձր արդյունքների համար", 
         features: ["SEO օպտիմիզացիա", "Google Ads", "Analytics", "Բանալի բառեր"],
-        bgImage: ""
+        icon: "📈"
     },
     {
         number: "05",
         title: "Առցանց գնումների խանութ",
         description: "Լիարժեք E-commerce պլատֆորմների մշակում վաճառքի և գնումների համար",
         features: ["WooCommerce", "Shopify", "Վճարման համակարգեր", "Պահեստի կառավարում"],
-        bgImage: ""
+        icon: "🛒"
     },
     {
         number: "06",
         title: "Բիզնեսի ավտոմատացում",
         description: "Բիզնես գործընթացների ավտոմատացում և CRM համակարգերի ներդրում",
         features: ["CRM համակարգեր", "Workflow ավտոմատացում", "API ինտեգրացիա", "Դատաբազների կառավարում"],
-        bgImage: ""
+        icon: "⚙️"
     },
     {
         number: "07",
         title: "Մոբայլ հավելվածներ",
         description: "iOS և Android հավելվածների մշակում բիզնեսի գործընթացների բարելավման համար",
         features: ["React Native", "Flutter", "iOS/Android", "Push Notifications"],
-        bgImage: ""
+        icon: "📱"
     },
     {
-        number: "08",
+        number: "08", 
         title: "Դոմեյն և հոսթինգ",
         description: "Հուսալի դոմեյն և հոսթինգ ծառայություններ կայքերի անխափան աշխատանքի համար",
         features: ["SSL վկայագրեր", "Օրական backup", "24/7 մոնիտորինգ", "CDN ծառայություններ"],
-        bgImage: ""
+        icon: "🌐"
     },
     {
         number: "09",
-        title: "Տեխնիկական սպասարկում",
+        title: "Տեխնիկական սպասարկում", 
         description: "24/7 տեխնիկական աջակցություն և կայքերի պարբերական թարմացում",
         features: ["24/7 Support", "Անվտանգության թարմացումներ", "Կատարողականության օպտիմիզացիա", "Backup ծառայություններ"],
-        bgImage: ""
+        icon: "🔧"
     },
     {
         number: "10",
         title: "Գրաֆիկական դիզայն",
         description: "Ստեղծագործական գրաֆիկական լուծումներ ապրանքանիշի ճանաչելիության համար",
         features: ["Լոգո դիզայն", "Այցեքարտեր", "Ֆլայերներ", "Բրենդինգ"],
-        bgImage: ""
+        icon: "🖌️"
     },
     {
         number: "11",
         title: "Վեբ դասընթացներ",
         description: "Լիցենզավորված մասնագիտական վեբ դասընթացներ տեխնոլոգիական հմտությունների զարգացման համար",
         features: ["Հավաստագրված դասընթացներ", "Փորձարկված մանկավարժներ", "Գործնական նախագծեր", "Կարիերային աջակցություն"],
-        bgImage: ""
+        icon: "🎓"
     }
 ];
 
-let xaiCurrentServiceIndex = 0;
-let xaiIsProcessing = false;
-let xaiLastInteractionTime = 0;
-let xaiSectionIsActive = false;
+let currentServiceIndex = 0;
+let isServiceChanging = false;
+let lastScrollTime = 0;
+let servicesIsActive = false;
+let animationPaused = false;
 
 // DOM elements
-const xaiQuantumContainer = document.getElementById('xaiQuantumContainer');
-const xaiServiceNexus = document.getElementById('xaiServiceNexus');
-const xaiNavigationHub = document.getElementById('xaiNavigationHub');
-const xaiProgressGauge = document.getElementById('xaiProgressGauge');
-const xaiNebulaField = document.getElementById('xaiNebulaField');
+const servicesContainer = document.getElementById('xaiQuantumContainer');
+const servicesCarousel = document.getElementById('xaiServiceNexus');
+const servicesAnimationField = document.getElementById('xaiNebulaField');
 
-// Initialize
-function xaiInitializeSystem() {
-    xaiCreateModules();
-    xaiCreateNavigationBeacons();
-    xaiGenerateCosmicFragments();
-    xaiUpdateNexus();
-    setupIntersectionObserver();
+// Initialize services section
+function initializeServicesSection() {
+    createServiceCards();
+    createFloatingElements();
+    setupServicesObserver();
+    setupScrollHandler();
 }
 
-// Create service elements
-function xaiCreateModules() {
-    xaiServiceRegistry.forEach((service, index) => {
-        const moduleEl = document.createElement('div');
-        moduleEl.className = 'xaiModuleInstance';
-        moduleEl.innerHTML = `
-        
-            <h2 class="xaiPrimaryDescriptor">${service.title}</h2>
-            <p class="xaiDetailNarrative">${service.description}</p>
-            <div class="xaiAttributeCluster">
-                ${service.features.map(feature => `<span class="xaiTraitNode">${feature}</span>`).join('')}
+// Create service cards with new structure
+function createServiceCards() {
+    servicesCarousel.innerHTML = '';
+    
+    marketingServicesData.forEach((service, index) => {
+        const serviceCard = document.createElement('div');
+        serviceCard.className = 'service-card-item';
+        serviceCard.innerHTML = `
+            <div class="service-icon-head">
+                ${service.icon}
+            </div>
+            <div class="service-card-body">
+                <div class="service-number-label">${service.number}</div>
+                <h2 class="service-title-heading">
+                    <span class="highlight">${service.title}</span>
+                </h2>
+                <p class="service-description-text">${service.description}</p>
+                <div class="service-features-list">
+                    ${service.features.map(feature => `<span class="service-feature-tag">${feature}</span>`).join('')}
+                </div>
             </div>
         `;
-        xaiServiceNexus.appendChild(moduleEl);
-    });
-
-    xaiServiceRegistry.forEach((service, index) => {
-        const previewEl = document.createElement('div');
-        previewEl.className = 'xaiPreviewHologram';
-        previewEl.innerHTML = `<div class="xaiHologramLabel">${service.title}</div>`;
-        xaiServiceNexus.appendChild(previewEl);
+        servicesCarousel.appendChild(serviceCard);
     });
 }
 
-// Create navigation dots
-function xaiCreateNavigationBeacons() {
-    xaiServiceRegistry.forEach((_, index) => {
-        const beacon = document.createElement('div');
-        beacon.className = 'xaiNavBeacon';
-        if (index === 0) beacon.classList.add('xaiActiveState');
-        beacon.addEventListener('click', () => xaiNavigateToModule(index));
-        xaiNavigationHub.appendChild(beacon);
-    });
-}
 
 // Create floating particles
-function xaiGenerateCosmicFragments() {
-    for (let i = 0; i < 50; i++) {
-        const fragment = document.createElement('div');
-        fragment.className = 'xaiCosmicFragment';
-        fragment.style.left = Math.random() * 100 + '%';
-        fragment.style.animationDelay = Math.random() * 20 + 's';
-        fragment.style.animationDuration = (15 + Math.random() * 10) + 's';
-        xaiNebulaField.appendChild(fragment);
+function createFloatingElements() {
+    servicesAnimationField.innerHTML = '';
+    
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'floating-particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        servicesAnimationField.appendChild(particle);
     }
 }
 
-// Update display
-function xaiUpdateNexus() {
-    const moduleInstances = xaiServiceNexus.querySelectorAll('.xaiModuleInstance');
-    const previewHolograms = xaiServiceNexus.querySelectorAll('.xaiPreviewHologram');
-    const navBeacons = xaiNavigationHub.querySelectorAll('.xaiNavBeacon');
+
+// Navigate to specific service
+function navigateToService(index) {
+    if (isServiceChanging || index === currentServiceIndex) return;
     
-    moduleInstances.forEach((item, index) => {
-        item.className = 'xaiModuleInstance';
-        if (index === xaiCurrentServiceIndex) {
-            item.classList.add('xaiActiveState');
-        } else {
-            item.classList.add('xaiObscuredState');
-        }
-    });
-
-    previewHolograms.forEach((preview, index) => {
-        preview.className = 'xaiPreviewHologram';
-        
-        const prevIndex = (xaiCurrentServiceIndex - 1 + xaiServiceRegistry.length) % xaiServiceRegistry.length;
-        const nextIndex = (xaiCurrentServiceIndex + 1) % xaiServiceRegistry.length;
-        
-        if (index === prevIndex) {
-            preview.classList.add('xaiPreviousCycle');
-            preview.innerHTML = `<div class="xaiHologramLabel">${xaiServiceRegistry[index].title}</div>`;
-        } else if (index === nextIndex) {
-            preview.classList.add('xaiNextCycle');
-            preview.innerHTML = `<div class="xaiHologramLabel">${xaiServiceRegistry[index].title}</div>`;
-        } else {
-            preview.style.opacity = '0';
-        }
-    });
-
-    navBeacons.forEach((beacon, index) => {
-        beacon.classList.toggle('xaiActiveState', index === xaiCurrentServiceIndex);
-    });
-
-    // Apply background image instead of gradient
-    xaiQuantumContainer.style.backgroundImage = `url('${xaiServiceRegistry[xaiCurrentServiceIndex].bgImage}')`;
-    xaiQuantumContainer.style.backgroundSize = 'cover';
-    xaiQuantumContainer.style.backgroundPosition = 'center';
-    xaiQuantumContainer.style.backgroundRepeat = 'no-repeat';
-
-    const progress = ((xaiCurrentServiceIndex + 1) / xaiServiceRegistry.length) * 100;
-    xaiProgressGauge.style.width = progress + '%';
-}
-
-// Go to specific service
-function xaiNavigateToModule(index) {
-    if (xaiIsProcessing || index === xaiCurrentServiceIndex) return;
+    isServiceChanging = true;
+    currentServiceIndex = index;
     
-    xaiIsProcessing = true;
-    xaiCurrentServiceIndex = index;
-    xaiUpdateNexus();
-    
+    // Pause animation briefly and sync
+    pauseAnimation();
     setTimeout(() => {
-        xaiIsProcessing = false;
+        resumeAnimation();
+        isServiceChanging = false;
     }, 800);
 }
 
-// Intersection Observer to detect when section is in view
-function setupIntersectionObserver() {
+// Smooth navigate without interrupting animation flow
+function smoothNavigateToService(index) {
+    if (isServiceChanging || index === currentServiceIndex) return;
+    
+    isServiceChanging = true;
+    currentServiceIndex = index;
+    
+    // Sync animation timing to create seamless transition
+    const serviceCards = servicesCarousel.querySelectorAll('.service-card-item');
+    serviceCards.forEach((card, cardIndex) => {
+        const newDelay = (cardIndex - index) * -3; // 3s per service
+        card.style.animationDelay = `${newDelay}s`;
+    });
+    
+    setTimeout(() => {
+        isServiceChanging = false;
+    }, 300);
+}
+
+// Pause carousel animation
+function pauseAnimation() {
+    const serviceCards = servicesCarousel.querySelectorAll('.service-card-item');
+    serviceCards.forEach(card => {
+        card.style.animationPlayState = 'paused';
+    });
+    animationPaused = true;
+}
+
+// Resume carousel animation
+function resumeAnimation() {
+    const serviceCards = servicesCarousel.querySelectorAll('.service-card-item');
+    serviceCards.forEach(card => {
+        card.style.animationPlayState = 'running';
+    });
+    animationPaused = false;
+}
+
+// Setup intersection observer
+function setupServicesObserver() {
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach(entry => {
-                xaiSectionIsActive = entry.isIntersecting;
-                if (xaiSectionIsActive) {
-                    xaiQuantumContainer.scrollIntoView({ behavior: 'smooth' });
+                servicesIsActive = entry.isIntersecting;
+                if (servicesIsActive) {
+                    resumeAnimation();
+                } else {
+                    pauseAnimation();
                 }
             });
         },
         { threshold: 0.5 }
     );
-    observer.observe(xaiQuantumContainer);
+    observer.observe(servicesContainer);
 }
 
-// Handle scroll
-function xaiHandleScrollInteraction(e) {
-    if (!xaiSectionIsActive) return;
-
-    e.preventDefault();
-
-    const now = Date.now();
-    if (xaiIsProcessing || now - xaiLastInteractionTime < 1000) return;
-
-    const delta = e.deltaY;
-
-    if (delta > 0) {
-        if (xaiCurrentServiceIndex < xaiServiceRegistry.length - 1) {
-            xaiLastInteractionTime = now;
-            xaiNavigateToModule(xaiCurrentServiceIndex + 1);
-        } else {
-            xaiSectionIsActive = false;
-            const nextSection = xaiQuantumContainer.nextElementSibling;
-            if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    } else if (delta < 0) {
-        if (xaiCurrentServiceIndex > 0) {
-            xaiLastInteractionTime = now;
-            xaiNavigateToModule(xaiCurrentServiceIndex - 1);
-        } else {
-            xaiSectionIsActive = false;
-            const prevSection = xaiQuantumContainer.previousElementSibling;
-            if (prevSection) {
-                prevSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    }
-}
-
-// Handle touch events
-let xaiTouchOriginY = 0;
-function xaiHandleTouchInitiation(e) {
-    xaiTouchOriginY = e.touches[0].clientY;
-}
-
-function xaiHandleTouchCompletion(e) {
-    if (!xaiSectionIsActive || xaiIsProcessing) return;
-
-    const touchEndY = e.changedTouches[0].clientY;
-    const touchDelta = xaiTouchOriginY - touchEndY;
-
-    if (Math.abs(touchDelta) > 50) {
-        if (touchDelta > 0) {
-            if (xaiCurrentServiceIndex < xaiServiceRegistry.length - 1) {
-                xaiNavigateToModule(xaiCurrentServiceIndex + 1);
+// Setup scroll handler for manual navigation
+function setupScrollHandler() {
+    let scrollTimeout;
+    let isScrolling = false;
+    let isOverServiceCard = false;
+    
+    // Track when mouse is over service card area
+    servicesCarousel.addEventListener('mouseenter', () => {
+        isOverServiceCard = true;
+    });
+    
+    servicesCarousel.addEventListener('mouseleave', () => {
+        isOverServiceCard = false;
+    });
+    
+    const handleScroll = (e) => {
+        // If over service card area, handle service navigation
+        if (isOverServiceCard && servicesIsActive && !isScrolling) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const now = Date.now();
+            if (now - lastScrollTime < 400) return;
+            
+            const delta = e.deltaY;
+            
+            if (Math.abs(delta) < 5) return;
+            
+            isScrolling = true;
+            
+            if (delta > 0) {
+                // Scroll down - next service
+                const nextIndex = (currentServiceIndex + 1) % marketingServicesData.length;
+                smoothNavigateToService(nextIndex);
             } else {
-                xaiSectionIsActive = false;
-                const nextSection = xaiQuantumContainer.nextElementSibling;
-                if (nextSection) {
-                    nextSection.scrollIntoView({ behavior: 'smooth' });
-                }
+                // Scroll up - previous service
+                const prevIndex = (currentServiceIndex - 1 + marketingServicesData.length) % marketingServicesData.length;
+                smoothNavigateToService(prevIndex);
             }
+            
+            lastScrollTime = now;
+            
+            setTimeout(() => {
+                isScrolling = false;
+            }, 300);
+        }
+        // If not over service card, allow normal page scrolling
+    };
+    
+    // Add wheel event listener to the entire services container
+    servicesContainer.addEventListener('wheel', handleScroll, { passive: false });
+}
+
+// Handle touch events for mobile
+let touchStartY = 0;
+let touchEndY = 0;
+
+function handleTouchStart(e) {
+    touchStartY = e.touches[0].clientY;
+}
+
+function handleTouchEnd(e) {
+    if (!servicesIsActive || animationPaused) return;
+    
+    touchEndY = e.changedTouches[0].clientY;
+    const touchDifference = touchStartY - touchEndY;
+    
+    if (Math.abs(touchDifference) > 50) {
+        if (touchDifference > 0) {
+            // Swipe up
+            const nextIndex = (currentServiceIndex + 1) % marketingServicesData.length;
+            navigateToService(nextIndex);
         } else {
-            if (xaiCurrentServiceIndex > 0) {
-                xaiNavigateToModule(xaiCurrentServiceIndex - 1);
-            } else {
-                xaiSectionIsActive = false;
-                const prevSection = xaiQuantumContainer.previousElementSibling;
-                if (prevSection) {
-                    prevSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
+            // Swipe down
+            const prevIndex = (currentServiceIndex - 1 + marketingServicesData.length) % marketingServicesData.length;
+            navigateToService(prevIndex);
         }
     }
 }
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
-    if (!xaiSectionIsActive) return;
-
+    if (!servicesIsActive) return;
+    
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        if (xaiCurrentServiceIndex < xaiServiceRegistry.length - 1) {
-            xaiNavigateToModule(xaiCurrentServiceIndex + 1);
-        } else {
-            xaiSectionIsActive = false;
-            const nextSection = xaiQuantumContainer.nextElementSibling;
-            if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+        const nextIndex = (currentServiceIndex + 1) % marketingServicesData.length;
+        navigateToService(nextIndex);
     } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        if (xaiCurrentServiceIndex > 0) {
-            xaiNavigateToModule(xaiCurrentServiceIndex - 1);
-        } else {
-            xaiSectionIsActive = false;
-            const prevSection = xaiQuantumContainer.previousElementSibling;
-            if (prevSection) {
-                prevSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+        const prevIndex = (currentServiceIndex - 1 + marketingServicesData.length) % marketingServicesData.length;
+        navigateToService(prevIndex);
     }
 });
 
-// Event listeners
-window.addEventListener('wheel', xaiHandleScrollInteraction, { passive: false });
-document.addEventListener('touchstart', xaiHandleTouchInitiation, { passive: true });
-document.addEventListener('touchend', xaiHandleTouchCompletion, { passive: true });
-
-// Initialize everything when page loads
-window.addEventListener('load', () => {
-    xaiInitializeSystem();
-    setupActiveNavOnScroll();
-});
+// Add touch event listeners
+servicesContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+servicesContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
 
 // Handle window resize
 window.addEventListener('resize', () => {
-    xaiUpdateNexus();
+    // Recalculate layout if needed
+    updateProgressBar();
 });
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initializeServicesSection();
+});
+
+// Optional: Auto-advance carousel (can be enabled/disabled)
+let autoAdvanceInterval;
+
+function startAutoAdvance() {
+    autoAdvanceInterval = setInterval(() => {
+        if (servicesIsActive && !animationPaused && !isServiceChanging) {
+            const nextIndex = (currentServiceIndex + 1) % marketingServicesData.length;
+            currentServiceIndex = nextIndex;
+            updateNavigationDots();
+            updateProgressBar();
+        }
+    }, 3000); // 3 seconds per service
+}
+
+function stopAutoAdvance() {
+    clearInterval(autoAdvanceInterval);
+}
+
+// Enable auto-advance (comment out if not needed)
+// startAutoAdvance();

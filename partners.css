@@ -1,360 +1,500 @@
-/* partners */
-.partners-section {
-    height: 100vh;
-    padding: 10vh 2rem 0 2rem;
+.business-partners-section {
+    min-height: 100vh;
     position: relative;
+    background: #000;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    background: black;
-    overflow: hidden;
+    padding: 6rem 0;
 }
 
-/* Animated grid background */
-.grid-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120%;
-    height: 120%;
-    opacity: 0.02;
-    background-image: linear-gradient(rgba(255, 0, 0, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 0, 0.3) 1px, transparent 1px);
-    background-size: 60px 60px;
-    transform: translate(-10%, -10%);
+
+.business-container {
+    width: 100%;
+    margin: auto;
+    position: relative;
+    z-index: 10;
 }
 
-/* Parallax orbs */
-.floating-orb {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(0, 255, 0, 0.1));
-    filter: blur(1px);
-    animation: orbFloat 8s ease-in-out infinite;
-}
-
-.orb-1 {
-    width: 200px;
-    height: 200px;
-    top: 10%;
-    left: 5%;
-    animation-delay: 0s;
-}
-
-.orb-2 {
-    width: 150px;
-    height: 150px;
-    top: 60%;
-    right: 10%;
-    animation-delay: -2s;
-}
-
-.orb-3 {
-    width: 100px;
-    height: 100px;
-    top: 30%;
-    right: 20%;
-    animation-delay: -4s;
-}
-
-@keyframes orbFloat {
-    0%,
-    100% {
-        transform: translateY(0px) translateX(0px) scale(1);
-    }
-
-    33% {
-        transform: translateY(-30px) translateX(20px) scale(1.1);
-    }
-
-    66% {
-        transform: translateY(20px) translateX(-15px) scale(0.9);
-    }
-}
-
-/* Section header with scroll animations */
-.section-header {
+.business-section-header {
     text-align: center;
-    margin-top: 3vh;
-    position: relative;
-    z-index: 5;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.section-header.animate-in {
     opacity: 1;
     transform: translateY(0);
+    margin-bottom: 4rem;
 }
 
-.section-title {
-    font-size: clamp(2rem, 4vw, 4.5rem);
+.business-section-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 900;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
-    background-size: 300% 300%;
-    color: white;
-    background-clip: text;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -3px;
     position: relative;
 }
 
-.section-header.animate-in .section-title::after {
-    width: 80px;
+.business-section-title .highlight {
+    color: #01B95F;
 }
 
-.section-subtitle {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    color: #888;
-    font-weight: 400;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease 0.3s;
+.business-section-subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
 }
 
-.section-header.animate-in .section-subtitle {
-    opacity: 1;
-    transform: translateY(0);
+.business-divider {
+    width: 100px;
+    height: 4px;
+    background: #01B95F;
+    margin: 0 auto;
+    border-radius: 2px;
 }
 
-/* Partners container with scroll animations */
-.partners-container {
-    width: 93%;
-    max-width: 1400px;
-    perspective: 0.3;
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
 
-/* Partner cards with enhanced scroll animations */
-.partner-card {
-    background: linear-gradient(135deg, rgba(25, 25, 26, 0.8) 0%, rgba(15, 15, 16, 0.9) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: clamp(1.5rem, 3vw, 2rem);
+/* Carousel Styles */
+.business-carousel-container {
+    position: relative;
+    margin: 20px 0;
+}
+
+.business-carousel-wrapper {
     position: relative;
     overflow: hidden;
-    cursor: pointer;
-    backdrop-filter: blur(20px);
-    min-width: 300px;
-    width: 300px;
-    height: 200px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 20px;
+    border-right: hidden;
+    border-left: hidden;
+}
+
+.business-carousel-track {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    /* Initial state for scroll animation */
-    opacity: 0;
-    transform: translateX(60px) scale(0.9);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    gap: 30px;
 }
 
-.partner-card.scroll-animate {
-    opacity: 1;
-    transform: translateX(0) scale(1);
+.business-partner-card {
+    min-width: 350px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 25px;
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    overflow: hidden;
 }
 
-.partner-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    background: linear-gradient(135deg, transparent, rgba(255, 0, 0, 0.2), transparent, rgba(0, 255, 0, 0.2));
-    border-radius: 20px;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: xor;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.partner-card::after {
+.business-partner-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-    transition: left 0.6s ease;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(1, 185, 95, 0.1), 
+        transparent);
+    transition: left 0.8s ease;
 }
 
-.partner-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: rgba(255, 0, 0, 0.2);
-    z-index: 2;
-}
-
-.partner-card:hover::before {
-    opacity: 1;
-}
-
-.partner-card:hover::after {
+.business-partner-card:hover::before {
     left: 100%;
 }
 
-/* Card content */
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+.business-partner-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(1, 185, 95, 0.3);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(1, 185, 95, 0.15);
 }
 
-.partner-icon {
-    width: clamp(40px, 8vw, 56px);
-    height: clamp(40px, 8vw, 56px);
-    background: linear-gradient(135deg, #FD3130, #00BE61);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    color: #000;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.partner-icon::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
-    transform: translateX(-100%) skewX(-20deg);
-    transition: transform 0.8s ease;
-}
-
-.partner-card:hover .partner-icon::after {
-    transform: translateX(200%) skewX(-20deg);
-}
-
-.partner-info h3 {
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 0.3rem;
-    transition: color 0.3s ease;
-}
-
-.partner-card:hover .partner-info h3 {
-    color: #ff4444;
-}
-
-.partner-status {
-    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-    color: #00BE61;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    opacity: 0.9;
-}
-
-.partner-description {
-    font-size: clamp(0.85rem, 1.8vw, 1rem);
-    color: #aaa;
-    line-height: 1.6;
-    transition: color 0.3s ease;
-}
-
-.partner-card:hover .partner-description {
-    color: #ccc;
-}
-
-/* Navigation arrows */
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(50%);
-    width: 50px;
-    height: 50px;
-    background: rgba(25, 25, 26, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.business-partner-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    background: #01B95F;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: white;
+}
+
+@keyframes logoShine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+}
+
+.business-partner-logo img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.business-partner-name {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.business-partner-field {
+    display: inline-block;
+    background: #01B95F;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.business-partner-description {
+    color: #ccc;
+    line-height: 1.5;
+    font-size: 0.85rem;
+}
+
+/* Navigation */
+.business-carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(1, 185, 95, 0.3);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    z-index: 5;
-    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
 }
 
-.carousel-nav:hover {
-    background: rgba(255, 0, 0, 0.2);
-    border-color: rgba(255, 0, 0, 0.3);
+.business-carousel-nav:hover {
+    background: rgba(1, 185, 95, 0.2);
+    border-color: #01B95F;
     transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 10px 30px rgba(1, 185, 95, 0.3);
 }
 
 .carousel-nav.prev {
-    left: 1rem;
+    left: -30px;
 }
 
 .carousel-nav.next {
-    right: 1rem;
+    right: -30px;
 }
 
-.carousel-nav svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
+/* Indicators */
+.business-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-/* Disabled state for nav buttons */
-.carousel-nav.disabled,
-.carousel-nav:disabled {
-    opacity: 0.4;
-    pointer-events: none;
-    cursor: default;
-    transform: translateY(-50%) scale(1);
-    background: rgba(25, 25, 26, 0.6);
-}
-
-/* Helper: hide off-page cards */
-.partner-card.hidden {
-    display: none !important;
-}
-
-/* Scroll progress indicator */
-.scroll-progress {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    z-index: 10;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #FD3130, #00BE61);
-    border-radius: 3px;
-    transition: width 0.3s ease;
-    width: 0%;
-}
-
-/* Carousel dots */
-.carousel-dots {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-}
-
-.carousel-dot {
-    width: 8px;
-    height: 8px;
+.business-indicator {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
 }
 
-.carousel-dot.active {
-    background: linear-gradient(45deg, #FD3130, #00BE61);
-    width: 24px;
-    border-radius: 4px;
+.business-indicator.active {
+    background: #01B95F;
+    transform: scale(1.2);
+}
+
+.business-indicator::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    transition: border-color 0.3s ease;
+}
+
+.business-indicator.active::before {
+    border-color: rgba(1, 185, 95, 0.3);
+}
+
+/* Grid View Toggle */
+.business-view-toggle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.business-toggle-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ccc;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 10px;
+}
+
+.toggle-btn:hover,
+.toggle-btn.active {
+    background: linear-gradient(45deg, #01B95F, #04A756);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(1, 185, 95, 0.3);
+}
+
+/* Grid View */
+.business-partners-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.business-partners-grid.active {
+    display: grid;
+}
+
+.partners-grid .business-partner-card {
+    min-width: unset;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUpGrid 0.6s ease-out forwards;
+}
+
+.partners-grid .partner-card:nth-child(1) { animation-delay: 0.1s; }
+.partners-grid .partner-card:nth-child(2) { animation-delay: 0.2s; }
+.partners-grid .partner-card:nth-child(3) { animation-delay: 0.3s; }
+.partners-grid .partner-card:nth-child(4) { animation-delay: 0.4s; }
+.partners-grid .partner-card:nth-child(5) { animation-delay: 0.5s; }
+.partners-grid .partner-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Statistics Section */
+.business-partners-stats {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin: 20px 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.business-partners-stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(1, 185, 95, 0.05), rgba(255, 49, 49, 0.03));
+    pointer-events: none;
+}
+
+.business-stats-content {
+    position: relative;
+    z-index: 2;
+}
+
+.business-stats-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: #01B95F;
+}
+
+.business-stats-description {
+    font-size: 0.9rem;
+    color: #ccc;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUpGrid {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .business-carousel-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .carousel-nav.prev {
+        left: -25px;
+    }
+    
+    .carousel-nav.next {
+        right: -25px;
+    }
+    
+    .business-partner-card {
+        min-width: 320px;
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .business-section-header {
+        padding: 20px 0 15px;
+    }
+    
+    .business-container {
+        padding: 0 15px;
+    }
+    
+    .business-carousel-wrapper {
+        padding: 20px 15px;
+        margin: 0 40px;
+    }
+    
+    .business-partner-card {
+        min-width: 280px;
+        padding: 20px 15px;
+    }
+    
+    .business-partner-logo {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+    
+    .business-partner-name {
+        font-size: 1.2rem;
+    }
+    
+    .business-partners-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-height: 50vh;
+    }
+    
+    .business-partners-stats {
+        padding: 20px 15px;
+        margin: 15px 0 0;
+    }
+    
+    .business-stats-title {
+        font-size: 1.3rem;
+    }
+    
+    .business-stats-description {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .business-section-header {
+        padding: 15px 0 10px;
+    }
+    
+    .business-carousel-wrapper {
+        margin: 0 20px;
+        padding: 15px 10px;
+    }
+    
+    .business-partner-card {
+        min-width: 260px;
+        padding: 15px 12px;
+    }
+    
+    .business-partner-logo {
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+    }
+    
+    .business-carousel-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .carousel-nav.prev {
+        left: -20px;
+    }
+    
+    .carousel-nav.next {
+        right: -20px;
+    }
+    
+    .business-toggle-btn {
+        padding: 8px 16px;
+        margin: 5px;
+        font-size: 0.75rem;
+    }
+    
+    .business-partners-grid {
+        max-height: 45vh;
+        gap: 12px;
+    }
+    
+    .business-partners-stats {
+        padding: 15px 10px;
+    }
+    
+    .business-stats-title {
+        font-size: 1.1rem;
+    }
+    
+    .business-stats-description {
+        font-size: 0.75rem;
+    }
 }

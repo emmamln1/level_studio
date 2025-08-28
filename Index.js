@@ -11,16 +11,22 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Button click handler
-document.querySelector('.contact-btn').addEventListener('click', function(e) {
-    e.preventDefault();
-    alert('Կապ մեզ հետ!');
-});
+// Button click handler (guarded)
+const contactCTA = document.querySelector('.contact-btn');
+if (contactCTA) {
+    contactCTA.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Կապ մեզ հետ!');
+    });
+}
 
-// About Section Carousel
+// About Section Carousel - Fixed
 function initAboutCarousel() {
     const carousel = document.querySelector('.about-carousel');
-    if (!carousel) return;
+    if (!carousel) {
+        console.log('About carousel not found');
+        return;
+    }
 
     const track = carousel.querySelector('.about-carousel__track');
     const slides = Array.from(carousel.querySelectorAll('.about-carousel__slide'));
@@ -28,11 +34,19 @@ function initAboutCarousel() {
     const prevBtn = carousel.querySelector('.about-carousel__btn--prev');
     const nextBtn = carousel.querySelector('.about-carousel__btn--next');
     
+    if (!track || !slides.length || !dotsContainer || !prevBtn || !nextBtn) {
+        console.log('Missing carousel elements');
+        return;
+    }
+    
     let currentIndex = 0;
     let isAnimating = false;
-    const ANIMATION_DURATION = 500; // ms
+    const ANIMATION_DURATION = 500;
+
+    console.log(`About carousel initialized with ${slides.length} slides`);
 
     // Create dots
+    dotsContainer.innerHTML = ''; // Clear existing dots
     slides.forEach((_, index) => {
         const dot = document.createElement('button');
         dot.classList.add('about-carousel__dot');
@@ -44,20 +58,17 @@ function initAboutCarousel() {
 
     const dots = Array.from(dotsContainer.children);
 
-    // Set initial position
-    updateCarousel();
-
     // Navigation functions
     function goToSlide(index) {
         if (index < 0) index = slides.length - 1;
         if (index >= slides.length) index = 0;
         if (index === currentIndex || isAnimating) return;
 
+        console.log(`Going to slide ${index}`);
         isAnimating = true;
         currentIndex = index;
         updateCarousel();
         
-        // Reset animation flag after transition
         setTimeout(() => {
             isAnimating = false;
         }, ANIMATION_DURATION);
@@ -72,20 +83,31 @@ function initAboutCarousel() {
             dot.classList.toggle('active', i === currentIndex);
         });
         
-        // Update button states
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex === slides.length - 1;
+        // Update button states (allow cycling)
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
     }
 
     // Event listeners
-    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+    prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('Previous button clicked');
+        goToSlide(currentIndex - 1);
+    });
+    
+    nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('Next button clicked');
+        goToSlide(currentIndex + 1);
+    });
 
     // Keyboard navigation
     carousel.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
+            e.preventDefault();
             goToSlide(currentIndex - 1);
         } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
             goToSlide(currentIndex + 1);
         }
     });
@@ -108,31 +130,32 @@ function initAboutCarousel() {
         
         if (Math.abs(diff) > swipeThreshold) {
             if (diff > 0) {
-                goToSlide(currentIndex + 1); // Swipe left
+                goToSlide(currentIndex + 1);
             } else {
-                goToSlide(currentIndex - 1); // Swipe right
+                goToSlide(currentIndex - 1);
             }
         }
     });
 
-    // Auto-advance (optional)
+    // Auto-advance
     let autoSlideInterval;
     function startAutoSlide() {
         autoSlideInterval = setInterval(() => {
             goToSlide(currentIndex + 1);
-        }, 5000);
+        }, 4000);
     }
 
     function stopAutoSlide() {
         clearInterval(autoSlideInterval);
     }
 
-    // Start auto-slide on mouse leave, stop on hover
     carousel.addEventListener('mouseenter', stopAutoSlide);
     carousel.addEventListener('mouseleave', startAutoSlide);
+    
+    // Set initial position
+    updateCarousel();
     startAutoSlide();
-
-    // Make carousel focusable for keyboard navigation
+    
     carousel.setAttribute('tabindex', '0');
 }
 
@@ -160,11 +183,32 @@ function setupAboutCarouselObserver() {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, initializing components');
     setupAboutCarouselObserver();
-    // Other initializations...
     initPortfolioCarousel();
     initializeAllImageCarousels();
     initAboutCounters();
+    
+    // Fix navigation scroll position
+    const navButtons = document.querySelectorAll('[data-nav]');
+    navButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = button.getAttribute('data-nav');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Calculate offset to scroll to top of section instead of center
+                const headerHeight = document.querySelector('.sticky-website-header').offsetHeight || 0;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20; // 20px extra padding
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });
 
 // Smooth scrolling for better UX
@@ -401,15 +445,18 @@ function initializeAllImageCarousels() {
     });
 }
 
-// Animated Counters (About Section)
+// Animated Counters (About Section) - Fixed to trigger every scroll
 function initAboutCounters() {
     const statsSection = document.getElementById('aboutStats');
-    if (!statsSection) return;
+    if (!statsSection) {
+        console.log('Stats section not found');
+        return;
+    }
 
     const numbers = statsSection.querySelectorAll('.stat-number');
-    let started = false;
+    let isAnimating = false;
 
-    function animateValue(el, target, duration = 1500) {
+    function animateValue(el, target, duration = 2000) {
         const suffix = el.getAttribute('data-suffix') || '';
         const start = 0;
         const startTime = performance.now();
@@ -417,8 +464,11 @@ function initAboutCounters() {
         function tick(now) {
             const elapsed = now - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            const value = Math.floor(start + (target - start) * progress);
+            // Use easing function for smoother animation
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const value = Math.floor(start + (target - start) * easeOutQuart);
             el.textContent = value + suffix;
+            
             if (progress < 1) {
                 requestAnimationFrame(tick);
             } else {
@@ -428,28 +478,55 @@ function initAboutCounters() {
         requestAnimationFrame(tick);
     }
 
-    function startAnimation() {
-        if (started) return;
-        started = true;
+    function resetCounters() {
         numbers.forEach(el => {
-            const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-            animateValue(el, target);
+            el.textContent = '0';
         });
     }
 
+    function startAnimation() {
+        if (isAnimating) return;
+        isAnimating = true;
+        console.log('Starting counter animation');
+        
+        // Reset all counters to 0 first
+        resetCounters();
+        
+        numbers.forEach((el, index) => {
+            const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+            console.log(`Animating counter ${index + 1}: target = ${target}`);
+            // Add delay for staggered effect
+            setTimeout(() => {
+                animateValue(el, target);
+            }, index * 200);
+        });
+        
+        // Reset animation flag after animation completes
+        setTimeout(() => {
+            isAnimating = false;
+        }, 2500);
+    }
+
     if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries, obs) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    console.log('Stats section is visible, starting animation');
                     startAnimation();
-                    obs.unobserve(entry.target);
+                } else {
+                    // Reset counters when section leaves view
+                    resetCounters();
+                    isAnimating = false;
                 }
             });
-        }, { threshold: 0.35 });
+        }, { 
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
         observer.observe(statsSection);
     } else {
         // Fallback for very old browsers
-        setTimeout(startAnimation, 800);
+        setTimeout(startAnimation, 1000);
     }
 }
 
@@ -817,47 +894,51 @@ document.querySelectorAll('.project-card').forEach(card => {
     emailjs.init("b7GDWdZ4Eu-Xc5PFL"); 
 })();
 
-// Get the form and success message elements
+// Get the form and success message elements (guarded)
 const contactForm = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');
 
-// Add event listener for form submission
-contactForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
+if (contactForm) {
+    // Add event listener for form submission
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
 
-    const serviceID = 'service_o1s9342'; // Replace with your Service ID
-    const templateID = 'template_xxt8o1u'; // Replace with your Template ID
+        const serviceID = 'service_o1s9342'; // Replace with your Service ID
+        const templateID = 'template_xxt8o1u'; // Replace with your Template ID
 
-    // Collect form data
-    const formData = {
-        contact: this.contact.value,
-        message: this.message.value,
-        email: 'emma.yan03@gmail.com' // Updated to 'email' to match Email.js template
-    };
+        // Collect form data
+        const formData = {
+            contact: this.contact?.value || '',
+            message: this.message?.value || '',
+            email: 'emma.yan03@gmail.com' // Updated to 'email' to match Email.js template
+        };
 
-    // Store data in local storage
-    localStorage.setItem('contactFormData', JSON.stringify(formData));
+        // Store data in local storage
+        localStorage.setItem('contactFormData', JSON.stringify(formData));
 
-    // Send the email
-    emailjs.send(serviceID, templateID, formData)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            successMessage.style.display = 'block'; // Show success message
-            contactForm.reset(); // Clear the form
-            localStorage.removeItem('contactFormData'); // Clear local storage after successful send
-            setTimeout(() => {
-                successMessage.style.display = 'none'; // Hide success message after a few seconds
-            }, 5000);
-        }, function(error) {
-            console.log('FAILED...', error);
-            alert('Failed to send message. Please try again later.'); // Show error message
-        });
-});
+        // Send the email
+        emailjs.send(serviceID, templateID, formData)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                if (successMessage) successMessage.style.display = 'block'; // Show success message
+                contactForm.reset(); // Clear the form
+                localStorage.removeItem('contactFormData'); // Clear local storage after successful send
+                setTimeout(() => {
+                    if (successMessage) successMessage.style.display = 'none'; // Hide success message after a few seconds
+                }, 5000);
+            }, function(error) {
+                console.log('FAILED...', error);
+                alert('Failed to send message. Please try again later.'); // Show error message
+            });
+    });
+}
 
-// Check for previously stored data in local storage and pre-fill the form
+// Check for previously stored data in local storage and pre-fill the form (guarded)
 const storedFormData = localStorage.getItem('contactFormData');
-if (storedFormData) {
+if (storedFormData && contactForm) {
     const formData = JSON.parse(storedFormData);
-    document.getElementById('contact').value = formData.contact || '';
-    document.getElementById('message').value = formData.message || '';
+    const contactInput = document.getElementById('contact');
+    const messageInput = document.getElementById('message');
+    if (contactInput) contactInput.value = formData.contact || '';
+    if (messageInput) messageInput.value = formData.message || '';
 }
