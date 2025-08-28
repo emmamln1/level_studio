@@ -214,52 +214,45 @@ function setupServicesObserver() {
 function setupScrollHandler() {
     let scrollTimeout;
     let isScrolling = false;
-    let isOverServiceCard = false;
-    
-    // Track when mouse is over service card area
-    servicesCarousel.addEventListener('mouseenter', () => {
-        isOverServiceCard = true;
-    });
-    
-    servicesCarousel.addEventListener('mouseleave', () => {
-        isOverServiceCard = false;
-    });
     
     const handleScroll = (e) => {
-        // If over service card area, handle service navigation
-        if (isOverServiceCard && servicesIsActive && !isScrolling) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const now = Date.now();
-            if (now - lastScrollTime < 400) return;
-            
-            const delta = e.deltaY;
-            
-            if (Math.abs(delta) < 5) return;
-            
-            isScrolling = true;
-            
-            if (delta > 0) {
-                // Scroll down - next service
-                const nextIndex = (currentServiceIndex + 1) % marketingServicesData.length;
-                smoothNavigateToService(nextIndex);
-            } else {
-                // Scroll up - previous service
-                const prevIndex = (currentServiceIndex - 1 + marketingServicesData.length) % marketingServicesData.length;
-                smoothNavigateToService(prevIndex);
-            }
-            
-            lastScrollTime = now;
-            
-            setTimeout(() => {
-                isScrolling = false;
-            }, 300);
+        if (!servicesIsActive || isScrolling) return;
+        
+        // Prevent default scroll behavior in services section
+        e.preventDefault();
+        
+        const now = Date.now();
+        if (now - lastScrollTime < 600) return; // Faster response time
+        
+        const delta = e.deltaY;
+        
+        // Only proceed if scroll is significant enough
+        if (Math.abs(delta) < 5) return;
+        
+        isScrolling = true;
+        
+        clearTimeout(scrollTimeout);
+        
+        // Immediate smooth transition without pausing animation
+        if (delta > 0) {
+            // Scroll down
+            const nextIndex = (currentServiceIndex + 1) % marketingServicesData.length;
+            smoothNavigateToService(nextIndex);
+        } else {
+            // Scroll up
+            const prevIndex = (currentServiceIndex - 1 + marketingServicesData.length) % marketingServicesData.length;
+            smoothNavigateToService(prevIndex);
         }
-        // If not over service card, allow normal page scrolling
+        
+        lastScrollTime = now;
+        
+        // Reset scrolling flag after transition
+        setTimeout(() => {
+            isScrolling = false;
+        }, 400);
     };
     
-    // Add wheel event listener to the entire services container
+    // Add wheel event listener
     servicesContainer.addEventListener('wheel', handleScroll, { passive: false });
 }
 

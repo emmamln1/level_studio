@@ -26,23 +26,6 @@ body {
     width: 100vw;
 }
 
-/* Consistent spacing between sections */
-.marketing-services-container,
-.works-showcase-section,
-.business-partners-section,
-.contact-section {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-}
-
-/* Adjust section headers for consistent spacing */
-.services-header,
-.works-showcase-header,
-.business-section-header,
-.section-header {
-    margin-bottom: 4rem;
-}
-
 .marketing-studio-main-content {
     min-height: 100vh;
     overflow-x: hidden;

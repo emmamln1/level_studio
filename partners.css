@@ -1,13 +1,60 @@
 .business-partners-section {
-    min-height: 100vh;
+    height: 100vh;
     position: relative;
-    background: #000;
+    background: 
+        radial-gradient(circle at 15% 25%, rgba(4, 167, 86, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(255, 49, 49, 0.06) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0a0a 0%, #121212 100%);
     overflow: hidden;
     display: flex;
     align-items: center;
-    padding: 6rem 0;
 }
 
+.business-floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.business-floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(1, 185, 95, 0.1), rgba(255, 49, 49, 0.08));
+    animation: float 6s ease-in-out infinite;
+}
+
+.business-floating-circle:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.business-floating-circle:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.business-floating-circle:nth-child(3) {
+    width: 100px;
+    height: 100px;
+    top: 80%;
+    left: 5%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
 
 .business-container {
     width: 100%;
@@ -18,9 +65,9 @@
 
 .business-section-header {
     text-align: center;
-    opacity: 1;
-    transform: translateY(0);
-    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out 0.3s forwards;
 }
 
 .business-section-title {
@@ -34,7 +81,12 @@
 }
 
 .business-section-title .highlight {
-    color: #01B95F;
+    background: linear-gradient(45deg, #04A756, #01B95F, #FF3131);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 4s ease-in-out infinite;
 }
 
 .business-section-subtitle {
@@ -48,9 +100,22 @@
 .business-divider {
     width: 100px;
     height: 4px;
-    background: #01B95F;
+    background: linear-gradient(45deg, #01B95F, #FF3131);
     margin: 0 auto;
     border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.business-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shine 2s ease-in-out infinite;
 }
 
 @keyframes shine {
@@ -123,7 +188,7 @@
     width: 80px;
     height: 80px;
     margin: 0 auto 15px;
-    background: #01B95F;
+    background: linear-gradient(135deg, #01B95F, #04A756);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -131,6 +196,20 @@
     font-size: 1.8rem;
     font-weight: 900;
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.business-partner-logo::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(45deg);
+    animation: logoShine 3s ease-in-out infinite;
 }
 
 @keyframes logoShine {
@@ -157,7 +236,7 @@
 
 .business-partner-field {
     display: inline-block;
-    background: #01B95F;
+    background: linear-gradient(45deg, #FF3131, #01B95F);
     color: white;
     padding: 6px 16px;
     border-radius: 20px;
