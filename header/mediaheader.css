@@ -1,4 +1,4 @@
-@media (max-width: 1080px) {
+@media (max-width: 1300px) {
     .sticky-website-header {
         height: 8vh;
     }
@@ -42,7 +42,7 @@
         border-width: 1.5px;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .mobile-menu-btn {
         display: flex; /* Show hamburger button */
     }
@@ -55,8 +55,7 @@
         position: fixed;
         top: 8vh;
         left: -100%;
-        width: 80vw;
-        max-width: 300px;
+        width: 100%;
         height: calc(100vh - 8vh);
         background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
         backdrop-filter: blur(10px);
@@ -88,7 +87,7 @@
     }
     
     .primary-site-navigation ul li button {
-        font-size: 16px;
+        font-size: 25px;
         padding: 1.2rem 2rem;
         width: 100%;
         text-align: left;
@@ -185,7 +184,7 @@
 
     /* Slide-out nav slightly narrower for breathing room */
     .primary-site-navigation {
-        width: 86vw;
+        width: 100%;
     }
 
     .primary-site-navigation ul {
@@ -193,8 +192,8 @@
     }
 
     .primary-site-navigation ul li button {
-        font-size: 15px;
-        padding: 1rem 1.25rem;
+        font-size: 24px;
+        padding: 1.2rem 1.5rem;
     }
 
     .primary-site-navigation ul li button:hover {
