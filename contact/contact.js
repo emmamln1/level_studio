@@ -1,6 +1,7 @@
-(function(){
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
-})();
+// EmailJS будет инициализирован в Index.js, если нужно
+// (function(){
+//     emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+// })();
 
 const contactForm = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');

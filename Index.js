@@ -507,16 +507,16 @@ function initAboutCounters() {
         }, 2500);
     }
 
+    let hasAnimated = false; // Флаг для отслеживания выполнения анимации
+    
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && !hasAnimated) {
                     console.log('Stats section is visible, starting animation');
                     startAnimation();
-                } else {
-                    // Reset counters when section leaves view
-                    resetCounters();
-                    isAnimating = false;
+                    hasAnimated = true; // Помечаем что анимация выполнена
+                    observer.unobserve(entry.target); // Отключаем наблюдение
                 }
             });
         }, { 
@@ -572,7 +572,11 @@ class LandingPartners {
     }
 
     renderPartners() {
-        const grid = document.getElementById('partnersGrid');
+        const grid = document.getElementById('businessGridView');
+        if (!grid) {
+            console.log('Partners grid not found');
+            return;
+        }
         grid.innerHTML = '';
         
         this.partners.forEach((partner, index) => {
@@ -633,7 +637,9 @@ class LandingPartners {
 
         // Observe elements
         const header = document.getElementById('sectionHeader');
-        this.headerObserver.observe(header);
+        if (header) {
+            this.headerObserver.observe(header);
+        }
 
         // Observe cards (after they're rendered)
         setTimeout(() => {
@@ -888,57 +894,3 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.project-card').forEach(card => {
     observer.observe(card);
 });
-
-// Initialize Email.js (replace with your actual service ID, template ID, and Public Key)
-(function() {
-    emailjs.init("b7GDWdZ4Eu-Xc5PFL"); 
-})();
-
-// Get the form and success message elements (guarded)
-const contactForm = document.getElementById('contactForm');
-const successMessage = document.getElementById('successMessage');
-
-if (contactForm) {
-    // Add event listener for form submission
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        const serviceID = 'service_o1s9342'; // Replace with your Service ID
-        const templateID = 'template_xxt8o1u'; // Replace with your Template ID
-
-        // Collect form data
-        const formData = {
-            contact: this.contact?.value || '',
-            message: this.message?.value || '',
-            email: 'emma.yan03@gmail.com' // Updated to 'email' to match Email.js template
-        };
-
-        // Store data in local storage
-        localStorage.setItem('contactFormData', JSON.stringify(formData));
-
-        // Send the email
-        emailjs.send(serviceID, templateID, formData)
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                if (successMessage) successMessage.style.display = 'block'; // Show success message
-                contactForm.reset(); // Clear the form
-                localStorage.removeItem('contactFormData'); // Clear local storage after successful send
-                setTimeout(() => {
-                    if (successMessage) successMessage.style.display = 'none'; // Hide success message after a few seconds
-                }, 5000);
-            }, function(error) {
-                console.log('FAILED...', error);
-                alert('Failed to send message. Please try again later.'); // Show error message
-            });
-    });
-}
-
-// Check for previously stored data in local storage and pre-fill the form (guarded)
-const storedFormData = localStorage.getItem('contactFormData');
-if (storedFormData && contactForm) {
-    const formData = JSON.parse(storedFormData);
-    const contactInput = document.getElementById('contact');
-    const messageInput = document.getElementById('message');
-    if (contactInput) contactInput.value = formData.contact || '';
-    if (messageInput) messageInput.value = formData.message || '';
-}

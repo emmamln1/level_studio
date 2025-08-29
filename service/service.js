@@ -1,333 +1,98 @@
-// Updated JavaScript for Services Section
-const marketingServicesData = [
-    {
-        number: "01",
-        title: "Թվային մարքեթինգ",
-        description: "Ամբողջական թվային մարքեթինգ ծառայություններ՝ ճանաչելիության բարձրացման և վաճառքի աճի համար",
-        features: ["SMM", "Copywriting", "SEO", "Email Marketing"],
-        icon: "📱"
-    },
-    {
-        number: "02", 
-        title: "Վեբ կայքերի պատրաստում",
-        description: "Կայքերի և վեբ հավելվածների մշակում ժամանակակից տեխնոլոգիաներով",
-        features: ["React", "JavaScript", "PHP", "Next.js"],
-        icon: "💻"
-    },
-    {
-        number: "03",
-        title: "Վեբ դիզայն", 
-        description: "Գեղեցիկ և ֆունկցիոնալ վեբ դիզայնի ստեղծում՝ օգտատերերի լավագույն փորձառության համար",
-        features: ["UI/UX Design", "Responsive Design", "Adobe Creative Suite", "Figma"],
-        icon: "🎨"
-    },
-    {
-        number: "04",
-        title: "Կայքերի առաջխաղացում",
-        description: "Կայքերի SEO օպտիմիզացիա և դիրքավորում Google-ում բարձր արդյունքների համար", 
-        features: ["SEO օպտիմիզացիա", "Google Ads", "Analytics", "Բանալի բառեր"],
-        icon: "📈"
-    },
-    {
-        number: "05",
-        title: "Առցանց գնումների խանութ",
-        description: "Լիարժեք E-commerce պլատֆորմների մշակում վաճառքի և գնումների համար",
-        features: ["WooCommerce", "Shopify", "Վճարման համակարգեր", "Պահեստի կառավարում"],
-        icon: "🛒"
-    },
-    {
-        number: "06",
-        title: "Բիզնեսի ավտոմատացում",
-        description: "Բիզնես գործընթացների ավտոմատացում և CRM համակարգերի ներդրում",
-        features: ["CRM համակարգեր", "Workflow ավտոմատացում", "API ինտեգրացիա", "Դատաբազների կառավարում"],
-        icon: "⚙️"
-    },
-    {
-        number: "07",
-        title: "Մոբայլ հավելվածներ",
-        description: "iOS և Android հավելվածների մշակում բիզնեսի գործընթացների բարելավման համար",
-        features: ["React Native", "Flutter", "iOS/Android", "Push Notifications"],
-        icon: "📱"
-    },
-    {
-        number: "08", 
-        title: "Դոմեյն և հոսթինգ",
-        description: "Հուսալի դոմեյն և հոսթինգ ծառայություններ կայքերի անխափան աշխատանքի համար",
-        features: ["SSL վկայագրեր", "Օրական backup", "24/7 մոնիտորինգ", "CDN ծառայություններ"],
-        icon: "🌐"
-    },
-    {
-        number: "09",
-        title: "Տեխնիկական սպասարկում", 
-        description: "24/7 տեխնիկական աջակցություն և կայքերի պարբերական թարմացում",
-        features: ["24/7 Support", "Անվտանգության թարմացումներ", "Կատարողականության օպտիմիզացիա", "Backup ծառայություններ"],
-        icon: "🔧"
-    },
-    {
-        number: "10",
-        title: "Գրաֆիկական դիզայն",
-        description: "Ստեղծագործական գրաֆիկական լուծումներ ապրանքանիշի ճանաչելիության համար",
-        features: ["Լոգո դիզայն", "Այցեքարտեր", "Ֆլայերներ", "Բրենդինգ"],
-        icon: "🖌️"
-    },
-    {
-        number: "11",
-        title: "Վեբ դասընթացներ",
-        description: "Լիցենզավորված մասնագիտական վեբ դասընթացներ տեխնոլոգիական հմտությունների զարգացման համար",
-        features: ["Հավաստագրված դասընթացներ", "Փորձարկված մանկավարժներ", "Գործնական նախագծեր", "Կարիերային աջակցություն"],
-        icon: "🎓"
-    }
-];
+/* Start: Marketing Services Vertical Carousel */
 
-let currentServiceIndex = 0;
-let isServiceChanging = false;
-let lastScrollTime = 0;
-let servicesIsActive = false;
-let animationPaused = false;
+document.addEventListener('DOMContentLoaded', () => {
+    const marketingServicesData = [
+        { number: '01', title: 'SEO-ОПТИМИЗАЦИЯ', features: ['Аудит', 'Ключевые слова', 'Линкбилдинг'] },
+        { number: '02', title: 'КОНТЕКСТНАЯ РЕКЛАМА', features: ['PPC', 'Ретаргетинг', 'Аналитика'] },
+        { number: '03', title: 'SMM-ПРОДВИЖЕНИЕ', features: ['Контент', 'Таргетинг', 'Комьюнити'] },
+        { number: '04', title: 'КОНТЕНТ-МАРКЕТИНГ', features: ['Статьи', 'Видео', 'Инфографика'] },
+        { number: '05', title: 'EMAIL-МАРКЕТИНГ', features: ['Автоматизация', 'Сегментация', 'A/B тесты'] },
+        { number: '06', title: 'ТАРГЕТИРОВАННАЯ РЕКЛАМА', features: ['Facebook Ads', 'Instagram Ads', 'Look-alike'] },
+        { number: '07', title: 'ВЕБ-АНАЛИТИКА', features: ['Google Analytics', 'Яндекс.Метрика', 'Отчеты'] },
+        { number: '08', title: 'UX/UI ДИЗАЙН', features: ['Прототипы', 'Тестирование', 'Figma'] },
+        { number: '09', title: 'БРЕНДИНГ', features: ['Логотип', 'Фирменный стиль', 'Гайдлайн'] }
+    ];
 
-// DOM elements
-const servicesContainer = document.getElementById('xaiQuantumContainer');
-const servicesCarousel = document.getElementById('xaiServiceNexus');
-const servicesAnimationField = document.getElementById('xaiNebulaField');
+    const carouselWrapper = document.getElementById('servicesCarouselWrapper');
+    const carousel = document.getElementById('servicesCarousel');
+    if (!carouselWrapper || !carousel) return;
 
-// Initialize services section
-function initializeServicesSection() {
-    createServiceCards();
-    createFloatingElements();
-    setupServicesObserver();
-    setupScrollHandler();
-}
-
-// Create service cards with new structure
-function createServiceCards() {
-    servicesCarousel.innerHTML = '';
-    
-    marketingServicesData.forEach((service, index) => {
-        const serviceCard = document.createElement('div');
-        serviceCard.className = 'service-card-item';
-        serviceCard.innerHTML = `
-            <div class="service-icon-head">
-                ${service.icon}
-            </div>
+    // Create and append cards
+    marketingServicesData.forEach(service => {
+        const card = document.createElement('div');
+        card.className = 'service-card-item';
+        card.innerHTML = `
+            <div class="service-icon-head">${service.number}</div>
             <div class="service-card-body">
-                <div class="service-number-label">${service.number}</div>
-                <h2 class="service-title-heading">
-                    <span class="highlight">${service.title}</span>
-                </h2>
-                <p class="service-description-text">${service.description}</p>
+                <h3 class="service-title-heading">${service.title}</h3>
                 <div class="service-features-list">
                     ${service.features.map(feature => `<span class="service-feature-tag">${feature}</span>`).join('')}
                 </div>
             </div>
         `;
-        servicesCarousel.appendChild(serviceCard);
+        carousel.appendChild(card);
     });
-}
 
+    const items = Array.from(carousel.children);
+    const totalItems = items.length;
+    let currentIndex = 0;
+    let isThrottled = false;
 
-// Create floating particles
-function createFloatingElements() {
-    servicesAnimationField.innerHTML = '';
-    
-    for (let i = 0; i < 30; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'floating-particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 20 + 's';
-        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-        servicesAnimationField.appendChild(particle);
+    function updateCarousel() {
+        items.forEach((item, index) => {
+            item.classList.remove('active', 'prev', 'next');
+
+            if (index === currentIndex) {
+                item.classList.add('active');
+            } else if (index === (currentIndex - 1 + totalItems) % totalItems) {
+                item.classList.add('prev');
+            } else if (index === (currentIndex + 1) % totalItems) {
+                item.classList.add('next');
+            }
+        });
     }
-}
 
+    function showNext() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    }
 
-// Navigate to specific service
-function navigateToService(index) {
-    if (isServiceChanging || index === currentServiceIndex) return;
-    
-    isServiceChanging = true;
-    currentServiceIndex = index;
-    
-    // Pause animation briefly and sync
-    pauseAnimation();
-    setTimeout(() => {
-        resumeAnimation();
-        isServiceChanging = false;
-    }, 800);
-}
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+    }
 
-// Smooth navigate without interrupting animation flow
-function smoothNavigateToService(index) {
-    if (isServiceChanging || index === currentServiceIndex) return;
-    
-    isServiceChanging = true;
-    currentServiceIndex = index;
-    
-    // Sync animation timing to create seamless transition
-    const serviceCards = servicesCarousel.querySelectorAll('.service-card-item');
-    serviceCards.forEach((card, cardIndex) => {
-        const newDelay = (cardIndex - index) * -3; // 3s per service
-        card.style.animationDelay = `${newDelay}s`;
-    });
-    
-    setTimeout(() => {
-        isServiceChanging = false;
-    }, 300);
-}
+    // Scroll wheel event
+    carouselWrapper.addEventListener('wheel', (event) => {
+        event.preventDefault();
+        if (isThrottled) return;
+        isThrottled = true;
 
-// Pause carousel animation
-function pauseAnimation() {
-    const serviceCards = servicesCarousel.querySelectorAll('.service-card-item');
-    serviceCards.forEach(card => {
-        card.style.animationPlayState = 'paused';
-    });
-    animationPaused = true;
-}
-
-// Resume carousel animation
-function resumeAnimation() {
-    const serviceCards = servicesCarousel.querySelectorAll('.service-card-item');
-    serviceCards.forEach(card => {
-        card.style.animationPlayState = 'running';
-    });
-    animationPaused = false;
-}
-
-// Setup intersection observer
-function setupServicesObserver() {
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach(entry => {
-                servicesIsActive = entry.isIntersecting;
-                if (servicesIsActive) {
-                    resumeAnimation();
-                } else {
-                    pauseAnimation();
-                }
-            });
-        },
-        { threshold: 0.5 }
-    );
-    observer.observe(servicesContainer);
-}
-
-// Setup scroll handler for manual navigation
-function setupScrollHandler() {
-    let scrollTimeout;
-    let isScrolling = false;
-    
-    const handleScroll = (e) => {
-        if (!servicesIsActive || isScrolling) return;
-        
-        // Prevent default scroll behavior in services section
-        e.preventDefault();
-        
-        const now = Date.now();
-        if (now - lastScrollTime < 600) return; // Faster response time
-        
-        const delta = e.deltaY;
-        
-        // Only proceed if scroll is significant enough
-        if (Math.abs(delta) < 5) return;
-        
-        isScrolling = true;
-        
-        clearTimeout(scrollTimeout);
-        
-        // Immediate smooth transition without pausing animation
-        if (delta > 0) {
-            // Scroll down
-            const nextIndex = (currentServiceIndex + 1) % marketingServicesData.length;
-            smoothNavigateToService(nextIndex);
+        if (event.deltaY > 0) {
+            showNext();
         } else {
-            // Scroll up
-            const prevIndex = (currentServiceIndex - 1 + marketingServicesData.length) % marketingServicesData.length;
-            smoothNavigateToService(prevIndex);
+            showPrev();
         }
-        
-        lastScrollTime = now;
-        
-        // Reset scrolling flag after transition
+
         setTimeout(() => {
-            isScrolling = false;
-        }, 400);
-    };
-    
-    // Add wheel event listener
-    servicesContainer.addEventListener('wheel', handleScroll, { passive: false });
-}
+            isThrottled = false;
+        }, 600); // Throttle to prevent rapid scrolling
+    });
 
-// Handle touch events for mobile
-let touchStartY = 0;
-let touchEndY = 0;
+    // Click event on items
+    carousel.addEventListener('click', (event) => {
+        const clickedItem = event.target.closest('.service-card-item');
+        if (!clickedItem) return;
 
-function handleTouchStart(e) {
-    touchStartY = e.touches[0].clientY;
-}
-
-function handleTouchEnd(e) {
-    if (!servicesIsActive || animationPaused) return;
-    
-    touchEndY = e.changedTouches[0].clientY;
-    const touchDifference = touchStartY - touchEndY;
-    
-    if (Math.abs(touchDifference) > 50) {
-        if (touchDifference > 0) {
-            // Swipe up
-            const nextIndex = (currentServiceIndex + 1) % marketingServicesData.length;
-            navigateToService(nextIndex);
-        } else {
-            // Swipe down
-            const prevIndex = (currentServiceIndex - 1 + marketingServicesData.length) % marketingServicesData.length;
-            navigateToService(prevIndex);
+        if (clickedItem.classList.contains('next')) {
+            showNext();
+        } else if (clickedItem.classList.contains('prev')) {
+            showPrev();
         }
-    }
-}
+    });
 
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    if (!servicesIsActive) return;
-    
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        const nextIndex = (currentServiceIndex + 1) % marketingServicesData.length;
-        navigateToService(nextIndex);
-    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        const prevIndex = (currentServiceIndex - 1 + marketingServicesData.length) % marketingServicesData.length;
-        navigateToService(prevIndex);
-    }
+    // Initialize
+    updateCarousel();
 });
 
-// Add touch event listeners
-servicesContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
-servicesContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-// Handle window resize
-window.addEventListener('resize', () => {
-    // Recalculate layout if needed
-    updateProgressBar();
-});
-
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    initializeServicesSection();
-});
-
-// Optional: Auto-advance carousel (can be enabled/disabled)
-let autoAdvanceInterval;
-
-function startAutoAdvance() {
-    autoAdvanceInterval = setInterval(() => {
-        if (servicesIsActive && !animationPaused && !isServiceChanging) {
-            const nextIndex = (currentServiceIndex + 1) % marketingServicesData.length;
-            currentServiceIndex = nextIndex;
-            updateNavigationDots();
-            updateProgressBar();
-        }
-    }, 3000); // 3 seconds per service
-}
-
-function stopAutoAdvance() {
-    clearInterval(autoAdvanceInterval);
-}
-
-// Enable auto-advance (comment out if not needed)
-// startAutoAdvance();
+/* End: Marketing Services Vertical Carousel */

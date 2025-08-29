@@ -82,6 +82,7 @@ function initializeBusinessCarousel() {
     track.innerHTML = '';
     indicators.innerHTML = '';
 
+    // Добавляем все карточки
     partnersData.forEach((partner, index) => {
         const card = createBusinessPartnerCard(partner, index);
         track.appendChild(card);
@@ -89,6 +90,14 @@ function initializeBusinessCarousel() {
         const indicator = createBusinessIndicator(index);
         indicators.appendChild(indicator);
     });
+
+    // Дублируем первые несколько карточек в конце для плавного зацикливания
+    const cardsToClone = Math.min(3, partnersData.length);
+    for (let i = 0; i < cardsToClone; i++) {
+        const card = createBusinessPartnerCard(partnersData[i], i);
+        card.classList.add('cloned-card');
+        track.appendChild(card);
+    }
 
     updateBusinessCarousel();
 }
@@ -113,6 +122,18 @@ function updateBusinessCarousel() {
     indicators.forEach((indicator, index) => {
         indicator.classList.toggle('active', index === currentIndex);
     });
+    
+    // Проверяем, нужно ли сбросить позицию для бесконечного цикла
+    if (currentIndex >= partnersData.length) {
+        setTimeout(() => {
+            track.style.transition = 'none';
+            currentIndex = 0;
+            track.style.transform = `translateX(0px)`;
+            setTimeout(() => {
+                track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            }, 50);
+        }, 600);
+    }
 }
 
 function goToBusinessSlide(index) {
@@ -122,7 +143,7 @@ function goToBusinessSlide(index) {
 }
 
 function nextBusinessSlide() {
-    currentIndex = (currentIndex + 1) % partnersData.length;
+    currentIndex = currentIndex + 1;
     updateBusinessCarousel();
 }
 
@@ -171,27 +192,39 @@ function switchBusinessView(viewType) {
 document.addEventListener('DOMContentLoaded', function() {
     initializeBusinessCarousel();
     initializeBusinessGrid();
-    startBusinessAutoplay();
+    // Убираем автопрокрутку
+    // startBusinessAutoplay();
 
     // Navigation buttons
-    document.getElementById('businessNextBtn').addEventListener('click', () => {
-        nextBusinessSlide();
-        resetBusinessAutoplay();
-    });
+    const businessNextBtn = document.getElementById('businessNextBtn');
+    const businessPrevBtn = document.getElementById('businessPrevBtn');
+    const businessCarouselBtn = document.getElementById('businessCarouselBtn');
+    const businessGridBtn = document.getElementById('businessGridBtn');
 
-    document.getElementById('businessPrevBtn').addEventListener('click', () => {
-        prevBusinessSlide();
-        resetBusinessAutoplay();
-    });
+    if (businessNextBtn) {
+        businessNextBtn.addEventListener('click', () => {
+            nextBusinessSlide();
+        });
+    }
+
+    if (businessPrevBtn) {
+        businessPrevBtn.addEventListener('click', () => {
+            prevBusinessSlide();
+        });
+    }
 
     // View toggle buttons
-    document.getElementById('businessCarouselBtn').addEventListener('click', () => {
-        switchBusinessView('carousel');
-    });
+    if (businessCarouselBtn) {
+        businessCarouselBtn.addEventListener('click', () => {
+            switchBusinessView('carousel');
+        });
+    }
 
-    document.getElementById('businessGridBtn').addEventListener('click', () => {
-        switchBusinessView('grid');
-    });
+    if (businessGridBtn) {
+        businessGridBtn.addEventListener('click', () => {
+            switchBusinessView('grid');
+        });
+    }
 
     // Pause autoplay on hover
     const businessCarouselWrapper = document.querySelector('.business-carousel-wrapper');
