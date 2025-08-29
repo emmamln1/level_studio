@@ -115,7 +115,7 @@
 .info-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(45deg, #01B95F, #FF3131);
+    background: linear-gradient(45deg, red, green);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -265,7 +265,7 @@
 .submit-btn {
     width: 100%;
     padding: 1rem 2rem;
-    background: linear-gradient(45deg, #01B95F, #FF3131);
+    background: linear-gradient(45deg, red, green);
     border: none;
     border-radius: 10px;
     color: white;
@@ -290,7 +290,7 @@
 
 .success-message {
     display: none;
-    background: linear-gradient(45deg, #01B95F, #04A756);
+    background: linear-gradient(45deg, red, green);
     color: white;
     padding: 1rem;
     border-radius: 10px;

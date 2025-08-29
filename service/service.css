@@ -2,7 +2,6 @@
 
 .services-header {
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .marketing-services-carousel-wrapper {
@@ -62,7 +61,7 @@
 
 .service-icon-head {
     border-radius: 16px;
-    background: linear-gradient(45deg, #01B95F, #FF3131);
+    background: linear-gradient(45deg, red, green);
     width: 70px;
     height: 70px;
     position: relative;

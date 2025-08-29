@@ -1,3 +1,7 @@
+// Initialize EmailJS
+(function(){
+    emailjs.init("b7GDWdZ4Eu-Xc5PFL"); // Replace with your actual EmailJS public key
+})();
 
 window.addEventListener('scroll', function() {
     const section = document.getElementById('aboutSection');

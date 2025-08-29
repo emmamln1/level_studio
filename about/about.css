@@ -14,8 +14,8 @@
     width: 100%;
     max-width: 1400px;
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 0.2rem 4rem;
     align-items: start;
     position: relative;
     z-index: 2;
@@ -51,7 +51,7 @@
 }
 
 .main-title .highlight {
-    background: linear-gradient(135deg, #ff0000, #00ff00);
+    background: linear-gradient(135deg, red, green);
     -webkit-background-clip: text;
     background-clip: text;
 }
@@ -86,7 +86,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, #ff0000, #00ff00);
+    background: linear-gradient(90deg, red, green);
     opacity: 0;
     transition: opacity 0.4s ease;
 }
@@ -106,7 +106,7 @@
     font-weight: 800;
     color: #fff;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, #ff0000, #00ff00);
+    background: linear-gradient(135deg, red, green);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -160,7 +160,7 @@
 
 .highlight-text {
     font-weight: 700;
-    background: linear-gradient(135deg, #ff0000, #00ff00);
+    background: linear-gradient(135deg, red, green);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -178,7 +178,7 @@
 .divider {
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, #ff0000, #00ff00);
+    background: linear-gradient(90deg, red, green);
     margin: 1.5rem 0;
     opacity: 1;
     transform: scaleX(1);
@@ -214,7 +214,7 @@
 .contact-btn {
     display: inline-block;
     padding: 0.8rem 2.5rem;
-    background: linear-gradient(135deg, #ff0000, #00ff00);
+    background: linear-gradient(135deg, red, green);
     color: #ffffff;
     text-decoration: none;
     border-radius: 30px;

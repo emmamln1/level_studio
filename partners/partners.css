@@ -69,7 +69,6 @@
     margin: 0 auto;
     position: relative;
     z-index: 10;
-    padding: 0 2rem;
 }
 
 .business-section-header {
@@ -79,7 +78,7 @@
 }
 
 .business-section-title {
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: 1.5rem;
@@ -89,7 +88,7 @@
 }
 
 .business-section-title .highlight {
-    background: linear-gradient(45deg, #04A756, #01B95F, #FF3131);
+    background: linear-gradient(45deg, rgb(228, 51, 11), red, green);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -107,7 +106,7 @@
 .business-divider {
     width: 100px;
     height: 4px;
-    background: linear-gradient(45deg, #01B95F, #FF3131);
+    background: linear-gradient(45deg, red, green);
     margin: 0 auto;
     border-radius: 2px;
     position: relative;
@@ -218,7 +217,7 @@
     width: 80px;
     height: 80px;
     margin: 0 auto 15px;
-    background: linear-gradient(135deg, #01B95F, #04A756);
+    background: linear-gradient(135deg, red, green);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -260,7 +259,7 @@
 
 .business-partner-field {
     display: inline-block;
-    background: linear-gradient(45deg, #FF3131, #01B95F);
+    background: linear-gradient(45deg, red, green);
     color: white;
     padding: 6px 16px;
     border-radius: 20px;
@@ -415,7 +414,7 @@
 
 .toggle-btn:hover,
 .toggle-btn.active {
-    background: linear-gradient(45deg, #01B95F, #04A756);
+    background: linear-gradient(45deg, red, green);
     border-color: transparent;
     color: white;
     transform: translateY(-2px);

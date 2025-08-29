@@ -6,9 +6,9 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'design',
         images: [
-            'image/Designlinescompany.png',
-            'image/design.png',
-            'image/design1.png'
+            'image/designline/Designlinescompany.png',
+            'image/designline/design.png',
+            'image/designline/design1.png'
         ]
     },
     // Fashion
@@ -18,9 +18,9 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'fashion',
         images: [
-            'image/lanjcompany.png',
-            'image/lanj.png',
-            'image/lanj1.png'
+            'image/lanj/lanjcompany.png',
+            'image/lanj/lanj.png',
+            'image/lanj/lanj1.png'
         ]
     },
     // HORECA
@@ -30,9 +30,9 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'horeca',
         images: [
-            'image/karapcafecompany.png',
-            'image/karapcafe.png',
-            'image/karapcafe1.png'
+            'image/karapcafe/karapcafecompany.png',
+            'image/karapcafe/karapcafe.png',
+            'image/karapcafe/karapcafe1.png'
         ]
     },
     {
@@ -41,9 +41,9 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'horeca',
         images: [
-            'image/hillzonecompany.png',
-            'image/hillzone.png',
-            'image/hillzone1.png'
+            'image/hillzone/hillzonecompany.png',
+            'image/hillzone/hillzone.png',
+            'image/hillzone/hillzone1.png'
         ]
     },
     {
@@ -62,8 +62,9 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'horeca',
         images: [
-            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
+            'image/boulevard/bulevardcompany.png',
+            'image/boulevard/bulevard.png',
+            'image/boulevard/bulevard1.png'
         ]
     },
     {
@@ -72,8 +73,9 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'horeca',
         images: [
-            'https://images.unsplash.com/photo-1552566063-b4e53c34e638?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=500&h=300&fit=crop'
+            'image/souvenirrestaurant/souvenircompany.png',
+            'image/souvenirrestaurant/souvenir.png',
+            'image/souvenirrestaurant/souvenir1.png'
         ]
     },
     {
@@ -82,8 +84,9 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'horeca',
         images: [
-            'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=300&fit=crop'
+            'image/souvenirguesthouse/souvenirguesthousecompany.png',
+            'image/souvenirguesthouse/souvenirguesthouse.png',
+            'image/souvenirguesthouse/souvenirguesthouse1.png'
         ]
     },
     {

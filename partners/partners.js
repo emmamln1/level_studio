@@ -1,39 +1,39 @@
 const partnersData = [
     {
-        name: 'TechCorp Armenia',
-        field: 'Technology',
-        logo: 'TC',
-        description: 'Առաջատար տեխնոլոգիական ընկերություն, որը մասնագիտանում է արհեստական բանականության և մեքենայական ուսուցման լուծումների մեջ'
+        name: 'Biorise Armenia',
+        field: 'Բժշկական',
+        logo: 'image/partners/biorise.webp',
+        description: 'Բժշկական վերականգնողական կլինիկա',
     },
     {
-        name: 'Creative Studio',
-        field: 'Design',
-        logo: 'CS',
-        description: 'Ստեղծագործական ստուդիա, որը համակցում է ժամանակակից դիզայնը նորարարական մոտեցումների հետ'
+        name: 'Lanj',
+        field: 'Հոռեկա',
+        logo: 'image/partners/lanj.webp',
+        description: '',
     },
     {
-        name: 'Digital Marketing Pro',
-        field: 'Marketing',
-        logo: 'DM',
-        description: 'Դիջիթալ մարքեթինգի գործակալություն՝ մասնագիտացված բրենդավորման և օնլայն առևտրի բարձրացման ոլորտում'
+        name: 'Meridian hall',
+        field: 'Հոռեկա',
+        logo: 'image/partners/meridian.webp',
+        description: 'Մերիդիան ռեստորանային համալիր',
     },
     {
-        name: 'Business Solutions',
-        field: 'Consulting',
-        logo: 'BS',
-        description: 'Ազուցիական խորհրդատվական ընկերություն, որը օգնում է բիզնեսներին բարերարել իրենց գործառնությունները'
+        name: 'Soft Skin',
+        field: 'Խնամք',
+        logo: 'image/partners/softskin.webp',
+        description: 'Լազերային մազահեռացում',
     },
     {
-        name: 'Innovation Hub',
-        field: 'Startup',
-        logo: 'IH',
-        description: 'Նորարարական կենտրոն, որը աջակցում է սթարտափներին և ընկերությունների զարգացմանը'
+        name: 'Vitex',
+        field: 'Շինանյութ',
+        logo: 'mage/partners/vitex.webp',
+        description: 'Ներկեր',
     },
     {
         name: 'Media Network',
         field: 'Media',
-        logo: 'MN',
-        description: 'Լրատվական ցանց, որը ծծանում է բազմաշերտ բովանդակություն և մեդիա ծառայություններ'
+        logo: 'image/partners/etna.webp',
+        description: 'Լրատվական ցանց, որը ծծանում է բազմաշերտ բովանդակություն և մեդիա ծառայություններ',
     },
     {
         name: 'Finance Group',
@@ -60,7 +60,7 @@ function createBusinessPartnerCard(partner, index) {
     card.className = 'business-partner-card';
     card.innerHTML = `
         <div class="business-partner-logo">
-            ${partner.logo}
+         <img src="${partner.logo}" alt="${partner.name}" style="width: 100%; height: 100%;">
         </div>
         <h3 class="business-partner-name">${partner.name}</h3>
         <div class="business-partner-field">${partner.field}</div>
