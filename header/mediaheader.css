@@ -124,25 +124,31 @@
     
     .primary-site-navigation ul li button.active-navigation-item {
         border: none;
-        color: #fff;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0.5rem 4rem;
+        color: #ccc;
+        background: transparent;
+        padding: 1.2rem 2rem;
     }
     
     .primary-site-navigation ul li button.active-navigation-item::before {
-        left: 0;
+        display: none;
     }
     
     /* Language switcher stays visible */
     #marketing-agency-header .multilingual-language-switcher {
         width: 120px;
-        gap: 0.2rem;
+        gap: 0.8rem;
     }
     
     #marketing-agency-header .multilingual-language-switcher button {
-        width: 38px;
-        font-size: 12px;
-        padding: 5px 4px;
+        width: 38px !important;
+        font-size: 12px !important;
+        padding: 12px 10px !important;
+        min-height: 40px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
     }
 
     /* Staggered reveal of menu items */
@@ -167,19 +173,74 @@
         height: 24px;
     }
 
-    /* Compact hamburger */
+    /* Compact hamburger - force visible bars */
     .mobile-menu-btn {
         width: 36px;
         height: 24px;
+        position: relative;
+        background: transparent;
     }
-    .mobile-menu-btn .bar {
+    
+    /* Create visible hamburger lines with pseudo-elements */
+    .mobile-menu-btn::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 25%;
+        transform: translateX(-50%);
         width: 18px;
+        height: 2px;
+        background: linear-gradient(45deg, var(--primary-red), var(--primary-green));
+        border-radius: 1px;
+        transition: all 0.3s ease;
     }
-    .mobile-menu-btn.open .bar:nth-child(1) {
-        transform: translateY(6px) rotate(45deg);
+    
+    .mobile-menu-btn::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 25%;
+        transform: translateX(-50%);
+        width: 18px;
+        height: 2px;
+        background: linear-gradient(45deg, var(--primary-red), var(--primary-green));
+        border-radius: 1px;
+        transition: all 0.3s ease;
     }
-    .mobile-menu-btn.open .bar:nth-child(3) {
-        transform: translateY(-6px) rotate(-45deg);
+    
+    /* Middle line using existing .bar */
+    .mobile-menu-btn .bar:first-child {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 18px;
+        height: 2px;
+        background: linear-gradient(45deg, var(--primary-red), var(--primary-green));
+        border-radius: 1px;
+        display: block;
+    }
+    
+    /* Hide other bars */
+    .mobile-menu-btn .bar:not(:first-child) {
+        display: none;
+    }
+    /* Open state - transform pseudo-elements to X */
+    .mobile-menu-btn.open::before {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    
+    .mobile-menu-btn.open::after {
+        bottom: auto;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    
+    .mobile-menu-btn.open .bar:first-child {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transform: translate(-50%, -50%) scale(0) !important;
     }
 
     /* Slide-out nav slightly narrower for breathing room */
@@ -202,18 +263,26 @@
 
     /* Override large active padding set at 768px to avoid overflow on very small screens */
     .primary-site-navigation ul li button.active-navigation-item {
-        padding: 0.9rem 2rem;
+        padding: 1.2rem 1.5rem;
+        color: #ccc;
+        background: transparent;
     }
 
     /* Language switcher more compact */
     #marketing-agency-header .multilingual-language-switcher {
         width: 108px;
-        gap: 0.15rem;
+        gap: 0.3rem;
     }
     #marketing-agency-header .multilingual-language-switcher button {
-        width: 34px;
-        font-size: 11px;
-        padding: 4px 2px;
+        width: 34px !important;
+        font-size: 11px !important;
+        padding: 8px 6px !important;
+        min-height: 36px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
     }
 }
 

@@ -525,8 +525,8 @@ const portfolioData = [
     }
 ];
 
-let displayedItems = 3;
-const itemsPerLoad = 3;
+let displayedItems = 4;
+const itemsPerLoad = 4;
 let currentImageIndices = {};
 
 function createWorksShowcaseItem(item, index) {
@@ -653,13 +653,13 @@ document.addEventListener('DOMContentLoaded', function() {
         renderWorksShowcase();
         
         // Show collapse button when more than initial items are displayed
-        if (displayedItems > 3) {
+        if (displayedItems > 4) {
             collapseBtn.classList.remove('hidden');
         }
     });
 
     collapseBtn.addEventListener('click', () => {
-        displayedItems = 3;
+        displayedItems = 4;
         renderWorksShowcase();
         loadMoreBtn.style.display = 'block';
         collapseBtn.classList.add('hidden');

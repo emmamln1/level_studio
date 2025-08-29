@@ -36,7 +36,7 @@ body {
 section {
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    scroll-margin-top: 10vh;
+    scroll-margin-top: 15vh;
 }
 body{
     color: rgb(0, 255, 0);
