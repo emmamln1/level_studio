@@ -66,9 +66,10 @@
 
 .business-container {
     width: 100%;
-    margin: auto;
+    margin: 0 auto;
     position: relative;
     z-index: 10;
+    padding: 0 2rem;
 }
 
 .business-section-header {
@@ -132,13 +133,14 @@
 
 .business-carousel-wrapper {
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 25px 60px;
     border-right: hidden;
     border-left: hidden;
+    margin: 0 40px;
 }
 
 /* MOBILE FIX: Carousel wrapper responsive padding */
@@ -160,6 +162,18 @@
     display: flex;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .business-carousel-track {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .business-carousel-track {
+        gap: 10px;
+    }
 }
 
 .business-partner-card {
@@ -312,11 +326,11 @@
 }
 
 .business-carousel-nav.prev {
-    left: -30px;
+    left: 20px;
 }
 
 .business-carousel-nav.next {
-    right: -30px;
+    right: 20px;
 }
 
 /* MOBILE FIX: Navigation positioning for mobile */
@@ -332,11 +346,11 @@
 
 @media (max-width: 480px) {
     .business-carousel-nav.prev {
-        left: -17px;
+        left: 10px;
     }
     
     .business-carousel-nav.next {
-        right: -17px;
+        right: 10px;
     }
 }
 

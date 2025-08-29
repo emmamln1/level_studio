@@ -1,16 +1,34 @@
+@media (max-width: 1200px) {
+    .business-carousel-wrapper {
+        margin: 0 30px;
+    }
+    
+    .business-carousel-nav.prev {
+        left: 10px !important;
+    }
+    
+    .business-carousel-nav.next {
+        right: 10px !important;
+    }
+}
+
 @media (max-width: 1024px) {
+    .business-carousel-wrapper {
+        margin: 0 25px;
+    }
+    
     .business-carousel-nav {
         width: 50px;
         height: 50px;
         font-size: 20px;
     }
     
-    .carousel-nav.prev {
-        left: -25px;
+    .business-carousel-nav.prev {
+        left: 10px;
     }
     
-    .carousel-nav.next {
-        right: -25px;
+    .business-carousel-nav.next {
+        right: 10px;
     }
     
     .business-partner-card {
@@ -31,17 +49,36 @@
     }
     
     .business-container {
-        padding: 0 15px;
+        padding: 0 1rem;
+    }
+    
+    .business-section-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+    
+    .business-section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
     }
     
     .business-carousel-wrapper {
-        padding: 20px 40px;
+        padding: 20px 10px;
         margin: 0;
+        overflow: hidden;
+    }
+    
+    .business-carousel-track {
+        /* Keep items aligned from the start to avoid extra spacing */
+        justify-content: flex-start;
     }
     
     .business-partner-card {
-        min-width: 280px;
+        /* Slightly smaller card and no auto margins to keep constant step */
+        min-width: 300px !important;
+        max-width: 300px !important;
         padding: 20px 15px;
+        margin: 0;
+        flex-shrink: 0;
     }
     
     .business-partner-logo {
@@ -62,11 +99,11 @@
     }
     
     .business-carousel-nav.prev {
-        left: -22px;
+        left: 10px !important;
     }
     
     .business-carousel-nav.next {
-        right: -22px;
+        right: 10px !important;
     }
     
     .business-partners-grid {
@@ -92,20 +129,46 @@
 @media (max-width: 480px) {
     .business-partners-section {
         padding: 3rem 0.5rem;
+        min-height: 70vh;
+    }
+    
+    .business-container {
+        padding: 0 0.5rem;
     }
     
     .business-section-header {
         padding: 15px 0 10px;
     }
     
+    .business-section-title {
+        font-size: clamp(1.8rem, 9vw, 2.5rem);
+        letter-spacing: -2px;
+    }
+    
+    .business-section-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+    
     .business-carousel-wrapper {
         margin: 0;
-        padding: 15px 30px;
+        padding: 15px 5px;
+        overflow: hidden;
+    }
+    
+    .business-carousel-track {
+        /* Align from start and remove gap to ensure single-card step */
+        justify-content: flex-start;
+        gap: 10px;
     }
     
     .business-partner-card {
-        min-width: 250px;
+        /* Make mobile card a bit smaller */
+        min-width: 260px !important;
+        max-width: 260px !important;
         padding: 15px 10px;
+        margin: 0;
+        flex-shrink: 0;
     }
     
     .business-partner-logo {
@@ -123,11 +186,11 @@
     }
     
     .business-carousel-nav.prev {
-        left: -17px;
+        left: 10px !important;
     }
     
     .business-carousel-nav.next {
-        right: -17px;
+        right: 10px !important;
     }
     
     .business-toggle-btn {

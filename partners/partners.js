@@ -52,6 +52,7 @@ const partnersData = [
 let currentIndex = 0;
 let isCarouselView = true;
 let autoplayInterval;
+let isAnimating = false; // prevent double navigation during transition
 
 
 function createBusinessPartnerCard(partner, index) {
@@ -99,7 +100,10 @@ function initializeBusinessCarousel() {
         track.appendChild(card);
     }
 
-    updateBusinessCarousel();
+    // Небольшая задержка для корректного расчета размеров
+    setTimeout(() => {
+        updateBusinessCarousel();
+    }, 100);
 }
 
 function initializeBusinessGrid() {
@@ -112,12 +116,38 @@ function initializeBusinessGrid() {
     });
 }
 
+// Calculate one-step translate width (card width + track gap)
+function getBusinessStepWidth() {
+    const track = document.getElementById('businessCarouselTrack');
+    const cards = track.querySelectorAll('.business-partner-card:not(.cloned-card)');
+
+    // Use actual rendered width of the first real card
+    let cardWidth;
+    if (cards.length > 0) {
+        cardWidth = cards[0].getBoundingClientRect().width;
+    } else {
+        // Fallbacks for different breakpoints
+        if (window.innerWidth <= 480) {
+            cardWidth = window.innerWidth - 70; // matches CSS calc(100vw - 70px)
+        } else if (window.innerWidth <= 768) {
+            cardWidth = window.innerWidth - 90; // matches CSS calc(100vw - 90px)
+        } else {
+            cardWidth = 350; // base card width on desktop
+        }
+    }
+
+    const style = window.getComputedStyle(track);
+    const gap = parseInt(style.gap, 10) || 0;
+    return cardWidth + gap;
+}
+
 function updateBusinessCarousel() {
     const track = document.getElementById('businessCarouselTrack');
     const indicators = document.querySelectorAll('.business-indicator');
-    const cardWidth = 380; // 350px card + 30px gap
     
-    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    // Translate by unified step width
+    const step = getBusinessStepWidth();
+    track.style.transform = `translateX(-${currentIndex * step}px)`;
     
     indicators.forEach((indicator, index) => {
         indicator.classList.toggle('active', index === currentIndex);
@@ -143,13 +173,44 @@ function goToBusinessSlide(index) {
 }
 
 function nextBusinessSlide() {
+    if (isAnimating) return;
+    isAnimating = true;
     currentIndex = currentIndex + 1;
     updateBusinessCarousel();
+    setTimeout(() => { isAnimating = false; }, 650);
 }
 
 function prevBusinessSlide() {
-    currentIndex = currentIndex === 0 ? partnersData.length - 1 : currentIndex - 1;
+    const track = document.getElementById('businessCarouselTrack');
+    const total = partnersData.length;
+    const step = getBusinessStepWidth();
+
+    if (currentIndex === 0) {
+        if (isAnimating) return;
+        isAnimating = true;
+        // Seamless jump to the cloned area at the end, then animate one step back to the last real slide
+        track.style.transition = 'none';
+        track.style.transform = `translateX(-${total * step}px)`; // jump after the last real slide
+        // Force reflow to apply transform without transition
+        void track.offsetHeight;
+        track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        currentIndex = total - 1;
+        track.style.transform = `translateX(-${currentIndex * step}px)`;
+
+        // Update indicators manually
+        const indicators = document.querySelectorAll('.business-indicator');
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+        setTimeout(() => { isAnimating = false; }, 650);
+        return;
+    }
+
+    if (isAnimating) return;
+    isAnimating = true;
+    currentIndex = currentIndex - 1;
     updateBusinessCarousel();
+    setTimeout(() => { isAnimating = false; }, 650);
 }
 
 function startBusinessAutoplay() {
@@ -202,13 +263,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const businessGridBtn = document.getElementById('businessGridBtn');
 
     if (businessNextBtn) {
-        businessNextBtn.addEventListener('click', () => {
+        businessNextBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            nextBusinessSlide();
+        });
+        businessNextBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             nextBusinessSlide();
         });
     }
 
     if (businessPrevBtn) {
-        businessPrevBtn.addEventListener('click', () => {
+        businessPrevBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            prevBusinessSlide();
+        });
+        businessPrevBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             prevBusinessSlide();
         });
     }
@@ -248,22 +323,38 @@ document.addEventListener('DOMContentLoaded', function() {
     let startX = 0;
     let currentX = 0;
     let isDragging = false;
+    let hasTouchMoved = false;
 
     businessCarouselWrapper.addEventListener('touchstart', (e) => {
+        // Ignore touches on navigation buttons to prevent duplicate next/prev
+        if (e.target.closest('.business-carousel-nav')) return;
         startX = e.touches[0].clientX;
+        currentX = startX;
         isDragging = true;
+        hasTouchMoved = false;
         stopBusinessAutoplay();
     });
 
     businessCarouselWrapper.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         currentX = e.touches[0].clientX;
+        if (Math.abs(currentX - startX) > 5) {
+            hasTouchMoved = true;
+        }
     });
 
-    businessCarouselWrapper.addEventListener('touchend', () => {
+    businessCarouselWrapper.addEventListener('touchend', (e) => {
+        // Ignore if touch ended on navigation button (tap should be handled by click)
+        if (e.target.closest('.business-carousel-nav')) return;
         if (!isDragging) return;
         isDragging = false;
         
+        // If there was no actual movement, treat as a tap (do nothing here)
+        if (!hasTouchMoved) {
+            resetBusinessAutoplay();
+            return;
+        }
+
         const diffX = startX - currentX;
         if (Math.abs(diffX) > 50) { // Minimum swipe distance
             if (diffX > 0) {
@@ -273,5 +364,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         resetBusinessAutoplay();
+    });
+
+    // Обновление карусели при изменении размера окна
+    window.addEventListener('resize', () => {
+        updateBusinessCarousel();
     });
 });
