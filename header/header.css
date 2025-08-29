@@ -22,25 +22,46 @@
     width: 56px;
     text-align: center;
     background: transparent;
-    color: #fff;
+    color: var(--text-primary);
     border: none;
-    padding: 4px 8px;
+    padding: 8px 12px;
     cursor: pointer;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all var(--transition-medium);
     border: 2px solid transparent;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
 }
 
 #marketing-agency-header .multilingual-language-switcher button:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--glass-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 #marketing-agency-header .multilingual-language-switcher button.active-language {
-    border: 2px solid transparent;
-    background: linear-gradient(black, black) padding-box,
-        linear-gradient(to right, red, green) border-box;
-    border-radius: 4px;
+    position: relative;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    transform: translateY(-1px);
+    color: white;
+}
+
+#marketing-agency-header .multilingual-language-switcher button.active-language::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(45deg, var(--primary-red), var(--primary-green));
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 1;
+    z-index: -1;
 }
 
 #marketing-agency-header .multilingual-language-switcher button:focus {
@@ -52,14 +73,18 @@
     height: 10vh;
     position: fixed;
     z-index: 10000;
-    background: rgba(0, 0, 0, 1);
-    transition: all 0.3s ease;
-    border-bottom: 1px solid white;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: all var(--transition-medium);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .sticky-website-header.scrolled {
-    background: rgba(0, 0, 0, 0.9);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .header-content-wrapper {
@@ -73,12 +98,14 @@
 
 .company-brand-logo img {
     height: 45px;
-    transition: transform .3s;
+    transition: all var(--transition-medium);
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
 
 .company-brand-logo:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-2px);
     cursor: pointer;
+    filter: drop-shadow(0 4px 15px rgba(255, 0, 0, 0.3));
 }
 
 .primary-site-navigation ul {
@@ -93,27 +120,65 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: white;
+    color: var(--text-primary);
     font-size: 16px;
     font-weight: 500;
     padding: 0.5rem 0.75rem;
-    transition: color .3s;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-medium);
+    z-index: 1;
+}
+
+.primary-site-navigation ul li button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--glass-bg);
+    opacity: 0;
+    transition: opacity var(--transition-medium);
+    z-index: -1;
+    border-radius: 8px;
 }
 
 .primary-site-navigation ul li button:hover {
-    color: #fff;
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+}
+
+.primary-site-navigation ul li button.active-navigation-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px; /* толщина рамки */
+    background: linear-gradient(to right, red, green);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 1;
+    z-index: -1;
 }
 
 .primary-site-navigation ul li button.active-navigation-item {
+    position: relative;
     outline: none;
-    border: 2px solid transparent;
-    border-image: linear-gradient(to right, red, green) 1;
-    padding: calc(0.5rem - 2px) calc(0.75rem - 2px);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    z-index: 1;
 }
 
 .primary-site-navigation ul li button:focus {
     outline: none;
 }
+
 
 .primary-site-navigation ul li button::after {
     content: "";
@@ -122,19 +187,18 @@
     bottom: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, red, green);
+    background: linear-gradient(45deg, var(--primary-red), var(--primary-green));
     transform: translateX(-50%) scaleX(0);
     transform-origin: center;
-    transition: transform .3s ease-in-out;
+    transition: transform var(--transition-medium);
+    border-radius: 1px;
 }
 
 .primary-site-navigation ul li button:hover::after {
     transform: translateX(-50%) scaleX(1);
 }
 
-.multilingual-language-switcher {
-    border-left: 1px solid #444;
-}
+
 
 .mobile-menu-btn {
     display: none;
@@ -145,22 +209,29 @@
     justify-content: center;
     border-radius: 8px;
     cursor: pointer;
-    background: transparent;
-    transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    transition: all var(--transition-medium);
+    padding: 8px;
 }
 
 .mobile-menu-btn:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: var(--glass-bg);
+    border-color: var(--primary-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
 }
 
 .mobile-menu-btn .bar {
-    display: block;
+    display: block !important;
     width: 23px;
-    height: 1px;
-    background: #fff;
+    height: 2px;
+    background: linear-gradient(45deg, var(--primary-red), var(--primary-green)) !important;
     border-radius: 1px;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transition: all var(--transition-medium);
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .mobile-menu-btn .bar+.bar {

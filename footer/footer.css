@@ -175,6 +175,16 @@
     font-size: 0.9rem;
 }
 
+.contact-item a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #01B95F;
+}
+
 .contact-item svg {
     color: #01B95F;
     flex-shrink: 0;

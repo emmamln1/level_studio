@@ -166,12 +166,14 @@
 @media (max-width: 768px) {
     .business-carousel-track {
         gap: 10px;
+        justify-content: flex-start;
     }
 }
 
 @media (max-width: 480px) {
     .business-carousel-track {
         gap: 10px;
+        justify-content: flex-start;
     }
 }
 

@@ -9,7 +9,10 @@ const portfolioData = [
             'image/designline/Designlinescompany.png',
             'image/designline/design.png',
             'image/designline/design1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Fashion
     {
@@ -21,7 +24,10 @@ const portfolioData = [
             'image/lanj/lanjcompany.png',
             'image/lanj/lanj.png',
             'image/lanj/lanj1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // HORECA
     {
@@ -33,7 +39,10 @@ const portfolioData = [
             'image/karapcafe/karapcafecompany.png',
             'image/karapcafe/karapcafe.png',
             'image/karapcafe/karapcafe1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -44,7 +53,10 @@ const portfolioData = [
             'image/hillzone/hillzonecompany.png',
             'image/hillzone/hillzone.png',
             'image/hillzone/hillzone1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -54,7 +66,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -65,7 +80,10 @@ const portfolioData = [
             'image/boulevard/bulevardcompany.png',
             'image/boulevard/bulevard.png',
             'image/boulevard/bulevard1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -76,7 +94,10 @@ const portfolioData = [
             'image/souvenirrestaurant/souvenircompany.png',
             'image/souvenirrestaurant/souvenir.png',
             'image/souvenirrestaurant/souvenir1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -87,7 +108,10 @@ const portfolioData = [
             'image/souvenirguesthouse/souvenirguesthousecompany.png',
             'image/souvenirguesthouse/souvenirguesthouse.png',
             'image/souvenirguesthouse/souvenirguesthouse1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -97,7 +121,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -107,7 +134,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1519167758481-83f29c7c8dc8?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -117,7 +147,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -127,7 +160,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -137,7 +173,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -147,7 +186,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -157,7 +199,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -167,7 +212,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1519167758481-83f29c7c8dc8?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -177,7 +225,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Flower Marketing
     {
@@ -188,7 +239,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Flower Marketing',
@@ -198,7 +252,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Kids Marketing
     {
@@ -209,7 +266,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Kids Marketing',
@@ -219,7 +279,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Kids Marketing',
@@ -229,7 +292,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Medical Marketing
     {
@@ -240,7 +306,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Medical Marketing',
@@ -250,7 +319,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Medical Marketing',
@@ -260,7 +332,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Medical Marketing',
@@ -270,7 +345,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Gym Marketing
     {
@@ -281,7 +359,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Gym Marketing',
@@ -291,7 +372,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // B2C
     {
@@ -302,7 +386,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -312,7 +399,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -322,7 +412,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -332,7 +425,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1560472355-536de3962603?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -342,7 +438,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -352,7 +451,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1560472355-536de3962603?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -362,7 +464,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // B2B
     {
@@ -373,7 +478,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2B',
@@ -383,7 +491,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2B',
@@ -393,7 +504,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Personal Branding
     {
@@ -404,12 +518,15 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1494790108755-2616c64e5fe4?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     }
 ];
 
-let displayedItems = 3;
-const itemsPerLoad = 3;
+let displayedItems = 4;
+const itemsPerLoad = 4;
 let currentImageIndices = {};
 
 function createWorksShowcaseItem(item, index) {
@@ -435,6 +552,20 @@ function createWorksShowcaseItem(item, index) {
             <div class="works-showcase-company">${item.company}</div>
             <div class="works-showcase-services">
                 ${item.services.map(service => `<span class="service-tag">${service}</span>`).join('')}
+            </div>
+        </div>
+        <div class="works-showcase-results">
+            <div class="result-item">
+                <div class="result-number">${item.views || '25000'}</div>
+                <div class="result-label">դիտում</div>
+            </div>
+            <div class="result-item">
+                <div class="result-number">${item.revenue || '19.29$'}</div>
+                <div class="result-label">գումար</div>
+            </div>
+            <div class="result-item">
+                <div class="result-number">${item.clients || '6'}</div>
+                <div class="result-label">հաճախորդ</div>
             </div>
         </div>
     `;
@@ -503,56 +634,10 @@ function renderWorksShowcase(items = portfolioData.slice(0, displayedItems)) {
     });
 }
 
-function filterWorksShowcase(filter) {
-    const grid = document.getElementById('worksShowcaseGrid');
-    const items = grid.querySelectorAll('.works-showcase-item');
-    
-    items.forEach(item => {
-        if (filter === 'all' || item.classList.contains(filter)) {
-            item.style.display = 'block';
-            item.style.animation = 'none';
-            setTimeout(() => {
-                item.style.animation = 'fadeInUpItem 0.6s ease-out forwards';
-            }, 10);
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
 
-function renderFilterButtons() {
-    const filterTabs = document.getElementById('worksFilterTabs');
-    // Get unique categories and their corresponding types
-    const categories = [...new Map(portfolioData.map(item => [item.type, { category: item.category, type: item.type }])).values()];
-    
-    // Create "All" button
-    filterTabs.innerHTML = `
-        <button class="works-filter-btn active" data-filter="all">Բոլորը</button>
-    `;
-    
-    // Create buttons for each category with projects
-    categories.forEach(({ category, type }) => {
-        const button = document.createElement('button');
-        button.className = 'works-filter-btn';
-        button.dataset.filter = type;
-        button.textContent = category;
-        filterTabs.appendChild(button);
-    });
-    
-    // Add event listeners to filter buttons
-    const filterBtns = document.querySelectorAll('.works-filter-btn');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            filterWorksShowcase(btn.dataset.filter);
-        });
-    });
-}
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    renderFilterButtons();
     renderWorksShowcase();
 
     // Load more functionality
@@ -568,13 +653,13 @@ document.addEventListener('DOMContentLoaded', function() {
         renderWorksShowcase();
         
         // Show collapse button when more than initial items are displayed
-        if (displayedItems > 3) {
+        if (displayedItems > 4) {
             collapseBtn.classList.remove('hidden');
         }
     });
 
     collapseBtn.addEventListener('click', () => {
-        displayedItems = 3;
+        displayedItems = 4;
         renderWorksShowcase();
         loadMoreBtn.style.display = 'block';
         collapseBtn.classList.add('hidden');
