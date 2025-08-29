@@ -72,10 +72,43 @@
     gap: 20px;
 }
 
+/* MOBILE FIX: Contact info responsive layout */
+@media (max-width: 768px) {
+    .contact-info {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+}
+
 .info-item {
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
+}
+
+/* MOBILE FIX: Info item layout for mobile */
+@media (max-width: 768px) {
+    .info-item {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-item {
+        margin-bottom: 1rem;
+    }
 }
 
 .info-icon {
@@ -88,6 +121,24 @@
     justify-content: center;
     margin-right: 1.5rem;
     flex-shrink: 0;
+}
+
+/* MOBILE FIX: Info icon responsive sizing */
+@media (max-width: 768px) {
+    .info-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0.8rem;
+    }
 }
 
 .info-content h3 {
@@ -114,10 +165,26 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 3rem;
+    padding: 2rem;
     box-shadow: 
         0 20px 40px rgba(0, 0, 0, 0.5),
         0 0 80px rgba(0, 255, 200, 0.1);
+}
+
+/* MOBILE FIX: Form container responsive padding */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 1.2rem;
+        margin: 0 -0.5rem;
+        border-radius: 12px;
+    }
 }
 
 .form-title {
@@ -160,6 +227,20 @@
     color: #fff;
     font-size: 1rem;
     transition: all 0.3s ease;
+}
+
+/* MOBILE FIX: Form inputs responsive sizing */
+@media (max-width: 480px) {
+    .form-input,
+    .form-textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+    
+    .form-textarea {
+        min-height: 100px;
+    }
 }
 
 .form-input:focus,

@@ -90,6 +90,8 @@
 @media (max-width: 768px) {
     .about-section {
         padding: 8vh 5vw;
+        height: auto;
+        min-height: 100vh;
     }
     
     .about-container {
@@ -108,10 +110,14 @@
     
     .stats-grid {
         justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
     
     .stat-card {
-        min-width: 100px;
+        min-width: 120px;
+        flex: 1 1 calc(33.333% - 1rem);
+        max-width: 150px;
     }
     
     /* On mobile, columns naturally stack; keep spacing tight */
@@ -121,6 +127,24 @@
         height: 300px;
         position: relative;
         top: auto;
+    }
+    
+    /* RESPONSIVE FIX: Carousel navigation visibility */
+    .about-carousel__btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .about-carousel__btn--prev {
+        left: 10px;
+    }
+    
+    .about-carousel__btn--next {
+        right: 10px;
     }
     
     .main-title {
@@ -136,14 +160,45 @@
     .stats-grid {
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
     }
     
     .stat-card {
         width: 100%;
-        max-width: 200px;
+        max-width: 250px;
+        padding: 1.2rem 1rem;
     }
     
     .about-container {
         gap: 2rem;
+    }
+    
+    .visual-element {
+        height: 250px;
+        margin: 0 -1rem;
+    }
+    
+    /* RESPONSIVE FIX: Smaller carousel buttons on mobile */
+    .about-carousel__btn {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+    .about-carousel__btn--prev {
+        left: 5px;
+    }
+    
+    .about-carousel__btn--next {
+        right: 5px;
+    }
+    
+    .about-carousel__dots {
+        bottom: 10px;
+    }
+    
+    .about-carousel__dot {
+        width: 8px;
+        height: 8px;
     }
 }

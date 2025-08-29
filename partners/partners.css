@@ -6,6 +6,23 @@
     align-items: center;
 }
 
+/* MOBILE FIX: Ensure proper mobile height and overflow */
+@media (max-width: 768px) {
+    .business-partners-section {
+        height: auto;
+        min-height: 90vh;
+        padding: 2rem 0;
+        overflow: visible;
+    }
+}
+
+@media (max-width: 480px) {
+    .business-partners-section {
+        min-height: 80vh;
+        padding: 1.5rem 0;
+    }
+}
+
 .business-floating-elements {
     position: absolute;
     top: 0;
@@ -124,6 +141,21 @@
     border-left: hidden;
 }
 
+/* MOBILE FIX: Carousel wrapper responsive padding */
+@media (max-width: 768px) {
+    .business-carousel-wrapper {
+        padding: 20px 50px;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .business-carousel-wrapper {
+        padding: 15px 35px;
+        margin: 0 5px;
+    }
+}
+
 .business-carousel-track {
     display: flex;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -236,8 +268,8 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    border: 2px solid rgba(1, 185, 95, 0.3);
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(1, 185, 95, 0.5);
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -250,6 +282,26 @@
     align-items: center;
     justify-content: center;
     z-index: 100;
+}
+
+/* MOBILE FIX: Navigation button positioning and sizing */
+@media (max-width: 768px) {
+    .business-carousel-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        background: rgba(0, 0, 0, 0.8);
+        border: 1px solid rgba(1, 185, 95, 0.6);
+    }
+}
+
+@media (max-width: 480px) {
+    .business-carousel-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        background: rgba(0, 0, 0, 0.9);
+    }
 }
 
 .business-carousel-nav:hover {
@@ -265,6 +317,27 @@
 
 .business-carousel-nav.next {
     right: -30px;
+}
+
+/* MOBILE FIX: Navigation positioning for mobile */
+@media (max-width: 768px) {
+    .business-carousel-nav.prev {
+        left: -22px;
+    }
+    
+    .business-carousel-nav.next {
+        right: -22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .business-carousel-nav.prev {
+        left: -17px;
+    }
+    
+    .business-carousel-nav.next {
+        right: -17px;
+    }
 }
 
 /* Indicators */

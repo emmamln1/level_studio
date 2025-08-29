@@ -41,17 +41,38 @@
 
 @media (max-width: 480px) {
 
+    .creative-section {
+        height: auto;
+        min-height: 80vh;
+        padding: 2rem 0;
+    }
+
+    .container {
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
     .main-title {
         font-size: clamp(1.5rem, 8vw, 2rem);
         letter-spacing: -1px;
+        margin-bottom: 1rem;
     }
 
     .description {
         font-size: 0.9rem;
+        margin-bottom: 1.5rem;
     }
 
     .image-wrapper {
-        margin-top: 30vh;
-        max-width: 350px;
+        max-width: 280px;
+        height: 320px;
+        margin: 0 auto;
+        transform: none;
+    }
+
+    .badge {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+        margin-top: 1.5rem;
     }
 }

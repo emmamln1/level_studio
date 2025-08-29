@@ -22,8 +22,16 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+/* RESPONSIVE FIX: Prevent horizontal overflow */
+html,
 body {
-    width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+body {
+    width: 100%;
 }
 
 .marketing-studio-main-content {
@@ -43,4 +51,18 @@ body {
         radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.05) 0%, transparent 40%);
     background-attachment: fixed;
     padding: 10vh 6.25vw 0 6.25vw;
+}
+
+/* RESPONSIVE FIX: Mobile padding adjustments */
+@media (max-width: 768px) {
+    .marketing-studio-main-content {
+        padding: 5vh 4vw 0 4vw;
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .marketing-studio-main-content {
+        padding: 3vh 3vw 0 3vw;
+    }
 }

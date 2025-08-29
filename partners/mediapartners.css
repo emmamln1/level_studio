@@ -20,6 +20,12 @@
 }
 
 @media (max-width: 768px) {
+    .business-partners-section {
+        height: auto;
+        min-height: 80vh;
+        padding: 4rem 1rem;
+    }
+    
     .business-section-header {
         padding: 20px 0 15px;
     }
@@ -29,8 +35,8 @@
     }
     
     .business-carousel-wrapper {
-        padding: 20px 15px;
-        margin: 0 40px;
+        padding: 20px 40px;
+        margin: 0;
     }
     
     .business-partner-card {
@@ -46,6 +52,21 @@
     
     .business-partner-name {
         font-size: 1.2rem;
+    }
+    
+    /* RESPONSIVE FIX: Carousel navigation positioning */
+    .business-carousel-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .business-carousel-nav.prev {
+        left: -22px;
+    }
+    
+    .business-carousel-nav.next {
+        right: -22px;
     }
     
     .business-partners-grid {
@@ -69,18 +90,22 @@
 }
 
 @media (max-width: 480px) {
+    .business-partners-section {
+        padding: 3rem 0.5rem;
+    }
+    
     .business-section-header {
         padding: 15px 0 10px;
     }
     
     .business-carousel-wrapper {
-        margin: 0 20px;
-        padding: 15px 10px;
+        margin: 0;
+        padding: 15px 30px;
     }
     
     .business-partner-card {
-        min-width: 260px;
-        padding: 15px 12px;
+        min-width: 250px;
+        padding: 15px 10px;
     }
     
     .business-partner-logo {
@@ -89,18 +114,20 @@
         font-size: 1.2rem;
     }
     
+    /* RESPONSIVE FIX: Mobile carousel navigation */
     .business-carousel-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        border-width: 1px;
     }
     
-    .carousel-nav.prev {
-        left: -20px;
+    .business-carousel-nav.prev {
+        left: -17px;
     }
     
-    .carousel-nav.next {
-        right: -20px;
+    .business-carousel-nav.next {
+        right: -17px;
     }
     
     .business-toggle-btn {
@@ -124,5 +151,14 @@
     
     .business-stats-description {
         font-size: 0.75rem;
+    }
+    
+    .business-partner-field {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+    }
+    
+    .business-partner-description {
+        font-size: 0.8rem;
     }
 }
