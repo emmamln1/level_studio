@@ -462,24 +462,37 @@ function initAboutCounters() {
 
     function animateValue(el, target, duration = 2000) {
         const suffix = el.getAttribute('data-suffix') || '';
-        const start = 0;
-        const startTime = performance.now();
-
-        function tick(now) {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            // Use easing function for smoother animation
-            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            const value = Math.floor(start + (target - start) * easeOutQuart);
-            el.textContent = value + suffix;
+        let step;
+        
+        // Определяем шаг в зависимости от целевого значения
+        if (target === 300) {
+            step = 10;
+        } else if (target === 2000) {
+            step = 100;
+        } else if (target === 7) {
+            step = 1;
+        } else {
+            step = 1; // По умолчанию
+        }
+        
+        let current = 0;
+        const totalSteps = Math.ceil(target / step);
+        const stepDuration = duration / totalSteps;
+        
+        function tick() {
+            current += step;
+            if (current >= target) {
+                current = target;
+            }
             
-            if (progress < 1) {
-                requestAnimationFrame(tick);
-            } else {
-                el.textContent = target + suffix;
+            el.textContent = current + suffix;
+            
+            if (current < target) {
+                setTimeout(tick, stepDuration);
             }
         }
-        requestAnimationFrame(tick);
+        
+        tick();
     }
 
     function resetCounters() {

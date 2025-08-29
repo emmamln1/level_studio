@@ -9,7 +9,10 @@ const portfolioData = [
             'image/designline/Designlinescompany.png',
             'image/designline/design.png',
             'image/designline/design1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Fashion
     {
@@ -21,7 +24,10 @@ const portfolioData = [
             'image/lanj/lanjcompany.png',
             'image/lanj/lanj.png',
             'image/lanj/lanj1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // HORECA
     {
@@ -33,7 +39,10 @@ const portfolioData = [
             'image/karapcafe/karapcafecompany.png',
             'image/karapcafe/karapcafe.png',
             'image/karapcafe/karapcafe1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -437,6 +446,20 @@ function createWorksShowcaseItem(item, index) {
                 ${item.services.map(service => `<span class="service-tag">${service}</span>`).join('')}
             </div>
         </div>
+        <div class="works-showcase-results">
+            <div class="result-item">
+                <div class="result-number">${item.views || '25000'}</div>
+                <div class="result-label">դիտում</div>
+            </div>
+            <div class="result-item">
+                <div class="result-number">${item.revenue || '19.29$'}</div>
+                <div class="result-label">գումար</div>
+            </div>
+            <div class="result-item">
+                <div class="result-number">${item.clients || '6'}</div>
+                <div class="result-label">հաճախորդ</div>
+            </div>
+        </div>
     `;
     
     // Add click event for modal
@@ -503,56 +526,10 @@ function renderWorksShowcase(items = portfolioData.slice(0, displayedItems)) {
     });
 }
 
-function filterWorksShowcase(filter) {
-    const grid = document.getElementById('worksShowcaseGrid');
-    const items = grid.querySelectorAll('.works-showcase-item');
-    
-    items.forEach(item => {
-        if (filter === 'all' || item.classList.contains(filter)) {
-            item.style.display = 'block';
-            item.style.animation = 'none';
-            setTimeout(() => {
-                item.style.animation = 'fadeInUpItem 0.6s ease-out forwards';
-            }, 10);
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
 
-function renderFilterButtons() {
-    const filterTabs = document.getElementById('worksFilterTabs');
-    // Get unique categories and their corresponding types
-    const categories = [...new Map(portfolioData.map(item => [item.type, { category: item.category, type: item.type }])).values()];
-    
-    // Create "All" button
-    filterTabs.innerHTML = `
-        <button class="works-filter-btn active" data-filter="all">Բոլորը</button>
-    `;
-    
-    // Create buttons for each category with projects
-    categories.forEach(({ category, type }) => {
-        const button = document.createElement('button');
-        button.className = 'works-filter-btn';
-        button.dataset.filter = type;
-        button.textContent = category;
-        filterTabs.appendChild(button);
-    });
-    
-    // Add event listeners to filter buttons
-    const filterBtns = document.querySelectorAll('.works-filter-btn');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            filterWorksShowcase(btn.dataset.filter);
-        });
-    });
-}
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    renderFilterButtons();
     renderWorksShowcase();
 
     // Load more functionality
