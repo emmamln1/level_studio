@@ -6,11 +6,11 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'design',
         images: [
-            'https://images.unsplash.com/photo-1558655146-d09347e92766?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=500&h=300&fit=crop'
+            'image/Designlinescompany.png',
+            'image/design.png',
+            'image/design1.png'
         ]
     },
-
     // Fashion
     {
         category: 'Fashion',
@@ -18,11 +18,11 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'fashion',
         images: [
-            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=500&h=300&fit=crop'
+            'image/lanjcompany.png',
+            'image/lanj.png',
+            'image/lanj1.png'
         ]
     },
-
     // HORECA
     {
         category: 'HORECA',
@@ -30,8 +30,9 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'horeca',
         images: [
-            'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500&h=300&fit=crop'
+            'image/karapcafecompany.png',
+            'image/karapcafe.png',
+            'image/karapcafe1.png'
         ]
     },
     {
@@ -40,8 +41,9 @@ const portfolioData = [
         services: ['Social Media Marketing', 'Reel Making'],
         type: 'horeca',
         images: [
-            'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop'
+            'image/hillzonecompany.png',
+            'image/hillzone.png',
+            'image/hillzone1.png'
         ]
     },
     {
@@ -174,7 +176,6 @@ const portfolioData = [
             'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop'
         ]
     },
-
     // Flower Marketing
     {
         category: 'Flower Marketing',
@@ -196,7 +197,6 @@ const portfolioData = [
             'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&h=300&fit=crop'
         ]
     },
-
     // Kids Marketing
     {
         category: 'Kids Marketing',
@@ -228,7 +228,6 @@ const portfolioData = [
             'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
         ]
     },
-
     // Medical Marketing
     {
         category: 'Medical Marketing',
@@ -270,7 +269,6 @@ const portfolioData = [
             'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
         ]
     },
-
     // Gym Marketing
     {
         category: 'Gym Marketing',
@@ -292,7 +290,6 @@ const portfolioData = [
             'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop'
         ]
     },
-
     // B2C
     {
         category: 'B2C',
@@ -364,7 +361,6 @@ const portfolioData = [
             'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop'
         ]
     },
-
     // B2B
     {
         category: 'B2B',
@@ -396,7 +392,6 @@ const portfolioData = [
             'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
         ]
     },
-
     // Personal Branding
     {
         category: 'Personal Branding',
@@ -409,6 +404,7 @@ const portfolioData = [
         ]
     }
 ];
+
 let displayedItems = 3;
 const itemsPerLoad = 3;
 let currentImageIndices = {};
@@ -521,11 +517,26 @@ function filterWorksShowcase(filter) {
     });
 }
 
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
-    renderWorksShowcase();
-
-    // Filter functionality
+function renderFilterButtons() {
+    const filterTabs = document.getElementById('worksFilterTabs');
+    // Get unique categories and their corresponding types
+    const categories = [...new Map(portfolioData.map(item => [item.type, { category: item.category, type: item.type }])).values()];
+    
+    // Create "All" button
+    filterTabs.innerHTML = `
+        <button class="works-filter-btn active" data-filter="all">Բոլորը</button>
+    `;
+    
+    // Create buttons for each category with projects
+    categories.forEach(({ category, type }) => {
+        const button = document.createElement('button');
+        button.className = 'works-filter-btn';
+        button.dataset.filter = type;
+        button.textContent = category;
+        filterTabs.appendChild(button);
+    });
+    
+    // Add event listeners to filter buttons
     const filterBtns = document.querySelectorAll('.works-filter-btn');
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -534,6 +545,12 @@ document.addEventListener('DOMContentLoaded', function() {
             filterWorksShowcase(btn.dataset.filter);
         });
     });
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    renderFilterButtons();
+    renderWorksShowcase();
 
     // Load more functionality
     const loadMoreBtn = document.getElementById('worksLoadMoreBtn');
