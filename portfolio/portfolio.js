@@ -1,25 +1,29 @@
 const portfolioData = [
+    // Design Lines
     {
         category: 'Design Lines',
         company: 'DESIGNLINES.EVN',
         services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2c',
+        type: 'design',
         images: [
             'https://images.unsplash.com/photo-1558655146-d09347e92766?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=500&h=300&fit=crop'
+            'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=500&h=300&fit=crop'
         ]
     },
+
+    // Fashion
     {
         category: 'Fashion',
         company: 'LANJ',
         services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2c',
+        type: 'fashion',
         images: [
             'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=500&h=300&fit=crop'
         ]
     },
+
+    // HORECA
     {
         category: 'HORECA',
         company: 'KARAP CAFE',
@@ -27,8 +31,7 @@ const portfolioData = [
         type: 'horeca',
         images: [
             'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop'
+            'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500&h=300&fit=crop'
         ]
     },
     {
@@ -48,8 +51,7 @@ const portfolioData = [
         type: 'horeca',
         images: [
             'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=300&fit=crop'
+            'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=300&fit=crop'
         ]
     },
     {
@@ -83,6 +85,152 @@ const portfolioData = [
         ]
     },
     {
+        category: 'HORECA',
+        company: 'SOUVENIR GUEST HOUSE',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'horeca',
+        images: [
+            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'HORECA',
+        company: 'PALLADIUM HALL',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'horeca',
+        images: [
+            'https://images.unsplash.com/photo-1519167758481-83f29c7c8dc8?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'HORECA',
+        company: 'RUSH PUB',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'horeca',
+        images: [
+            'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'HORECA',
+        company: 'MY HORECA CONSULTING',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'horeca',
+        images: [
+            'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'HORECA',
+        company: 'BERGAMO HOTEL',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'horeca',
+        images: [
+            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'HORECA',
+        company: 'VG COMPLEX',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'horeca',
+        images: [
+            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'HORECA',
+        company: 'ROYAL YEREVAN',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'horeca',
+        images: [
+            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'HORECA',
+        company: 'FORTE MUSIC HALL',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'horeca',
+        images: [
+            'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1519167758481-83f29c7c8dc8?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'HORECA',
+        company: 'BUNIATYAN CAVIAR',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'horeca',
+        images: [
+            'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop'
+        ]
+    },
+
+    // Flower Marketing
+    {
+        category: 'Flower Marketing',
+        company: 'GLOBAL FLOWERS',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'flower',
+        images: [
+            'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'Flower Marketing',
+        company: 'FLORA.AM',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'flower',
+        images: [
+            'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&h=300&fit=crop'
+        ]
+    },
+
+    // Kids Marketing
+    {
+        category: 'Kids Marketing',
+        company: 'ELZA KIDS CAFE',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'kids',
+        images: [
+            'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'Kids Marketing',
+        company: 'MINIS KIDS CLUB',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'kids',
+        images: [
+            'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'Kids Marketing',
+        company: 'TUNTUNIK',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'kids',
+        images: [
+            'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
+        ]
+    },
+
+    // Medical Marketing
+    {
         category: 'Medical Marketing',
         company: 'DR. HRACH MIQAYELYAN',
         services: ['Social Media Marketing', 'Reel Making'],
@@ -103,15 +251,49 @@ const portfolioData = [
         ]
     },
     {
-        category: 'Kids Marketing',
-        company: 'ELZA KIDS CAFE',
+        category: 'Medical Marketing',
+        company: 'Z & L DENTAL CLINIC',
         services: ['Social Media Marketing', 'Reel Making'],
-        type: 'kids',
+        type: 'medical',
         images: [
-            'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
+            'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
         ]
     },
+    {
+        category: 'Medical Marketing',
+        company: 'LOREST CLINIC',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'medical',
+        images: [
+            'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
+        ]
+    },
+
+    // Gym Marketing
+    {
+        category: 'Gym Marketing',
+        company: 'MULTI GIM',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'gym',
+        images: [
+            'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'Gym Marketing',
+        company: 'LIFE TIME PREMIUM CLUB',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'gym',
+        images: [
+            'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop'
+        ]
+    },
+
+    // B2C
     {
         category: 'B2C',
         company: 'MARCO ELECTRONICS',
@@ -121,9 +303,112 @@ const portfolioData = [
             'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop'
         ]
+    },
+    {
+        category: 'B2C',
+        company: 'MARCO FURNITURE',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'b2c',
+        images: [
+            'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'B2C',
+        company: 'AVM GROUP',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'b2c',
+        images: [
+            'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'B2C',
+        company: 'SELS CITY',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'b2c',
+        images: [
+            'https://images.unsplash.com/photo-1560472355-536de3962603?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'B2C',
+        company: 'KELVIN',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'b2c',
+        images: [
+            'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'B2C',
+        company: 'ART SAFES',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'b2c',
+        images: [
+            'https://images.unsplash.com/photo-1560472355-536de3962603?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'B2C',
+        company: 'YAN NET',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'b2c',
+        images: [
+            'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop'
+        ]
+    },
+
+    // B2B
+    {
+        category: 'B2B',
+        company: 'PRIDE SANITAR',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'b2b',
+        images: [
+            'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'B2B',
+        company: 'NUSH PLAST',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'b2b',
+        images: [
+            'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
+        ]
+    },
+    {
+        category: 'B2B',
+        company: 'ELART BUSINESS CENTER',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'b2b',
+        images: [
+            'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
+        ]
+    },
+
+    // Personal Branding
+    {
+        category: 'Personal Branding',
+        company: 'SIGER - ARMINE GRIGORYAN',
+        services: ['Social Media Marketing', 'Reel Making'],
+        type: 'personal',
+        images: [
+            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1494790108755-2616c64e5fe4?w=500&h=300&fit=crop'
+        ]
     }
 ];
-
 let displayedItems = 3;
 const itemsPerLoad = 3;
 let currentImageIndices = {};

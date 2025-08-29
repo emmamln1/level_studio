@@ -2,13 +2,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const marketingServicesData = [
-        { number: '01', title: 'SEO-ОПТИМИЗАЦИЯ', features: ['Аудит', 'Ключевые слова', 'Линкбилдинг'] },
-        { number: '02', title: 'КОНТЕКСТНАЯ РЕКЛАМА', features: ['PPC', 'Ретаргетинг', 'Аналитика'] },
-        { number: '03', title: 'SMM-ПРОДВИЖЕНИЕ', features: ['Контент', 'Таргетинг', 'Комьюнити'] },
-        { number: '04', title: 'КОНТЕНТ-МАРКЕТИНГ', features: ['Статьи', 'Видео', 'Инфографика'] },
-        { number: '05', title: 'EMAIL-МАРКЕТИНГ', features: ['Автоматизация', 'Сегментация', 'A/B тесты'] },
-        { number: '06', title: 'ТАРГЕТИРОВАННАЯ РЕКЛАМА', features: ['Facebook Ads', 'Instagram Ads', 'Look-alike'] },
-        { number: '07', title: 'ВЕБ-АНАЛИТИКА', features: ['Google Analytics', 'Яндекс.Метрика', 'Отчеты'] },
+        { number: '01', title: 'Թվային մարքեթինգ', features: ["SMM", "Copywriting", "SEO", "Email Marketing"] },
+        { number: '02', title: 'Վեբ կայքերի պատրաստում', features: ["React", "JavaScript", "PHP", "Next.js"] },
+        { number: '03', title: 'Վեբ դիզայն', features: ["SEO օպտիմիզացիա", "Google Ads", "Analytics", "Բանալի բառեր"] },
+        { number: '04', title: 'Առցանց գնումների խանութ', features: ["WooCommerce", "Shopify", "Վճարման համակարգեր", "Պահեստի կառավարում"] },
+        { number: '05', title: 'Բիզնեսի ավտոմատացում', features: ["CRM համակարգեր", "Workflow ավտոմատացում", "API ինտեգրացիա", "Դատաբազների կառավարում"] },
+        { number: '06', title: 'Մոբայլ հավելվածներ', features: ["React Native", "Flutter", "iOS/Android", "Push Notifications"] },
+        { number: '07', title: 'Դոմեյն և հոսթինգ', features: ["SSL վկայագրեր", "Օրական backup", "24/7 մոնիտորինգ", "CDN ծառայություններ"] },
         { number: '08', title: 'UX/UI ДИЗАЙН', features: ['Прототипы', 'Тестирование', 'Figma'] },
         { number: '09', title: 'БРЕНДИНГ', features: ['Логотип', 'Фирменный стиль', 'Гайдлайн'] }
     ];
