@@ -92,6 +92,7 @@
         padding: 8vh 5vw;
         height: auto;
         min-height: 100vh;
+        margin-top: 10px !important;
     }
     
     .about-container {
@@ -127,6 +128,9 @@
         height: 300px;
         position: relative;
         top: auto;
+        max-width: 85%;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     /* RESPONSIVE FIX: Carousel navigation visibility */
@@ -176,6 +180,9 @@
     .visual-element {
         height: 250px;
         margin: 0 -1rem;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     /* RESPONSIVE FIX: Smaller carousel buttons on mobile */

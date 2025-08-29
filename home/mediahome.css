@@ -1,6 +1,7 @@
 @media (max-width: 1024px) {
     .container {
         gap: 3rem;
+        margin-top: 40px;
     }
     
     .main-title {

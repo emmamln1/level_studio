@@ -12,8 +12,17 @@
    ============================= */
 @media (max-width: 768px) {
     .marketing-services-carousel-wrapper {
-        height: 500px;
-        max-width: 400px;
+        height: 350px;
+        max-width: 350px;
+    }
+    
+    .service-card-item {
+        width: 320px;
+    }
+    
+    .service-card-item.active {
+        width: 320px;
+        height: 150px;
     }
 
     .service-icon-head {
@@ -38,9 +47,19 @@
    ============================= */
 @media (max-width: 480px) {
     .marketing-services-carousel-wrapper {
-        height: 450px;
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-        mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+        height: 250px;
+        max-width: 280px;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    }
+    
+    .service-card-item {
+        width: 260px;
+    }
+    
+    .service-card-item.active {
+        width: 260px;
+        height: 100px;
     }
 
     .service-icon-head {
@@ -51,8 +70,8 @@
     }
 
     .service-card-body {
-        padding: 15px 15px 15px 40px;
-        min-height: 120px;
+        padding: 10px 10px 10px 35px;
+        min-height: 80px;
     }
 
     .service-title-heading {
@@ -61,11 +80,11 @@
     }
 
     .service-features-list {
-        gap: 6px;
+        gap: 4px;
     }
 
     .service-feature-tag {
-        font-size: 11px;
-        padding: 4px 10px;
+        font-size: 10px;
+        padding: 3px 8px;
     }
 }

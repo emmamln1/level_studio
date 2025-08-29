@@ -157,7 +157,7 @@
     }
     
     .business-carousel-track {
-        /* Align from start and remove gap to ensure single-card step */
+        /* Keep items aligned from the start to avoid extra spacing */
         justify-content: flex-start;
         gap: 10px;
     }

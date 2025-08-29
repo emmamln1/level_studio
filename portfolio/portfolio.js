@@ -53,7 +53,10 @@ const portfolioData = [
             'image/hillzone/hillzonecompany.png',
             'image/hillzone/hillzone.png',
             'image/hillzone/hillzone1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -63,7 +66,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -74,7 +80,10 @@ const portfolioData = [
             'image/boulevard/bulevardcompany.png',
             'image/boulevard/bulevard.png',
             'image/boulevard/bulevard1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -85,7 +94,10 @@ const portfolioData = [
             'image/souvenirrestaurant/souvenircompany.png',
             'image/souvenirrestaurant/souvenir.png',
             'image/souvenirrestaurant/souvenir1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -96,7 +108,10 @@ const portfolioData = [
             'image/souvenirguesthouse/souvenirguesthousecompany.png',
             'image/souvenirguesthouse/souvenirguesthouse.png',
             'image/souvenirguesthouse/souvenirguesthouse1.png'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -106,7 +121,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -116,7 +134,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1519167758481-83f29c7c8dc8?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -126,7 +147,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -136,7 +160,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -146,7 +173,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -156,7 +186,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -166,7 +199,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -176,7 +212,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1519167758481-83f29c7c8dc8?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'HORECA',
@@ -186,7 +225,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Flower Marketing
     {
@@ -197,7 +239,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Flower Marketing',
@@ -207,7 +252,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Kids Marketing
     {
@@ -218,7 +266,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Kids Marketing',
@@ -228,7 +279,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Kids Marketing',
@@ -238,7 +292,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Medical Marketing
     {
@@ -249,7 +306,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Medical Marketing',
@@ -259,7 +319,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Medical Marketing',
@@ -269,7 +332,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Medical Marketing',
@@ -279,7 +345,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Gym Marketing
     {
@@ -290,7 +359,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'Gym Marketing',
@@ -300,7 +372,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // B2C
     {
@@ -311,7 +386,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -321,7 +399,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -331,7 +412,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -341,7 +425,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1560472355-536de3962603?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -351,7 +438,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -361,7 +451,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1560472355-536de3962603?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2C',
@@ -371,7 +464,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // B2B
     {
@@ -382,7 +478,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2B',
@@ -392,7 +491,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     {
         category: 'B2B',
@@ -402,7 +504,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     },
     // Personal Branding
     {
@@ -413,7 +518,10 @@ const portfolioData = [
         images: [
             'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop',
             'https://images.unsplash.com/photo-1494790108755-2616c64e5fe4?w=500&h=300&fit=crop'
-        ]
+        ],
+        views: 100,
+        revenue: 1000,
+        clients: 100
     }
 ];
 

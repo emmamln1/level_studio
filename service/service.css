@@ -15,6 +15,67 @@
     margin: 0 auto;
 }
 
+/* Mobile responsive carousel */
+@media (max-width: 768px) {
+    .marketing-services-carousel-wrapper {
+        height: 400px !important;
+        max-width: 350px !important;
+    }
+    
+    .service-card-item {
+        width: 320px !important;
+    }
+    
+    .service-card-item.active {
+        width: 320px !important;
+        height: 180px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .marketing-services-carousel-wrapper {
+        height: 350px !important;
+        max-width: 280px !important;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%) !important;
+        mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%) !important;
+    }
+    
+    .service-card-item {
+        width: 260px !important;
+    }
+    
+    .service-card-item.active {
+        width: 260px !important;
+        height: 280px !important;
+    }
+    
+    .service-card-body {
+        padding: 15px 10px 15px 35px !important;
+        min-height: 240px !important;
+    }
+    
+    .service-icon-head {
+        width: 50px !important;
+        height: 50px !important;
+        margin-right: -25px !important;
+        font-size: 18px !important;
+    }
+    
+    .service-feature-tag {
+        font-size: 10px !important;
+        padding: 3px 8px !important;
+    }
+    
+    .service-features-list {
+        gap: 4px !important;
+    }
+    
+    /* Hide navigation buttons on mobile */
+    .business-carousel-nav {
+        display: none !important;
+    }
+}
+
 .marketing-services-carousel {
     position: relative;
     width: 100%;
@@ -28,7 +89,7 @@
     display: flex;
     align-items: center;
     position: absolute;
-    width: 100%;
+    width: 450px;
     padding: 0 12px;
     opacity: 0;
     visibility: hidden;
@@ -42,6 +103,15 @@
     opacity: 1;
     visibility: visible;
     z-index: 2;
+    width: 450px;
+    height: 190px;
+}
+
+/* Mobile responsive active card height */
+@media (max-width: 480px) {
+    .service-card-item.active {
+        height: 280px !important;
+    }
 }
 
 .service-card-item.prev {
@@ -84,7 +154,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: 15px 15px 15px 55px; /* Left padding to clear the icon */
-    min-height: 130px;
+    height: 190px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,12 +168,19 @@
     margin-bottom: 20px;
     letter-spacing: -0.5px;
     text-transform: uppercase;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
 }
 
 .service-features-list {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
+    height: 40px;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
 .service-feature-tag {

@@ -34,7 +34,7 @@
     #marketing-agency-header .multilingual-language-switcher button {
         width: 45px;
         font-size: 13px;
-        padding: 3px 6px;
+        padding: 6px 8px;
     }
 
     #marketing-agency-header .multilingual-language-switcher button.active-language,
@@ -142,7 +142,7 @@
     #marketing-agency-header .multilingual-language-switcher button {
         width: 38px;
         font-size: 12px;
-        padding: 3px 2px;
+        padding: 5px 4px;
     }
 
     /* Staggered reveal of menu items */
@@ -159,7 +159,7 @@
 @media (max-width: 480px) {
     /* Header spacing */
     .header-content-wrapper {
-        padding: 0 6vw;
+        padding: 0 9vw;
     }
 
     /* Brand logo smaller */
@@ -213,7 +213,7 @@
     #marketing-agency-header .multilingual-language-switcher button {
         width: 34px;
         font-size: 11px;
-        padding: 2px 0;
+        padding: 4px 2px;
     }
 }
 
