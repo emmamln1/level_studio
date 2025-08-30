@@ -7,8 +7,8 @@
 .marketing-services-carousel-wrapper {
     position: relative;
     width: 100%;
-    max-width: 500px;
-    height: 650px; /* Increased height */
+    max-width: 600px; /* Увеличена ширина с 500px до 600px */
+    height: 800px; /* Увеличена высота с 700px до 800px */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,7 +89,7 @@
     display: flex;
     align-items: center;
     position: absolute;
-    width: 450px;
+    width: 520px; /* Увеличена ширина с 450px до 520px */
     padding: 0 12px;
     opacity: 0;
     visibility: hidden;
@@ -103,8 +103,8 @@
     opacity: 1;
     visibility: visible;
     z-index: 2;
-    width: 450px;
-    height: 190px;
+    width: 520px; /* Увеличена ширина с 450px до 520px */
+    height: 280px; /* Увеличена высота с 220px до 280px */
 }
 
 /* Mobile responsive active card height */
@@ -154,7 +154,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: 15px 15px 15px 55px; /* Left padding to clear the icon */
-    height: 190px;
+    height: 280px; /* Увеличена высота с 220px до 280px */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -178,9 +178,11 @@
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    height: 40px;
+    min-height: 40px; /* Изменено с height на min-height */
+    max-height: 120px; /* Увеличена максимальная высота с 80px до 120px */
     align-items: flex-start;
     align-content: flex-start;
+    overflow: hidden; /* Скрываем переполнение */
 }
 
 .service-feature-tag {

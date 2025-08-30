@@ -1,149 +1,30 @@
-const partnersData = [
-    {
-        name: 'Bella Italia',
-        field: 'Հոռեկա',
-        logo: 'image/Partner/BellaItalia/logo.webp',
-        description: 'Իտալական ռեստորան',
-    },
-    {
-        name: 'Bergamo Hotel',
-        field: 'Հոռեկա',
-        logo: 'image/Partner/BergamoHotel/logo.webp',
-        description: 'Բուտիկ հյուրանոց',
-    },
-    {
-        name: 'Boulevard',
-        field: 'Հոռեկա',
-        logo: 'image/Partner/Boulevard/logo.webp',
-        description: 'Ռեստորանային համալիր',
-    },
-    {
-        name: 'Buniatyan Caviar',
-        field: 'Հոռեկա',
-        logo: 'image/Partner/BuniatyanCaviar/logo.webp',
-        description: 'Պրեմիում իկրա և ծովամթերք',
-    },
-    {
-        name: 'Design Lines',
-        field: 'Դիզայն',
-        logo: 'image/Partner/DesignLines/Logo.webp',
-        description: 'Դիզայն ստուդիո',
-    },
-    {
-        name: 'Flora Am',
-        field: 'Ծաղկային',
-        logo: 'image/Partner/FloraAm/logo.webp',
-        description: 'Ծաղկային խանութ',
-    },
-    {
-        name: 'Global Flowers',
-        field: 'Ծաղկային',
-        logo: 'image/Partner/GlobalFlowers/logo.webp',
-        description: 'Ծաղկային ծառայություններ',
-    },
-    {
-        name: 'Hillzone',
-        field: 'Հոռեկա',
-        logo: 'image/Partner/Hillzone/logo.webp',
-        description: 'Ռեստորան և ժամանցային կենտրոն',
-    },
-    {
-        name: 'Karap Cafe',
-        field: 'Հոռեկա',
-        logo: 'image/Partner/KarapCafe/logo.webp',
-        description: 'Սուրճի խանութ',
-    },
-    {
-        name: 'Lanj',
-        field: 'Նորաձևություն',
-        logo: 'image/Partner/Lanj/logo.webp',
-        description: 'Նորաձևության բրենդ',
-    },
-    {
-        name: 'Life Time Premium Club',
-        field: 'Սպորտ',
-        logo: 'image/Partner/LifeTimePremiumClub/logo.webp',
-        description: 'Պրեմիում ֆիթնես կլուբ',
-    },
-    {
-        name: 'Lorest Clinic',
-        field: 'Բժշկական',
-        logo: 'image/Partner/LorestClinic/logo.webp',
-        description: 'Բժշկական կլինիկա',
-    },
-    {
-        name: 'Marco Furniture',
-        field: 'Վերջնական սպառող',
-        logo: 'image/Partner/MarcoFurniture/logo.webp',
-        description: 'Կահույք և ինտերիեր',
-    },
-    {
-        name: 'Minis Kids Cafe',
-        field: 'Երեխաների',
-        logo: 'image/Partner/MinisKidsCafe/logo.webp',
-        description: 'Երեխաների սուրճի խանութ',
-    },
-    {
-        name: 'My Horeca Consulting',
-        field: 'Հոռեկա',
-        logo: 'image/Partner/MyHorecaConsulting/logo.webp',
-        description: 'Հոռեկա խորհրդատվություն',
-    },
-    {
-        name: 'Nush Plast',
-        field: 'Բիզնեսից բիզնես',
-        logo: 'image/Partner/NushPlast/logo.webp',
-        description: 'Պլաստիկ արտադրություն',
-    },
-    {
-        name: 'Palladium Hall',
-        field: 'Հոռեկա',
-        logo: 'image/Partner/PalladiumHall/logo.webp',
-        description: 'Միջոցառումների դահլիճ',
-    },
-    {
-        name: 'Podoclinic',
-        field: 'Բժշկական',
-        logo: 'image/Partner/Podoclinic/logo.webp',
-        description: 'Ոտքերի բժշկական կլինիկա',
-    },
-    {
-        name: 'Pride Sanitar',
-        field: 'Բիզնեսից բիզնես',
-        logo: 'image/Partner/PrideSanitar/logo.webp',
-        description: 'Սանիտարական ապրանքներ',
-    },
-    {
-        name: 'Royal Yerevan',
-        field: 'Հոռեկա',
-        logo: 'image/Partner/RoyalYerevan/logo.webp',
-        description: 'Պրեմիում հյուրանոց',
-    },
-    {
-        name: 'Rush Pub',
-        field: 'Հոռեկա',
-        logo: 'image/Partner/RushPub/logo.webp',
-        description: 'Պաբ և բար',
-    },
-    {
-        name: 'Tuntunik',
-        field: 'Երեխաների',
-        logo: 'image/Partner/Tuntunik/logo.webp',
-        description: 'Երեխաների ծառայություններ',
-    },
-    {
-        name: 'Yan Net',
-        field: 'Վերջնական սպառող',
-        logo: 'image/Partner/yannet/logo.webp',
-        description: 'Ցանցային ծառայություններ',
-    },
-    {
-        name: 'Z & L Dental Clinic',
-        field: 'Բժշկական',
-        logo: 'image/Partner/ZandLDentalClinic/logo.webp',
-        description: 'Ատամնաբուժական կլինիկա',
+// Функция для получения переводов партнеров
+function getPartnerTranslations() {
+    const languageSwitcher = window.languageSwitcher;
+    if (languageSwitcher && languageSwitcher.translations && languageSwitcher.currentLanguage) {
+        const translations = languageSwitcher.translations[languageSwitcher.currentLanguage];
+        if (!translations || !translations.partners) {
+            return {};
+        }
+        return translations.partners.items || {};
     }
-];
+    return {};
+}
+
+// Функция для получения переведенных данных партнера
+function getTranslatedPartnerData(partnerKey, defaultField, defaultDescription) {
+    if (!partnerKey) return { field: defaultField, description: defaultDescription };
+    
+    const translations = getPartnerTranslations();
+    const translated = translations[partnerKey];
+    
+    return {
+        field: translated?.field || defaultField,
+        description: translated?.description || defaultDescription
+    };
+}
+
+// partnersData теперь в HTML, массив больше не нужен
 
 let currentIndex = 0;
 let isCarouselView = true;
@@ -152,6 +33,7 @@ let isAnimating = false; // prevent double navigation during transition
 
 
 function createBusinessPartnerCard(partner, index) {
+    const translatedData = getTranslatedPartnerData(partner.key || '', partner.field, partner.description);
     const card = document.createElement('div');
     card.className = 'business-partner-card';
     card.innerHTML = `
@@ -159,8 +41,8 @@ function createBusinessPartnerCard(partner, index) {
          <img src="${partner.logo}" alt="${partner.name}" style="width: 100%; height: 100%;">
         </div>
         <h3 class="business-partner-name">${partner.name}</h3>
-        <div class="business-partner-field">${partner.field}</div>
-        <p class="business-partner-description">${partner.description}</p>
+        <div class="business-partner-field">${translatedData.field}</div>
+        <p class="business-partner-description">${translatedData.description}</p>
     `;
     return card;
 }
@@ -174,42 +56,36 @@ function createBusinessIndicator(index) {
 
 function initializeBusinessCarousel() {
     const track = document.getElementById('businessCarouselTrack');
-    const indicators = document.getElementById('businessIndicators');
-    
-    track.innerHTML = '';
-    indicators.innerHTML = '';
+    if (!track) return;
 
-    // Добавляем все карточки
-    partnersData.forEach((partner, index) => {
-        const card = createBusinessPartnerCard(partner, index);
-        track.appendChild(card);
-        
+    // Создаем индикаторы для карточек
+    createBusinessIndicators();
+    
+    // Карточки уже в HTML, просто обновляем карусель
+    updateBusinessCarousel();
+    startBusinessAutoplay();
+}
+
+function createBusinessIndicators() {
+    const track = document.getElementById('businessCarouselTrack');
+    const indicators = document.getElementById('businessIndicators');
+    if (!track || !indicators) return;
+    
+    const cards = track.querySelectorAll('.business-partner-card');
+    indicators.innerHTML = ''; // Очищаем существующие индикаторы
+    
+    cards.forEach((_, index) => {
         const indicator = createBusinessIndicator(index);
         indicators.appendChild(indicator);
     });
-
-    // Дублируем первые несколько карточек в конце для плавного зацикливания
-    const cardsToClone = Math.min(3, partnersData.length);
-    for (let i = 0; i < cardsToClone; i++) {
-        const card = createBusinessPartnerCard(partnersData[i], i);
-        card.classList.add('cloned-card');
-        track.appendChild(card);
-    }
-
-    // Небольшая задержка для корректного расчета размеров
-    setTimeout(() => {
-        updateBusinessCarousel();
-    }, 100);
 }
 
 function initializeBusinessGrid() {
     const grid = document.getElementById('businessGridView');
-    grid.innerHTML = '';
-
-    partnersData.forEach((partner, index) => {
-        const card = createBusinessPartnerCard(partner, index);
-        grid.appendChild(card);
-    });
+    if (!grid) return;
+    
+    // Grid view не используется в текущем дизайне
+    // Карточки уже в HTML для carousel
 }
 
 // Calculate one-step translate width (card width + track gap)
@@ -239,27 +115,43 @@ function getBusinessStepWidth() {
 
 function updateBusinessCarousel() {
     const track = document.getElementById('businessCarouselTrack');
+    const cards = track.querySelectorAll('.business-partner-card');
+    const totalCards = cards.length;
+    
+    if (totalCards === 0) return;
+    
+    const stepWidth = getBusinessStepWidth();
+    const translateX = -currentIndex * stepWidth;
+    
+    track.style.transform = `translateX(${translateX}px)`;
+    
+    updateBusinessIndicators();
+    updateBusinessNavigationButtons();
+}
+
+function updateBusinessNavigationButtons() {
+    const prevBtn = document.getElementById('businessPrevBtn');
+    const nextBtn = document.getElementById('businessNextBtn');
+    const track = document.getElementById('businessCarouselTrack');
+    
+    if (!prevBtn || !nextBtn || !track) return;
+    
+    const cards = track.querySelectorAll('.business-partner-card');
+    const totalCards = cards.length;
+    
+    // Для бесконечной карусели кнопки всегда активны
+    // Убираем disabled состояние
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
+    prevBtn.classList.remove('disabled');
+    nextBtn.classList.remove('disabled');
+}
+
+function updateBusinessIndicators() {
     const indicators = document.querySelectorAll('.business-indicator');
-    
-    // Translate by unified step width
-    const step = getBusinessStepWidth();
-    track.style.transform = `translateX(-${currentIndex * step}px)`;
-    
     indicators.forEach((indicator, index) => {
         indicator.classList.toggle('active', index === currentIndex);
     });
-    
-    // Проверяем, нужно ли сбросить позицию для бесконечного цикла
-    if (currentIndex >= partnersData.length) {
-        setTimeout(() => {
-            track.style.transition = 'none';
-            currentIndex = 0;
-            track.style.transform = `translateX(0px)`;
-            setTimeout(() => {
-                track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            }, 50);
-        }, 600);
-    }
 }
 
 function goToBusinessSlide(index) {
@@ -271,46 +163,42 @@ function goToBusinessSlide(index) {
 function nextBusinessSlide() {
     if (isAnimating) return;
     isAnimating = true;
-    currentIndex = currentIndex + 1;
+    
+    const track = document.getElementById('businessCarouselTrack');
+    const cards = track.querySelectorAll('.business-partner-card');
+    const totalCards = cards.length;
+    
+    currentIndex = (currentIndex + 1) % totalCards;
     updateBusinessCarousel();
-    setTimeout(() => { isAnimating = false; }, 650);
+    
+    setTimeout(() => {
+        isAnimating = false;
+    }, 600);
 }
 
 function prevBusinessSlide() {
-    const track = document.getElementById('businessCarouselTrack');
-    const total = partnersData.length;
-    const step = getBusinessStepWidth();
-
-    if (currentIndex === 0) {
-        if (isAnimating) return;
-        isAnimating = true;
-        // Seamless jump to the cloned area at the end, then animate one step back to the last real slide
-        track.style.transition = 'none';
-        track.style.transform = `translateX(-${total * step}px)`; // jump after the last real slide
-        // Force reflow to apply transform without transition
-        void track.offsetHeight;
-        track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        currentIndex = total - 1;
-        track.style.transform = `translateX(-${currentIndex * step}px)`;
-
-        // Update indicators manually
-        const indicators = document.querySelectorAll('.business-indicator');
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentIndex);
-        });
-        setTimeout(() => { isAnimating = false; }, 650);
-        return;
-    }
-
     if (isAnimating) return;
     isAnimating = true;
-    currentIndex = currentIndex - 1;
+    
+    const track = document.getElementById('businessCarouselTrack');
+    const cards = track.querySelectorAll('.business-partner-card');
+    const totalCards = cards.length;
+
+    if (currentIndex === 0) {
+        currentIndex = totalCards - 1;
+    } else {
+        currentIndex--;
+    }
+    
     updateBusinessCarousel();
-    setTimeout(() => { isAnimating = false; }, 650);
+    
+    setTimeout(() => {
+        isAnimating = false;
+    }, 600);
 }
 
 function startBusinessAutoplay() {
-    autoplayInterval = setInterval(nextBusinessSlide, 4000);
+    autoplayInterval = setInterval(nextBusinessSlide, 8000);
 }
 
 function stopBusinessAutoplay() {
@@ -345,12 +233,27 @@ function switchBusinessView(viewType) {
     }
 }
 
+// Функции для обновления контента партнеров при смене языка
+function updatePartnersContent() {
+    if (isCarouselView) {
+        // Пересоздаем индикаторы при смене языка
+        createBusinessIndicators();
+        updateBusinessCarousel();
+    } else {
+        initializeBusinessGrid();
+    }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    initializeBusinessCarousel();
-    initializeBusinessGrid();
-    // Убираем автопрокрутку
-    // startBusinessAutoplay();
+    // Инициализация с задержкой для ожидания languageSwitcher
+    setTimeout(() => {
+        initializeBusinessCarousel();
+        initializeBusinessGrid();
+    }, 100);
+    
+    // Слушатель события смены языка
+    document.addEventListener('languageChanged', updatePartnersContent);
 
     // Navigation buttons
     const businessNextBtn = document.getElementById('businessNextBtn');

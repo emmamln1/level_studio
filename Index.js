@@ -504,8 +504,8 @@ function initPortfolioCarousel() {
     carousel.addEventListener('scroll', syncFromScroll);
 
     // Button events (page-based)
-    prevBtn.addEventListener('click', () => setPage(currentPage - 1));
-    nextBtn.addEventListener('click', () => setPage(currentPage + 1));
+    if (prevBtn) prevBtn.addEventListener('click', () => setPage(currentPage - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => setPage(currentPage + 1));
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
@@ -807,15 +807,19 @@ class LandingPartners {
 
     setupCarousel() {
         // Cache elements
-        this.grid = document.getElementById('partnersGrid');
-        this.prevBtn = document.getElementById('prevBtn');
-        this.nextBtn = document.getElementById('nextBtn');
-        this.dotsContainer = document.getElementById('partnersCarouselDots');
+        this.grid = document.getElementById('businessCarouselTrack');
+        this.prevBtn = document.getElementById('businessPrevBtn');
+        this.nextBtn = document.getElementById('businessNextBtn');
+        this.dotsContainer = document.getElementById('businessIndicators');
         this.progressFill = document.getElementById('scrollProgress');
 
         // Navigation handlers
-        this.prevBtn.addEventListener('click', () => this.goPrev());
-        this.nextBtn.addEventListener('click', () => this.goNext());
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.goPrev());
+        }
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.goNext());
+        }
 
         // Calculate initial layout and render UI
         this.calculateLayout();
@@ -918,10 +922,14 @@ class LandingPartners {
         // Buttons state
         const atStart = this.currentPage === 0;
         const atEnd = this.currentPage >= this.totalPages - 1;
-        this.prevBtn.disabled = atStart;
-        this.nextBtn.disabled = atEnd;
-        this.prevBtn.classList.toggle('disabled', atStart);
-        this.nextBtn.classList.toggle('disabled', atEnd);
+        if (this.prevBtn) {
+            this.prevBtn.disabled = atStart;
+            this.prevBtn.classList.toggle('disabled', atStart);
+        }
+        if (this.nextBtn) {
+            this.nextBtn.disabled = atEnd;
+            this.nextBtn.classList.toggle('disabled', atEnd);
+        }
 
         // Dots and progress
         this.updateActiveDot();

@@ -17,17 +17,22 @@
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    gap: 6rem;
+    gap: 4rem; /* Уменьшен gap с 6rem до 4rem */
     align-items: start;
     position: relative;
     z-index: 2;
     width: 100%;
     box-sizing: border-box;
+    min-height: 500px; /* Уменьшена минимальная высота */
+    justify-content: center; /* Изменено с space-between на center */
+    padding: 0 2rem; /* Увеличен padding */
 }
 
 .contact-left {
     opacity: 1;
     transform: translateX(0);
+    flex: 1;
+    max-width: 600px; /* Ограничена максимальная ширина */
 }
 
 .section-header {
@@ -42,6 +47,10 @@
     color: #fff;
     text-transform: uppercase;
     letter-spacing: -2px;
+    min-height: 120px; /* Фиксированная высота для стабильности */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .highlight {
@@ -65,6 +74,9 @@
     line-height: 1.6;
     color: #ccc;
     margin-bottom: 2rem;
+    min-height: 50px; /* Фиксированная высота для стабильности */
+    display: flex;
+    align-items: center;
 }
 
 .contact-info {
@@ -94,6 +106,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
+    min-height: 70px; /* Фиксированная высота для стабильности */
 }
 
 /* MOBILE FIX: Info item layout for mobile */
@@ -159,6 +172,8 @@
 .contact-right {
     opacity: 1;
     transform: translateX(0);
+    flex: 1;
+    max-width: 500px; /* Ограничена максимальная ширина */
 }
 
 .form-container {

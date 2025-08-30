@@ -1,0 +1,1034 @@
+{
+  "arm": {
+    "nav": {
+      "home": "Գլխավոր",
+      "about": "Մեր Մասին",
+      "services": "Ծառայություններ",
+      "portfolio": "Պորտֆոլիո",
+      "partners": "Գործընկերներ",
+      "contact": "Կապ"
+    },
+    "home": {
+      "title": "Level Studio",
+      "subtitle": "Ձեր բրենդի հաջողությունը մեր առաքելությունն է։",
+      "description": "Մենք ստեղծում ենք ամբողջական լուծումներ՝ սկսած նոր գաղափարներից մինչև դրանց գործնական կիրառում, բովանդակության մշակումից մինչև ճիշտ ռազմավարություն։ Մեր նպատակն է ոչ միայն ուժեղացնել ձեր ներկայությունը, այլև ապահովել ձեր բիզնեսի երկարատև աճը։",
+      "contactBtn": "Դիմել"
+    },
+    "about": {
+      "title": "Մեր մասին",
+      "subtitle": "Level Studio",
+      "description": "Level Studio-ն իր գործունեությունը սկսել է դեռևս 2018 թվականին:",
+      "stats": {
+        "projects": "Նախագիծ",
+        "partners": "Գործընկեր",
+        "experience": "Տարվա փորձ"
+      },
+      "text1": "2022 թվականին մենք ստեղծեցինք մեր սեփական ֆոտո-ստուդիան, որը լրացրեց ու հարստացրեց մեր ծառայությունները։",
+      "text2": "Level Studio-ն առաջարկում է նաև դրոն նկարահանումներ և այլ պրոֆեսիոնալ վիզուալ լուծումներ, որոնք մեր հաճախորդներին տալիս են առավելություն՝ իրենց բրենդը ներկայացնելու ժամանակակից ու տպավորիչ ձևով:",
+      "text3": "Այժմ մեր բոլոր վիզուալ լուծումները ծնվում են հենց մեր ստուդիայում ապահովելով բարձր որակ, ամբողջականություն և ստեղծագործ մոտեցում յուրաքանչյուր նախագծում։",
+      "text4": "Level Studio-ն այսօր այն վայրն է, որտեղ գաղափարները դառնում են իրականություն, իսկ բրենդները՝հիշվող:"
+    },
+    "services": {
+      "title": "Մեր ծառայությունները",
+      "items": {
+        "01": {
+          "title": "Թվային մարքեթինգ",
+          "features": ["SMM", "SMM դասընթացներ", "Տեքստ գրություն", "SEO", "Էլ․ փոստ", "Բրենդինգ"]
+        },
+        "02": {
+          "title": "Վեբ կայքերի պատրաստում",
+          "features": ["React", "JavaScript", "PHP", "Next.js", "HTML/CSS", "WordPress"]
+        },
+        "03": {
+          "title": "Վեբ դիզայն",
+          "features": ["UI/UX դիզայն", "Figma", "Adobe Creative Suite", "Հարմարվող դիզայն"]
+        },
+        "04": {
+          "title": "Կայքերի առաջխաղացում",
+          "features": ["SEO օպտիմիզացիա", "Google Ads", "Վերլուծություն", "Բանալի բառեր"]
+        },
+        "05": {
+          "title": "Առցանց գնումների խանութ",
+          "features": ["WooCommerce", "Shopify", "Վճարման համակարգեր", "Պահեստի կառավարում"]
+        },
+        "06": {
+          "title": "Բիզնեսի ավտոմատացում",
+          "features": ["CRM համակարգեր", "Աշխատանքային գործընթացների ավտոմատացում", "API ինտեգրացիա", "Տվյալների բազաների կառավարում"]
+        },
+        "07": {
+          "title": "Մոբայլ հավելվածների ստեղծում",
+          "features": ["React Native", "Flutter", "iOS/Android", "Ծանուցումներ"]
+        },
+        "08": {
+          "title": "Դոմեյն և հոսթինգ",
+          "features": ["SSL վկայագրեր", "Օրական պահուստավորում", "24/7 մոնիտորինգ", "CDN ծառայություններ"]
+        },
+        "09": {
+          "title": "Տեխնիկական սպասարկում",
+          "features": ["Կայքի սպասարկում", "Սխալների շտկում", "Թարմացումներ", "24/7 տեխնիկական աջակցություն"]
+        },
+        "10": {
+          "title": "Գրաֆիկական աշխատանքներ",
+          "features": ["Այցեքարտերի դիզայն և ձևավորում", "Բուկլետների դիզայն և ձևավորում", "Ֆլայերների դիզայն և ձևավորում", "Լոգո դիզայն"]
+        },
+        "11": {
+          "title": "Վեբ դասընթացներ լիցենզիայով",
+          "features": ["Մասնագիտական դասընթացներ", "Սերտիֆիկատ", "Կենտրոն գործունեության", "Առցանց ուսուցում"]
+        }
+      }
+    },
+    "categories": {
+      "designLines": "Դիզայն գծեր",
+      "fashion": "Նորաձևություն",
+      "horeca": "ՀՈՐԵԿԱ",
+      "floral": "Ծաղկային մարքեթինգ",
+      "kids": "Մանկական մարքեթինգ",
+      "medical": "Բժշկական մարքեթինգ",
+      "fitness": "Մարզադահլիճի մարքեթինգ",
+      "retail": "Վերջնական սպառող",
+      "b2b": "Բիզնեսից բիզնես",
+      "personal": "Անձնական բրենդինգ"
+    },
+    "portfolio": {
+      "title": "Պորտֆոլիո",
+      "description": "Հարյուրավոր բրենդներ վստահել են մեզ իրենց մարքեթինգային և դիզայնի անհրաժեշտություններն ապահովելու համար",
+      "loadMore": "Տեսնել ավելին",
+      "collapse": "Փակել",
+      "items": {
+        "armine_grigoryan": {
+          "category": "Անձնական բրենդինգ",
+          "services": ["Անձնական բրենդինգ", "Սոցիալական մեդիա մարքեթինգ", "Բովանդակության ստեղծում"]
+        },
+        "karap_cafe": {
+          "category": "ՀՈՐԵԿԱ",
+          "services": ["Սրճարանի մարքեթինգ", "Տեղական համայնքի ներգրավում", "Օրական ակցիաներ"]
+        },
+        "bella_italia": {
+          "category": "ՀՈՐԵԿԱ",
+          "services": ["Սոցիալական մեդիա մարքեթինգ", "Բրենդի դիրքավորում", "Բովանդակության ռազմավարություն"]
+        },
+        "lanj": {
+          "category": "Նորաձևություն և վաճառք",
+          "services": ["Նորաձևության մարքեթինգ", "Բրենդի դիրքավորում", "Վիզուալ բովանդակության ռազմավարություն"]
+        },
+        "boulevard": {
+          "category": "ՀՈՐԵԿԱ",
+          "services": ["Ժամանցի մարքեթինգ", "Արկածային տուրիզմ", "Բացօթյա գործունեության գովազդ"]
+        },
+        "bergamo_hotel": {
+          "category": "ՀՈՐԵԿԱ",
+          "services": ["Հյուրանոցային մարքեթինգ", "Ամրագրման գովազդ", "Հյուրերի փորձառություն"]
+        },
+        "buniatyan_caviar": {
+          "category": "ՀՈՐԵԿԱ",
+          "services": ["Շքեղ բրենդի մարքեթինգ", "Պրեմիում ապրանքի դիրքավորում", "Էլիտար հաճախորդների թիրախավորում"]
+        },
+        "design_lines": {
+          "category": "Դիզայն և ճարտարապետություն",
+          "services": ["Ինտերիերի դիզայնի մարքեթինգ", "Պորտֆոլիոյի զարգացում", "Մասնագիտական ծառայությունների գովազդ"]
+        },
+        "hillzone": {
+          "category": "ՀՈՐԵԿԱ",
+          "services": ["Ժամանցի մարքեթինգ", "Արկածային տուրիզմ", "Բացօթյա գործունեության գովազդ"]
+        },
+        "flora_am": {
+          "category": "Վաճառք և ծառայություններ",
+          "services": ["Ծաղկային բիզնեսի մարքեթինգ", "Միջոցառումների ծաղիկների գովազդ", "Սեզոնային արշավներ"]
+        },
+        "global_flowers": {
+          "category": "Վաճառք և ծառայություններ",
+          "services": ["Միջազգային ծաղկային առաքում", "Կորպորատիվ ծաղկային ծառայություններ", "Հարսանիքային մարքեթինգ"]
+        },
+        "life_time_premium_club": {
+          "category": "Առողջություն և ֆիթնես",
+          "services": ["Ֆիթնես մարքեթինգ", "Անդամակցության աճ", "Առողջապահական ծրագրեր"]
+        },
+        "minis_kids_cafe": {
+          "category": "Ընտանիք և ժամանց",
+          "services": ["Ընտանեկան ժամանցի մարքեթինգ", "Երեխաների ծննդյան փաթեթներ", "Ծնողական համայնքի կառուցում"]
+        },
+        "tuntunik": {
+          "category": "Ընտանիք և ժամանց",
+          "services": ["Երեխաների բրենդի մարքեթինգ", "Կրթական բովանդակություն", "Ծնողների ներգրավում"]
+        },
+        "dr_miqayelyan": {
+          "category": "Առողջապահություն",
+          "services": ["Բժշկական պրակտիկայի մարքեթինգ", "Հիվանդների կրթություն", "Մասնագիտական հեղինակության կառավարում"]
+        },
+        "lorest_clinic": {
+          "category": "Առողջապահություն",
+          "services": ["Առողջապահական մարքեթինգ", "Բժշկական ծառայությունների գովազդ", "Հիվանդների ներգրավում"]
+        },
+        "podoclinic": {
+          "category": "Առողջապահություն",
+          "services": ["Մասնագիտացված բժշկական մարքեթինգ", "Պոդիատրիկ ծառայությունների գովազդ", "Առողջապահական կրթություն"]
+        },
+        "z_l_dental_clinic": {
+          "category": "Առողջապահություն",
+          "services": ["Ատամնաբուժական մարքեթինգ", "Բերանի խոռոչի առողջության կրթություն", "Հիվանդների խնամքի գովազդ"]
+        },
+        "marco_furniture": {
+          "category": "Վաճառք և տուն",
+          "services": ["Կահույքի մարքեթինգ", "Տան դեկորի գովազդ", "Ինտերիերային լուծումներ"]
+        },
+        "my_horeca_consulting": {
+          "category": "Բիզնես ծառայություններ",
+          "services": ["Բիզնես խորհրդատվության մարքեթինգ", "ՀՈՐԵԿԱ ոլորտի փորձագիտություն", "Մասնագիտական ծառայություններ"]
+        },
+        "nush_plast": {
+          "category": "Արտադրություն և արդյունաբերություն",
+          "services": ["Արդյունաբերական մարքեթինգ", "Բիզնեսից բիզնես հաճախորդների ներգրավում", "Արտադրական լուծումներ"]
+        },
+        "palladium_hall": {
+          "category": "ՀՈՐԵԿԱ",
+          "services": ["Միջոցառումների դահլիճի մարքեթինգ", "Հարսանիքների գովազդ", "Կորպորատիվ միջոցառումներ"]
+        },
+        "pride_sanitar": {
+          "category": "Շինարարություն և կառուցապատում",
+          "services": ["Շինարարական մարքեթինգ", "Սանիտարական լուծումներ", "Բիզնեսից բիզնես ծառայություններ"]
+        },
+        "royal_yerevan": {
+          "category": "ՀՈՐԵԿԱ",
+          "services": ["Շքեղ հյուրանոցային մարքեթինգ", "Պրեմիում հյուրերի փորձառություն", "Բարձրակարգ ծառայություններ"]
+        },
+        "rush_pub": {
+          "category": "ՀՈՐԵԿԱ",
+          "services": ["Գիշերային կյանքի մարքեթինգ", "Միջոցառումների գովազդ", "Սոցիալական ժամանց"]
+        },
+        "souvenir_guest_house": {
+          "category": "ՀՈՐԵԿԱ",
+          "services": ["Տուրիստական մարքեթինգ", "Բնակեցման գովազդ", "Հյուրերի փորձառություն"]
+        },
+        "yan_net": {
+          "category": "Տեխնոլոգիա և IT",
+          "services": ["Տեխնոլոգիական ընկերության մարքեթինգ", "Թվային լուծումներ", "IT ծառայությունների գովազդ"]
+        }
+      }
+    },
+    "partners": {
+      "title": "Մեր Գործընկերները",
+      "description": "Կազմակերպություններ, որոնց հետ մեր համագործակցությունը բերել է փոխադարձ հաջողություն",
+      "items": {
+        "bella-italia": {
+          "field": "Հոռեկա",
+          "description": "Իտալական ռեստորան"
+        },
+        "bergamo-hotel": {
+          "field": "Հոռեկա",
+          "description": "Բուտիկ հյուրանոց"
+        },
+        "boulevard": {
+          "field": "Հոռեկա",
+          "description": "Ռեստորանային համալիր"
+        },
+        "buniatyan-caviar": {
+          "field": "Հոռեկա",
+          "description": "Պրեմիում իկրա և ծովամթերք"
+        },
+        "design-lines": {
+          "field": "Դիզայն",
+          "description": "Դիզայն ստուդիո"
+        },
+        "flora-am": {
+          "field": "Ծաղկային",
+          "description": "Ծաղկային խանութ"
+        },
+        "global-flowers": {
+          "field": "Ծաղկային",
+          "description": "Ծաղկային ծառայություններ"
+        },
+        "hillzone": {
+          "field": "Հոռեկա",
+          "description": "Ռեստորան և ժամանցային կենտրոն"
+        },
+        "karap-cafe": {
+          "field": "Հոռեկա",
+          "description": "Սուրճի խանութ"
+        },
+        "lanj": {
+          "field": "Նորաձևություն",
+          "description": "Նորաձևության բրենդ"
+        },
+        "life-time-premium-club": {
+          "field": "Սպորտ",
+          "description": "Պրեմիում ֆիթնես կլուբ"
+        },
+        "lorest-clinic": {
+          "field": "Բժշկական",
+          "description": "Բժշկական կլինիկա"
+        },
+        "marco-furniture": {
+          "field": "Վերջնական սպառող",
+          "description": "Կահույք և ինտերիեր"
+        },
+        "minis-kids-cafe": {
+          "field": "Երեխաների",
+          "description": "Երեխաների սուրճի խանութ"
+        },
+        "my-horeca-consulting": {
+          "field": "Հոռեկա",
+          "description": "Հոռեկա խորհրդատվություն"
+        },
+        "nush-plast": {
+          "field": "Բիզնեսից բիզնես",
+          "description": "Պլաստիկ արտադրություն"
+        },
+        "palladium-hall": {
+          "field": "Հոռեկա",
+          "description": "Միջոցառումների դահլիճ"
+        },
+        "podoclinic": {
+          "field": "Բժշկական",
+          "description": "Ոտքերի բժշկական կլինիկա"
+        },
+        "pride-sanitar": {
+          "field": "Բիզնեսից բիզնես",
+          "description": "Սանիտարական ապրանքներ"
+        },
+        "royal-yerevan": {
+          "field": "Հոռեկա",
+          "description": "Պրեմիում հյուրանոց"
+        },
+        "rush-pub": {
+          "field": "Հոռեկա",
+          "description": "Պաբ և բար"
+        },
+        "tuntunik": {
+          "field": "Երեխաների",
+          "description": "Երեխաների ծառայություններ"
+        },
+        "yan-net": {
+          "field": "Վերջնական սպառող",
+          "description": "Ցանցային ծառայություններ"
+        },
+        "z-l-dental-clinic": {
+          "field": "Բժշկական",
+          "description": "Ատամնաբուժական կլինիկա"
+        }
+      }
+    },
+    "contact": {
+      "title": "Կապ մեզ հետ",
+      "subtitle": "Level Studio",
+      "description": "Ունե՞ք հարցեր որևէ նախագծի գաղափար կապվեք մեզ հետ:",
+      "office": "Գլխավոր Գրասենյակ",
+      "address": "Երևան, Հայաստան\nԱրարատյան փողոց, 82",
+      "email": "Էլ․ Հասցե",
+      "phone": "Հեռախոս",
+      "hours": "Աշխատանքային Ժամեր",
+      "workingHours": "Երկուշաբթի - Ուրբաթ\n12:00 - 20:00",
+      "formTitle": "Ուղարկել Նամակ",
+      "contactLabel": "Էլ․ հասցե / Հեռախոս",
+      "contactPlaceholder": "Ձեր էլ․ հասցեն կամ հեռախոսահամարը",
+      "messageLabel": "Նամակ",
+      "messagePlaceholder": "Գրեք ձեր նամակը այստեղ...",
+      "submitBtn": "Ուղարկել Նամակ",
+      "successMessage": "Ձեր նամակը հաջողությամբ ուղարկվեց!"
+    },
+    "footer": {
+      "description": "Մենք ստեղծագործական ստուդիա ենք, որը միավորում է նորարարական տեխնոլոգիաները և արվեստի ուժը՝ ապահովելով բարձրակարգ լուծումներ յուրաքանչյուր նախագծում:",
+      "servicesTitle": "Ծառայություններ",
+      "navigationTitle": "Նավիգացիա",
+      "contactTitle": "Կապ",
+      "copyright": "© 2025 Level Studio. Բոլոր իրավունքները պաշտպանված են:",
+      "privacy": "Գաղտնիության Քաղաքականություն",
+      "terms": "Ծառայության Պայմաններ",
+      "services": {
+        "webDev": "Վեբ Ծրագրավորում",
+        "mobile": "Մոբայլ Հավելվածներ",
+        "design": "Դիզայն",
+        "marketing": "Մարքեթինգ",
+        "seo": "SEO Օպտիմիզացիա",
+        "branding": "Բրենդինգ"
+      }
+    }
+  },
+  "rus": {
+    "nav": {
+      "home": "Главная",
+      "about": "О нас",
+      "services": "Услуги",
+      "portfolio": "Портфолио",
+      "partners": "Партнеры",
+      "contact": "Контакты"
+    },
+    "home": {
+      "title": "Level Studio",
+      "subtitle": "Успех вашего бренда - наша миссия.",
+      "description": "Мы создаем комплексные решения от новых идей до их практического применения, от разработки контента до правильной стратегии. Наша цель - не только укрепить ваше присутствие, но и обеспечить долгосрочный рост вашего бизнеса.",
+      "contactBtn": "Обратиться"
+    },
+    "about": {
+      "title": "О нас",
+      "subtitle": "Level Studio",
+      "description": "Level Studio начала свою деятельность еще в 2018 году:",
+      "stats": {
+        "projects": "Проектов",
+        "partners": "Партнеров",
+        "experience": "Лет опыта"
+      },
+      "text1": "В 2022 году мы создали собственную фото-студию, которая дополнила и обогатила наши услуги.",
+      "text2": "Level Studio также предлагает дрон-съемку и другие профессиональные визуальные решения, которые дают нашим клиентам преимущество в представлении их бренда современным и впечатляющим способом.",
+      "text3": "Теперь все наши визуальные решения рождаются прямо в нашей студии, обеспечивая высокое качество, целостность и творческий подход в каждом проекте.",
+      "text4": "Level Studio сегодня - это место, где идеи становятся реальностью, а бренды - запоминающимися."
+    },
+    "services": {
+      "title": "Наши услуги",
+      "items": {
+        "01": {
+          "title": "Цифровой маркетинг",
+          "features": ["SMM", "SMM курсы", "Копирайтинг", "SEO", "Email маркетинг", "Брендинг"]
+        },
+        "02": {
+          "title": "Разработка веб-сайтов",
+          "features": ["React", "JavaScript", "PHP", "Next.js", "HTML/CSS", "WordPress"]
+        },
+        "03": {
+          "title": "Веб-дизайн",
+          "features": ["UI/UX дизайн", "Figma", "Adobe Creative Suite", "Адаптивный дизайн"]
+        },
+        "04": {
+          "title": "Продвижение сайтов",
+          "features": ["SEO оптимизация", "Google Ads", "Аналитика", "Ключевые слова"]
+        },
+        "05": {
+          "title": "Интернет-магазин",
+          "features": ["WooCommerce", "Shopify", "Платежные системы", "Управление складом"]
+        },
+        "06": {
+          "title": "Автоматизация бизнеса",
+          "features": ["CRM системы", "Автоматизация рабочих процессов", "API интеграция", "Управление базами данных"]
+        },
+        "07": {
+          "title": "Создание мобильных приложений",
+          "features": ["React Native", "Flutter", "iOS/Android", "Push уведомления"]
+        },
+        "08": {
+          "title": "Домен и хостинг",
+          "features": ["SSL сертификаты", "Ежедневное резервное копирование", "24/7 мониторинг", "CDN услуги"]
+        },
+        "09": {
+          "title": "Техническое обслуживание",
+          "features": ["Поддержка сайта", "Исправление ошибок", "Обновления", "24/7 техническая поддержка"]
+        },
+        "10": {
+          "title": "Графические работы",
+          "features": ["Дизайн и оформление визиток", "Дизайн и оформление буклетов", "Дизайн и оформление флаеров", "Дизайн логотипа"]
+        },
+        "11": {
+          "title": "Веб-курсы с лицензией",
+          "features": ["Профессиональные курсы", "Сертификат", "Центр деятельности", "Онлайн обучение"]
+        }
+      }
+    },
+    "categories": {
+      "designLines": "Дизайн линии",
+      "fashion": "Мода",
+      "horeca": "ХОРЕКА",
+      "floral": "Цветочный маркетинг",
+      "kids": "Детский маркетинг",
+      "medical": "Медицинский маркетинг",
+      "fitness": "Маркетинг спортзала",
+      "retail": "Розничная торговля",
+      "b2b": "Бизнес для бизнеса",
+      "personal": "Персональный брендинг"
+    },
+    "portfolio": {
+      "title": "Портфолио",
+      "description": "Сотни брендов доверили нам обеспечение своих маркетинговых и дизайнерских потребностей",
+      "loadMore": "Показать больше",
+      "collapse": "Свернуть",
+      "items": {
+        "armine_grigoryan": {
+          "category": "Персональный брендинг",
+          "services": ["Персональный брендинг", "Маркетинг в социальных сетях", "Создание контента"]
+        },
+        "karap_cafe": {
+          "category": "ХОРЕКА",
+          "services": ["Маркетинг кафе", "Вовлечение местного сообщества", "Ежедневные акции"]
+        },
+        "bella_italia": {
+          "category": "ХОРЕКА",
+          "services": ["Маркетинг в социальных сетях", "Позиционирование бренда", "Контент-стратегия"]
+        },
+        "lanj": {
+          "category": "Мода и продажи",
+          "services": ["Модный маркетинг", "Позиционирование бренда", "Стратегия визуального контента"]
+        },
+        "boulevard": {
+          "category": "ХОРЕКА",
+          "services": ["Маркетинг развлечений", "Приключенческий туризм", "Реклама активного отдыха"]
+        },
+        "bergamo_hotel": {
+          "category": "ХОРЕКА",
+          "services": ["Гостиничный маркетинг", "Реклама бронирования", "Опыт гостей"]
+        },
+        "buniatyan_caviar": {
+          "category": "ХОРЕКА",
+          "services": ["Маркетинг люксового бренда", "Позиционирование премиум-продукта", "Таргетинг элитных клиентов"]
+        },
+        "design_lines": {
+          "category": "Дизайн и архитектура",
+          "services": ["Маркетинг интерьерного дизайна", "Разработка портфолио", "Реклама профессиональных услуг"]
+        },
+        "hillzone": {
+          "category": "ХОРЕКА",
+          "services": ["Маркетинг развлечений", "Приключенческий туризм", "Реклама активного отдыха"]
+        },
+        "flora_am": {
+          "category": "Продажи и услуги",
+          "services": ["Маркетинг цветочного бизнеса", "Реклама цветов для мероприятий", "Сезонные кампании"]
+        },
+        "global_flowers": {
+          "category": "Продажи и услуги",
+          "services": ["Международная доставка цветов", "Корпоративные цветочные услуги", "Свадебный маркетинг"]
+        },
+        "life_time_premium_club": {
+          "category": "Здоровье и фитнес",
+          "services": ["Фитнес-маркетинг", "Рост членства", "Здоровые программы"]
+        },
+        "minis_kids_cafe": {
+          "category": "Семья и развлечения",
+          "services": ["Маркетинг семейных развлечений", "Пакеты для детских дней рождения", "Построение сообщества родителей"]
+        },
+        "tuntunik": {
+          "category": "Семья и развлечения",
+          "services": ["Маркетинг детского бренда", "Образовательный контент", "Вовлечение родителей"]
+        },
+        "dr_miqayelyan": {
+          "category": "Здравоохранение",
+          "services": ["Маркетинг медицинской практики", "Образование пациентов", "Управление профессиональным авторитетом"]
+        },
+        "lorest_clinic": {
+          "category": "Здравоохранение",
+          "services": ["Маркетинг здравоохранения", "Реклама медицинских услуг", "Вовлечение пациентов"]
+        },
+        "podoclinic": {
+          "category": "Здравоохранение",
+          "services": ["Специализированный медицинский маркетинг", "Реклама подиатрических услуг", "Образование в здравоохранении"]
+        },
+        "z_l_dental_clinic": {
+          "category": "Здравоохранение",
+          "services": ["Стоматологический маркетинг", "Образование по уходу за полостью рта", "Реклама ухода за пациентами"]
+        },
+        "marco_furniture": {
+          "category": "Продажи и дом",
+          "services": ["Маркетинг мебели", "Реклама домашнего декора", "Интерьерные решения"]
+        },
+        "my_horeca_consulting": {
+          "category": "Бизнес-услуги",
+          "services": ["Маркетинг бизнес-консалтинга", "Экспертиза в отрасли ХОРЕКА", "Профессиональные услуги"]
+        },
+        "nush_plast": {
+          "category": "Производство и промышленность",
+          "services": ["Промышленный маркетинг", "Вовлечение клиентов B2B", "Производственные решения"]
+        },
+        "palladium_hall": {
+          "category": "ХОРЕКА",
+          "services": ["Маркетинг банкетного зала", "Свадебная реклама", "Корпоративные мероприятия"]
+        },
+        "pride_sanitar": {
+          "category": "Строительство и строительство",
+          "services": ["Строительный маркетинг", "Санитарные решения", "Услуги B2B"]
+        },
+        "royal_yerevan": {
+          "category": "ХОРЕКА",
+          "services": ["Маркетинг люксового отеля", "Премиум-опыт гостей", "Высококлассные услуги"]
+        },
+        "rush_pub": {
+          "category": "ХОРЕКА",
+          "services": ["Маркетинг ночной жизни", "Реклама мероприятий", "Социальные развлечения"]
+        },
+        "souvenir_guest_house": {
+          "category": "ХОРЕКА",
+          "services": ["Туристический маркетинг", "Реклама размещения", "Опыт гостей"]
+        },
+        "yan_net": {
+          "category": "Технологии и IT",
+          "services": ["Маркетинг технологической компании", "Цифровые решения", "Реклама IT-услуг"]
+        }
+      }
+    },
+    "partners": {
+      "title": "Наши Партнеры",
+      "description": "Организации, с которыми наше сотрудничество принесло взаимный успех",
+      "items": {
+        "bella-italia": {
+          "field": "ХОРЕКА",
+          "description": "Итальянский ресторан"
+        },
+        "bergamo-hotel": {
+          "field": "ХОРЕКА",
+          "description": "Бутик-отель"
+        },
+        "boulevard": {
+          "field": "ХОРЕКА",
+          "description": "Ресторанный комплекс"
+        },
+        "buniatyan-caviar": {
+          "field": "ХОРЕКА",
+          "description": "Премиум икра и морепродукты"
+        },
+        "design-lines": {
+          "field": "Дизайн",
+          "description": "Дизайн-студия"
+        },
+        "flora-am": {
+          "field": "Цветочный",
+          "description": "Цветочный магазин"
+        },
+        "global-flowers": {
+          "field": "Цветочный",
+          "description": "Цветочные услуги"
+        },
+        "hillzone": {
+          "field": "ХОРЕКА",
+          "description": "Ресторан и развлекательный центр"
+        },
+        "karap-cafe": {
+          "field": "ХОРЕКА",
+          "description": "Кофейня"
+        },
+        "lanj": {
+          "field": "Мода",
+          "description": "Модный бренд"
+        },
+        "life-time-premium-club": {
+          "field": "Спорт",
+          "description": "Премиум фитнес-клуб"
+        },
+        "lorest-clinic": {
+          "field": "Медицинский",
+          "description": "Медицинская клиника"
+        },
+        "marco-furniture": {
+          "field": "Розничная торговля",
+          "description": "Мебель и интерьер"
+        },
+        "minis-kids-cafe": {
+          "field": "Детский",
+          "description": "Детская кофейня"
+        },
+        "my-horeca-consulting": {
+          "field": "ХОРЕКА",
+          "description": "ХОРЕКА консалтинг"
+        },
+        "nush-plast": {
+          "field": "Бизнес для бизнеса",
+          "description": "Производство пластика"
+        },
+        "palladium-hall": {
+          "field": "ХОРЕКА",
+          "description": "Зал мероприятий"
+        },
+        "podoclinic": {
+          "field": "Медицинский",
+          "description": "Медицинская клиника стоп"
+        },
+        "pride-sanitar": {
+          "field": "Бизнес для бизнеса",
+          "description": "Сантехнические товары"
+        },
+        "royal-yerevan": {
+          "field": "ХОРЕКА",
+          "description": "Премиум отель"
+        },
+        "rush-pub": {
+          "field": "ХОРЕКА",
+          "description": "Паб и бар"
+        },
+        "tuntunik": {
+          "field": "Детский",
+          "description": "Детские услуги"
+        },
+        "yan-net": {
+          "field": "Розничная торговля",
+          "description": "Сетевые услуги"
+        },
+        "z-l-dental-clinic": {
+          "field": "Медицинский",
+          "description": "Стоматологическая клиника"
+        }
+      }
+    },
+    "contact": {
+      "title": "Свяжитесь с нами",
+      "subtitle": "Level Studio",
+      "description": "Есть вопросы или идея проекта? Свяжитесь с нами:",
+      "office": "Главный Офис",
+      "address": "Ереван, Армения\nул. Араратян, 82",
+      "email": "Эл. Адрес",
+      "phone": "Телефон",
+      "hours": "Рабочие Часы",
+      "workingHours": "Понедельник - Пятница\n12:00 - 20:00",
+      "formTitle": "Отправить Сообщение",
+      "contactLabel": "Эл. адрес / Телефон",
+      "contactPlaceholder": "Ваш эл. адрес или номер телефона",
+      "messageLabel": "Сообщение",
+      "messagePlaceholder": "Напишите ваше сообщение здесь...",
+      "submitBtn": "Отправить Сообщение",
+      "successMessage": "Ваше сообщение успешно отправлено!"
+    },
+    "footer": {
+      "description": "Мы творческая студия, которая объединяет инновационные технологии и силу искусства, обеспечивая высококачественные решения в каждом проекте:",
+      "servicesTitle": "Услуги",
+      "navigationTitle": "Навигация",
+      "contactTitle": "Контакты",
+      "copyright": "© 2025 Level Studio. Все права защищены.",
+      "privacy": "Политика Конфиденциальности",
+      "terms": "Условия Обслуживания",
+      "services": {
+        "webDev": "Веб Разработка",
+        "mobile": "Мобильные Приложения",
+        "design": "Дизайн",
+        "marketing": "Маркетинг",
+        "seo": "SEO Оптимизация",
+        "branding": "Брендинг"
+      }
+    }
+  },
+  "eng": {
+    "nav": {
+      "home": "Home",
+      "about": "About Us",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "partners": "Partners",
+      "contact": "Contact"
+    },
+    "home": {
+      "title": "Level Studio",
+      "subtitle": "Your brand's success is our mission.",
+      "description": "We create comprehensive solutions from new ideas to their practical implementation, from content development to the right strategy. Our goal is not only to strengthen your presence, but also to ensure the long-term growth of your business.",
+      "contactBtn": "Contact Us"
+    },
+    "about": {
+      "title": "About Us",
+      "subtitle": "Level Studio",
+      "description": "Level Studio started its activity back in 2018:",
+      "stats": {
+        "projects": "Projects",
+        "partners": "Partners",
+        "experience": "Years Experience"
+      },
+      "text1": "In 2022, we created our own photo studio, which complemented and enriched our services.",
+      "text2": "Level Studio also offers drone filming and other professional visual solutions that give our clients an advantage in presenting their brand in a modern and impressive way.",
+      "text3": "Now all our visual solutions are born right in our studio, ensuring high quality, integrity and creative approach in every project.",
+      "text4": "Level Studio today is the place where ideas become reality, and brands become memorable."
+    },
+    "services": {
+      "title": "Our Services",
+      "items": {
+        "01": {
+          "title": "Digital Marketing",
+          "features": ["SMM", "SMM Courses", "Copywriting", "SEO", "Email Marketing", "Branding"]
+        },
+        "02": {
+          "title": "Website Development",
+          "features": ["React", "JavaScript", "PHP", "Next.js", "HTML/CSS", "WordPress"]
+        },
+        "03": {
+          "title": "Web Design",
+          "features": ["UI/UX Design", "Figma", "Adobe Creative Suite", "Responsive Design"]
+        },
+        "04": {
+          "title": "Website Promotion",
+          "features": ["SEO Optimization", "Google Ads", "Analytics", "Keywords"]
+        },
+        "05": {
+          "title": "Online Store",
+          "features": ["WooCommerce", "Shopify", "Payment Systems", "Inventory Management"]
+        },
+        "06": {
+          "title": "Business Automation",
+          "features": ["CRM Systems", "Workflow Automation", "API Integration", "Database Management"]
+        },
+        "07": {
+          "title": "Mobile App Development",
+          "features": ["React Native", "Flutter", "iOS/Android", "Push Notifications"]
+        },
+        "08": {
+          "title": "Domain and Hosting",
+          "features": ["SSL Certificates", "Daily Backup", "24/7 Monitoring", "CDN Services"]
+        },
+        "09": {
+          "title": "Technical Support",
+          "features": ["Website Maintenance", "Bug Fixes", "Updates", "24/7 Technical Support"]
+        },
+        "10": {
+          "title": "Graphic Design",
+          "features": ["Business Card Design", "Brochure Design", "Flyer Design", "Logo Design"]
+        },
+        "11": {
+          "title": "Licensed Web Courses",
+          "features": ["Professional Courses", "Certificate", "Activity Center", "Online Learning"]
+        }
+      }
+    },
+    "categories": {
+      "designLines": "Design Lines",
+      "fashion": "Fashion",
+      "horeca": "HORECA",
+      "floral": "Floral Marketing",
+      "kids": "Kids Marketing",
+      "medical": "Medical Marketing",
+      "fitness": "Fitness Marketing",
+      "retail": "Retail",
+      "b2b": "Business to Business",
+      "personal": "Personal Branding"
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "description": "Hundreds of brands have trusted us to provide their marketing and design needs",
+      "loadMore": "Load More",
+      "collapse": "Collapse",
+      "items": {
+        "armine_grigoryan": {
+          "category": "Personal Branding",
+          "services": ["Personal Branding", "Social Media Marketing", "Content Creation"]
+        },
+        "karap_cafe": {
+          "category": "HORECA",
+          "services": ["Cafe Marketing", "Local Community Engagement", "Daily Promotions"]
+        },
+        "bella_italia": {
+          "category": "HORECA",
+          "services": ["Social Media Marketing", "Brand Positioning", "Content Strategy"]
+        },
+        "lanj": {
+          "category": "Fashion & Retail",
+          "services": ["Fashion Marketing", "Brand Positioning", "Visual Content Strategy"]
+        },
+        "boulevard": {
+          "category": "HORECA",
+          "services": ["Entertainment Marketing", "Adventure Tourism", "Outdoor Activity Advertising"]
+        },
+        "bergamo_hotel": {
+          "category": "HORECA",
+          "services": ["Hotel Marketing", "Booking Advertising", "Guest Experience"]
+        },
+        "buniatyan_caviar": {
+          "category": "HORECA",
+          "services": ["Luxury Brand Marketing", "Premium Product Positioning", "Elite Customer Targeting"]
+        },
+        "design_lines": {
+          "category": "Design & Architecture",
+          "services": ["Interior Design Marketing", "Portfolio Development", "Professional Services Advertising"]
+        },
+        "hillzone": {
+          "category": "HORECA",
+          "services": ["Entertainment Marketing", "Adventure Tourism", "Outdoor Activity Advertising"]
+        },
+        "flora_am": {
+          "category": "Retail & Services",
+          "services": ["Floral Business Marketing", "Event Flower Advertising", "Seasonal Campaigns"]
+        },
+        "global_flowers": {
+          "category": "Retail & Services",
+          "services": ["International Flower Delivery", "Corporate Floral Services", "Wedding Marketing"]
+        },
+        "life_time_premium_club": {
+          "category": "Health & Fitness",
+          "services": ["Fitness Marketing", "Membership Growth", "Health Programs"]
+        },
+        "minis_kids_cafe": {
+          "category": "Family & Entertainment",
+          "services": ["Family Entertainment Marketing", "Kids Party Packages", "Parent Community Building"]
+        },
+        "tuntunik": {
+          "category": "Family & Entertainment",
+          "services": ["Children's Brand Marketing", "Educational Content", "Parent Engagement"]
+        },
+        "dr_miqayelyan": {
+          "category": "Healthcare",
+          "services": ["Medical Practice Marketing", "Patient Education", "Professional Authority Management"]
+        },
+        "lorest_clinic": {
+          "category": "Healthcare",
+          "services": ["Healthcare Marketing", "Medical Services Advertising", "Patient Engagement"]
+        },
+        "podoclinic": {
+          "category": "Healthcare",
+          "services": ["Specialized Medical Marketing", "Podiatric Services Advertising", "Healthcare Education"]
+        },
+        "z_l_dental_clinic": {
+          "category": "Healthcare",
+          "services": ["Dental Marketing", "Oral Health Education", "Patient Care Advertising"]
+        },
+        "marco_furniture": {
+          "category": "Retail & Home",
+          "services": ["Furniture Marketing", "Home Decor Advertising", "Interior Solutions"]
+        },
+        "my_horeca_consulting": {
+          "category": "Business Services",
+          "services": ["Business Consulting Marketing", "HORECA Industry Expertise", "Professional Services"]
+        },
+        "nush_plast": {
+          "category": "Manufacturing & Industry",
+          "services": ["Industrial Marketing", "B2B Customer Engagement", "Manufacturing Solutions"]
+        },
+        "palladium_hall": {
+          "category": "HORECA",
+          "services": ["Event Hall Marketing", "Wedding Advertising", "Corporate Events"]
+        },
+        "pride_sanitar": {
+          "category": "Construction & Building",
+          "services": ["Construction Marketing", "Sanitary Solutions", "B2B Services"]
+        },
+        "royal_yerevan": {
+          "category": "HORECA",
+          "services": ["Luxury Hotel Marketing", "Premium Guest Experience", "High-end Services"]
+        },
+        "rush_pub": {
+          "category": "HORECA",
+          "services": ["Nightlife Marketing", "Event Advertising", "Social Entertainment"]
+        },
+        "souvenir_guest_house": {
+          "category": "HORECA",
+          "services": ["Tourism Marketing", "Accommodation Advertising", "Guest Experience"]
+        },
+        "yan_net": {
+          "category": "Technology & IT",
+          "services": ["Technology Company Marketing", "Digital Solutions", "IT Services Advertising"]
+        }
+      }
+    },
+    "partners": {
+      "title": "Our Partners",
+      "description": "Organizations with whom our cooperation has brought mutual success",
+      "items": {
+        "bella-italia": {
+          "field": "HORECA",
+          "description": "Italian Restaurant"
+        },
+        "bergamo-hotel": {
+          "field": "HORECA",
+          "description": "Boutique Hotel"
+        },
+        "boulevard": {
+          "field": "HORECA",
+          "description": "Restaurant Complex"
+        },
+        "buniatyan-caviar": {
+          "field": "HORECA",
+          "description": "Premium Caviar & Seafood"
+        },
+        "design-lines": {
+          "field": "Design",
+          "description": "Design Studio"
+        },
+        "flora-am": {
+          "field": "Floral",
+          "description": "Flower Shop"
+        },
+        "global-flowers": {
+          "field": "Floral",
+          "description": "Floral Services"
+        },
+        "hillzone": {
+          "field": "HORECA",
+          "description": "Restaurant & Entertainment Center"
+        },
+        "karap-cafe": {
+          "field": "HORECA",
+          "description": "Coffee Shop"
+        },
+        "lanj": {
+          "field": "Fashion",
+          "description": "Fashion Brand"
+        },
+        "life-time-premium-club": {
+          "field": "Sports",
+          "description": "Premium Fitness Club"
+        },
+        "lorest-clinic": {
+          "field": "Medical",
+          "description": "Medical Clinic"
+        },
+        "marco-furniture": {
+          "field": "Retail",
+          "description": "Furniture & Interior"
+        },
+        "minis-kids-cafe": {
+          "field": "Kids",
+          "description": "Kids Coffee Shop"
+        },
+        "my-horeca-consulting": {
+          "field": "HORECA",
+          "description": "HORECA Consulting"
+        },
+        "nush-plast": {
+          "field": "Business to Business",
+          "description": "Plastic Manufacturing"
+        },
+        "palladium-hall": {
+          "field": "HORECA",
+          "description": "Event Hall"
+        },
+        "podoclinic": {
+          "field": "Medical",
+          "description": "Foot Medical Clinic"
+        },
+        "pride-sanitar": {
+          "field": "Business to Business",
+          "description": "Sanitary Products"
+        },
+        "royal-yerevan": {
+          "field": "HORECA",
+          "description": "Premium Hotel"
+        },
+        "rush-pub": {
+          "field": "HORECA",
+          "description": "Pub & Bar"
+        },
+        "tuntunik": {
+          "field": "Kids",
+          "description": "Kids Services"
+        },
+        "yan-net": {
+          "field": "Retail",
+          "description": "Network Services"
+        },
+        "z-l-dental-clinic": {
+          "field": "Medical",
+          "description": "Dental Clinic"
+        }
+      }
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "Level Studio",
+      "description": "Have questions or a project idea? Contact us:",
+      "office": "Main Office",
+      "address": "Yerevan, Armenia\nAraratyan Street, 82",
+      "email": "Email Address",
+      "phone": "Phone",
+      "hours": "Working Hours",
+      "workingHours": "Monday - Friday\n12:00 - 20:00",
+      "formTitle": "Send Message",
+      "contactLabel": "Email / Phone",
+      "contactPlaceholder": "Your email address or phone number",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Write your message here...",
+      "submitBtn": "Send Message",
+      "successMessage": "Your message has been sent successfully!"
+    },
+    "footer": {
+      "description": "We are a creative studio that combines innovative technologies and the power of art, providing high-quality solutions in every project:",
+      "servicesTitle": "Services",
+      "navigationTitle": "Navigation",
+      "contactTitle": "Contact",
+      "copyright": "© 2025 Level Studio. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "services": {
+        "webDev": "Web Development",
+        "mobile": "Mobile Applications",
+        "design": "Design",
+        "marketing": "Marketing",
+        "seo": "SEO Optimization",
+        "branding": "Branding"
+      }
+    }
+  }
+}
