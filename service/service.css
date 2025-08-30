@@ -194,3 +194,104 @@
 
 
 /* End: Marketing Services CSS-Only Carousel */
+
+
+/* Marketing Services — Responsive Media Queries */
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .service-card-item {
+      animation: none !important;
+    }
+  }
+  
+  /* =============================
+     ≤ 768px — Tablets
+     ============================= */
+  @media (max-width: 768px) {
+      .marketing-services-carousel-wrapper {
+          height: 350px;
+          max-width: 350px;
+      }
+      
+      .service-card-item {
+          width: 320px;
+      }
+      
+      .service-card-item.active {
+          width: 320px;
+          height: 150px;
+      }
+  
+      .service-icon-head {
+          width: 60px;
+          height: 60px;
+          margin-right: -30px;
+          font-size: 20px;
+      }
+  
+      .service-card-body {
+          padding-left: 45px;
+          min-height: 130px;
+      }
+  
+      .service-title-heading {
+          font-size: clamp(16px, 2.5vw, 18px) !important;
+      }
+
+      .service-features-list {
+          gap: 3px !important;
+      }
+  
+      .service-feature-tag {
+          font-size: 9px !important;
+          padding: 2px 7px !important;
+      }
+  }
+  
+  /* =============================
+     ≤ 480px — Mobile Devices
+     ============================= */
+  @media (max-width: 480px) {
+      .marketing-services-carousel-wrapper {
+          height: 250px;
+          max-width: 280px;
+          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+      }
+      
+      .service-card-item {
+          width: 260px;
+      }
+      
+      .service-card-item.active {
+          width: 260px;
+          height: 100px;
+      }
+  
+      .service-icon-head {
+          width: 50px;
+          height: 50px;
+          margin-right: -25px;
+          font-size: 18px;
+      }
+  
+      .service-card-body {
+          padding: 10px 10px 10px 35px;
+          min-height: 80px;
+      }
+  
+      .service-title-heading {
+          font-size: 16px !important;
+          margin-bottom: 10px;
+      }
+  
+      .service-features-list {
+          gap: 2px !important;
+      }
+  
+      .service-feature-tag {
+          font-size: 8px !important;
+          padding: 2px 6px !important;
+      }
+  }

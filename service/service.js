@@ -126,6 +126,43 @@ const marketingServicesData = [
         }, 600); // Throttle to prevent rapid scrolling
     });
 
+    // Touch events for mobile
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    carouselWrapper.addEventListener('touchstart', (event) => {
+        touchStartY = event.changedTouches[0].screenY;
+    });
+
+    carouselWrapper.addEventListener('touchmove', (event) => {
+        // Prevent page scroll when touching carousel
+        event.preventDefault();
+    });
+
+    carouselWrapper.addEventListener('touchend', (event) => {
+        if (isThrottled) return;
+        
+        touchEndY = event.changedTouches[0].screenY;
+        const touchDiff = touchStartY - touchEndY;
+        
+        // Minimum swipe distance to trigger carousel change
+        if (Math.abs(touchDiff) > 50) {
+            isThrottled = true;
+            
+            if (touchDiff > 0) {
+                // Swipe up - show next
+                showNext();
+            } else {
+                // Swipe down - show previous
+                showPrev();
+            }
+
+            setTimeout(() => {
+                isThrottled = false;
+            }, 600);
+        }
+    });
+
     // Click event on items
     carousel.addEventListener('click', (event) => {
         const clickedItem = event.target.closest('.service-card-item');

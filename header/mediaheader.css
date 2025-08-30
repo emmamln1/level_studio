@@ -34,7 +34,7 @@
     #marketing-agency-header .multilingual-language-switcher button {
         width: 45px;
         font-size: 13px;
-        padding: 6px 8px;
+        padding: 6px 14px !important;
     }
 
     #marketing-agency-header .multilingual-language-switcher button.active-language,
@@ -133,17 +133,17 @@
         display: none;
     }
     
-    /* Language switcher stays visible */
-    #marketing-agency-header .multilingual-language-switcher {
-        width: 120px;
-        gap: 0.8rem;
+    /* Language switcher stays visible - MOBILE TABLET PADDING INCREASE */
+    #marketing-agency-header .header-content-wrapper .multilingual-language-switcher {
+        width: 140px !important;
+        gap: 0.8rem !important;
     }
     
-    #marketing-agency-header .multilingual-language-switcher button {
-        width: 38px !important;
+    #marketing-agency-header .header-content-wrapper .multilingual-language-switcher button {
+        width: 44px !important;
         font-size: 12px !important;
-        padding: 12px 10px !important;
-        min-height: 40px !important;
+        padding: 4px 20px !important;
+        min-height: 32px !important;
         box-sizing: border-box !important;
         display: flex !important;
         align-items: center !important;
@@ -268,16 +268,16 @@
         background: transparent;
     }
 
-    /* Language switcher more compact */
-    #marketing-agency-header .multilingual-language-switcher {
-        width: 108px;
-        gap: 0.3rem;
+    /* Language switcher more compact - MOBILE PHONE PADDING INCREASE */
+    #marketing-agency-header .header-content-wrapper .multilingual-language-switcher {
+        width: 130px !important;
+        gap: 0.3rem !important;
     }
-    #marketing-agency-header .multilingual-language-switcher button {
-        width: 34px !important;
+    #marketing-agency-header .header-content-wrapper .multilingual-language-switcher button {
+        width: 40px !important;
         font-size: 11px !important;
-        padding: 8px 6px !important;
-        min-height: 36px !important;
+        padding: 2px 16px !important;
+        min-height: 25px !important;
         box-sizing: border-box !important;
         display: flex !important;
         align-items: center !important;

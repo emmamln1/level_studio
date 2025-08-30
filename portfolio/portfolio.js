@@ -425,21 +425,24 @@ function createWorksShowcaseItem(item, index) {
                 ${item.services.map(service => `<span class="service-tag">${service}</span>`).join('')}
             </div>
         </div>
-        <div class="works-showcase-results">
-            <div class="result-item">
-                <div class="result-number">${item.views || '25000'}</div>
-                <div class="result-label">դիտում</div>
-            </div>
-            <div class="result-item">
-                <div class="result-number">${item.revenue || '19.29$'}</div>
-                <div class="result-label">գումար</div>
-            </div>
-            <div class="result-item">
-                <div class="result-number">${item.clients || '6'}</div>
-                <div class="result-label">հաճախորդ</div>
-            </div>
-        </div>
     `;
+
+    // div.innerHTML += `
+    //     <div class="works-showcase-results">
+    //     <div class="result-item">
+    //         <div class="result-number">${item.views || '25000'}</div>
+    //         <div class="result-label">դիտում</div>
+    //     </div>
+    //     <div class="result-item">
+    //         <div class="result-number">${item.revenue || '19.29$'}</div>
+    //         <div class="result-label">գումար</div>
+    //     </div>
+    //     <div class="result-item">
+    //         <div class="result-number">${item.clients || '6'}</div>
+    //         <div class="result-label">հաճախորդ</div>
+    //     </div>
+    // </div>
+    // `;
     
     // Add click event for modal
     const images = div.querySelectorAll('.works-showcase-gallery img');
