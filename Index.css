@@ -131,6 +131,50 @@ body {
     }
 }
 
+/* Custom Cursor Styles */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    background: transparent;
+    pointer-events: none;
+    z-index: 20000;
+    transition: transform 0.15s ease-out, opacity 0.2s ease;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+.custom-cursor.hidden {
+    opacity: 0;
+}
+
+.custom-cursor.hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Keep default cursor visible on desktop */
+@media (hover: hover) and (pointer: fine) {
+    * {
+        cursor: auto;
+    }
+}
+
+/* Show default cursor on touch devices */
+@media (hover: none) or (pointer: coarse) {
+    .custom-cursor {
+        display: none;
+    }
+    
+    * {
+        cursor: auto !important;
+    }
+}
+
 /* Fixed Phone Icon Styles */
 .fixed-phone-icon {
     position: fixed;

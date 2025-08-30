@@ -3,6 +3,158 @@
     emailjs.init("b7GDWdZ4Eu-Xc5PFL"); // Replace with your actual EmailJS public key
 })();
 
+// Custom Cursor Implementation
+class CustomCursor {
+    constructor() {
+        this.cursor = null;
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.cursorX = 0;
+        this.cursorY = 0;
+        this.isVisible = true;
+        this.animationId = null;
+        
+        // Check if device supports hover (desktop)
+        this.isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        
+        if (this.isDesktop) {
+            this.init();
+        }
+    }
+    
+    init() {
+        // Create cursor element
+        this.cursor = document.createElement('div');
+        this.cursor.className = 'custom-cursor';
+        document.body.appendChild(this.cursor);
+        
+        // Bind event listeners
+        this.bindEvents();
+        
+        // Start animation loop
+        this.animate();
+    }
+    
+    bindEvents() {
+        // Mouse move event with throttling for performance
+        document.addEventListener('mousemove', this.throttle((e) => {
+            this.mouseX = e.clientX;
+            this.mouseY = e.clientY;
+        }, 16)); // ~60fps
+        
+        // Mouse enter/leave events
+        document.addEventListener('mouseenter', () => {
+            this.show();
+        });
+        
+        document.addEventListener('mouseleave', () => {
+            this.hide();
+        });
+        
+        // Interactive elements hover effects
+        const interactiveElements = 'a, button, input, textarea, select, [role="button"], .clickable, .phone-button, .carousel-dot, .dot, .nav-link';
+        
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.matches(interactiveElements) || e.target.closest(interactiveElements)) {
+                this.addHoverEffect();
+            }
+        });
+        
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.matches(interactiveElements) || e.target.closest(interactiveElements)) {
+                this.removeHoverEffect();
+            }
+        });
+        
+        // Keep cursor visible during scroll
+    }
+    
+    animate() {
+        // Smooth following with easing
+        const ease = 0.15;
+        this.cursorX += (this.mouseX - this.cursorX) * ease;
+        this.cursorY += (this.mouseY - this.cursorY) * ease;
+        
+        // Update cursor position
+        if (this.cursor) {
+            this.cursor.style.left = this.cursorX + 'px';
+            this.cursor.style.top = this.cursorY + 'px';
+        }
+        
+        // Continue animation
+        this.animationId = requestAnimationFrame(() => this.animate());
+    }
+    
+    show() {
+        if (this.cursor && !this.isVisible) {
+            this.cursor.classList.remove('hidden');
+            this.isVisible = true;
+        }
+    }
+    
+    hide() {
+        if (this.cursor && this.isVisible) {
+            this.cursor.classList.add('hidden');
+            this.isVisible = false;
+        }
+    }
+    
+    addHoverEffect() {
+        if (this.cursor) {
+            this.cursor.classList.add('hover');
+        }
+    }
+    
+    removeHoverEffect() {
+        if (this.cursor) {
+            this.cursor.classList.remove('hover');
+        }
+    }
+    
+    // Performance utility
+    throttle(func, delay) {
+        let timeoutId;
+        let lastExecTime = 0;
+        return function (...args) {
+            const currentTime = Date.now();
+            
+            if (currentTime - lastExecTime > delay) {
+                func.apply(this, args);
+                lastExecTime = currentTime;
+            } else {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    func.apply(this, args);
+                    lastExecTime = Date.now();
+                }, delay - (currentTime - lastExecTime));
+            }
+        };
+    }
+    
+    // Cleanup method
+    destroy() {
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+        if (this.cursor) {
+            this.cursor.remove();
+        }
+    }
+}
+
+// Initialize custom cursor
+let customCursor;
+document.addEventListener('DOMContentLoaded', () => {
+    customCursor = new CustomCursor();
+});
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+    if (customCursor) {
+        customCursor.destroy();
+    }
+});
+
 window.addEventListener('scroll', function() {
     const section = document.getElementById('aboutSection');
     const rect = section.getBoundingClientRect();

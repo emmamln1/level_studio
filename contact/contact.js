@@ -14,7 +14,7 @@ if (contactForm) {
 
         // Check if EmailJS is loaded
         if (typeof emailjs === 'undefined') {
-            alert('EmailJS service is not available. Please check your internet connection and try again.');
+            alert('EmailJS ծառայությունը հասանելի չէ: Խնդրում ենք ստուգել ինտերնետ կապը և կրկին փորձել:');
             return;
         }
 

@@ -219,7 +219,7 @@
     width: 80px;
     height: 80px;
     margin: 0 auto 15px;
-    background: linear-gradient(135deg, red, green);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -229,6 +229,12 @@
     color: white;
     position: relative;
     overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.business-partner-logo:has(img) {
+    background: transparent;
+    border: none;
 }
 
 .business-partner-logo::before {
@@ -242,11 +248,14 @@
     transform: rotate(45deg);
 }
 
+.business-partner-logo:has(img)::before {
+    display: none;
+}
 
 .business-partner-logo img {
-    width: 80%;
-    height: 80%;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 50%;
 }
 

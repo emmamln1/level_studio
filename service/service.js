@@ -1,17 +1,64 @@
 /* Start: Marketing Services Vertical Carousel */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const marketingServicesData = [
-        { number: '01', title: 'Թվային մարքեթինգ', features: ["SMM", "Copywriting", "SEO", "Email Marketing"] },
-        { number: '02', title: 'Վեբ կայքերի պատրաստում', features: ["React", "JavaScript", "PHP", "Next.js"] },
-        { number: '03', title: 'Վեբ դիզայն', features: ["SEO օպտիմիզացիա", "Google Ads", "Analytics", "Բանալի բառեր"] },
-        { number: '04', title: 'Առցանց գնումների խանութ', features: ["WooCommerce", "Shopify", "Վճարման համակարգեր", "Պահեստի կառավարում"] },
-        { number: '05', title: 'Բիզնեսի ավտոմատացում', features: ["CRM համակարգեր", "Workflow ավտոմատացում", "API ինտեգրացիա", "Դատաբազների կառավարում"] },
-        { number: '06', title: 'Մոբայլ հավելվածներ', features: ["React Native", "Flutter", "iOS/Android", "Push Notifications"] },
-        { number: '07', title: 'Դոմեյն և հոսթինգ', features: ["SSL վկայագրեր", "Օրական backup", "24/7 մոնիտորինգ", "CDN ծառայություններ"] },
-        { number: '08', title: 'UX/UI ДИЗАЙН', features: ['Прототипы', 'Тестирование', 'Figma'] },
-        { number: '09', title: 'БРЕНДИНГ', features: ['Логотип', 'Фирменный стиль', 'Гайдлайн'] }
-    ];
+   
+const marketingServicesData = [
+    { 
+        number: '01', 
+        title: 'Թվային մարքեթինգ', 
+        features: ["SMM", "SMM դասընթացներ", "Տեքստ գրություն", "SEO", "Էլ․ փոստ", "Բրենդինգ"] 
+    },
+    { 
+        number: '02', 
+        title: 'Վեբ կայքերի պատրաստում', 
+        features: ["React", "JavaScript", "PHP", "Next.js", "HTML/CSS", "WordPress"] 
+    },
+    { 
+        number: '03', 
+        title: 'Վեբ դիզայն', 
+        features: ["UI/UX դիզայն", "Figma", "Adobe Creative Suite", "Հարմարվող դիզայն"] 
+    },
+    { 
+        number: '04', 
+        title: 'Կայքերի առաջխաղացում', 
+        features: ["SEO օպտիմիզացիա", "Google Ads", "Վերլուծություն", "Բանալի բառեր"] 
+    },
+    { 
+        number: '05', 
+        title: 'Առցանց գնումների խանութ', 
+        features: ["WooCommerce", "Shopify", "Վճարման համակարգեր", "Պահեստի կառավարում"] 
+    },
+    { 
+        number: '06', 
+        title: 'Բիզնեսի ավտոմատացում', 
+        features: ["CRM համակարգեր", "Աշխատանքային գործընթացների ավտոմատացում", "API ինտեգրացիա", "Տվյալների բազաների կառավարում"] 
+    },
+    { 
+        number: '07', 
+        title: 'Մոբայլ հավելվածների ստեղծում', 
+        features: ["React Native", "Flutter", "iOS/Android", "Ծանուցումներ"] 
+    },
+    { 
+        number: '08', 
+        title: 'Դոմեյն և հոսթինգ', 
+        features: ["SSL վկայագրեր", "Օրական պահուստավորում", "24/7 մոնիտորինգ", "CDN ծառայություններ"] 
+    },
+    { 
+        number: '09', 
+        title: 'Տեխնիկական սպասարկում', 
+        features: ["Կայքի սպասարկում", "Սխալների շտկում", "Թարմացումներ", "24/7 տեխնիկական աջակցություն"] 
+    },
+    { 
+        number: '10', 
+        title: 'Գրաֆիկական աշխատանքներ', 
+        features: ["Այցեքարտերի դիզայն և ձևավորում", "Բուկլետների դիզայն և ձևավորում", "Ֆլայերների դիզայն և ձևավորում", "Լոգո դիզայն"] 
+    },
+    { 
+        number: '11', 
+        title: 'Վեբ դասընթացներ լիցենզիայով', 
+        features: ["Մասնագիտական դասընթացներ", "Սերտիֆիկատ", "Կենտրոն գործունեության", "Առցանց ուսուցում"] 
+    }
+];
 
     const carouselWrapper = document.getElementById('servicesCarouselWrapper');
     const carousel = document.getElementById('servicesCarousel');

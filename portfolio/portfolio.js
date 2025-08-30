@@ -1,527 +1,398 @@
 const portfolioData = [
-    // Design Lines
+    // Գեղեցկություն և անձնական խնամք
     {
-        category: 'Design Lines',
-        company: 'DESIGNLINES.EVN',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'design',
+        category: 'Անձնական բրենդինգ',
+        company: 'ARMINE GRIGORYAN',
+        services: ['Անձնական բրենդինգ', 'Սոցիալական մեդիա մարքեթինգ', 'Բովանդակության ստեղծում'],
+        type: 'Personal',
         images: [
-            'image/designline/Designlinescompany.png',
-            'image/designline/design.png',
-            'image/designline/design1.png'
+            'image/Partner/ArmineGrigoryan/1.webp'
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 15000,
+        revenue: 2500,
+        clients: 85
     },
-    // Fashion
     {
-        category: 'Fashion',
-        company: 'LANJ',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'fashion',
-        images: [
-            'image/lanj/lanjcompany.png',
-            'image/lanj/lanj.png',
-            'image/lanj/lanj1.png'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    // HORECA
-    {
-        category: 'HORECA',
+        category: 'ՀՈՐԵԿԱ',
         company: 'KARAP CAFE',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
+        services: ['Սրճարանի մարքեթինգ', 'Տեղական համայնքի ներգրավում', 'Օրական ակցիաներ'],
+        type: 'cafe',
         images: [
-            'image/karapcafe/karapcafecompany.png',
-            'image/karapcafe/karapcafe.png',
-            'image/karapcafe/karapcafe1.png'
+            'image/Partner/KarapCafe/1.webp',
+            'image/Partner/KarapCafe/2.webp',
+            'image/Partner/KarapCafe/3.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 16000,
+        revenue: 2800,
+        clients: 110
     },
+    // HORECA - Իտալական ռեստորան
     {
-        category: 'HORECA',
-        company: 'HILLZONE.EVN',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'image/hillzone/hillzonecompany.png',
-            'image/hillzone/hillzone.png',
-            'image/hillzone/hillzone1.png'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
-        company: 'DZITENI RESTAURANT',
-        services: ['Photoshoot', 'Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
-        company: 'BOULEVARD HOTEL',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'image/boulevard/bulevardcompany.png',
-            'image/boulevard/bulevard.png',
-            'image/boulevard/bulevard1.png'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
-        company: 'SOUVENIR RESTAURANT',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'image/souvenirrestaurant/souvenircompany.png',
-            'image/souvenirrestaurant/souvenir.png',
-            'image/souvenirrestaurant/souvenir1.png'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
+        category: 'ՀՈՐԵԿԱ',
         company: 'BELLA ITALIA',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
+        services: ['Սոցիալական մեդիա մարքեթինգ', 'Բրենդի դիրքավորում', 'Բովանդակության ռազմավարություն'],
+        type: 'restaurant',
         images: [
-            'image/souvenirguesthouse/souvenirguesthousecompany.png',
-            'image/souvenirguesthouse/souvenirguesthouse.png',
-            'image/souvenirguesthouse/souvenirguesthouse1.png'
+            'image/Partner/BellaItalia/1.webp',
+            'image/Partner/BellaItalia/2.webp',
+            'image/Partner/BellaItalia/3.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 25000,
+        revenue: 4500,
+        clients: 120
+    },
+    // Նորաձևություն և հագուստի բրենդ
+    {
+        category: 'Նորաձևություն և վաճառք',
+        company: 'LANJ',
+        services: ['Նորաձևության մարքեթինգ', 'Բրենդի դիրքավորում', 'Վիզուալ բովանդակության ռազմավարություն'],
+        type: 'fashion_retail',
+        images: [
+            'image/Partner/Lanj/1.webp',
+            'image/Partner/Lanj/2.webp',
+            'image/Partner/Lanj/3.webp',
+        ],
+        views: 22000,
+        revenue: 4200,
+        clients: 130
+    },
+    // HORECA - Hotel
+   
+    // HORECA - Ժամանցային վայր
+    {
+        category: 'ՀՈՐԵԿԱ',
+        company: 'BOULEVARD',
+        services: ['Իրադարձությունների մարքեթինգ', 'Սոցիալական մեդիայի կառավարում', 'Ժամանցի գովազդ'],
+        type: 'entertainment',
+        images: [
+            'image/Partner/Boulevard/1.webp',
+            'image/Partner/Boulevard/2.webp',
+            'image/Partner/Boulevard/3.webp',
+        ],
+        views: 35000,
+        revenue: 6200,
+        clients: 200
     },
     {
-        category: 'HORECA',
-        company: 'SOUVENIR GUEST HOUSE',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
-        company: 'PALLADIUM HALL',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'https://images.unsplash.com/photo-1519167758481-83f29c7c8dc8?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
-        company: 'RUSH PUB',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
-        company: 'MY HORECA CONSULTING',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
+        category: 'ՀՈՐԵԿԱ',
         company: 'BERGAMO HOTEL',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
+        services: ['Հյուրանոցային մարքեթինգ', 'Ամրագրման գովազդ', 'Հյուրերի փորձառություն'],
+        type: 'hotel',
         images: [
-            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
+            'image/Partner/BergamoHotel/1.webp',
+            'image/Partner/BergamoHotel/2.webp',
+            'image/Partner/BergamoHotel/3.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 22000,
+        revenue: 5800,
+        clients: 150
     },
+    // HORECA - Շքեղ սնունդ
     {
-        category: 'HORECA',
-        company: 'VG COMPLEX',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
-        company: 'ROYAL YEREVAN',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
-        company: 'FORTE MUSIC HALL',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
-        images: [
-            'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1519167758481-83f29c7c8dc8?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'HORECA',
+        category: 'ՀՈՐԵԿԱ',
         company: 'BUNIATYAN CAVIAR',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'horeca',
+        services: ['Շքեղ բրենդի մարքեթինգ', 'Պրեմիում ապրանքի դիրքավորում', 'Էլիտար հաճախորդների թիրախավորում'],
+        type: 'luxury_food',
         images: [
-            'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop'
+            'image/Partner/BuniatyanCaviar/1.webp',
+            'image/Partner/BuniatyanCaviar/2.webp',
+            'image/Partner/BuniatyanCaviar/3.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 12000,
+        revenue: 8500,
+        clients: 65
     },
-    // Flower Marketing
+    // Ինտերիերի դիզայնի ստուդիա
     {
-        category: 'Flower Marketing',
+        category: 'Դիզայն և ճարտարապետություն',
+        company: 'DESIGN LINES',
+        services: ['Ինտերիերի դիզայնի մարքեթինգ', 'Պորտֆոլիոյի զարգացում', 'Մասնագիտական ծառայությունների գովազդ'],
+        type: 'interior_design',
+        images: [
+            'image/Partner/DesignLines/1.webp',
+            'image/Partner/DesignLines/2.webp',
+            'image/Partner/DesignLines/3.webp',
+        ],
+        views: 14000,
+        revenue: 3800,
+        clients: 75
+    },
+    // HORECA - Հանգստյան/ժամանցային
+    {
+        category: 'ՀՈՐԵԿԱ',
+        company: 'HILLZONE',
+        services: ['Ժամանցի մարքեթինգ', 'Արկածային տուրիզմ', 'Բացօթյա գործունեության գովազդ'],
+        type: 'recreation',
+        images: [
+            'image/Partner/Hillzone/1.webp',
+            'image/Partner/Hillzone/2.webp',
+            'image/Partner/Hillzone/3.webp',
+        ],
+        views: 28000,
+        revenue: 4700,
+        clients: 180
+    },
+    // HORECA - Cafe
+   
+    // Ծաղկային ծառայություններ
+    {
+        category: 'Վաճառք և ծառայություններ',
+        company: 'FLORA AM',
+        services: ['Ծաղկային բիզնեսի մարքեթինգ', 'Միջոցառումների ծաղիկների գովազդ', 'Սեզոնային արշավներ'],
+        type: 'floral',
+        images: [
+            'image/Partner/FloraAm/1.webp',
+            'image/Partner/FloraAm/2.webp',
+            'image/Partner/FloraAm/3.webp',
+        ],
+        views: 13000,
+        revenue: 2200,
+        clients: 90
+    },
+    // Ծաղկային ծառայություններ
+    {
+        category: 'Վաճառք և ծառայություններ',
         company: 'GLOBAL FLOWERS',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'flower',
+        services: ['Միջազգային ծաղկային առաքում', 'Կորպորատիվ ծաղկային ծառայություններ', 'Հարսանիքային մարքեթինգ'],
+        type: 'floral',
         images: [
-            'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&h=300&fit=crop'
+            'image/Partner/GlobalFlowers/1.webp',
+            'image/Partner/GlobalFlowers/2.webp',
+            'image/Partner/GlobalFlowers/3.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 19000,
+        revenue: 3500,
+        clients: 125
     },
+    // Ֆիթնես և առողջություն
     {
-        category: 'Flower Marketing',
-        company: 'FLORA.AM',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'flower',
-        images: [
-            'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    // Kids Marketing
-    {
-        category: 'Kids Marketing',
-        company: 'ELZA KIDS CAFE',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'kids',
-        images: [
-            'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'Kids Marketing',
-        company: 'MINIS KIDS CLUB',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'kids',
-        images: [
-            'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'Kids Marketing',
-        company: 'TUNTUNIK',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'kids',
-        images: [
-            'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    // Medical Marketing
-    {
-        category: 'Medical Marketing',
-        company: 'DR. HRACH MIQAYELYAN',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'medical',
-        images: [
-            'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'Medical Marketing',
-        company: 'PODOCLINIC',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'medical',
-        images: [
-            'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'Medical Marketing',
-        company: 'Z & L DENTAL CLINIC',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'medical',
-        images: [
-            'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'Medical Marketing',
-        company: 'LOREST CLINIC',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'medical',
-        images: [
-            'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    // Gym Marketing
-    {
-        category: 'Gym Marketing',
-        company: 'MULTI GIM',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'gym',
-        images: [
-            'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'Gym Marketing',
+        category: 'Առողջություն և ֆիթնես',
         company: 'LIFE TIME PREMIUM CLUB',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'gym',
+        services: ['Ֆիթնես մարքեթինգ', 'Անդամակցության աճ', 'Առողջապահական ծրագրեր'],
+        type: 'fitness',
         images: [
-            'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop'
+            'image/Partner/LifeTimePremiumClub/1.webp',
+            'image/Partner/LifeTimePremiumClub/2.webp',
+            'image/Partner/LifeTimePremiumClub/3.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 32000,
+        revenue: 7200,
+        clients: 220
     },
-    // B2C
+    // Երեխաների ժամանց
     {
-        category: 'B2C',
-        company: 'MARCO ELECTRONICS',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2c',
+        category: 'Ընտանիք և ժամանց',
+        company: 'MINIS KIDS CAFE',
+        services: ['Ընտանեկան ժամանցի մարքեթինգ', 'Երեխաների ծննդյան փաթեթներ', 'Ծնողական համայնքի կառուցում'],
+        type: 'kids_entertainment',
         images: [
-            'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop'
+            'image/Partner/MinisKidsCafe/1.webp',
+            'image/Partner/MinisKidsCafe/2.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 21000,
+        revenue: 3800,
+        clients: 145
     },
+    // Երեխաների ապրանքներ
     {
-        category: 'B2C',
+        category: 'Ընտանիք և ժամանց',
+        company: 'TUNTUNIK',
+        services: ['Երեխաների բրենդի մարքեթինգ', 'Կրթական բովանդակություն', 'Ծնողների ներգրավում'],
+        type: 'kids_products',
+        images: [
+            'image/Partner/Tuntunik/1.webp',
+            'image/Partner/Tuntunik/2.webp',
+        ],
+        views: 17000,
+        revenue: 2900,
+        clients: 105
+    },
+    // Առողջապահություն - Մասնագետ բժիշկ
+    {
+        category: 'Առողջապահություն',
+        company: 'DR. MIQAYELYAN',
+        services: ['Բժշկական պրակտիկայի մարքեթինգ', 'Հիվանդների կրթություն', 'Մասնագիտական հեղինակության կառավարում'],
+        type: 'medical_practice',
+        images: [
+            'image/Partner/DrMiqayelyan/1.webp'
+        ],
+        views: 8500,
+        revenue: 4200,
+        clients: 60
+    },
+    // Առողջապահություն - Կլինիկա
+    {
+        category: 'Առողջապահություն',
+        company: 'LOREST CLINIC',
+        services: ['Առողջապահական մարքեթինգ', 'Բժշկական ծառայությունների գովազդ', 'Հիվանդների ներգրավում'],
+        type: 'medical_clinic',
+        images: [
+            'image/Partner/LorestClinic/1.webp'
+        ],
+        views: 12000,
+        revenue: 5500,
+        clients: 85
+    },
+    // Առողջապահություն - Մասնագիտացված կլինիկա
+    {
+        category: 'Առողջապահություն',
+        company: 'PODOCLINIC',
+        services: ['Մասնագիտացված բժշկական մարքեթինգ', 'Պոդիատրիկ ծառայությունների գովազդ', 'Առողջապահական կրթություն'],
+        type: 'specialized_clinic',
+        images: [
+            'image/Partner/Podoclinic/1.webp',
+            'image/Partner/Podoclinic/2.webp',
+            'image/Partner/Podoclinic/3.webp',
+        ],
+        views: 9500,
+        revenue: 4800,
+        clients: 70
+    },
+    // Առողջապահություն - Ատամնաբուժություն
+    {
+        category: 'Առողջապահություն',
+        company: 'Z & L DENTAL CLINIC',
+        services: ['Ատամնաբուժական մարքեթինգ', 'Բերանի խոռոչի առողջության կրթություն', 'Հիվանդների խնամքի գովազդ'],
+        type: 'dental',
+        images: [
+            'image/Partner/ZandLDentalClinic/1.webp',
+            'image/Partner/ZandLDentalClinic/2.webp',
+            'image/Partner/ZandLDentalClinic/3.webp',
+        ],
+        views: 15000,
+        revenue: 6200,
+        clients: 140
+    },
+    // Կահույք և տան դեկոր
+    {
+        category: 'Վաճառք և տուն',
         company: 'MARCO FURNITURE',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2c',
+        services: ['Կահույքի մարքեթինգ', 'Տան դեկորի գովազդ', 'Ինտերիերային լուծումներ'],
+        type: 'furniture',
         images: [
-            'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=500&h=300&fit=crop'
+            'image/Partner/MarcoFurniture/1.webp',
+            'image/Partner/MarcoFurniture/2.webp',
+            'image/Partner/MarcoFurniture/3.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 24000,
+        revenue: 5200,
+        clients: 160
     },
+    // HORECA - Խորհրդատվություն
     {
-        category: 'B2C',
-        company: 'AVM GROUP',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2c',
+        category: 'Բիզնես ծառայություններ',
+        company: 'MY HORECA CONSULTING',
+        services: ['Բիզնես խորհրդատվության մարքեթինգ', 'ՀՈՐԵԿԱ ոլորտի փորձագիտություն', 'Մասնագիտական ծառայություններ'],
+        type: 'consulting',
         images: [
-            'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop'
+            'image/Partner/MyHorecaConsulting/1.webp',
+            'image/Partner/MyHorecaConsulting/2.webp',
+            'image/Partner/MyHorecaConsulting/3.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 11000,
+        revenue: 7800,
+        clients: 55
     },
+    // Արտադրություն - Պլաստիկ
     {
-        category: 'B2C',
-        company: 'SELS CITY',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2c',
-        images: [
-            'https://images.unsplash.com/photo-1560472355-536de3962603?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'B2C',
-        company: 'KELVIN',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2c',
-        images: [
-            'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'B2C',
-        company: 'ART SAFES',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2c',
-        images: [
-            'https://images.unsplash.com/photo-1560472355-536de3962603?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'B2C',
-        company: 'YAN NET',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2c',
-        images: [
-            'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    // B2B
-    {
-        category: 'B2B',
-        company: 'PRIDE SANITAR',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2b',
-        images: [
-            'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
-        ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
-    },
-    {
-        category: 'B2B',
+        category: 'Արտադրություն և արդյունաբերություն',
         company: 'NUSH PLAST',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2b',
+        services: ['Արդյունաբերական մարքեթինգ', 'Բիզնեսից բիզնես հաճախորդների ներգրավում', 'Արտադրական լուծումներ'],
+        type: 'manufacturing',
         images: [
-            'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
+            'image/Partner/NushPlast/1.webp',
+            'image/Partner/NushPlast/2.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 8000,
+        revenue: 6500,
+        clients: 45
     },
+    // HORECA - Միջոցառումների դահլիճ
     {
-        category: 'B2B',
-        company: 'ELART BUSINESS CENTER',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'b2b',
+        category: 'ՀՈՐԵԿԱ',
+        company: 'PALLADIUM HALL',
+        services: ['Միջոցառումների դահլիճի մարքեթինգ', 'Հարսանիքների գովազդ', 'Կորպորատիվ միջոցառումներ'],
+        type: 'event_venue',
         images: [
-            'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=300&fit=crop'
+            'image/Partner/PalladiumHall/1.webp',
+            'image/Partner/PalladiumHall/2.webp',
+            'image/Partner/PalladiumHall/3.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 26000,
+        revenue: 8200,
+        clients: 190
     },
-    // Personal Branding
+    // Սանիտարական և շինարարություն
     {
-        category: 'Personal Branding',
-        company: 'SIGER - ARMINE GRIGORYAN',
-        services: ['Social Media Marketing', 'Reel Making'],
-        type: 'personal',
+        category: 'Շինարարություն և կառուցապատում',
+        company: 'PRIDE SANITAR',
+        services: ['Շինարարական մարքեթինգ', 'Սանիտարական լուծումներ', 'Բիզնեսից բիզնես ծառայություններ'],
+        type: 'construction',
         images: [
-            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop',
-            'https://images.unsplash.com/photo-1494790108755-2616c64e5fe4?w=500&h=300&fit=crop'
+            'image/Partner/PrideSanitar/1.webp',
+            'image/Partner/PrideSanitar/2.webp',
         ],
-        views: 100,
-        revenue: 1000,
-        clients: 100
+        views: 7500,
+        revenue: 5800,
+        clients: 40
+    },
+    // HORECA - Շքեղ հյուրանոց
+    {
+        category: 'ՀՈՐԵԿԱ',
+        company: 'ROYAL YEREVAN',
+        services: ['Շքեղ հյուրանոցային մարքեթինգ', 'Պրեմիում հյուրերի փորձառություն', 'Բարձրակարգ ծառայություններ'],
+        type: 'luxury_hotel',
+        images: [
+            'image/Partner/RoyalYerevan/1.webp',
+            'image/Partner/RoyalYerevan/2.webp',
+            'image/Partner/RoyalYerevan/3.webp',
+        ],
+        views: 30000,
+        revenue: 9500,
+        clients: 180
+    },
+    // HORECA - Պաբ/Բար
+    {
+        category: 'ՀՈՐԵԿԱ',
+        company: 'RUSH PUB',
+        services: ['Գիշերային կյանքի մարքեթինգ', 'Միջոցառումների գովազդ', 'Սոցիալական ժամանց'],
+        type: 'pub',
+        images: [
+            'image/Partner/RushPub/1.webp',
+            'image/Partner/RushPub/2.webp',
+        ],
+        views: 27000,
+        revenue: 4200,
+        clients: 175
+    },
+    // HORECA - Հյուրատուն
+    {
+        category: 'ՀՈՐԵԿԱ',
+        company: 'SOUVENIR GUEST HOUSE',
+        services: ['Տուրիստական մարքեթինգ', 'Բնակեցման գովազդ', 'Հյուրերի փորձառություն'],
+        type: 'guest_house',
+        images: [
+            'image/Partner/SouvenirGuestHouse/1.webp',
+            'image/Partner/SouvenirGuestHouse/2.webp',
+            'image/Partner/SouvenirGuestHouse/3.webp',
+        ],
+        views: 14000,
+        revenue: 3400,
+        clients: 95
+    },
+    // Տեխնոլոգիա և հեռահաղորդակցություն
+    {
+        category: 'Տեխնոլոգիա և IT',
+        company: 'YAN NET',
+        services: ['Տեխնոլոգիական ընկերության մարքեթինգ', 'Թվային լուծումներ', 'IT ծառայությունների գովազդ'],
+        type: 'technology',
+        images: [
+            'image/Partner/yannet/1.webp',
+            'image/Partner/yannet/2.webp',
+        ],
+        views: 16000,
+        revenue: 5200,
+        clients: 85
     }
 ];
 
