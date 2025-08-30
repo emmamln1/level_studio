@@ -85,15 +85,27 @@ function createWorksShowcaseItem(item, index) {
 }
 
 function updateGallery(itemIndex, direction) {
-    const item = portfolioData[itemIndex];
     const gallery = document.getElementById(`gallery-${itemIndex}`);
     const counter = document.getElementById(`counter-${itemIndex}`);
     
+    if (!gallery) return;
+    
+    // Получаем количество изображений в галерее
+    const images = gallery.querySelectorAll('img');
+    const totalImages = images.length;
+    
+    if (totalImages <= 1) return; // Нет смысла переключать, если изображение одно
+    
+    // Инициализируем индекс если он не существует
+    if (currentImageIndices[itemIndex] === undefined) {
+        currentImageIndices[itemIndex] = 0;
+    }
+    
     if (direction === 'next') {
-        currentImageIndices[itemIndex] = (currentImageIndices[itemIndex] + 1) % item.images.length;
+        currentImageIndices[itemIndex] = (currentImageIndices[itemIndex] + 1) % totalImages;
     } else {
         currentImageIndices[itemIndex] = currentImageIndices[itemIndex] === 0 
-            ? item.images.length - 1 
+            ? totalImages - 1 
             : currentImageIndices[itemIndex] - 1;
     }
     
@@ -164,8 +176,23 @@ function renderWorksShowcase(items = portfolioData.slice(0, displayedItems)) {
 
 
 
+// Инициализация существующих галерей из HTML
+function initExistingGalleries() {
+    // Инициализируем индексы для существующих галерей
+    const existingGalleries = document.querySelectorAll('.works-showcase-gallery');
+    existingGalleries.forEach((gallery, index) => {
+        currentImageIndices[index] = 0;
+    });
+    
+    // Добавляем обработчики для существующих кнопок навигации
+    attachGalleryEventListeners();
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
+    // Инициализируем существующие галереи
+    initExistingGalleries();
+    
     // Показываем первые 4 элемента
     const portfolioItems = document.querySelectorAll('.works-showcase-item');
     portfolioItems.forEach((item, index) => {
