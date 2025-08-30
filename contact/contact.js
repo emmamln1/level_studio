@@ -44,14 +44,12 @@ if (contactForm) {
         // Send the email
         emailjs.send(serviceID, templateID, formData)
             .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
                 if (successMessage) successMessage.style.display = 'block'; // Show success message
                 contactForm.reset(); // Clear the form
                 setTimeout(() => {
                     if (successMessage) successMessage.style.display = 'none'; // Hide success message after a few seconds
                 }, 5000);
             }, function(error) {
-                console.log('FAILED...', error);
                 alert('Նամակը չհաջողվեց ուղարկել: Խնդրում ենք փորձել ավելի ուշ:'); // Show error message in Armenian
             })
             .finally(() => {

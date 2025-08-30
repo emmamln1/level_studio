@@ -180,7 +180,6 @@ if (contactCTA) {
 function initAboutCarousel() {
     const carousel = document.querySelector('.about-carousel');
     if (!carousel) {
-        console.log('About carousel not found');
         return;
     }
 
@@ -191,7 +190,6 @@ function initAboutCarousel() {
     const nextBtn = carousel.querySelector('.about-carousel__btn--next');
     
     if (!track || !slides.length || !dotsContainer || !prevBtn || !nextBtn) {
-        console.log('Missing carousel elements');
         return;
     }
     
@@ -199,7 +197,6 @@ function initAboutCarousel() {
     let isAnimating = false;
     const ANIMATION_DURATION = 500;
 
-    console.log(`About carousel initialized with ${slides.length} slides`);
 
     // Create dots
     dotsContainer.innerHTML = ''; // Clear existing dots
@@ -220,7 +217,6 @@ function initAboutCarousel() {
         if (index >= slides.length) index = 0;
         if (index === currentIndex || isAnimating) return;
 
-        console.log(`Going to slide ${index}`);
         isAnimating = true;
         currentIndex = index;
         updateCarousel();
@@ -247,13 +243,11 @@ function initAboutCarousel() {
     // Event listeners
     prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log('Previous button clicked');
         goToSlide(currentIndex - 1);
     });
     
     nextBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log('Next button clicked');
         goToSlide(currentIndex + 1);
     });
 
@@ -339,7 +333,6 @@ function setupAboutCarouselObserver() {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded, initializing components');
     setupAboutCarouselObserver();
     initPortfolioCarousel();
     initializeAllImageCarousels();
@@ -605,7 +598,6 @@ function initializeAllImageCarousels() {
 function initAboutCounters() {
     const statsSection = document.getElementById('aboutStats');
     if (!statsSection) {
-        console.log('Stats section not found');
         return;
     }
 
@@ -656,14 +648,12 @@ function initAboutCounters() {
     function startAnimation() {
         if (isAnimating) return;
         isAnimating = true;
-        console.log('Starting counter animation');
         
         // Reset all counters to 0 first
         resetCounters();
         
         numbers.forEach((el, index) => {
             const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-            console.log(`Animating counter ${index + 1}: target = ${target}`);
             // Add delay for staggered effect
             setTimeout(() => {
                 animateValue(el, target);
@@ -682,7 +672,6 @@ function initAboutCounters() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !hasAnimated) {
-                    console.log('Stats section is visible, starting animation');
                     startAnimation();
                     hasAnimated = true; // Помечаем что анимация выполнена
                     observer.unobserve(entry.target); // Отключаем наблюдение
@@ -743,7 +732,6 @@ class LandingPartners {
     renderPartners() {
         const grid = document.getElementById('businessGridView');
         if (!grid) {
-            console.log('Partners grid not found');
             return;
         }
         grid.innerHTML = '';
@@ -782,7 +770,6 @@ class LandingPartners {
             e.currentTarget.style.transform = '';
         }, 150);
         
-        console.log('Partner selected:', partner.name);
     }
 
     setupScrollAnimations() {
@@ -1032,12 +1019,6 @@ class LandingPartners {
 document.addEventListener('DOMContentLoaded', () => {
     const landingPartners = new LandingPartners();
     
-    // Performance monitoring
-    window.addEventListener('load', () => {
-        const loadTime = performance.now();
-        console.log(`⚡ Landing section loaded in ${Math.round(loadTime)}ms`);
-    });
-
     // Cleanup on page unload
     window.addEventListener('beforeunload', () => {
         if (landingPartners) {
