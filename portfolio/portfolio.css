@@ -26,6 +26,7 @@
     margin: 20px auto;
     position: relative;
     z-index: 2;
+    padding: 0 2rem;
 }
 
 .works-showcase-header {

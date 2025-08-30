@@ -39,11 +39,10 @@
     margin-bottom: 3rem;
 }
 
-.main-title {
+.contact-section .main-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 900;
     line-height: 1.1;
-    margin-bottom: 2rem;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: -2px;
@@ -69,7 +68,7 @@
     border-radius: 2px;
 }
 
-.description {
+.contact-section .description {
     font-size: 1rem;
     line-height: 1.6;
     color: #ccc;

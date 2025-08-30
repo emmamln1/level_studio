@@ -24,8 +24,13 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+@font-face {
+    font-family: 'Webstart';
+    src: url('./_Webstart-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Webstart', Arial, sans-serif;
 }
 
 html,
