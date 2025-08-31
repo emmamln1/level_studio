@@ -24,14 +24,6 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'Webstart';
-    src: url('./_Webstart-Regular.ttf') format('truetype');
-}
-
-body {
-    font-family: 'Webstart', Arial, sans-serif;
-}
 
 html,
 body {

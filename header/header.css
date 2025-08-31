@@ -10,62 +10,179 @@
     white-space: nowrap;
 }
 
-#marketing-agency-header .multilingual-language-switcher {
-    width: 180px;
+/* Language Switcher Container */
+.language-switcher-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Language Switcher Trigger Button */
+.language-switcher-trigger {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    gap: 0.5rem;
-}
-
-#marketing-agency-header .multilingual-language-switcher button {
-    width: 56px;
-    text-align: center;
-    background: transparent;
-    color: var(--text-primary);
+    gap: 8px;
+    padding: 10px 16px;
     border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    position: relative;
-    transition: all var(--transition-medium);
-    border: 2px solid transparent;
-    border-radius: 8px;
-    font-weight: 500;
-    backdrop-filter: blur(10px);
-}
-
-#marketing-agency-header .multilingual-language-switcher button:hover {
-    background: var(--glass-bg);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-#marketing-agency-header .multilingual-language-switcher button.active-language {
-    position: relative;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
-    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
-#marketing-agency-header .multilingual-language-switcher button.active-language::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 2px;
-    background: linear-gradient(45deg, var(--primary-red), var(--primary-green));
-    mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    opacity: 1;
-    z-index: -1;
+.language-switcher-trigger:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
 }
 
-#marketing-agency-header .multilingual-language-switcher button:focus {
+.language-switcher-trigger:focus {
     outline: none;
+    box-shadow: 0 0 0 2px rgba(1, 185, 95, 0.5);
+}
+
+/* Language Icon */
+.language-icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    opacity: 0.8;
+}
+
+/* Current Language Display */
+.current-language {
+    font-weight: 600;
+    /* letter-spacing: 0.5px; */
+}
+
+/* Dropdown Arrow */
+.dropdown-arrow {
+    width: 10px;
+    height: 10px;
+    stroke: currentColor;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.language-switcher-trigger[aria-expanded="true"] .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Language Dropdown Menu */
+.language-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 180px;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.language-dropdown[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Language Options */
+.language-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.language-option:last-child {
+    border-bottom: none;
+}
+
+.language-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #01B95F;
+}
+
+.language-option.active {
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), rgba(0, 255, 0, 0.2));
+    color: #01B95F;
+    position: relative;
+}
+
+.language-option.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(45deg, red, green);
+}
+
+/* Language Code and Name */
+.language-code {
+    font-weight: 600;
+    font-size: 0.9rem;
+    /* letter-spacing: 0.5px; */
+}
+
+.language-name {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .language-switcher-trigger {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .language-icon {
+        width: 16px;
+        height: 16px;
+}
+
+    .dropdown-arrow {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .language-dropdown {
+        min-width: 160px;
+        right: -10px;
+    }
+    
+    .language-option {
+        padding: 10px 14px;
+    }
+    
+    .language-code {
+        font-size: 0.8rem;
+    }
+    
+    .language-name {
+        font-size: 0.7rem;
+    }
 }
 
 .sticky-website-header {
@@ -73,18 +190,23 @@
     height: 10vh;
     position: fixed;
     z-index: 10000;
-    background: var(--glass-bg);
+    background: linear-gradient(135deg, 
+    rgba(100, 98, 98, 0.252) 0%, rgba(255, 0, 0, 0.25) 10%, rgba(0, 128, 0, 0.27) 90%,
+    rgba(139, 135, 135, 0.295) 100%);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+    /* border-bottom: 1px solid var(--glass-border); */
     transition: all var(--transition-medium);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .sticky-website-header.scrolled {
     background: var(--glass-bg);
-    backdrop-filter: blur(25px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid var(--glass-border);
+    background: linear-gradient(135deg, 
+    rgba(100, 98, 98, 0.252) 0%, rgba(255, 0, 0, 0.283) 10%, rgba(0, 128, 0, 0.344) 90%,
+    rgba(139, 135, 135, 0.295) 100%);
+  backdrop-filter: blur(20px);
+    /* border-bottom: 1px solid var(--glass-border); */
 }
 
 .header-content-wrapper {
@@ -120,7 +242,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--text-primary);
+    color: #848385;
     font-size: 16px;
     font-weight: 500;
     padding: 0.5rem 0.75rem;
@@ -173,6 +295,7 @@
     border-radius: 8px;
     padding: 0.5rem 0.75rem;
     z-index: 1;
+    color: white;
 }
 
 .primary-site-navigation ul li button:focus {

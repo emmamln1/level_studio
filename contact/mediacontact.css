@@ -1,5 +1,5 @@
 @media (max-width: 1200px) {
-    .contact-container {
+    .contact-section .contact-container {
         gap: 3rem;
         max-width: 1200px;
         padding: 0 2rem;
@@ -7,14 +7,14 @@
         justify-content: center;
     }
     
-    .contact-left,
-    .contact-right {
+    .contact-section .contact-left,
+    .contact-section .contact-right {
         min-width: auto; /* Убираем минимальную ширину */
     }
 }
 
 @media (max-width: 1024px) {
-    .contact-container {
+    .contact-section .contact-container {
         gap: 2.5rem;
         max-width: 1000px;
         min-height: auto;
@@ -22,18 +22,18 @@
         padding: 0 2rem;
     }
     
-    .contact-left,
-    .contact-right {
+    .contact-section .contact-left,
+    .contact-section .contact-right {
         min-width: auto;
     }
     
-    .form-container {
+    .contact-section .form-container {
         padding: 2rem;
     }
 }
 
 @media (max-width: 900px) {
-    .contact-container {
+    .contact-section .contact-container {
         display: flex;
         flex-direction: column;
         gap: 3rem;
@@ -42,13 +42,13 @@
         min-height: auto; /* Убираем фиксированную высоту на мобильных */
     }
     
-    .contact-left {
+    .contact-section .contact-left {
         order: 1;
         min-width: auto; /* Убираем минимальную ширину на мобильных */
         max-width: none;
     }
     
-    .contact-right {
+    .contact-section .contact-right {
         order: 2;
         min-width: auto; /* Убираем минимальную ширину на мобильных */
         max-width: none;
@@ -60,42 +60,43 @@
         padding: 4rem 1rem;
     }
 
-    .contact-container {
+    .contact-section .contact-container {
         display: flex;
         flex-direction: column;
         gap: 3rem;
         text-align: center;
         justify-content: center;
+        align-items: center;
         padding: 0 1rem;
     }
 
-    .main-title {
+    .contact-section .main-title {
         font-size: clamp(2rem, 6vw, 2.5rem);
         min-height: 80px; /* Уменьшенная высота для мобильных */
     }
 
-    .form-title {
+    .contact-section .form-title {
         font-size: 1.5rem;
     }
 
-    .form-container {
+    .contact-section .form-container {
         padding: 1.5rem;
     }
 
     /* RESPONSIVE FIX: Contact info layout */
-    .contact-info {
+    .contact-section .contact-info {
         flex-direction: column;
         gap: 1.5rem;
         align-items: center;
     }
 
-    .info-item {
+    .contact-section .info-item {
         flex-direction: column;
         text-align: center;
         margin-bottom: 1.5rem;
     }
 
-    .info-icon {
+    .contact-section .info-icon {
         width: 40px;
         height: 40px;
         margin-right: 0;
@@ -108,57 +109,57 @@
         padding: 3rem 1rem;
     }
 
-    .contact-container {
+    .contact-section .contact-container {
         gap: 2rem;
         padding: 0;
     }
 
-    .main-title {
-        font-size: clamp(1.8rem, 6vw, 2rem);
-        letter-spacing: -1px;
+    .contact-section .main-title {
+        font-size: clamp(2.4rem, 6vw, 2rem);
+        /* letter-spacing: -1px; */
     }
 
-    .form-container {
+    .contact-section .form-container {
         padding: 1.2rem;
         margin: 0;
     }
 
-    .form-title {
+    .contact-section .form-title {
         font-size: 1.3rem;
         margin-bottom: 0.8rem;
     }
 
-    .form-subtitle {
+    .contact-section .form-subtitle {
         font-size: 0.8rem;
         margin-bottom: 1.5rem;
     }
 
     /* RESPONSIVE FIX: Form inputs mobile optimization */
-    .form-input,
-    .form-textarea {
+    .contact-section .form-input,
+    .contact-section .form-textarea {
         padding: 0.8rem;
         font-size: 0.9rem;
     }
 
-    .form-textarea {
+    .contact-section .form-textarea {
         min-height: 100px;
     }
 
-    .submit-btn {
+    .contact-section .submit-btn {
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
     }
 
-    .info-icon {
+    .contact-section .info-icon {
         width: 35px;
         height: 35px;
     }
 
-    .info-content h3 {
+    .contact-section .info-content h3 {
         font-size: 0.8rem;
     }
 
-    .info-content p {
+    .contact-section .info-content p {
         font-size: 0.8rem;
     }
 }
@@ -168,30 +169,30 @@
         padding: 2.5rem 0.8rem;
     }
 
-    .contact-container {
+    .contact-section .contact-container {
         gap: 1.5rem;
     }
 
-    .main-title {
+    .contact-section .main-title {
         font-size: clamp(1.6rem, 7vw, 1.8rem);
     }
 
-    .form-container {
+    .contact-section .form-container {
         padding: 1rem;
         border-radius: 10px;
     }
 
-    .form-title {
+    .contact-section .form-title {
         font-size: 1.2rem;
     }
 
-    .form-input,
-    .form-textarea {
+    .contact-section .form-input,
+    .contact-section .form-textarea {
         padding: 0.7rem;
         font-size: 0.85rem;
     }
 
-    .submit-btn {
+    .contact-section .submit-btn {
         padding: 0.7rem 1.2rem;
         font-size: 0.85rem;
     }

@@ -35,7 +35,6 @@
 
 .section-header {
     text-align: left;
-    margin-bottom: 3rem;
 }
 
 .about-section .main-title {
@@ -43,18 +42,19 @@
     font-weight: 800;
     color: #ffffff;
     letter-spacing: -1px;
-    line-height: 1.1;
+    /* letter-spacing: -1px; */
     position: relative;
     opacity: 1;
     transform: translateY(0);
+    text-transform: uppercase;
 }
 
-
-
-.main-title .highlight {
-    background: linear-gradient(135deg, red, green);
-    -webkit-background-clip: text;
-    background-clip: text;
+.about-section .highlight {
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 5vw;
 }
 
 .stats-grid {
@@ -106,7 +106,7 @@
     font-size: 2.5rem;
     font-weight: 800;
     color: #fff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     background: linear-gradient(135deg, red, green);
     -webkit-background-clip: text;
     background-clip: text;
@@ -114,9 +114,9 @@
 }
 
 .stat-label {
-    font-size: 0.85rem;
+    font-size: 0.99rem;
     color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 0.5px;
+    /* letter-spacing: 0.5px; */
     font-weight: 400;
     text-transform: uppercase;
 }
@@ -223,7 +223,7 @@
     font-weight: 600;
     font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;

@@ -63,6 +63,7 @@ class LanguageSwitcher {
      * Инициализация обработчиков событий для переключателей языка
      */
     initEventListeners() {
+        // Handle old language switcher buttons
         const languageButtons = document.querySelectorAll('.multilingual-language-switcher button');
         
         languageButtons.forEach(button => {
@@ -76,6 +77,93 @@ class LanguageSwitcher {
                 }
             });
         });
+
+        // Handle new dropdown language switcher
+        this.initDropdownSwitcher();
+    }
+
+    /**
+     * Initialize dropdown language switcher functionality
+     */
+    initDropdownSwitcher() {
+        const trigger = document.querySelector('.language-switcher-trigger');
+        const dropdown = document.querySelector('.language-dropdown');
+        const currentLanguageSpan = document.querySelector('.current-language');
+        const languageOptions = document.querySelectorAll('.language-option');
+        
+        if (!trigger || !dropdown) return;
+        
+        let isOpen = false;
+        
+        // Toggle dropdown on trigger click
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.toggleDropdown();
+        });
+        
+        // Handle language option selection
+        languageOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const selectedLang = option.dataset.lang;
+                const langCode = this.getLangCode(selectedLang);
+                
+                this.setLanguage(langCode);
+                this.closeDropdown();
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const container = document.querySelector('.language-switcher-container');
+            if (container && !container.contains(e.target)) {
+                this.closeDropdown();
+            }
+        });
+        
+        // Close dropdown on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isDropdownOpen()) {
+                this.closeDropdown();
+                trigger.focus();
+            }
+        });
+        
+        // Store references for later use
+        this.dropdownElements = {
+            trigger,
+            dropdown,
+            currentLanguageSpan,
+            languageOptions
+        };
+    }
+
+    toggleDropdown() {
+        if (this.isDropdownOpen()) {
+            this.closeDropdown();
+        } else {
+            this.openDropdown();
+        }
+    }
+
+    openDropdown() {
+        const { dropdown, trigger } = this.dropdownElements;
+        dropdown.setAttribute('aria-hidden', 'false');
+        trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    closeDropdown() {
+        const { dropdown, trigger } = this.dropdownElements;
+        dropdown.setAttribute('aria-hidden', 'true');
+        trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    isDropdownOpen() {
+        const { dropdown } = this.dropdownElements || {};
+        return dropdown && dropdown.getAttribute('aria-hidden') === 'false';
     }
 
     /**
@@ -129,6 +217,7 @@ class LanguageSwitcher {
      * Обновление активной кнопки языка
      */
     updateLanguageButtons() {
+        // Update old language switcher buttons
         const buttons = document.querySelectorAll('.multilingual-language-switcher button');
         const displayLang = this.getDisplayLang(this.currentLanguage);
         
@@ -136,6 +225,32 @@ class LanguageSwitcher {
             button.classList.remove('active-language');
             if (button.getAttribute('data-lang') === displayLang) {
                 button.classList.add('active-language');
+            }
+        });
+
+        // Update new dropdown language switcher
+        this.updateDropdownLanguage();
+    }
+
+    /**
+     * Update dropdown language switcher display
+     */
+    updateDropdownLanguage() {
+        if (!this.dropdownElements) return;
+
+        const { currentLanguageSpan, languageOptions } = this.dropdownElements;
+        const displayLang = this.getDisplayLang(this.currentLanguage);
+
+        // Update current language display
+        if (currentLanguageSpan) {
+            currentLanguageSpan.textContent = displayLang;
+        }
+
+        // Update active state in dropdown options
+        languageOptions.forEach(option => {
+            option.classList.remove('active');
+            if (option.dataset.lang === displayLang) {
+                option.classList.add('active');
             }
         });
     }
