@@ -72,12 +72,19 @@ function createBusinessIndicators() {
     if (!track || !indicators) return;
     
     const cards = track.querySelectorAll('.business-partner-card');
-    indicators.innerHTML = ''; // Очищаем существующие индикаторы
+    const visibleCards = getVisibleCardsCount();
+    const totalCards = cards.length;
     
-    cards.forEach((_, index) => {
-        const indicator = createBusinessIndicator(index);
+    indicators.innerHTML = ''; // Clear existing indicators
+    
+    // Only create indicators for meaningful slides
+    const maxIndex = Math.max(0, totalCards - visibleCards);
+    const indicatorCount = Math.min(totalCards, maxIndex + 1);
+    
+    for (let i = 0; i < indicatorCount; i++) {
+        const indicator = createBusinessIndicator(i);
         indicators.appendChild(indicator);
-    });
+    }
 }
 
 function initializeBusinessGrid() {
@@ -113,12 +120,37 @@ function getBusinessStepWidth() {
     return cardWidth + gap;
 }
 
+function getVisibleCardsCount() {
+    const track = document.getElementById('businessCarouselTrack');
+    const cards = track.querySelectorAll('.business-partner-card');
+    
+    if (!cards.length) return 1;
+    
+    const wrapper = track.parentElement;
+    const wrapperWidth = wrapper.getBoundingClientRect().width;
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const gap = parseInt(window.getComputedStyle(track).gap, 10) || 0;
+    
+    // Calculate how many cards can fit in the visible area
+    const visibleCount = Math.floor(wrapperWidth / (cardWidth + gap));
+    return Math.max(1, visibleCount);
+}
+
 function updateBusinessCarousel() {
     const track = document.getElementById('businessCarouselTrack');
     const cards = track.querySelectorAll('.business-partner-card');
     const totalCards = cards.length;
     
     if (totalCards === 0) return;
+    
+    // Calculate visible cards based on viewport
+    const visibleCards = getVisibleCardsCount();
+    
+    // Ensure currentIndex doesn't exceed available slides
+    const maxIndex = Math.max(0, totalCards - visibleCards);
+    if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+    }
     
     const stepWidth = getBusinessStepWidth();
     const translateX = -currentIndex * stepWidth;
@@ -138,13 +170,15 @@ function updateBusinessNavigationButtons() {
     
     const cards = track.querySelectorAll('.business-partner-card');
     const totalCards = cards.length;
+    const visibleCards = getVisibleCardsCount();
+    const maxIndex = Math.max(0, totalCards - visibleCards);
     
-    // Для бесконечной карусели кнопки всегда активны
-    // Убираем disabled состояние
-    prevBtn.disabled = false;
-    nextBtn.disabled = false;
-    prevBtn.classList.remove('disabled');
-    nextBtn.classList.remove('disabled');
+    // Disable navigation when at boundaries
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+    
+    prevBtn.classList.toggle('disabled', currentIndex === 0);
+    nextBtn.classList.toggle('disabled', currentIndex >= maxIndex);
 }
 
 function updateBusinessIndicators() {
@@ -167,8 +201,17 @@ function nextBusinessSlide() {
     const track = document.getElementById('businessCarouselTrack');
     const cards = track.querySelectorAll('.business-partner-card');
     const totalCards = cards.length;
+    const visibleCards = getVisibleCardsCount();
+    const maxIndex = Math.max(0, totalCards - visibleCards);
     
-    currentIndex = (currentIndex + 1) % totalCards;
+    // Stop at the last meaningful slide
+    if (currentIndex < maxIndex) {
+        currentIndex++;
+    } else {
+        // Reset to beginning for infinite loop
+        currentIndex = 0;
+    }
+    
     updateBusinessCarousel();
     
     setTimeout(() => {
@@ -183,9 +226,12 @@ function prevBusinessSlide() {
     const track = document.getElementById('businessCarouselTrack');
     const cards = track.querySelectorAll('.business-partner-card');
     const totalCards = cards.length;
+    const visibleCards = getVisibleCardsCount();
+    const maxIndex = Math.max(0, totalCards - visibleCards);
 
     if (currentIndex === 0) {
-        currentIndex = totalCards - 1;
+        // Go to last meaningful slide for infinite loop
+        currentIndex = maxIndex;
     } else {
         currentIndex--;
     }

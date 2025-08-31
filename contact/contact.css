@@ -1,6 +1,5 @@
 .contact-section {
     position: relative;
-    padding: 0 2rem;
 }
 
 .contact-section::before {
@@ -24,8 +23,7 @@
     width: 100%;
     box-sizing: border-box;
     min-height: 500px; /* Уменьшена минимальная высота */
-    justify-content: center; /* Изменено с space-between на center */
-    padding: 0 2rem; /* Увеличен padding */
+    justify-content: center; /* Изменено с space-between на center */ /* Увеличен padding */
 }
 
 .contact-left {
@@ -53,11 +51,10 @@
 }
 
 .highlight {
-    background: linear-gradient(45deg, #04A756, #01B95F, #FF3131);
+    background: linear-gradient(135deg, red, green);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-size: 200% 200%;
 }
 
 .divider {

@@ -39,6 +39,13 @@ function createWorksShowcaseItem(item, index) {
             <div class="works-showcase-gallery" id="gallery-${index}">
                 ${item.images.map(img => `<img src="${img}" alt="${item.company} work" loading="lazy">`).join('')}
             </div>
+            <div class="portfolio-overlay" data-item="${index}">
+                <div class="portfolio-overlay-content">
+                    <div class="portfolio-overlay-icon">📸</div>
+                    <div class="portfolio-overlay-text">View Portfolio</div>
+                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                </div>
+            </div>
             ${item.images.length > 1 ? `
                 <button class="gallery-nav prev" data-item="${index}" data-direction="prev">❮</button>
                 <button class="gallery-nav next" data-item="${index}" data-direction="next">❯</button>
@@ -156,6 +163,29 @@ function attachGalleryEventListeners() {
             const itemIndex = parseInt(btn.dataset.item);
             const direction = btn.dataset.direction;
             updateGallery(itemIndex, direction);
+        });
+    });
+    
+    // Add overlay interaction event listeners
+    attachOverlayEventListeners();
+}
+
+// Portfolio overlay interaction functionality
+function attachOverlayEventListeners() {
+    document.querySelectorAll('.portfolio-overlay').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const portfolioItem = overlay.closest('.works-showcase-item');
+            portfolioItem.classList.add('overlay-removed');
+        });
+    });
+    
+    // Add double-click to restore overlay
+    document.querySelectorAll('.works-showcase-item').forEach(item => {
+        item.addEventListener('dblclick', (e) => {
+            if (item.classList.contains('overlay-removed')) {
+                item.classList.remove('overlay-removed');
+            }
         });
     });
 }

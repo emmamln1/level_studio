@@ -3,6 +3,7 @@
     emailjs.init("b7GDWdZ4Eu-Xc5PFL"); // Replace with your actual EmailJS public key
 })();
 
+
 // Custom Cursor Implementation
 class CustomCursor {
     constructor() {
@@ -52,7 +53,7 @@ class CustomCursor {
         });
         
         // Interactive elements hover effects
-        const interactiveElements = 'a, button, input, textarea, select, [role="button"], .clickable, .phone-button, .carousel-dot, .dot, .nav-link';
+        const interactiveElements = 'a, button, input, textarea, select, [role="button"], .clickable, .carousel-dot, .dot, .nav-link';
         
         document.addEventListener('mouseover', (e) => {
             if (e.target.matches(interactiveElements) || e.target.closest(interactiveElements)) {
@@ -594,7 +595,7 @@ function initializeAllImageCarousels() {
     });
 }
 
-// Animated Counters (About Section) - Fixed to trigger every scroll
+// Odometer-style Rolling Counters (About Section)
 function initAboutCounters() {
     const statsSection = document.getElementById('aboutStats');
     if (!statsSection) {
@@ -604,44 +605,71 @@ function initAboutCounters() {
     const numbers = statsSection.querySelectorAll('.stat-number');
     let isAnimating = false;
 
-    function animateValue(el, target, duration = 2000) {
-        const suffix = el.getAttribute('data-suffix') || '';
-        let step;
+    function createDigitStructure(element, targetValue) {
+        const suffix = element.getAttribute('data-suffix') || '';
+        const targetStr = targetValue.toString();
+        element.innerHTML = '';
         
-        // Определяем шаг в зависимости от целевого значения
-        if (target === 300) {
-            step = 10;
-        } else if (target === 2000) {
-            step = 100;
-        } else if (target === 7) {
-            step = 1;
-        } else {
-            step = 1; // По умолчанию
-        }
-        
-        let current = 0;
-        const totalSteps = Math.ceil(target / step);
-        const stepDuration = duration / totalSteps;
-        
-        function tick() {
-            current += step;
-            if (current >= target) {
-                current = target;
+        // Create digit containers for each digit
+        for (let i = 0; i < targetStr.length; i++) {
+            const digitContainer = document.createElement('div');
+            digitContainer.className = 'digit-container';
+            
+            const digitRoll = document.createElement('div');
+            digitRoll.className = 'digit-roll';
+            
+            // Create digits 0-9 for rolling effect
+            for (let j = 0; j <= 9; j++) {
+                const digit = document.createElement('div');
+                digit.className = 'digit';
+                digit.textContent = j;
+                digitRoll.appendChild(digit);
             }
             
-            el.textContent = current + suffix;
-            
-            if (current < target) {
-                setTimeout(tick, stepDuration);
-            }
+            digitContainer.appendChild(digitRoll);
+            element.appendChild(digitContainer);
         }
         
-        tick();
+        // Add suffix if exists
+        if (suffix) {
+            const suffixSpan = document.createElement('span');
+            suffixSpan.className = 'stat-suffix';
+            suffixSpan.textContent = suffix;
+            element.appendChild(suffixSpan);
+        }
     }
 
-    function resetCounters() {
+    function animateDigitRoll(digitRoll, targetDigit, delay = 0) {
+        setTimeout(() => {
+            const translateY = -targetDigit * 1.2; // 1.2em per digit
+            digitRoll.style.transform = `translateY(${translateY}em)`;
+        }, delay);
+    }
+
+    function startRollingAnimation(element, targetValue) {
+        const targetStr = targetValue.toString();
+        const digitContainers = element.querySelectorAll('.digit-container');
+        
+        // Animate each digit with staggered timing
+        digitContainers.forEach((container, index) => {
+            const digitRoll = container.querySelector('.digit-roll');
+            const targetDigit = parseInt(targetStr[index]);
+            const delay = index * 100; // Stagger each digit by 100ms
+            
+            animateDigitRoll(digitRoll, targetDigit, delay);
+        });
+    }
+
+    function initializeCounters() {
         numbers.forEach(el => {
-            el.textContent = '0';
+            const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+            createDigitStructure(el, target);
+            
+            // Reset all digits to 0 initially
+            const digitRolls = el.querySelectorAll('.digit-roll');
+            digitRolls.forEach(roll => {
+                roll.style.transform = 'translateY(0)';
+            });
         });
     }
 
@@ -649,32 +677,32 @@ function initAboutCounters() {
         if (isAnimating) return;
         isAnimating = true;
         
-        // Reset all counters to 0 first
-        resetCounters();
-        
         numbers.forEach((el, index) => {
             const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-            // Add delay for staggered effect
+            // Add delay for staggered effect between different stats
             setTimeout(() => {
-                animateValue(el, target);
+                startRollingAnimation(el, target);
             }, index * 200);
         });
         
         // Reset animation flag after animation completes
         setTimeout(() => {
             isAnimating = false;
-        }, 2500);
+        }, 2000);
     }
 
-    let hasAnimated = false; // Флаг для отслеживания выполнения анимации
+    // Initialize the digit structure
+    initializeCounters();
+
+    let hasAnimated = false;
     
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !hasAnimated) {
                     startAnimation();
-                    hasAnimated = true; // Помечаем что анимация выполнена
-                    observer.unobserve(entry.target); // Отключаем наблюдение
+                    hasAnimated = true;
+                    observer.unobserve(entry.target);
                 }
             });
         }, { 
@@ -1052,3 +1080,43 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.project-card').forEach(card => {
     observer.observe(card);
 });
+
+
+(function() {
+    // Get saved language from localStorage
+    const savedLanguage = localStorage.getItem('level-studio-language') || 'arm';
+    
+    // Map internal codes to native language display
+    const displayMap = {
+        'arm': 'Հայ',
+        'rus': 'Рус',
+        'eng': 'Eng'
+    };
+    
+    // Map internal codes to data-lang attributes for matching
+    const dataLangMap = {
+        'arm': 'ARM',
+        'rus': 'RUS',
+        'eng': 'ENG'
+    };
+    
+    const displayLang = displayMap[savedLanguage] || 'Հայ';
+    const dataLang = dataLangMap[savedLanguage] || 'ARM';
+    
+    // Update the language display immediately when DOM loads
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentLanguageSpan = document.getElementById('currentLanguageDisplay');
+        if (currentLanguageSpan) {
+            currentLanguageSpan.textContent = displayLang;
+        }
+        
+        // Update active state in dropdown options
+        const languageOptions = document.querySelectorAll('.language-option');
+        languageOptions.forEach(option => {
+            option.classList.remove('active');
+            if (option.dataset.lang === dataLang) {
+                option.classList.add('active');
+            }
+        });
+    });
+})();

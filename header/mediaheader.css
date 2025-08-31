@@ -176,7 +176,7 @@
     /* Compact hamburger - force visible bars */
     .mobile-menu-btn {
         width: 36px;
-        height: 24px;
+        height: 36px;
         position: relative;
         background: transparent;
     }
@@ -190,7 +190,7 @@
         transform: translateX(-50%);
         width: 18px;
         height: 2px;
-        background: linear-gradient(45deg, var(--primary-red), var(--primary-green));
+        background: white;
         border-radius: 1px;
         transition: all 0.3s ease;
     }
@@ -203,7 +203,7 @@
         transform: translateX(-50%);
         width: 18px;
         height: 2px;
-        background: linear-gradient(45deg, var(--primary-red), var(--primary-green));
+        background: white;
         border-radius: 1px;
         transition: all 0.3s ease;
     }
@@ -216,7 +216,7 @@
         transform: translate(-50%, -50%);
         width: 18px;
         height: 2px;
-        background: linear-gradient(45deg, var(--primary-red), var(--primary-green));
+        background: white;
         border-radius: 1px;
         display: block;
     }

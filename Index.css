@@ -22,6 +22,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Noto Sans Armenian', 'Sylfaen', 'Arial Unicode MS', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 1px;
 }
 
 
@@ -128,74 +130,132 @@ body {
     }
 }
 
-
-/* Fixed Phone Icon Styles */
-.fixed-phone-icon {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1000;
+/* Odometer-style Rolling Counter Animations */
+.stat-number {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 1.2em;
+    line-height: 1.2em;
+    font-weight: 900;
+    font-size: 3rem;
 }
 
-.phone-button {
+.digit-container {
+    position: relative;
+    display: inline-block;
+    width: 0.6em;
+    height: 1.2em;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.digit-roll {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    flex-direction: column;
+}
+
+.digit {
+    height: 1.2em;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #00ff00, #ff0000);
-    border-radius: 50%;
-    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);
+    color: #ff0000;
+    text-shadow: 0 2px 4px rgb(255, 0, 0);
+}
+
+.stat-suffix {
+    color: #ff0000;
+    font-weight: 900;
+    font-size: 3rem;
+    text-shadow:  rgb(255, 0, 0);
+    margin-left: 0.1em;
+}
+
+/* Staggered animation delays for multiple digits */
+.digit-container:nth-child(1) .digit-roll { transition-delay: 0ms; }
+.digit-container:nth-child(2) .digit-roll { transition-delay: 100ms; }
+.digit-container:nth-child(3) .digit-roll { transition-delay: 200ms; }
+.digit-container:nth-child(4) .digit-roll { transition-delay: 300ms; }
+
+/* Enhanced stat card styling for better visual impact */
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px 20px;
+    text-align: center;
     transition: all 0.3s ease;
-    text-decoration: none;
-    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
-.phone-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(255, 0, 0, 0.6);
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+    transition: left 0.6s ease;
 }
 
-.phone-button svg {
-    color: #000;
-    transition: transform 0.3s ease;
+.stat-card:hover::before {
+    left: 100%;
 }
 
-.phone-button:hover svg {
-    transform: rotate(15deg);
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
 }
 
-/* Responsive adjustments for phone icon */
+.stat-label {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments for counters */
 @media (max-width: 768px) {
-    .fixed-phone-icon {
-        bottom: 20px;
-        right: 20px;
+    .stat-number {
+        font-size: 2.5rem;
     }
     
-    .phone-button {
-        width: 35px;
-        height: 35px;
+    .digit-container {
+        width: 0.55em;
     }
     
-    .phone-button svg {
-        width: 20px;
-        height: 20px;
+    .stat-card {
+        padding: 20px 15px;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
-    .fixed-phone-icon {
-        bottom: 15px;
-        right: 15px;
+    .stat-number {
+        font-size: 2rem;
     }
     
-    .phone-button {
-        width: 30px;
-        height: 30px;
+    .digit-container {
+        width: 0.5em;
     }
     
-    .phone-button svg {
-        width: 18px;
-        height: 18px;
+    .stat-card {
+        padding: 15px 10px;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
     }
 }

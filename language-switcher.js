@@ -179,15 +179,27 @@ class LanguageSwitcher {
     }
 
     /**
-     * Преобразование внутреннего кода в код для интерфейса
+     * Преобразование внутреннего кода в нативное отображение языка
      */
     getDisplayLang(langCode) {
         const displayMap = {
+            'arm': 'Հայ',
+            'rus': 'Рус',
+            'eng': 'Eng'
+        };
+        return displayMap[langCode] || 'Հայ';
+    }
+
+    /**
+     * Преобразование внутреннего кода в код для data-lang атрибутов
+     */
+    getDataLang(langCode) {
+        const dataLangMap = {
             'arm': 'ARM',
             'rus': 'RUS',
             'eng': 'ENG'
         };
-        return displayMap[langCode] || 'ARM';
+        return dataLangMap[langCode] || 'ARM';
     }
 
     /**
@@ -240,6 +252,7 @@ class LanguageSwitcher {
 
         const { currentLanguageSpan, languageOptions } = this.dropdownElements;
         const displayLang = this.getDisplayLang(this.currentLanguage);
+        const dataLang = this.getDataLang(this.currentLanguage);
 
         // Update current language display
         if (currentLanguageSpan) {
@@ -249,7 +262,7 @@ class LanguageSwitcher {
         // Update active state in dropdown options
         languageOptions.forEach(option => {
             option.classList.remove('active');
-            if (option.dataset.lang === displayLang) {
+            if (option.dataset.lang === dataLang) {
                 option.classList.add('active');
             }
         });
