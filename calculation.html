@@ -988,11 +988,11 @@
                     
                     <div class="price-section">
                         <div class="base-price-text">Հիմնական գին</div>
-                        <div class="base-price"><span id="base-price">40,000</span> դրամ</div>
+                        <div class="base-price"><span id="base-price">0</span> դրամ</div>
                         
                         <div class="final-price-container">
                             <div style="font-size: 25px;">Արժեքը ըստ գործակցի</div>
-                            <div class="final-price" id="final-price">40,000</div>
+                            <div class="final-price" id="final-price">0</div>
                             <div class="currency">դրամ</div>
                         </div>
                     </div>
@@ -1057,7 +1057,7 @@
         }
 
         function calculatePrice() {
-            let basePrice = 40000;
+            let basePrice = 0;
             let servicesTotal = 0;
             
             const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
@@ -1120,11 +1120,16 @@
             emailjs.init(EMAILJS_CONFIG.publicKey);
         })();
 
-        // Device detection function
+        // Enhanced device detection function
         function isMobileDevice() {
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
                    (navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && /MacIntel/.test(navigator.platform)) ||
                    window.innerWidth <= 768;
+        }
+
+        // Get device type for email template
+        function getDeviceType() {
+            return isMobileDevice() ? 'mobile' : 'desktop';
         }
 
         // Show message to user
@@ -1142,7 +1147,7 @@
             }
         }
 
-        // Collect all form data
+        // Enhanced form data collection with comprehensive details
         function collectFormData() {
             const data = {
                 selectedServices: [],
@@ -1151,6 +1156,7 @@
                 finalPrice: 0,
                 factors: {},
                 breakdown: {},
+                deviceType: getDeviceType(),
                 timestamp: new Date().toLocaleString('hy-AM', {
                     timeZone: 'Asia/Yerevan',
                     year: 'numeric',
@@ -1161,14 +1167,17 @@
                 })
             };
 
-            // Collect selected services
+            // Collect selected services with detailed information
             const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
             checkboxes.forEach(checkbox => {
                 if (checkbox && checkbox.id) {
                     const label = document.querySelector(`label[for="${checkbox.id}"]`);
                     const price = parseInt(checkbox.dataset.price) || 0;
+                    const serviceName = label && label.textContent ? label.textContent.trim() : checkbox.id;
+                    
                     data.selectedServices.push({
-                        name: label && label.textContent ? label.textContent.trim() : checkbox.id,
+                        id: checkbox.id,
+                        name: serviceName,
                         price: price,
                         formattedPrice: price.toLocaleString() + ' դրամ'
                     });
@@ -1176,38 +1185,44 @@
                 }
             });
 
-            // Get base price
-            const basePriceEl = document.getElementById('base-price');
-            data.basePrice = basePriceEl ? parseInt(basePriceEl.textContent.replace(/,/g, '')) : 40000;
+            // Calculate base price (minimum 40,000 if no services selected)
+            data.basePrice = data.totalServicesPrice > 0 ? data.totalServicesPrice : 40000;
 
-            // Get final price
+            // Get final calculated price from UI
             const finalPriceEl = document.getElementById('final-price');
             data.finalPrice = finalPriceEl ? parseInt(finalPriceEl.textContent.replace(/,/g, '')) : data.basePrice;
 
-            // Collect factors
+            // Collect factor selections with both values and labels
             const complexityEl = document.querySelector('input[name="complexity"]:checked');
             const urgencyEl = document.querySelector('input[name="urgency"]:checked');
             const scopeEl = document.querySelector('input[name="scope"]:checked');
 
+            // Get factor labels from the radio button labels
+            const getFactorLabel = (radioEl) => {
+                if (!radioEl) return null;
+                const label = document.querySelector(`label[for="${radioEl.id}"]`);
+                return label ? label.textContent.trim() : null;
+            };
+
             data.factors = {
                 complexity: {
                     value: complexityEl ? parseFloat(complexityEl.value) : 1,
-                    label: complexityEl && complexityEl.nextElementSibling && complexityEl.nextElementSibling.nextElementSibling 
-                           ? complexityEl.nextElementSibling.nextElementSibling.textContent.trim() : 'Պարզ (x1.0)'
+                    label: getFactorLabel(complexityEl) || 'Պարզ (x1.0)',
+                    id: complexityEl ? complexityEl.id : 'simple'
                 },
                 urgency: {
                     value: urgencyEl ? parseFloat(urgencyEl.value) : 1,
-                    label: urgencyEl && urgencyEl.nextElementSibling && urgencyEl.nextElementSibling.nextElementSibling 
-                           ? urgencyEl.nextElementSibling.nextElementSibling.textContent.trim() : 'Ստանդարտ (x1.0)'
+                    label: getFactorLabel(urgencyEl) || 'Ստանդարտ (x1.0)',
+                    id: urgencyEl ? urgencyEl.id : 'standard'
                 },
                 scope: {
                     value: scopeEl ? parseFloat(scopeEl.value) : 1,
-                    label: scopeEl && scopeEl.nextElementSibling && scopeEl.nextElementSibling.nextElementSibling 
-                           ? scopeEl.nextElementSibling.nextElementSibling.textContent.trim() : 'Փոքր (x1.0)'
+                    label: getFactorLabel(scopeEl) || 'Փոքր (x1.0)',
+                    id: scopeEl ? scopeEl.id : 'small'
                 }
             };
 
-            // Collect breakdown values
+            // Collect current breakdown display values
             data.breakdown = {
                 servicesTotal: document.getElementById('services-total')?.textContent || '0 դրամ',
                 complexityFactor: document.getElementById('complexity-factor')?.textContent || 'x1.0',
@@ -1218,7 +1233,7 @@
             return data;
         }
 
-        // Format email content
+        // Format email content for main message
         function formatEmailContent(data) {
             let content = `🚀 Level Studio - Ծառայությունների Հարցում\n\n`;
             content += `📅 Ամսաթիվ: ${data.timestamp}\n\n`;
@@ -1247,21 +1262,97 @@
             return content;
         }
 
-        // Send email via EmailJS
+        // Format services list for email template
+        function formatServicesForEmail(services) {
+            if (services.length === 0) {
+                return 'Հիմնական ծառայություն - 40,000 դրամ';
+            }
+            
+            return services.map(service => 
+                `${service.name} - ${service.formattedPrice}`
+            ).join('\n');
+        }
+
+        // Format calculation breakdown for email
+        function formatCalculationBreakdown(data) {
+            let breakdown = `Ծառայությունների գին: ${data.totalServicesPrice > 0 ? data.totalServicesPrice.toLocaleString() : data.basePrice.toLocaleString()} դրամ\n`;
+            breakdown += `Բարդության գործակից: ${data.factors.complexity.label}\n`;
+            breakdown += `Ժամկետի գործակից: ${data.factors.urgency.label}\n`;
+            breakdown += `Ծավալի գործակից: ${data.factors.scope.label}\n`;
+            breakdown += `\nՎերջնական գին: ${data.finalPrice.toLocaleString()} դրամ`;
+            return breakdown;
+        }
+
+        // Enhanced EmailJS send function with comprehensive template parameters
         async function sendEmail(formData) {
             const templateParams = {
-                to_email: 'level.studio.am@gmail.com', // Your email
+                // Basic email info
+                to_email: 'emma.em0719@gmail.com',
                 from_name: 'Level Studio Calculator',
                 subject: `Նոր հարցում - ${formData.finalPrice.toLocaleString()} դրամ`,
+                
+                // Main message content
                 message: formatEmailContent(formData),
-                selected_services: formData.selectedServices.map(s => s.name).join(', ') || 'Հիմնական ծառայություն',
-                total_price: formData.finalPrice.toLocaleString() + ' դրամ',
-                complexity_factor: formData.factors.complexity.label,
-                urgency_factor: formData.factors.urgency.label,
-                scope_factor: formData.factors.scope.label,
-                timestamp: formData.timestamp,
+                
+                // Required template parameters
+                selected_services: formatServicesForEmail(formData.selectedServices),
+                base_total: (formData.totalServicesPrice > 0 ? formData.totalServicesPrice : formData.basePrice).toLocaleString() + ' դրամ',
+                final_price: formData.finalPrice.toLocaleString() + ' դրամ',
+                complexity_selection: formData.factors.complexity.label,
+                urgency_selection: formData.factors.urgency.label,
+                scope_selection: formData.factors.scope.label,
+                inquiry_date: formData.timestamp,
+                device_type: formData.deviceType,
+                
+                // Additional structured data
+                services_list: formData.selectedServices.map(s => s.name).join(', ') || 'Հիմնական ծառայություն',
+                services_count: formData.selectedServices.length || 1,
+                
+                // Detailed pricing breakdown
                 base_price: formData.basePrice.toLocaleString() + ' դրամ',
-                services_count: formData.selectedServices.length || 1
+                services_total: (formData.totalServicesPrice > 0 ? formData.totalServicesPrice : formData.basePrice).toLocaleString() + ' դրամ',
+                total_price: formData.finalPrice.toLocaleString() + ' դրամ',
+                
+                // Factor details with values
+                complexity_factor: formData.factors.complexity.label,
+                complexity_value: 'x' + formData.factors.complexity.value,
+                complexity_multiplier: formData.factors.complexity.value,
+                urgency_factor: formData.factors.urgency.label,
+                urgency_value: 'x' + formData.factors.urgency.value,
+                urgency_multiplier: formData.factors.urgency.value,
+                scope_factor: formData.factors.scope.label,
+                scope_value: 'x' + formData.factors.scope.value,
+                scope_multiplier: formData.factors.scope.value,
+                
+                // Complete calculation breakdown
+                calculation_breakdown: formatCalculationBreakdown(formData),
+                
+                // Timestamp variations
+                timestamp: formData.timestamp,
+                inquiry_date_only: new Date().toLocaleDateString('hy-AM'),
+                inquiry_time_only: new Date().toLocaleTimeString('hy-AM'),
+                
+                // Individual service details (up to 6 services)
+                service_1: formData.selectedServices[0]?.name || '',
+                service_1_price: formData.selectedServices[0]?.formattedPrice || '',
+                service_2: formData.selectedServices[1]?.name || '',
+                service_2_price: formData.selectedServices[1]?.formattedPrice || '',
+                service_3: formData.selectedServices[2]?.name || '',
+                service_3_price: formData.selectedServices[2]?.formattedPrice || '',
+                service_4: formData.selectedServices[3]?.name || '',
+                service_4_price: formData.selectedServices[3]?.formattedPrice || '',
+                service_5: formData.selectedServices[4]?.name || '',
+                service_5_price: formData.selectedServices[4]?.formattedPrice || '',
+                service_6: formData.selectedServices[5]?.name || '',
+                service_6_price: formData.selectedServices[5]?.formattedPrice || '',
+                
+                // Currency and formatting
+                currency: 'դրամ',
+                currency_symbol: '֏',
+                
+                // Contact info
+                phone_number: '+374 43 043 003',
+                company_name: 'Level Studio'
             };
 
             try {
@@ -1272,9 +1363,11 @@
                 );
                 
                 console.log('Email sent successfully:', response);
+                console.log('Template parameters sent:', templateParams);
                 return { success: true, response };
             } catch (error) {
                 console.error('Email sending failed:', error);
+                console.error('Failed template parameters:', templateParams);
                 return { success: false, error };
             }
         }
@@ -1292,27 +1385,20 @@
             return { valid: true };
         }
 
-        // Main contact button handler
+        // Enhanced contact button handler for desktop and mobile
         async function handleContactClick() {
             const button = document.getElementById('contact-btn');
+            const isOnMobile = isMobileDevice();
             
-            if (isMobileDevice()) {
-                // Mobile behavior: Open phone dialer
-                const phoneNumber = '+37443043003';
-                window.location.href = `tel:${phoneNumber}`;
-                return;
-            }
-            
-            // Desktop behavior: Collect data and send email
             try {
                 // Disable button and show loading
                 button.disabled = true;
-                showMessage('Տվյալների ուղարկում...', 'loading');
+                showMessage(isOnMobile ? '...' : '...', 'loading');
                 
-                // Collect form data
+                // Collect comprehensive form data
                 const formData = collectFormData();
                 
-                // Validate data
+                // Validate collected data
                 const validation = validateFormData(formData);
                 if (!validation.valid) {
                     showMessage(validation.message, 'error');
@@ -1320,23 +1406,60 @@
                     return;
                 }
                 
-                // Send email
-                const result = await sendEmail(formData);
+                // Send email via EmailJS (for both desktop and mobile)
+                console.log('Sending email with form data:', formData);
+                const emailResult = await sendEmail(formData);
                 
-                if (result.success) {
+                if (!emailResult.success) {
+                    throw new Error(emailResult.error?.text || 'EmailJS ուղարկման սխալ');
+                }
+                
+                // Handle success based on device type
+                if (isOnMobile) {
+                    // Mobile: Show success message then open phone dialer
+                    showMessage('Հարցումը ուղարկվեց! Հեռախոսի հավելվածը բացվում է...', 'success');
+                    
+                    // Wait a moment for user to see the success message
+                    setTimeout(() => {
+                        const phoneNumber = '+37443043003';
+                        window.location.href = `tel:${phoneNumber}`;
+                    }, 1500);
+                    
+                } else {
+                    // Desktop: Show success message and scroll to contact section
                     showMessage('Ձեր հարցումը հաջողությամբ ուղարկվեց! Մենք շուտով կկապվենք ձեզ հետ:', 'success');
                     
-                    // Optional: Redirect to contact section after successful submission
+                    // Scroll to contact section or redirect after delay
                     setTimeout(() => {
-                        window.location.href = 'Index.html#contact';
+                        // Try to scroll to contact section first
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            // Fallback: redirect to main page contact section
+                            window.location.href = 'Index.html#contact';
+                        }
                     }, 2000);
-                } else {
-                    throw new Error(result.error?.text || 'Անհայտ սխալ');
                 }
                 
             } catch (error) {
                 console.error('Contact submission error:', error);
-                showMessage('Սխալ է տեղի ունեցել: Խնդրում ենք փորձել կրկին կամ զանգահարել +374 43 043 003', 'error');
+                
+                // Device-specific error messages
+                const errorMessage = isOnMobile 
+                    ? 'Սխալ է տեղի ունեցել: Խնդրում ենք զանգահարել +374 43 043 003'
+                    : 'Սխալ է տեղի ունեցել: Խնդրում ենք փորձել կրկին կամ զանգահարել +374 43 043 003';
+                    
+                showMessage(errorMessage, 'error');
+                
+                // On mobile, still offer phone option after error
+                if (isOnMobile) {
+                    setTimeout(() => {
+                        const phoneNumber = '+37443043003';
+                        window.location.href = `tel:${phoneNumber}`;
+                    }, 3000);
+                }
+                
             } finally {
                 button.disabled = false;
             }
