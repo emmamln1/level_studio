@@ -104,6 +104,7 @@
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
         <link rel="stylesheet" href="Index.css">
+        <link rel="stylesheet" href="typography.css">
 
         <link rel="stylesheet" href="header/header.css">
         <link rel="stylesheet" href="header/mediaheader.css">
@@ -366,7 +367,7 @@
                 </a>
                 
                 <!-- Calculate Button -->
-                <button class="header-calculate-btn" aria-label="Հաշվարկ">
+                <button class="header-calculate-btn" aria-label="Հաշվարկ" onclick="window.location.href='calculation.html'">
                     <span>Հաշվարկ</span>
                 </button>
             </div>
@@ -385,17 +386,17 @@
             <div class="home-background-overlay"></div>
             <div class="container">
                 <div class="content-center">
-                    <h1 class="main-title">
+                    <h1 class="hero-main-title main-title">
                         <span class="highlight">Level Studio</span>
                     </h1>
                    
-                        <span data-translate="home.subtitle" style="font-size: 5vw;">Level Up Your Brand</span>
+                        <span class="hero-subtitle" data-translate="home.subtitle">Առաջընթաց ձեր բրենդի հետ</span>
                    
                     <div class="divider"></div>
-                    <p class="description" data-translate="home.description">
+                    <p class="hero-description description" data-translate="home.description">
                         Ժամանակակից տեխնոլոգիական լուծումներ և ռազմավարական մարքեթինգ: Ապահովում ենք ձեր բիզնեսի կայուն աճը և տալիս մրցակցային առավելություն:
                     </p>
-                    <a href="#contact" class="badge" data-translate="home.contactBtn">Կապ մեզ հետ</a>
+                    <a href="#contact" class="hero-cta-button badge" data-translate="home.contactBtn">Կապ մեզ հետ</a>
                 </div>
     
             </div>
@@ -405,12 +406,12 @@
             <div class="about-container">
                 <div class="about-left">
                     <div class="section-header">
-                        <h1 class="main-title">
+                        <h1 class="about-main-title main-title">
                             <span data-translate="about.title">Մեր մասին</span> 
                         </h1>
-                        <span class="highlight" data-translate="about.subtitle" style="font-size: 5vw;">LEVEL STUDIO</span>
+                        <span class="about-subtitle highlight" data-translate="about.subtitle">LEVEL STUDIO</span>
                         <div class="divider"></div>
-                        <p class="description" data-translate="about.description">
+                        <p class="about-description description" data-translate="about.description">
                             Level Studio-ն իր գործունեությունը սկսել է դեռևս 2018
                             թվականին:
                         </p>
@@ -418,16 +419,16 @@
 
                     <div class="stats-grid" id="aboutStats">
                         <div class="stat-card">
-                            <div class="stat-number" data-target="300">0</div>
-                            <div class="stat-label" data-translate="about.stats.projects">Նախագիծ</div>
+                            <div class="stat-counter-number stat-number" data-target="300">0</div>
+                            <div class="stat-counter-label stat-label" data-translate="about.stats.projects">Նախագիծ</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-number" data-target="2000">0</div>
-                            <div class="stat-label" data-translate="about.stats.partners">Գործընկեր</div>
+                            <div class="stat-counter-number stat-number" data-target="2000">0</div>
+                            <div class="stat-counter-label stat-label" data-translate="about.stats.partners">Գործընկեր</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-number" data-target="7">0</div>
-                            <div class="stat-label" data-translate="about.stats.experience">Տարվա փորձ</div>
+                            <div class="stat-counter-number stat-number" data-target="7">0</div>
+                            <div class="stat-counter-label stat-label" data-translate="about.stats.experience">Տարվա փորձ</div>
                         </div>
                     </div>
                 </div>
@@ -463,12 +464,12 @@
 
                 <div class="text-column left-text">
                     <div class="text-block">
-                        <p data-translate="about.text1">2022 թվականին մենք ստեղծեցինք մեր սեփական ֆոտո-ստուդիան, որը
+                        <p class="about-body-text" data-translate="about.text1">2022 թվականին մենք ստեղծեցինք մեր սեփական ֆոտո-ստուդիան, որը
                             լրացրեց ու հարստացրեց մեր
                             ծառայությունները։</p>
                     </div>
                     <div class="text-block">
-                        <p data-translate="about.text2"><span class="highlight-text">Level Studio-ն</span> առաջարկում է
+                        <p class="about-body-text" data-translate="about.text2"><span class="highlight-text">Level Studio-ն</span> առաջարկում է
                             նաև դրոն նկարահանումներ և այլ
                             պրոֆեսիոնալ վիզուալ լուծումներ, որոնք մեր հաճախորդներին տալիս են առավելություն՝ իրենց բրենդը
                             ներկայացնելու ժամանակակից ու տպավորիչ ձևով:</p>
@@ -477,14 +478,14 @@
                 </div>
                 <div class="text-column right-text">
                     <div class="text-block">
-                        <p data-translate="about.text3">Այժմ մեր բոլոր վիզուալ լուծումները ծնվում են հենց մեր
+                        <p class="about-body-text" data-translate="about.text3">Այժմ մեր բոլոր վիզուալ լուծումները ծնվում են հենց մեր
                             ստուդիայում ապահովելով <span class="highlight-text">բարձր որակ</span>, <span
                                 class="highlight-text">ամբողջականություն</span> և <span
                                 class="highlight-text">ստեղծագործ</span>
                             մոտեցում յուրաքանչյուր նախագծում։</p>
                     </div>
                     <div class="text-block">
-                        <p data-translate="about.text4"><span class="highlight-text">Level Studio-ն
+                        <p class="about-body-text" data-translate="about.text4"><span class="highlight-text">Level Studio-ն
                             </span>այսօր
                             այն վայրն է, որտեղ գաղափարները դառնում են իրականություն, իսկ բրենդները՝հիշվող:</p>
                     </div>
@@ -494,7 +495,7 @@
         <section class="marketing-services-container" id="xaiQuantumContainer">
             <div class="services-animation-field" id="xaiNebulaField"></div>
             <div class="services-header">
-                <h2 class="works-showcase-title" data-translate="services.title">
+                <h2 class="services-main-title works-showcase-title" data-translate="services.title">
                     Մեր <span>ծառայությունները</span>
                 </h2>
                 <div class="services-divider"></div>
@@ -503,12 +504,12 @@
                 <div class="marketing-services-carousel" id="servicesCarousel">
                     <!-- Service Card 01 -->
                     <div class="service-card-item">
-                        <div class="service-icon-head">01</div>
+                        <div class="service-card-number service-icon-head">01</div>
                         <div class="service-card-body">
-                            <h3 class="service-title-heading" data-translate="services.items.01.title">Թվային մարքեթինգ
+                            <h3 class="service-card-title service-title-heading" data-translate="services.items.01.title">Թվային մարքեթինգ
                             </h3>
                             <div class="service-features-list">
-                                <span class="service-feature-tag"
+                                <span class="service-tag-text service-feature-tag"
                                     data-translate="services.items.01.features.0">SMM</span>
                                 <span class="service-feature-tag" data-translate="services.items.01.features.1">SMM
                                     դասընթացներ</span>
@@ -697,14 +698,14 @@
 
                     <!-- Service Card 11 -->
                     <div class="service-card-item">
-                        <div class="service-icon-head">11</div>
+                        <div class="service-card-number service-icon-head">11</div>
                         <div class="service-card-body">
-                            <h3 class="service-title-heading" data-translate="services.items.11.title">Վեբ դասընթացներ
+                            <h3 class="service-card-title service-title-heading" data-translate="services.items.11.title">Վեբ դասընթացներ
                                 լիցենզիայով</h3>
                             <div class="service-features-list">
-                                <span class="service-feature-tag"
+                                <span class="service-tag-text service-feature-tag"
                                     data-translate="services.items.11.features.0">Մասնագիտական դասընթացներ</span>
-                                <span class="service-feature-tag"
+                                <span class="service-tag-text service-feature-tag"
                                     data-translate="services.items.11.features.1">Սերտիֆիկատ</span>
                             </div>
                         </div>
@@ -716,39 +717,39 @@
         <section class="works-showcase-section" id="worksShowcaseSection">
             <div class="works-showcase-container">
                 <div class="works-showcase-header">
-                    <h2 class="works-showcase-title">
+                    <h2 class="portfolio-main-title works-showcase-title">
                         <span data-translate="portfolio.title">Պորտֆոլիո</span>
                     </h2>
                     <div class="works-showcase-divider"></div>
-                    <p class="works-showcase-description" data-translate="portfolio.description">
+                    <p class="portfolio-description works-showcase-description" data-translate="portfolio.description">
                         Հարյուրավոր բրենդներ վստահել են մեզ իրենց մարքեթինգային և դիզայնի անհրաժեշտություններն
                         ապահովելու համար
                     </p>
                 </div>
 
                 <div class="works-categories-display">
-                    <div class="category-item" data-translate="categories.designLines">B2C</div>
-                    <div class="category-item" data-translate="categories.fashion">Նորաձևություն</div>
-                    <div class="category-item" data-translate="categories.horeca">Ռեստորաններ և հյուրանոցներ</div>
-                    <div class="category-item" data-translate="categories.floral">Ծաղկային ոլորտ</div>
-                    <div class="category-item" data-translate="categories.kids">Մանկական արտադրանք</div>
-                    <div class="category-item" data-translate="categories.medical">Առողջապահական ոլորտ</div>
-                    <div class="category-item" data-translate="categories.fitness">Ֆիթնես և մարզասրահներ</div>
-                    <div class="category-item" data-translate="categories.retail">B2C</div>
-                    <div class="category-item" data-translate="categories.b2b">B2B</div>
-                    <div class="category-item" data-translate="categories.personal">Անձնական բրենդինգ</div>
-                    <div class="category-item" data-translate="categories.beauty">Գեղեցկության ոլորտ</div>
-                    <div class="category-item" data-translate="categories.food">Սննդամթերք</div>
-                    <div class="category-item" data-translate="categories.technology">Տեխնոլոգիական ընկերություններ
+                    <div class="category-item portfolio-category-text" data-translate="categories.designLines">B2C</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.fashion">Նորաձևություն</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.horeca">Ռեստորաններ և հյուրանոցներ</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.floral">Ծաղկային ոլորտ</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.kids">Մանկական արտադրանք</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.medical">Առողջապահական ոլորտ</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.fitness">Ֆիթնես և մարզասրահներ</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.retail">B2C</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.b2b">B2B</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.personal">Անձնական բրենդինգ</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.beauty">Գեղեցկության ոլորտ</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.food">Սննդամթերք</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.technology">Տեխնոլոգիական ընկերություններ
                     </div>
-                    <div class="category-item" data-translate="categories.ecommerce">Էլեկտրոնային առևտուր</div>
-                    <div class="category-item" data-translate="categories.services">Ծառայություններ</div>
-                    <div class="category-item" data-translate="categories.manufacturing">Արտադրություն</div>
-                    <div class="category-item" data-translate="categories.consulting">Խորհրդատվական ծառայություններ
+                    <div class="category-item portfolio-category-text" data-translate="categories.ecommerce">Էլեկտրոնային առևտուր</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.services">Ծառայություններ</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.manufacturing">Արտադրություն</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.consulting">Խորհրդատվական ծառայություններ
                     </div>
-                    <div class="category-item" data-translate="categories.luxury">Պրեմիում բրենդներ</div>
-                    <div class="category-item" data-translate="categories.startup">Նոր բիզնես նախաձեռնություններ</div>
-                    <div class="category-item" data-translate="categories.nonprofit">Ոչ առևտրային կազմակերպություններ
+                    <div class="category-item portfolio-category-text" data-translate="categories.luxury">Պրեմիում բրենդներ</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.startup">Նոր բիզնես նախաձեռնություններ</div>
+                    <div class="category-item portfolio-category-text" data-translate="categories.nonprofit">Ոչ առևտրային կազմակերպություններ
                     </div>
                 </div>
 
@@ -763,28 +764,28 @@
                             <div class="portfolio-overlay" data-item="1">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="1" data-direction="prev">❮</button>
                             <button class="gallery-nav next" data-item="1" data-direction="next">❯</button>
                             <div class="image-counter">
-                                <span id="counter-1">1</span>/3
+                                <span class="counter-text" id="counter-1">1</span><span class="counter-text">/3</span>
                             </div>
                         </div>
                         <div class="works-showcase-content">
-                            <div class="works-showcase-category"
+                            <div class="portfolio-category-text works-showcase-category"
                                 data-translate="portfolio.items.armine_grigoryan.category">Անձնական բրենդինգ</div>
-                            <div class="works-showcase-company">ARMINE GRIGORYAN</div>
+                            <div class="portfolio-company-name works-showcase-company">ARMINE GRIGORYAN</div>
                             <div class="works-showcase-services">
-                                <span class="service-tag"
+                                <span class="portfolio-service-tag works-showcase-service-tag service-tag-text"
                                     data-translate="portfolio.items.armine_grigoryan.services.0">Անձնական
                                     բրենդինգ</span>
-                                <span class="service-tag"
+                                <span class="portfolio-service-tag service-tag"
                                     data-translate="portfolio.items.armine_grigoryan.services.1">Սոցիալական մեդիա
                                     մարքեթինգ</span>
-                                <span class="service-tag"
+                                <span class="portfolio-service-tag service-tag"
                                     data-translate="portfolio.items.armine_grigoryan.services.2">Բովանդակության
                                     ստեղծում</span>
                             </div>
@@ -802,8 +803,8 @@
                             <div class="portfolio-overlay" data-item="1">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="1" data-direction="prev">❮</button>
@@ -840,8 +841,8 @@
                             <div class="portfolio-overlay" data-item="2">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="2" data-direction="prev">❮</button>
@@ -878,8 +879,8 @@
                             <div class="portfolio-overlay" data-item="3">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="3" data-direction="prev">❮</button>
@@ -914,8 +915,8 @@
                             <div class="portfolio-overlay" data-item="4">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="4" data-direction="prev">❮</button>
@@ -951,8 +952,8 @@
                             <div class="portfolio-overlay" data-item="5">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="5" data-direction="prev">❮</button>
@@ -992,8 +993,8 @@
                             <div class="portfolio-overlay" data-item="6">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="6" data-direction="prev">❮</button>
@@ -1030,8 +1031,8 @@
                             <div class="portfolio-overlay" data-item="7">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="7" data-direction="prev">❮</button>
@@ -1068,8 +1069,8 @@
                             <div class="portfolio-overlay" data-item="8">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="8" data-direction="prev">❮</button>
@@ -1105,8 +1106,8 @@
                             <div class="portfolio-overlay" data-item="9">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="9" data-direction="prev">❮</button>
@@ -1142,8 +1143,8 @@
                             <div class="portfolio-overlay" data-item="10">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="10" data-direction="prev">❮</button>
@@ -1183,8 +1184,8 @@
                             <div class="portfolio-overlay" data-item="11">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="11" data-direction="prev">❮</button>
@@ -1221,8 +1222,8 @@
                             <div class="portfolio-overlay" data-item="12">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="12" data-direction="prev">❮</button>
@@ -1257,8 +1258,8 @@
                             <div class="portfolio-overlay" data-item="13">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="13" data-direction="prev">❮</button>
@@ -1292,8 +1293,8 @@
                             <div class="portfolio-overlay" data-item="14">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="14" data-direction="prev">❮</button>
@@ -1330,8 +1331,8 @@
                             <div class="portfolio-overlay" data-item="16">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="16" data-direction="prev">❮</button>
@@ -1369,8 +1370,8 @@
                             <div class="portfolio-overlay" data-item="17">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="17" data-direction="prev">❮</button>
@@ -1410,8 +1411,8 @@
                             <div class="portfolio-overlay" data-item="18">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="18" data-direction="prev">❮</button>
@@ -1451,8 +1452,8 @@
                             <div class="portfolio-overlay" data-item="19">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="19" data-direction="prev">❮</button>
@@ -1488,8 +1489,8 @@
                             <div class="portfolio-overlay" data-item="20">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="20" data-direction="prev">❮</button>
@@ -1526,8 +1527,8 @@
                             <div class="portfolio-overlay" data-item="21">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="21" data-direction="prev">❮</button>
@@ -1562,8 +1563,8 @@
                             <div class="portfolio-overlay" data-item="22">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="22" data-direction="prev">❮</button>
@@ -1630,8 +1631,8 @@
                             <div class="portfolio-overlay" data-item="1">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="1" data-direction="prev">❮</button>
@@ -1670,8 +1671,8 @@
                             <div class="portfolio-overlay" data-item="1">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="1" data-direction="prev">❮</button>
@@ -1706,8 +1707,8 @@
                             <div class="portfolio-overlay" data-item="1">
                                 <div class="portfolio-overlay-content">
                                     <div class="portfolio-overlay-icon">📸</div>
-                                    <div class="portfolio-overlay-text">View Portfolio</div>
-                                    <div class="portfolio-overlay-subtext">Hover to peek • Click to explore</div>
+                                    <div class="portfolio-overlay-text" data-translate="portfolio.overlayText">Տեսնել աշխատանքը</div>
+                                    <div class="portfolio-overlay-subtext" data-translate="portfolio.overlaySubtext">Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար</div>
                                 </div>
                             </div>
                             <button class="gallery-nav prev" data-item="1" data-direction="prev">❮</button>
@@ -1804,10 +1805,10 @@
                                     <img src="image/Partner/Boulevard/logo.webp" alt="Boulevard" loading="lazy">
                                 </div>
                                 <div class="business-partner-info">
-                                    <h3 class="business-partner-name">Boulevard</h3>
-                                    <div class="business-partner-field" data-translate="partners.items.boulevard.field">
+                                    <h3 class="partner-company-name">Boulevard</h3>
+                                    <div class="partner-field-text business-partner-field" data-translate="partners.items.boulevard.field">
                                         ՀՈՐԵԿԱ</div>
-                                    <p class="business-partner-description"
+                                    <p class="partner-description-text"
                                         data-translate="partners.items.boulevard.description">Ռեստորանային համալիր</p>
                                 </div>
                             </div>
@@ -1819,10 +1820,10 @@
                                         loading="lazy">
                                 </div>
                                 <div class="business-partner-info">
-                                    <h3 class="business-partner-name">Buniatyan Caviar</h3>
-                                    <div class="business-partner-field"
+                                    <h3 class="partner-company-name">Buniatyan Caviar</h3>
+                                    <div class="partner-field-text business-partner-field"
                                         data-translate="partners.items.buniatyan-caviar.field">ՀՈՐԵԿԱ</div>
-                                    <p class="business-partner-description"
+                                    <p class="partner-description-text"
                                         data-translate="partners.items.buniatyan-caviar.description">Պրեմիում իկրա և
                                         ծովամթերք</p>
                                 </div>

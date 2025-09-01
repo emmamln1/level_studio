@@ -34,7 +34,7 @@
 }
 
 .works-showcase-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: 2rem;
@@ -46,14 +46,12 @@
 /* Mobile responsive title */
 @media (max-width: 768px) {
     .works-showcase-title {
-        font-size: clamp(1.8rem, 4vw, 2.5rem) !important;
         letter-spacing: -1px !important;
     }
 }
 
 @media (max-width: 480px) {
     .works-showcase-title {
-        font-size: clamp(2rem, 3.5vw, 2rem) !important;
         letter-spacing: -0.5px !important;
     }
 }
@@ -75,7 +73,6 @@
 }
 
 .works-showcase-description {
-    font-size: 1.1rem;
     line-height: 1.6;
     color: #ccc;
     max-width: 600px;
@@ -97,7 +94,6 @@
     color: #ccc;
     border-radius: 20px;
     font-weight: 500;
-    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
@@ -141,7 +137,6 @@
         opacity: 1 !important;
         width: 35px !important;
         height: 35px !important;
-        font-size: 16px !important;
     }
 }
 
@@ -172,7 +167,6 @@
         opacity: 1 !important;
         width: 30px !important;
         height: 30px !important;
-        font-size: 14px !important;
     }
     
     .gallery-nav.prev {
@@ -262,7 +256,6 @@
 }
 
 .portfolio-overlay-icon {
-    font-size: 3rem;
     margin-bottom: 15px;
     opacity: 0.8;
     background: linear-gradient(45deg, #04A756, #ff3131);
@@ -272,7 +265,6 @@
 }
 
 .portfolio-overlay-text {
-    font-size: 1.1rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -281,7 +273,6 @@
 }
 
 .portfolio-overlay-subtext {
-    font-size: 0.9rem;
     opacity: 0.7;
     color: #ccc;
 }
@@ -357,7 +348,6 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -399,7 +389,6 @@
     color: white;
     padding: 5px 10px;
     border-radius: 15px;
-    font-size: 0.8rem;
     z-index: 3;
 }
 
@@ -415,7 +404,6 @@
     color: white;
     padding: 6px 15px;
     border-radius: 15px;
-    font-size: 0.75rem;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -423,7 +411,6 @@
 }
 
 .works-showcase-company {
-    font-size: 1.4rem;
     font-weight: 700;
     color: white;
     margin-bottom: 10px;
@@ -443,7 +430,6 @@
     color: #ccc;
     padding: 5px 12px;
     border-radius: 12px;
-    font-size: 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
 }
@@ -469,7 +455,6 @@
 }
 
 .result-number {
-    font-size: 18px;
     font-weight: 700;
     color: #ccc;
     margin-bottom: 5px;
@@ -477,7 +462,6 @@
 }
 
 .result-label {
-    font-size: 25px;
     color: #ccc;
     text-transform: lowercase;
     letter-spacing: 0.5px;
@@ -500,13 +484,11 @@
     }
     
     .result-number {
-        font-size: 16px;
-        margin-bottom: 0;
+            margin-bottom: 0;
         order: 2;
     }
     
     .result-label {
-        font-size: 18px;
         order: 1;
     }
 }
@@ -517,13 +499,7 @@
         gap: 12px;
     }
     
-    .result-number {
-        font-size: 14px;
-    }
     
-    .result-label {
-        font-size: 16px;
-    }
 }
 
 .works-showcase-actions {
@@ -544,7 +520,6 @@
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 1rem;
 }
 
 .works-load-more-btn {
@@ -600,7 +575,6 @@
 }
 
 .results-title {
-    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 900;
     color: white;
     margin-bottom: 20px;
@@ -617,7 +591,6 @@
 }
 
 .results-subtitle {
-    font-size: 1.1rem;
     color: #ccc;
     margin-bottom: 60px;
     max-width: 600px;
@@ -676,7 +649,6 @@
 }
 
 .works-stat-label {
-    font-size: 1.2rem;
     color: white;
     font-weight: 600;
     text-transform: uppercase;
@@ -686,7 +658,6 @@
 }
 
 .works-stat-description {
-    font-size: 0.9rem;
     color: #ccc;
     margin-top: 10px;
     position: relative;
@@ -730,7 +701,6 @@
     background: none;
     border: none;
     color: white;
-    font-size: 30px;
     cursor: pointer;
 }
 

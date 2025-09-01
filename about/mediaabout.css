@@ -11,19 +11,16 @@
     }
 
     .main-title {
-        font-size: clamp(2.5rem, 3.5vw, 2.8rem); /* Smaller title font */
         letter-spacing: 2.5px;
         margin-bottom: 1.5rem;
     }
 
     .about-text {
-        font-size: clamp(1rem, 1.6vw, 1.1rem); /* Smaller text font */
         line-height: 1.5;
         margin-bottom: 2rem;
     }
 
     .contact-btn {
-        font-size: clamp(1rem, 1.4vw, 1.05rem); /* Smaller button font */
         padding: 12px 35px;
     }
 }
@@ -42,19 +39,16 @@
     }
 
     .main-title {
-        font-size: clamp(2rem, 3vw, 2.4rem); /* Further reduced title font */
         letter-spacing: 2px;
         margin-bottom: 1.2rem;
     }
 
     .about-text {
-        font-size: clamp(0.9rem, 1.4vw, 1rem); /* Smaller text font */
         line-height: 1.4;
         margin-bottom: 1.8rem;
     }
 
     .contact-btn {
-        font-size: clamp(0.9rem, 1.3vw, 0.95rem); /* Smaller button font */
         padding: 10px 30px;
     }
 }
@@ -71,19 +65,16 @@
     }
 
     .main-title {
-        font-size: clamp(1.6rem, 2.5vw, 1.8rem); /* Smallest title font */
         letter-spacing: 1.5px;
         margin-bottom: 1rem;
     }
 
     .about-text {
-        font-size: clamp(0.8rem, 1.3vw, 0.9rem); /* Smallest text font */
         line-height: 1.3;
         margin-bottom: 1.5rem;
     }
 
     .contact-btn {
-        font-size: clamp(0.8rem, 1.2vw, 0.85rem); /* Smallest button font */
         padding: 8px 25px;
     }
 }
@@ -137,7 +128,6 @@
     .about-carousel__btn {
         width: 35px;
         height: 35px;
-        font-size: 14px;
         background: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.3);
@@ -151,9 +141,6 @@
         right: 10px;
     }
     
-    .main-title {
-        font-size: clamp(2rem, 8vw, 3rem);
-    }
 }
 
 @media (max-width: 480px) {
@@ -189,7 +176,6 @@
     .about-carousel__btn {
         width: 30px;
         height: 30px;
-        font-size: 12px;
     }
     
     .about-carousel__btn--prev {

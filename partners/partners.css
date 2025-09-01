@@ -260,12 +260,13 @@
 }
 
 .business-partner-name {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 1.3rem;
     font-weight: 800;
     color: #fff;
     margin-bottom: 10px;
     text-transform: uppercase;
-    letter-spacing: -1px;
+    /* letter-spacing: px; */
 }
 
 .business-partner-field {

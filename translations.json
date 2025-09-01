@@ -10,7 +10,7 @@
     },
     "home": {
       "title": "Level Studio",
-      "subtitle": "Level Up Your Brand",
+      "subtitle": "Եղի՛ր տեսանելի",
       "description": "Ժամանակակից տեխնոլոգիական լուծումներ և ռազմավարական մարքեթինգ: Ապահովում ենք ձեր բիզնեսի կայուն աճը և տալիս մրցակցային առավելություն:",
       "contactBtn": "Կապ մեզ հետ"
     },
@@ -158,6 +158,8 @@
       "title": "Պորտֆոլիո",
       "description": "Հարյուրավոր բրենդներ վստահել են մեզ",
       "loadMore": "Տեսնել ավելին",
+      "overlayText": "Տեսնել աշխատանքը",
+      "overlaySubtext": "Մկնիկը պահեք՝ դիտելու համար • Սեղմեք՝ ուսումնասիրելու համար",
       "collapse": "Փակել",
       "items": {
         "armine_grigoryan": {
@@ -487,7 +489,7 @@
     "contact": {
       "title": "Կապ մեզ հետ",
       "subtitle": "Level Studio",
-      "description": "Ունե՞ք հարցեր կամ որևէ նախագծի գաղափար կապվեք մեզ հետ:",
+      "description": "Ունե՞ք հարցեր կամ որևէ նախագծի գաղափար, կապվե՛ք մեզ հետ:",
       "office": "Գլխավոր Գրասենյակ",
       "address": "Երևան, Հայաստան\nԱրարատյան փողոց, 82",
       "email": "Էլ․ Հասցե",
@@ -680,6 +682,8 @@
       "title": "Портфолио",
       "description": "Сотни брендов доверились нам",
       "loadMore": "Посмотреть больше",
+      "overlayText": "Посмотреть работы",
+      "overlaySubtext": "Наведите для предпросмотра • Нажмите для изучения",
       "collapse": "Свернуть",
       "items": {
         "armine_grigoryan": {
@@ -1029,7 +1033,7 @@
       "servicesTitle": "Услуги",
       "navigationTitle": "Навигация",
       "contactTitle": "Контакты",
-      "copyright": "© 2025 Level Studio. Все права защищены.",
+      "copyright": " Level Studio. Все права защищены.",
       "privacy": "Политика конфиденциальности",
       "terms": "Условия обслуживания",
       "address": "Ереван, Армения\nулица Араратян, 82",
@@ -1202,6 +1206,8 @@
       "title": "Portfolio",
       "description": "Hundreds of brands have trusted us",
       "loadMore": "See More",
+      "overlayText": "View Work",
+      "overlaySubtext": "Hover to peek • Click to explore",
       "collapse": "Close",
       "items": {
         "armine_grigoryan": {

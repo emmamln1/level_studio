@@ -1,0 +1,406 @@
+/* ==========================================================================
+   RESPONSIVE TYPOGRAPHY SYSTEM
+   ========================================================================== */
+
+/* Typography Scale Variables */
+:root {
+    /* Base font sizes */
+    --font-size-xs: 0.75rem;      /* 12px */
+    --font-size-sm: 0.875rem;     /* 14px */
+    --font-size-base: 1rem;       /* 16px */
+    --font-size-lg: 1.125rem;     /* 18px */
+    --font-size-xl: 1.25rem;      /* 20px */
+    --font-size-2xl: 1.5rem;      /* 24px */
+    --font-size-3xl: 1.875rem;    /* 30px */
+    --font-size-4xl: 2.25rem;     /* 36px */
+    --font-size-5xl: 3rem;        /* 48px */
+    --font-size-6xl: 3.75rem;     /* 60px */
+    --font-size-7xl: 4.5rem;      /* 72px */
+    --font-size-8xl: 6rem;        /* 96px */
+    --font-size-9xl: 8rem;        /* 128px */
+}
+
+/* ==========================================================================
+   HERO SECTION TYPOGRAPHY
+   ========================================================================== */
+
+/* Hero Main Title - Largest heading for landing */
+.hero-main-title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+/* Hero Subtitle - Secondary hero text */
+.hero-subtitle {
+    font-size: clamp(1.5rem, 5vw, 9rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+/* Hero Description - Hero paragraph text */
+.hero-description {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+}
+
+/* Hero CTA Button - Call to action button */
+.hero-cta-button {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   SECTION TITLES & HEADINGS
+   ========================================================================== */
+
+/* About Main Title - Section main headings */
+.about-main-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+/* About Subtitle - Section subtitle */
+.about-subtitle {
+    font-size: clamp(1.2rem, 9vw, 5rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+}
+
+/* About Description - Section description */
+.about-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+}
+
+/* About Body Text - Regular paragraph text in about section */
+.about-body-text {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: 0.005em;
+}
+
+/* ==========================================================================
+   STATISTICS & COUNTERS
+   ========================================================================== */
+
+/* Stat Counter Number - Large numbers in statistics */
+.stat-counter-number {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+/* Stat Counter Label - Labels for statistics */
+.stat-counter-label {
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   SERVICES SECTION TYPOGRAPHY
+   ========================================================================== */
+
+/* Services Main Title - Services section heading */
+.services-main-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+/* Service Card Number - Service card numbers (01, 02, etc.) */
+.service-card-number {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+/* Service Card Title - Individual service titles */
+.service-card-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+}
+
+/* Service Tag Text - Small tags in service cards */
+.service-tag-text {
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   PORTFOLIO SECTION TYPOGRAPHY
+   ========================================================================== */
+
+/* Portfolio Main Title - Portfolio section heading */
+.portfolio-main-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+/* Portfolio Description - Portfolio section description */
+.portfolio-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+}
+
+/* Portfolio Category - Category labels */
+.portfolio-category-text {
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Portfolio Company Name - Company names in portfolio */
+.portfolio-company-name {
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+}
+
+/* Portfolio Service Tag - Service tags in portfolio */
+.portfolio-service-tag {
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+}
+
+/* Portfolio Overlay Text - Overlay text on hover */
+.portfolio-overlay-text {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Portfolio Overlay Subtext - Smaller overlay text */
+.portfolio-overlay-subtext {
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   PARTNERS SECTION TYPOGRAPHY
+   ========================================================================== */
+
+/* Partners Main Title - Partners section heading */
+.partners-main-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+/* Partners Description - Partners section description */
+.partners-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   CONTACT SECTION TYPOGRAPHY
+   ========================================================================== */
+
+/* Contact Main Title - Contact section heading */
+.contact-main-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+/* Contact Description - Contact section description */
+.contact-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+}
+
+/* Contact Form Label - Form field labels */
+.contact-form-label {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+}
+
+/* Contact Form Input - Form input text */
+.contact-form-input {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.005em;
+}
+
+/* Contact Button Text - Contact form buttons */
+.contact-button-text {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   NAVIGATION & UI ELEMENTS
+   ========================================================================== */
+
+/* Navigation Link - Main navigation links */
+.nav-link-text {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+}
+
+/* Button Text - General button text */
+.button-text {
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/* Small Text - Small descriptive text */
+.small-text {
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+}
+
+/* Caption Text - Image captions and small labels */
+.caption-text {
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   FOOTER TYPOGRAPHY
+   ========================================================================== */
+
+/* Footer Title - Footer section headings */
+.footer-title {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+}
+
+/* Footer Text - Footer paragraph text */
+.footer-text {
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+}
+
+/* Footer Link - Footer links */
+.footer-link {
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* Tablet adjustments */
+@media (max-width: 768px) {
+    .hero-main-title {
+        letter-spacing: -0.01em;
+    }
+    
+    .hero-subtitle {
+        letter-spacing: 0;
+    }
+    
+    .about-main-title,
+    .services-main-title,
+    .portfolio-main-title,
+    .partners-main-title,
+    .contact-main-title {
+        letter-spacing: -0.005em;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .hero-main-title {
+        letter-spacing: 0;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        line-height: 1.3;
+    }
+    
+    .stat-counter-number {
+        letter-spacing: -0.01em;
+    }
+    
+    .about-main-title,
+    .services-main-title,
+    .portfolio-main-title,
+    .partners-main-title,
+    .contact-main-title {
+        letter-spacing: 0;
+        line-height: 1.3;
+    }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1200px) {
+    .hero-main-title {
+        letter-spacing: -0.03em;
+    }
+    
+    .about-main-title,
+    .services-main-title,
+    .portfolio-main-title,
+    .partners-main-title,
+    .contact-main-title {
+        letter-spacing: -0.02em;
+    }
+}

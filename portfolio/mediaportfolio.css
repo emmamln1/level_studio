@@ -4,7 +4,6 @@
     }
 
     .works-showcase-title {
-        font-size: clamp(1.8rem, 4vw, 2.5rem);
         letter-spacing: -1px;
     }
 
@@ -27,9 +26,6 @@
         padding: 20px;
     }
 
-    .works-showcase-company {
-        font-size: 1.2rem;
-    }
 
     .works-showcase-image-section {
         height: 200px;
@@ -43,7 +39,6 @@
     .load-more-btn,
     .works-collapse-btn {
         padding: 12px 30px;
-        font-size: 0.9rem;
     }
 
     .results-section {
@@ -63,7 +58,6 @@
 
 @media (max-width: 480px) {
     .works-showcase-title {
-        font-size: clamp(1.5rem, 3.5vw, 2rem);
         letter-spacing: -0.5px;
     }
     
@@ -82,7 +76,6 @@
     }
 
     .service-tag {
-        font-size: 0.7rem;
         padding: 4px 10px;
     }
 
@@ -105,13 +98,7 @@
         padding: 25px 15px;
     }
 
-    .works-stat-number {
-        font-size: 2.5rem;
-    }
 
-    .works-stat-label {
-        font-size: 1rem;
-    }
 
     .results-section {
         padding: 40px 10px;

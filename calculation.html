@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Studio - Ծառայությունների Գնի Հաշվիչ</title>
+    <style>
+        /* Google Fonts for Armenian Text */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;900&display=swap');
+        
+        :root {
+            /* Theme Colors - Matching main website */
+            --primary-red: red;
+            --primary-green: green;
+            
+            /* Dark Theme */
+            --bg-primary: #000000;
+            --bg-dark: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            
+            /* Glassmorphism - Matching main website */
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --text-secondary: #b3b3b3;
+            --text-accent: #e0e0e0;
+            --border: rgba(255, 255, 255, 0.1);
+            --hover: rgba(255, 255, 255, 0.05);
+            
+            /* Animations */
+            --transition-medium: 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Armenian', 'Montserratarm-Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--primary-green);
+            line-height: 1.6;
+            overflow-x: hidden;
+            letter-spacing: 1px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(4, 167, 86, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 49, 49, 0.08) 0%, transparent 50%),
+                        var(--bg-primary);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+        }
+
+        .logo-section {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo .level {
+            background: linear-gradient(135deg, var(--primary-red), #ff4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.3));
+        }
+
+        .logo .studio {
+            background: linear-gradient(135deg, var(--primary-green), #44ff44);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.3));
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--text-primary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .services-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            padding: 32px;
+            transition: var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        .glass-card:hover {
+            background: var(--hover);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        .service-category {
+            margin-bottom: 28px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .category-header {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .category-header:hover {
+            background: var(--hover);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            background: linear-gradient(135deg, var(--primary-green), #44ff44);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .expand-icon {
+            font-size: 0.9rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .expanded {
+            transform: rotate(90deg);
+        }
+
+        .category-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .category-content.open {
+            padding: 20px 24px 24px;
+            max-height: 500px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-item:hover {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        .custom-checkbox {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .custom-checkbox input:checked + .checkmark {
+            background: linear-gradient(135deg, var(--primary-green), #44ff44);
+            border-color: var(--primary-green);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+
+        .checkmark::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg) scale(0);
+            transition: transform 0.2s ease;
+        }
+
+        .custom-checkbox input:checked + .checkmark::after {
+            transform: rotate(45deg) scale(1);
+        }
+
+        .service-label {
+            flex: 1;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .service-item:hover .service-label {
+            color: var(--text-primary);
+        }
+
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .factor-group {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .factor-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .radio-item:hover {
+            background: var(--hover);
+        }
+
+        .custom-radio {
+            position: relative;
+            width: 18px;
+            height: 18px;
+        }
+
+        .custom-radio input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .radio-mark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .custom-radio input:checked + .radio-mark {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+        }
+
+        .radio-mark::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-green);
+            transform: scale(0);
+            transition: transform 0.2s ease;
+        }
+
+        .custom-radio input:checked + .radio-mark::after {
+            transform: scale(1);
+        }
+
+        .radio-label {
+            color: var(--text-primary);
+            font-weight: 400;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .results-sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .results-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            padding: 32px;
+            text-align: center;
+        }
+
+        .price-section {
+            margin-bottom: 32px;
+        }
+
+        .base-price-text {
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .base-price {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .final-price-container {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .final-price {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-green), #44ff44);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.3));
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .currency {
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 500;
+        }
+
+        .breakdown {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+
+        .breakdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-label {
+            color: var(--text-primary);
+        }
+
+        .breakdown-value {
+            background: linear-gradient(135deg, var(--primary-green), #44ff44);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.3);
+        }
+
+        .packages-section {
+            display: none;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .packages-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .package-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .package-item:hover {
+            background: var(--hover);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .package-name {
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+        }
+
+        .package-services {
+            font-size: 0.8rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .package-price {
+            background: linear-gradient(135deg, var(--primary-green), #44ff44);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1200px) {
+            .main-grid {
+                grid-template-columns: 1fr 350px;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .results-sidebar {
+                position: static;
+                order: -1;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .glass-card {
+                padding: 24px;
+            }
+            
+            .factors-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .header {
+                margin-bottom: 40px;
+                padding: 20px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 20px;
+                border-radius: 16px;
+            }
+            
+            .category-header {
+                padding: 14px 18px;
+            }
+            
+            .category-content.open {
+                padding: 16px 18px 20px;
+            }
+            
+            .results-card {
+                padding: 24px;
+            }
+        }
+
+        .animate-in {
+            animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Contact Message Styles */
+        .contact-message {
+            margin: 20px 0;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-message.success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        .contact-message.error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .contact-message.loading {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+        }
+
+        .cta-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header animate-in">
+            <div class="logo-section">
+                <div class="logo">
+                    LEVEL STUDIO
+                </div>
+            </div>
+            <h1 class="subtitle">Ծառայությունների Գնի Հաշվիչ</h1>
+            <p class="description">Ընտրեք ձեր ծառայությունները և ստացեք ճշգրիտ գնահատական մեր արագ և հարմար հաշվիչի միջոցով</p>
+        </header>
+
+        <div class="main-grid">
+            <div class="services-container">
+                <div class="glass-card animate-in">
+                    <h2 class="card-title">Ծառայություններ</h2>
+                    
+                    <div class="service-category">
+                        <div class="category-header" onclick="toggleCategory('digital-marketing')">
+                            <span class="category-title">Թվային մարքեթինգ</span>
+                            <span class="expand-icon" id="icon-digital-marketing">▶</span>
+                        </div>
+                        <div class="category-content" id="digital-marketing">
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="smm" data-price="80000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="smm">SMM</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="smm-course" data-price="120000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="smm-course">SMM դասընթացներ</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="copywriting" data-price="60000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="copywriting">Copywriting</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="seo" data-price="100000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="seo">SEO</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="mailing" data-price="50000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="mailing">Mailing</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="branding" data-price="150000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="branding">Branding</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-category">
+                        <div class="category-header" onclick="toggleCategory('web-services')">
+                            <span class="category-title">Վեբ ծառայություններ</span>
+                            <span class="expand-icon" id="icon-web-services">▶</span>
+                        </div>
+                        <div class="category-content" id="web-services">
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="website" data-price="200000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="website">Վեբ կայքերի պատրաստում</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="web-design" data-price="120000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="web-design">Վեբ դիզայն</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="seo-promotion" data-price="80000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="seo-promotion">Կայքերի առաջխաղացում</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="ecommerce" data-price="300000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="ecommerce">Առցանց գնումների խանութ</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="automation" data-price="250000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="automation">Բիզնեսի ավտոմատացում</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="mobile-app" data-price="400000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="mobile-app">Մոբայլ հավելվածների ստեղծում</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-category">
+                        <div class="category-header" onclick="toggleCategory('other-services')">
+                            <span class="category-title">Այլ ծառայություններ</span>
+                            <span class="expand-icon" id="icon-other-services">▶</span>
+                        </div>
+                        <div class="category-content" id="other-services">
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="hosting" data-price="40000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="hosting">Դոմեյն և հոսթինգ</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="support" data-price="60000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="support">Տեխնիկական սպասարկում</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="logo" data-price="80000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="logo">Լոգոների պատրաստում</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="business-cards" data-price="45000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="business-cards">Այցեքարտերի դիզայն</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="booklets" data-price="70000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="booklets">Բուկլետների դիզայն</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="flyers" data-price="50000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="flyers">Ֆլայերների դիզայն</label>
+                            </div>
+                            <div class="service-item">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="web-courses" data-price="180000">
+                                    <span class="checkmark"></span>
+                                </div>
+                                <label class="service-label" for="web-courses">Վեբ դասընթացներ լիցենզիայով</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-in">
+                    <h2 class="card-title">Լրացուցիչ Պարամետրներ</h2>
+                    
+                    <div class="factors-grid">
+                        <div class="factor-group">
+                            <div class="factor-title">Ծրագրի բարդության աստիճան</div>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="complexity" value="1" id="simple" checked>
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <label class="radio-label" for="simple">Պարզ (x1.0)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="complexity" value="1.3" id="medium">
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <label class="radio-label" for="medium">Միջին (x1.3)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="complexity" value="1.7" id="complex">
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <label class="radio-label" for="complex">Բարդ (x1.7)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="complexity" value="2" id="very-complex">
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <label class="radio-label" for="very-complex">Շատ բարդ (x2.0)</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="factor-group">
+                            <div class="factor-title">Ժամկետ</div>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="urgency" value="1" id="standard" checked>
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <label class="radio-label" for="standard">Ստանդարտ (x1.0)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="urgency" value="1.2" id="fast">
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <label class="radio-label" for="fast">Արագ (x1.2)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="urgency" value="1.5" id="urgent">
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <label class="radio-label" for="urgent">Շտապ (x1.5)</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="factor-group">
+                            <div class="factor-title">Ծրագրի ծավալ</div>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="scope" value="1" id="small" checked>
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <label class="radio-label" for="small">Փոքր (x1.0)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="scope" value="1.2" id="medium-scope">
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <label class="radio-label" for="medium-scope">Միջին (x1.2)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="scope" value="1.4" id="large">
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <label class="radio-label" for="large">Մեծ (x1.4)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-sidebar">
+                <div class="results-card animate-in">
+                    <h2 class="card-title">Գնահատական</h2>
+                    
+                    <div class="price-section">
+                        <div class="base-price-text">Հիմնական գին</div>
+                        <div class="base-price"><span id="base-price">40,000</span> դրամ</div>
+                        
+                        <div class="final-price-container">
+                            <div style="font-size: 25px;">Արժեքը ըստ գործակցի</div>
+                            <div class="final-price" id="final-price">40,000</div>
+                            <div class="currency">դրամ</div>
+                        </div>
+                    </div>
+
+                    <div class="breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Ծառայություններ:</span>
+                            <span class="breakdown-value" id="services-total">40,000 դրամ</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Բարդության գործակից:</span>
+                            <span class="breakdown-value" id="complexity-factor">x1.0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Ժամկետի գործակից:</span>
+                            <span class="breakdown-value" id="urgency-factor">x1.0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Ծավալի գործակից:</span>
+                            <span class="breakdown-value" id="scope-factor">x1.0</span>
+                        </div>
+                    </div>
+
+                    <!-- Success/Error Message Display -->
+                    <div id="contact-message" class="contact-message" style="display: none;"></div>
+                   
+                    <button class="cta-button" onclick="handleContactClick()" id="contact-btn">
+                        📞 Կապ հաստատել
+                    </button>
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation on load
+        window.addEventListener('load', () => {
+            const elements = document.querySelectorAll('.animate-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(30px)';
+                    el.style.animation = `slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+                    el.style.animationDelay = `${index * 0.1}s`;
+                }, 100);
+            });
+        });
+
+        function toggleCategory(categoryId) {
+            const category = document.getElementById(categoryId);
+            const icon = document.getElementById(`icon-${categoryId}`);
+            
+            if (category.classList.contains('open')) {
+                category.classList.remove('open');
+                icon.classList.remove('expanded');
+            } else {
+                category.classList.add('open');
+                icon.classList.add('expanded');
+            }
+        }
+
+        function calculatePrice() {
+            let basePrice = 40000;
+            let servicesTotal = 0;
+            
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            checkboxes.forEach(checkbox => {
+                servicesTotal += parseInt(checkbox.dataset.price);
+            });
+            
+            if (servicesTotal === 0) {
+                servicesTotal = basePrice;
+            }
+            
+            const complexity = parseFloat(document.querySelector('input[name="complexity"]:checked').value);
+            const urgency = parseFloat(document.querySelector('input[name="urgency"]:checked').value);
+            const scope = parseFloat(document.querySelector('input[name="scope"]:checked').value);
+            
+            const finalPrice = Math.round(servicesTotal * complexity * urgency * scope);
+            
+            // Smooth number animation
+            animateNumber('base-price', parseInt(document.getElementById('base-price').textContent.replace(/,/g, '')), servicesTotal);
+            animateNumber('final-price', parseInt(document.getElementById('final-price').textContent.replace(/,/g, '')), finalPrice);
+            
+            document.getElementById('services-total').textContent = servicesTotal.toLocaleString() + ' դրամ';
+            document.getElementById('complexity-factor').textContent = 'x' + complexity;
+            document.getElementById('urgency-factor').textContent = 'x' + urgency;
+            document.getElementById('scope-factor').textContent = 'x' + scope;
+        }
+
+        function animateNumber(elementId, start, end) {
+            const element = document.getElementById(elementId);
+            const duration = 500;
+            const startTime = performance.now();
+            
+            function animate(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.round(start + (end - start) * easeOut);
+                
+                element.textContent = current.toLocaleString();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        // EmailJS Configuration
+        const EMAILJS_CONFIG = {
+            serviceID: 'service_o1s9342', // Replace with your EmailJS service ID
+            templateID: 'template_1x1tj7s', // Replace with your EmailJS template ID
+            publicKey: 'b7GDWdZ4Eu-Xc5PFL' // Replace with your EmailJS public key
+        };
+
+        // Initialize EmailJS
+        (function() {
+            emailjs.init(EMAILJS_CONFIG.publicKey);
+        })();
+
+        // Device detection function
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                   (navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && /MacIntel/.test(navigator.platform)) ||
+                   window.innerWidth <= 768;
+        }
+
+        // Show message to user
+        function showMessage(message, type) {
+            const messageEl = document.getElementById('contact-message');
+            messageEl.textContent = message;
+            messageEl.className = `contact-message ${type}`;
+            messageEl.style.display = 'block';
+            
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageEl.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Collect all form data
+        function collectFormData() {
+            const data = {
+                selectedServices: [],
+                totalServicesPrice: 0,
+                basePrice: 0,
+                finalPrice: 0,
+                factors: {},
+                breakdown: {},
+                timestamp: new Date().toLocaleString('hy-AM', {
+                    timeZone: 'Asia/Yerevan',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            // Collect selected services
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            checkboxes.forEach(checkbox => {
+                if (checkbox && checkbox.id) {
+                    const label = document.querySelector(`label[for="${checkbox.id}"]`);
+                    const price = parseInt(checkbox.dataset.price) || 0;
+                    data.selectedServices.push({
+                        name: label && label.textContent ? label.textContent.trim() : checkbox.id,
+                        price: price,
+                        formattedPrice: price.toLocaleString() + ' դրամ'
+                    });
+                    data.totalServicesPrice += price;
+                }
+            });
+
+            // Get base price
+            const basePriceEl = document.getElementById('base-price');
+            data.basePrice = basePriceEl ? parseInt(basePriceEl.textContent.replace(/,/g, '')) : 40000;
+
+            // Get final price
+            const finalPriceEl = document.getElementById('final-price');
+            data.finalPrice = finalPriceEl ? parseInt(finalPriceEl.textContent.replace(/,/g, '')) : data.basePrice;
+
+            // Collect factors
+            const complexityEl = document.querySelector('input[name="complexity"]:checked');
+            const urgencyEl = document.querySelector('input[name="urgency"]:checked');
+            const scopeEl = document.querySelector('input[name="scope"]:checked');
+
+            data.factors = {
+                complexity: {
+                    value: complexityEl ? parseFloat(complexityEl.value) : 1,
+                    label: complexityEl && complexityEl.nextElementSibling && complexityEl.nextElementSibling.nextElementSibling 
+                           ? complexityEl.nextElementSibling.nextElementSibling.textContent.trim() : 'Պարզ (x1.0)'
+                },
+                urgency: {
+                    value: urgencyEl ? parseFloat(urgencyEl.value) : 1,
+                    label: urgencyEl && urgencyEl.nextElementSibling && urgencyEl.nextElementSibling.nextElementSibling 
+                           ? urgencyEl.nextElementSibling.nextElementSibling.textContent.trim() : 'Ստանդարտ (x1.0)'
+                },
+                scope: {
+                    value: scopeEl ? parseFloat(scopeEl.value) : 1,
+                    label: scopeEl && scopeEl.nextElementSibling && scopeEl.nextElementSibling.nextElementSibling 
+                           ? scopeEl.nextElementSibling.nextElementSibling.textContent.trim() : 'Փոքր (x1.0)'
+                }
+            };
+
+            // Collect breakdown values
+            data.breakdown = {
+                servicesTotal: document.getElementById('services-total')?.textContent || '0 դրամ',
+                complexityFactor: document.getElementById('complexity-factor')?.textContent || 'x1.0',
+                urgencyFactor: document.getElementById('urgency-factor')?.textContent || 'x1.0',
+                scopeFactor: document.getElementById('scope-factor')?.textContent || 'x1.0'
+            };
+
+            return data;
+        }
+
+        // Format email content
+        function formatEmailContent(data) {
+            let content = `🚀 Level Studio - Ծառայությունների Հարցում\n\n`;
+            content += `📅 Ամսաթիվ: ${data.timestamp}\n\n`;
+            
+            content += `📋 Ընտրված ծառայություններ:\n`;
+            if (data.selectedServices.length > 0) {
+                data.selectedServices.forEach(service => {
+                    content += `• ${service.name} - ${service.formattedPrice}\n`;
+                });
+                content += `\nԾառայությունների ընդհանուր գին: ${data.totalServicesPrice.toLocaleString()} դրամ\n`;
+            } else {
+                content += `• Հիմնական ծառայություն - ${data.basePrice.toLocaleString()} դրամ\n`;
+            }
+            
+            content += `\n📊 Գործակիցներ:\n`;
+            content += `• Բարդություն: ${data.factors.complexity.label}\n`;
+            content += `• Ժամկետ: ${data.factors.urgency.label}\n`;
+            content += `• Ծավալ: ${data.factors.scope.label}\n\n`;
+            
+            content += `💰 Գնային մանրամասներ:\n`;
+            content += `• Հիմնական գին: ${data.basePrice.toLocaleString()} դրամ\n`;
+            content += `• Վերջնական գին: ${data.finalPrice.toLocaleString()} դրամ\n\n`;
+            
+            content += `📞 Հաճախորդը սպասում է կապի հաստատմանը:`;
+            
+            return content;
+        }
+
+        // Send email via EmailJS
+        async function sendEmail(formData) {
+            const templateParams = {
+                to_email: 'level.studio.am@gmail.com', // Your email
+                from_name: 'Level Studio Calculator',
+                subject: `Նոր հարցում - ${formData.finalPrice.toLocaleString()} դրամ`,
+                message: formatEmailContent(formData),
+                selected_services: formData.selectedServices.map(s => s.name).join(', ') || 'Հիմնական ծառայություն',
+                total_price: formData.finalPrice.toLocaleString() + ' դրամ',
+                complexity_factor: formData.factors.complexity.label,
+                urgency_factor: formData.factors.urgency.label,
+                scope_factor: formData.factors.scope.label,
+                timestamp: formData.timestamp,
+                base_price: formData.basePrice.toLocaleString() + ' դրամ',
+                services_count: formData.selectedServices.length || 1
+            };
+
+            try {
+                const response = await emailjs.send(
+                    EMAILJS_CONFIG.serviceID,
+                    EMAILJS_CONFIG.templateID,
+                    templateParams
+                );
+                
+                console.log('Email sent successfully:', response);
+                return { success: true, response };
+            } catch (error) {
+                console.error('Email sending failed:', error);
+                return { success: false, error };
+            }
+        }
+
+        // Validate form data
+        function validateFormData(data) {
+            if (data.selectedServices.length === 0 && data.basePrice <= 0) {
+                return { valid: false, message: 'Խնդրում ենք ընտրել առնվազն մեկ ծառայություն' };
+            }
+            
+            if (data.finalPrice <= 0) {
+                return { valid: false, message: 'Գնային հաշվարկում սխալ է' };
+            }
+            
+            return { valid: true };
+        }
+
+        // Main contact button handler
+        async function handleContactClick() {
+            const button = document.getElementById('contact-btn');
+            
+            if (isMobileDevice()) {
+                // Mobile behavior: Open phone dialer
+                const phoneNumber = '+37443043003';
+                window.location.href = `tel:${phoneNumber}`;
+                return;
+            }
+            
+            // Desktop behavior: Collect data and send email
+            try {
+                // Disable button and show loading
+                button.disabled = true;
+                showMessage('Տվյալների ուղարկում...', 'loading');
+                
+                // Collect form data
+                const formData = collectFormData();
+                
+                // Validate data
+                const validation = validateFormData(formData);
+                if (!validation.valid) {
+                    showMessage(validation.message, 'error');
+                    button.disabled = false;
+                    return;
+                }
+                
+                // Send email
+                const result = await sendEmail(formData);
+                
+                if (result.success) {
+                    showMessage('Ձեր հարցումը հաջողությամբ ուղարկվեց! Մենք շուտով կկապվենք ձեզ հետ:', 'success');
+                    
+                    // Optional: Redirect to contact section after successful submission
+                    setTimeout(() => {
+                        window.location.href = 'Index.html#contact';
+                    }, 2000);
+                } else {
+                    throw new Error(result.error?.text || 'Անհայտ սխալ');
+                }
+                
+            } catch (error) {
+                console.error('Contact submission error:', error);
+                showMessage('Սխալ է տեղի ունեցել: Խնդրում ենք փորձել կրկին կամ զանգահարել +374 43 043 003', 'error');
+            } finally {
+                button.disabled = false;
+            }
+        }
+
+        // Legacy WhatsApp function (kept for compatibility)
+        function contactUs() {
+            const selectedServices = [];
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            checkboxes.forEach(checkbox => {
+                const label = document.querySelector(`label[for="${checkbox.id}"]`);
+                selectedServices.push(label.textContent);
+            });
+            
+            const complexity = document.querySelector('input[name="complexity"]:checked').nextElementSibling.nextElementSibling.textContent;
+            const urgency = document.querySelector('input[name="urgency"]:checked').nextElementSibling.nextElementSibling.textContent;
+            const scope = document.querySelector('input[name="scope"]:checked').nextElementSibling.nextElementSibling.textContent;
+            const finalPrice = document.getElementById('final-price').textContent;
+            
+            let message = `🚀 Level Studio - Ծառայությունների Հարցում\n\n`;
+            message += `📋 Ընտրված ծառայություններ:\n`;
+            if (selectedServices.length > 0) {
+                selectedServices.forEach(service => {
+                    message += `• ${service}\n`;
+                });
+            } else {
+                message += `• Հիմնական ծառայություն\n`;
+            }
+            message += `\n📊 Պարամետրներ:\n`;
+            message += `• Բարդություն: ${complexity}\n`;
+            message += `• Ժամկետ: ${urgency}\n`;
+            message += `• Ծավալ: ${scope}\n\n`;
+            message += `💰 Գնահատական: ${finalPrice} դրամ\n\n`;
+            message += `Խնդրում եմ կապ հաստատել ինձ հետ մանրամասն քննարկման համար: 😊`;
+            
+            const phoneNumber = '+37443043003';
+            const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Event listeners
+        document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+            input.addEventListener('change', calculatePrice);
+        });
+
+        // Initialize
+        calculatePrice();
+        
+        // EmailJS Configuration Check
+        if (EMAILJS_CONFIG.publicKey === 'b7GDWdZ4Eu-Xc5PFL') {
+            console.warn('⚠️ EmailJS not configured. Please set up your EmailJS credentials in EMAILJS_CONFIG.');
+        }
+
+        // Smooth scrolling for mobile
+        if (window.innerWidth <= 768) {
+            document.querySelector('.results-sidebar').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.cta-button, .category-header').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -485,6 +485,24 @@
     font-weight: 600;
 }
 
+/* Fix anchor tag styling inside calculate button */
+.header-calculate-btn a {
+    color: inherit !important;
+    text-decoration: none !important;
+    display: inline;
+    font-weight: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+}
+
+.header-calculate-btn a:hover,
+.header-calculate-btn a:visited,
+.header-calculate-btn a:active,
+.header-calculate-btn a:focus {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
 @media (max-width: 768px) {
     .header-actions-container {
         gap: 8px;
