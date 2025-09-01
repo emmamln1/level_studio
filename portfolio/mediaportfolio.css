@@ -10,6 +10,9 @@
     .works-showcase-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        justify-items: center;
+        margin: 0 auto 40px auto;
+        padding: 0 15px;
     }
 
     .works-filter-tabs {

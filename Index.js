@@ -602,7 +602,7 @@ function initAboutCounters() {
         return;
     }
 
-    const numbers = statsSection.querySelectorAll('.stat-number');
+    const numbers = statsSection.querySelectorAll('.stat-counter-number');
     let isAnimating = false;
 
     function createDigitStructure(element, targetValue) {

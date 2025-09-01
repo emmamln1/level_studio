@@ -6,7 +6,8 @@
       "services": "Ծառայություններ",
       "portfolio": "Պորտֆոլիո",
       "partners": "Գործընկերներ",
-      "contact": "Կապ"
+      "contact": "Կապ",
+      "calculateBtn": "Հաշվարկ"
     },
     "home": {
       "title": "Level Studio",
@@ -530,7 +531,8 @@
       "services": "Услуги",
       "portfolio": "Портфолио",
       "partners": "Партнеры",
-      "contact": "Контакты"
+      "contact": "Контакты",
+      "calculateBtn": "Рассчитать"
     },
     "home": {
       "title": "Level Studio",
@@ -1054,7 +1056,8 @@
       "services": "Services",
       "portfolio": "Portfolio",
       "partners": "Partners",
-      "contact": "Contact"
+      "contact": "Contact",
+      "calculateBtn": "Calculate"
     },
     "home": {
       "title": "Level Studio",

@@ -111,6 +111,7 @@
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 30px;
     margin-bottom: 60px;
+    justify-items: center;
 }
 
 /* Mobile responsive grid */
@@ -179,7 +180,8 @@
 }
 
 .works-showcase-item {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     background: rgba(255, 255, 255, 0.02);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);

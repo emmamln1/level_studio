@@ -161,13 +161,11 @@ body {
     align-items: center;
     justify-content: center;
     color: #ff0000;
-    text-shadow: 0 2px 4px rgb(255, 0, 0);
 }
 
 .stat-suffix {
     color: #ff0000;
     font-weight: 900;
-    text-shadow:  rgb(255, 0, 0);
     margin-left: 0.1em;
 }
 
