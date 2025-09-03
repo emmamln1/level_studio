@@ -197,6 +197,84 @@
 
 /* End: Marketing Services CSS-Only Carousel */
 
+/* Coming Soon Card Styles */
+.coming-soon-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.coming-soon-card .service-card-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 68, 68, 0.05));
+    border-radius: inherit;
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+.coming-soon-card:hover .service-card-body::before {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.15), rgba(255, 68, 68, 0.08));
+}
+
+.coming-soon-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.coming-soon-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ff0000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    animation: comingSoonPulse 2s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+
+.coming-soon-features {
+    opacity: 0.3;
+    filter: blur(1px);
+    transition: all 0.4s ease;
+}
+
+.coming-soon-card:hover .coming-soon-features {
+    opacity: 0.2;
+    filter: blur(2px);
+}
+
+.coming-soon-card .service-title-heading {
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+}
+
+.coming-soon-card:hover .service-title-heading {
+    opacity: 0.4;
+}
+
+/* Coming Soon Animations */
+@keyframes comingSoonPulse {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 68, 68, 0.4);
+    }
+}
+
+
 
 /* Marketing Services — Responsive Media Queries */
 
@@ -249,6 +327,14 @@
           font-size: 9px !important;
           padding: 2px 7px !important;
       }
+
+      /* Coming Soon responsive styles for tablets */
+      .coming-soon-text {
+          font-size: 2rem;
+          letter-spacing: 1px;
+      }
+
+      
   }
   
   /* =============================
@@ -296,4 +382,13 @@
           font-size: 9px !important;
           padding: 2px 6px !important;
       }
+
+      /* Coming Soon responsive styles for mobile */
+      .coming-soon-text {
+          font-size: 1.5rem;
+          letter-spacing: 1px;
+          margin-bottom: 0.3rem;
+      }
+
+    
   }

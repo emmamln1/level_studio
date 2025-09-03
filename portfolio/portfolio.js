@@ -172,10 +172,15 @@ function attachGalleryEventListeners() {
 
 // Portfolio overlay interaction functionality
 function attachOverlayEventListeners() {
-    document.querySelectorAll('.portfolio-overlay').forEach(overlay => {
-        overlay.addEventListener('click', (e) => {
+    // Add click event to entire image section to remove overlay
+    document.querySelectorAll('.works-showcase-image-section').forEach(imageSection => {
+        imageSection.addEventListener('click', (e) => {
+            // Don't trigger if clicking on navigation buttons
+            if (e.target.classList.contains('gallery-nav')) {
+                return;
+            }
             e.stopPropagation();
-            const portfolioItem = overlay.closest('.works-showcase-item');
+            const portfolioItem = imageSection.closest('.works-showcase-item');
             portfolioItem.classList.add('overlay-removed');
         });
     });

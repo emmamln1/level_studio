@@ -81,7 +81,7 @@
           ]
         },
         "06": {
-          "title": "Բիզնեսի ավտոմատացում",
+          "title": "Միջոցառումների նկարահանում",
           "features": [
             "CRM համակարգեր",
             "Աշխատանքային գործընթացների ավտոմատացում",
@@ -487,7 +487,7 @@
         }
       }
     },
-    "contact": {
+      "contact": {
       "title": "Կապ մեզ հետ",
       "subtitle": "Level Studio",
       "description": "Ունե՞ք հարցեր կամ որևէ նախագծի գաղափար, կապվե՛ք մեզ հետ:",
@@ -504,6 +504,74 @@
       "messagePlaceholder": "Գրեք ձեր նամակը այստեղ...",
       "submitBtn": "Ուղարկել Նամակ",
       "successMessage": "Ձեր նամակը հաջողությամբ ուղարկվեց!"
+    },
+    "calculator": {
+      "title": "Ծառայությունների Գնի Հաշվիչ",
+      "subtitle": "Ընտրեք ձեր ծառայությունները և ստացեք ճշգրիտ գնահատական մեր արագ և հարմար հաշվիչի միջոցով",
+      "services": "Ծառայություններ",
+      "content": "Բովանդակություն",
+      "additionalServices": "Լրացուցիչ ծառայություններ",
+      "estimate": "Գնահատական",
+      "categories": {
+        "digitalMarketing": "Թվային մարքեթինգ",
+        "webServices": "Վեբ ծառայություններ",
+        "otherServices": "Այլ ծառայություններ"
+      },
+      "serviceItems": {
+        "smm": "SMM - Ամսական սկսած 80,000 դրամ",
+        "smmCourse": "SMM դասընթացներ - Ամսական սկսած 100,000 դրամ",
+        "copywriting": "Copywriting - Ամսական սկսած 20,000 դրամ",
+        "seo": "SEO - Ամսական սկսած 150,000 դրամ",
+        "mailing": "Mailing - Ամսական սկսած 50,000 դրամ",
+        "branding": "Branding - Ամսական սկսած 100,000 դրամ",
+        "website": "Վեբ կայքերի պատրաստում - Ամսական սկսած 100,000 դրամ",
+        "webDesign": "Վեբ դիզայն - Ամսական սկսած 50,000 դրամ",
+        "seoPromotion": "Կայքերի առաջխաղացում - Ամսական սկսած 150,000 դրամ",
+        "ecommerce": "Առցանց գնումների խանութ - Ամսական սկսած 150,000 դրամ",
+        "automation": "Բիզնեսի ավտոմատացում - Ամսական սկսած 300,000 դրամ",
+        "mobileApp": "Մոբայլ հավելվածների ստեղծում - Ամսական սկսած 300,000 դրամ",
+        "hosting": "Դոմեյն և հոսթինգ",
+        "support": "Տեխնիկական սպասարկում - Ամսական սկսած 20,000 դրամ",
+        "logo": "Լոգոների պատրաստում - 50,000 դրամ",
+        "businessCards": "Այցեքարտերի դիզայն - 25,000 դրամ",
+        "booklets": "Բուկլետների դիզայն - 25,000 դրամ",
+        "flyers": "Ֆլայերների դիզայն - 25,000 դրամ",
+        "webCourses": "Վեբ դասընթացներ լիցենզիայով"
+      },
+      "contentOptions": {
+        "posts": "Պոստերի քանակ",
+        "stories": "Սթորիների քանակ",
+        "reels": "Ռիլերի քանակ",
+        "postsPrice": "1 պոստ՝ 10,000 դրամ",
+        "storiesPrice": "1 սթորի՝ 2,000 դրամ",
+        "reelsPrice": "1 ռիլ՝ 20,000 դրամ"
+      },
+      "additionalServiceItems": {
+        "droneFilming": "Դրոն նկարահանումներ (+150,000 դրամ)",
+        "modelInvolvement": "Մոդելի ներգրավում (+200,000 դրամ)",
+        "professionalPhotography": "Պրոֆեսիոնալ լուսանկարահանում (+180,000 դրամ)"
+      },
+      "pricing": {
+        "basePrice": "Հիմնական գին",
+        "totalPrice": "Ընդհանուր գին",
+        "services": "Ծառայություններ:",
+        "posts": "Պոստերի քանակ:",
+        "stories": "Սթորիների քանակ:",
+        "reels": "Ռիլերի քանակ:",
+        "additionalServices": "Լրացուցիչ ծառայություններ:",
+        "currency": "դրամ"
+      },
+      "buttons": {
+        "contact": " Կապ հաստատել"
+      },
+      "messages": {
+        "loading": "...",
+        "success": "Ձեր հարցումը հաջողությամբ ուղարկվեց! Մենք շուտով կկապվենք ձեզ հետ:",
+        "successMobile": "Հարցումը ուղարկվեց! Հեռախոսի հավելվածը բացվում է...",
+        "error": "Սխալ է տեղի ունեցել: Խնդրում ենք փորձել կրկին կամ զանգահարել +374 43 043 003",
+        "errorMobile": "Սխալ է տեղի ունեցել: Խնդրում ենք զանգահարել +374 43 043 003",
+        "selectService": "Խնդրում ենք ընտրել առնվազն մեկ ծառայություն"
+      }
     },
     "footer": {
       "description": "Հետևե՛ք մեզ նաև instagram և facebook հարթակներում:",
@@ -606,7 +674,7 @@
           ]
         },
         "06": {
-          "title": "Автоматизация бизнеса",
+          "title": "Видеосъёмка мероприятий",
           "features": [
             "CRM системы",
             "Автоматизация рабочих процессов",
@@ -1012,6 +1080,74 @@
         }
       }
     },
+    "calculator": {
+      "title": "Калькулятор стоимости услуг",
+      "subtitle": "Выберите ваши услуги и получите точную оценку с помощью нашего быстрого и удобного калькулятора",
+      "services": "Услуги",
+      "content": "Контент",
+      "additionalServices": "Дополнительные услуги",
+      "estimate": "Оценка",
+      "categories": {
+        "digitalMarketing": "Цифровой маркетинг",
+        "webServices": "Веб-услуги",
+        "otherServices": "Другие услуги"
+      },
+      "serviceItems": {
+        "smm": "SMM - Ежемесячно от 80,000 драм",
+        "smmCourse": "SMM курсы - Ежемесячно от 100,000 драм",
+        "copywriting": "Копирайтинг - Ежемесячно от 20,000 драм",
+        "seo": "SEO - Ежемесячно от 150,000 драм",
+        "mailing": "Email рассылка - Ежемесячно от 50,000 драм",
+        "branding": "Брендинг - Ежемесячно от 100,000 драм",
+        "website": "Создание веб-сайтов - Ежемесячно от 100,000 драм",
+        "webDesign": "Веб-дизайн - Ежемесячно от 50,000 драм",
+        "seoPromotion": "Продвижение сайтов - Ежемесячно от 150,000 драм",
+        "ecommerce": "Интернет-магазин - Ежемесячно от 150,000 драм",
+        "automation": "Автоматизация бизнеса - Ежемесячно от 300,000 драм",
+        "mobileApp": "Создание мобильных приложений - Ежемесячно от 300,000 драм",
+        "hosting": "Домен и хостинг",
+        "support": "Техническое обслуживание - Ежемесячно от 20,000 драм",
+        "logo": "Создание логотипов - 50,000 драм",
+        "businessCards": "Дизайн визиток - 25,000 драм",
+        "booklets": "Дизайн буклетов - 25,000 драм",
+        "flyers": "Дизайн флаеров - 25,000 драм",
+        "webCourses": "Веб-курсы с лицензией"
+      },
+      "contentOptions": {
+        "posts": "Количество постов",
+        "stories": "Количество сторис",
+        "reels": "Количество рилс",
+        "postsPrice": "1 пост - 10,000 драм",
+        "storiesPrice": "1 сторис - 2,000 драм",
+        "reelsPrice": "1 рилс - 20,000 драм"
+      },
+      "additionalServiceItems": {
+        "droneFilming": "Съемка дроном (+150,000 драм)",
+        "modelInvolvement": "Привлечение модели (+200,000 драм)",
+        "professionalPhotography": "Профессиональная фотосъемка (+180,000 драм)"
+      },
+      "pricing": {
+        "basePrice": "Базовая цена",
+        "totalPrice": "Общая цена",
+        "services": "Услуги:",
+        "posts": "Количество постов:",
+        "stories": "Количество сторис:",
+        "reels": "Количество рилс:",
+        "additionalServices": "Дополнительные услуги:",
+        "currency": "драм"
+      },
+      "buttons": {
+        "contact": " Связаться"
+      },
+      "messages": {
+        "loading": "...",
+        "success": "Ваш запрос успешно отправлен! Мы свяжемся с вами в ближайшее время:",
+        "successMobile": "Запрос отправлен! Открывается приложение телефона...",
+        "error": "Произошла ошибка. Пожалуйста, попробуйте еще раз или позвоните +374 43 043 003",
+        "errorMobile": "Произошла ошибка. Пожалуйста, позвоните +374 43 043 003",
+        "selectService": "Пожалуйста, выберите хотя бы одну услугу"
+      }
+    },
     "contact": {
       "title": "Связаться с нами",
       "subtitle": "Level Studio",
@@ -1131,7 +1267,7 @@
           ]
         },
         "06": {
-          "title": "Business Automation",
+          "title": "Event Videography",
           "features": [
             "CRM Systems",
             "Workflow Automation",
@@ -1535,6 +1671,74 @@
           "field": "Medical Marketing",
           "description": "Dental Clinic"
         }
+      }
+    },
+    "calculator": {
+      "title": "Service Price Calculator",
+      "subtitle": "Select your services and get an accurate estimate with our fast and convenient calculator",
+      "services": "Services",
+      "content": "Content",
+      "additionalServices": "Additional Services",
+      "estimate": "Estimate",
+      "categories": {
+        "digitalMarketing": "Digital Marketing",
+        "webServices": "Web Services",
+        "otherServices": "Other Services"
+      },
+      "serviceItems": {
+        "smm": "SMM - Monthly starting from 80,000 drams",
+        "smmCourse": "SMM Courses - Monthly starting from 100,000 drams",
+        "copywriting": "Copywriting - Monthly starting from 20,000 drams",
+        "seo": "SEO - Monthly starting from 150,000 drams",
+        "mailing": "Email Marketing - Monthly starting from 50,000 drams",
+        "branding": "Branding - Monthly starting from 100,000 drams",
+        "website": "Website Development - Monthly starting from 100,000 drams",
+        "webDesign": "Web Design - Monthly starting from 50,000 drams",
+        "seoPromotion": "Website Promotion - Monthly starting from 150,000 drams",
+        "ecommerce": "E-commerce Store - Monthly starting from 150,000 drams",
+        "automation": "Business Automation - Monthly starting from 300,000 drams",
+        "mobileApp": "Mobile App Development - Monthly starting from 300,000 drams",
+        "hosting": "Domain & Hosting",
+        "support": "Technical Support - Monthly starting from 20,000 drams",
+        "logo": "Logo Design - 50,000 drams",
+        "businessCards": "Business Card Design - 25,000 drams",
+        "booklets": "Brochure Design - 25,000 drams",
+        "flyers": "Flyer Design - 25,000 drams",
+        "webCourses": "Licensed Web Courses"
+      },
+      "contentOptions": {
+        "posts": "Number of Posts",
+        "stories": "Number of Stories",
+        "reels": "Number of Reels",
+        "postsPrice": "1 post - 10,000 drams",
+        "storiesPrice": "1 story - 2,000 drams",
+        "reelsPrice": "1 reel - 20,000 drams"
+      },
+      "additionalServiceItems": {
+        "droneFilming": "Drone Filming (+150,000 drams)",
+        "modelInvolvement": "Model Involvement (+200,000 drams)",
+        "professionalPhotography": "Professional Photography (+180,000 drams)"
+      },
+      "pricing": {
+        "basePrice": "Base Price",
+        "totalPrice": "Total Price",
+        "services": "Services:",
+        "posts": "Number of Posts:",
+        "stories": "Number of Stories:",
+        "reels": "Number of Reels:",
+        "additionalServices": "Additional Services:",
+        "currency": "drams"
+      },
+      "buttons": {
+        "contact": " Contact"
+      },
+      "messages": {
+        "loading": "...",
+        "success": "Your request has been sent successfully! We will contact you shortly:",
+        "successMobile": "Request sent! Phone app is opening...",
+        "error": "An error occurred. Please try again or call +374 43 043 003",
+        "errorMobile": "An error occurred. Please call +374 43 043 003",
+        "selectService": "Please select at least one service"
       }
     },
     "contact": {
