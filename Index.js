@@ -1,6 +1,6 @@
 // Initialize EmailJS
 (function(){
-    emailjs.init("b7GDWdZ4Eu-Xc5PFL"); // Replace with your actual EmailJS public key
+    emailjs.init("AXWAU8biqHWTPexJK"); // Replace with your actual EmailJS public key
 })();
 
 

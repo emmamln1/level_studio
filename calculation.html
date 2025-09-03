@@ -569,6 +569,66 @@
                     letter-spacing: -0.02em;
                 }
 
+                .logo-section {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+
+                .logo {
+                    font-size: clamp(1.2rem, 3vw, 1.8rem);
+                    font-weight: 900;
+                    letter-spacing: 2px;
+                    background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.3));
+                    text-transform: uppercase;
+                }
+
+                .home-btn {
+                    background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+                    border: none;
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: 25px;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .home-btn::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                    transition: left 0.5s;
+                }
+
+                .home-btn:hover::before {
+                    left: 100%;
+                }
+
+                .home-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
+                }
+
+                .home-btn:active {
+                    transform: translateY(0);
+                    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+                }
+
                 .currency {
                     font-size: 1.2rem;
                     background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
@@ -1147,6 +1207,8 @@
                         <div class="logo">
                             LEVEL STUDIO
                         </div>
+                        <!-- Home Button -->
+                        <button class="home-btn" onclick="window.location.href='Index.html'" data-translate="calculator.buttons.backToHome">Տուն գնալ</button>
                     </div>
                     <!-- Language Switcher -->
                     <div class="language-switcher-container">
@@ -1642,9 +1704,9 @@
 
                 // EmailJS Configuration
                 const EMAILJS_CONFIG = {
-                    serviceID: 'service_o1s9342', // Replace with your EmailJS service ID
-                    templateID: 'template_1x1tj7s', // Replace with your EmailJS template ID
-                    publicKey: 'b7GDWdZ4Eu-Xc5PFL' // Replace with your EmailJS public key
+                    serviceID: 'service_rtw80ap', // Replace with your EmailJS service ID
+                    templateID: 'template_stpvq6o', // Replace with your EmailJS template ID
+                    publicKey: 'AXWAU8biqHWTPexJK' // Replace with your EmailJS public key
                 };
 
                 // Initialize EmailJS

@@ -563,7 +563,8 @@
         "currency": "դրամ"
       },
       "buttons": {
-        "contact": " Կապ հաստատել"
+        "contact": " Կապ հաստատել",
+        "backToHome": "Տուն գնալ"
       },
       "messages": {
         "loading": "...",
@@ -1150,7 +1151,8 @@
         "currency": "драм"
       },
       "buttons": {
-        "contact": " Связаться"
+        "contact": " Связаться",
+        "backToHome": "На главную"
       },
       "messages": {
         "loading": "...",
@@ -1755,7 +1757,8 @@
         "currency": "drams"
       },
       "buttons": {
-        "contact": " Contact"
+        "contact": " Contact",
+        "backToHome": "Go Home"
       },
       "messages": {
         "loading": "...",

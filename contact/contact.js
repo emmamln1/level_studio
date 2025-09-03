@@ -18,14 +18,14 @@ if (contactForm) {
             return;
         }
 
-        const serviceID = 'service_o1s9342'; // Replace with your Service ID
-        const templateID = 'template_xxt8o1u'; // Replace with your Template ID
+        const serviceID = 'service_rtw80ap'; // Replace with your Service ID
+        const templateID = 'template_69x88rb'; // Replace with your Template ID
 
         // Collect form data
         const formData = {
             contact: this.contact?.value || '',
             message: this.message?.value || '',
-            email: 'emma.yan03@gmail.com' // Updated to 'email' to match Email.js template
+            email: 'level.studio.am@gmail.com' // Updated to 'email' to match Email.js template
         };
 
         // Validate form data
