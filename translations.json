@@ -582,6 +582,9 @@
         "send": "Ուղարկել"
       }
     },
+    "results": {
+      "title": "Արդյունքներ"
+    },
     "footer": {
       "description": "Հետևե՛ք մեզ նաև instagram և facebook հարթակներում:",
       "servicesTitle": "Ծառայություններ",
@@ -1165,6 +1168,9 @@
         "cancel": "Отменить",
         "send": "Отправить"
       }
+    },
+    "results": {
+      "title": "Результаты"
     },
     "contact": {
       "title": "Связаться с нами",
@@ -1767,6 +1773,9 @@
         "cancel": "Cancel",
         "send": "Send"
       }
+    },
+    "results": {
+      "title": "Results"
     },
     "contact": {
       "title": "Contact Us",
