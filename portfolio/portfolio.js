@@ -320,7 +320,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalClose = document.getElementById('modalClose');
     const modal = document.getElementById('imageModal');
     
-    modalClose.addEventListener('click', closeModal);
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeModal();

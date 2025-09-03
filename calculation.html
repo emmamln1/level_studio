@@ -239,6 +239,112 @@
             padding: 12px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        /* Hide default number input arrows */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 1200px) and (min-width: 769px) {
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .content-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .number-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .number-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .number-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .number-input {
+            width: 80px;
+            height: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .number-input:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+        }
+
+        .price-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 8px;
         }
 
         .service-item:last-child {
@@ -732,47 +838,47 @@
                             <span class="expand-icon" id="icon-digital-marketing">▶</span>
                         </div>
                         <div class="category-content" id="digital-marketing">
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('smm')">
                                 <div class="custom-checkbox">
                                     <input type="checkbox" id="smm" data-price="80000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="smm">SMM</label>
+                                <label class="service-label" for="smm">SMM - Ամսական սկսած 80,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('smm-course')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="smm-course" data-price="120000">
+                                    <input type="checkbox" id="smm-course" data-price="100000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="smm-course">SMM դասընթացներ</label>
+                                <label class="service-label" for="smm-course">SMM դասընթացներ - Ամսական սկսած 100,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('copywriting')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="copywriting" data-price="60000">
+                                    <input type="checkbox" id="copywriting" data-price="20000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="copywriting">Copywriting</label>
+                                <label class="service-label" for="copywriting">Copywriting - Ամսական սկսած 20,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('seo')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="seo" data-price="100000">
+                                    <input type="checkbox" id="seo" data-price="150000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="seo">SEO</label>
+                                <label class="service-label" for="seo">SEO - Ամսական սկսած 150,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('mailing')">
                                 <div class="custom-checkbox">
                                     <input type="checkbox" id="mailing" data-price="50000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="mailing">Mailing</label>
+                                <label class="service-label" for="mailing">Mailing - Ամսական սկսած 50,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('branding')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="branding" data-price="150000">
+                                    <input type="checkbox" id="branding" data-price="100000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="branding">Branding</label>
+                                <label class="service-label" for="branding">Branding - Ամսական սկսած 100,000 դրամ</label>
                             </div>
                         </div>
                     </div>
@@ -783,47 +889,47 @@
                             <span class="expand-icon" id="icon-web-services">▶</span>
                         </div>
                         <div class="category-content" id="web-services">
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('website')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="website" data-price="200000">
+                                    <input type="checkbox" id="website" data-price="100000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="website">Վեբ կայքերի պատրաստում</label>
+                                <label class="service-label" for="website">Վեբ կայքերի պատրաստում - Ամսական սկսած 100,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('web-design')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="web-design" data-price="120000">
+                                    <input type="checkbox" id="web-design" data-price="50000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="web-design">Վեբ դիզայն</label>
+                                <label class="service-label" for="web-design">Վեբ դիզայն - Ամսական սկսած 50,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('seo-promotion')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="seo-promotion" data-price="80000">
+                                    <input type="checkbox" id="seo-promotion" data-price="150000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="seo-promotion">Կայքերի առաջխաղացում</label>
+                                <label class="service-label" for="seo-promotion">Կայքերի առաջխաղացում - Ամսական սկսած 150,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('ecommerce')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="ecommerce" data-price="300000">
+                                    <input type="checkbox" id="ecommerce" data-price="150000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="ecommerce">Առցանց գնումների խանութ</label>
+                                <label class="service-label" for="ecommerce">Առցանց գնումների խանութ - Ամսական սկսած 150,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('automation')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="automation" data-price="250000">
+                                    <input type="checkbox" id="automation" data-price="300000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="automation">Բիզնեսի ավտոմատացում</label>
+                                <label class="service-label" for="automation">Բիզնեսի ավտոմատացում - Ամսական սկսած 300,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('mobile-app')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="mobile-app" data-price="400000">
+                                    <input type="checkbox" id="mobile-app" data-price="300000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="mobile-app">Մոբայլ հավելվածների ստեղծում</label>
+                                <label class="service-label" for="mobile-app">Մոբայլ հավելվածների ստեղծում - Ամսական սկսած 300,000 դրամ</label>
                             </div>
                         </div>
                     </div>
@@ -834,49 +940,49 @@
                             <span class="expand-icon" id="icon-other-services">▶</span>
                         </div>
                         <div class="category-content" id="other-services">
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('hosting')">
                                 <div class="custom-checkbox">
                                     <input type="checkbox" id="hosting" data-price="40000">
                                     <span class="checkmark"></span>
                                 </div>
                                 <label class="service-label" for="hosting">Դոմեյն և հոսթինգ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('support')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="support" data-price="60000">
+                                    <input type="checkbox" id="support" data-price="20000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="support">Տեխնիկական սպասարկում</label>
+                                <label class="service-label" for="support">Տեխնիկական սպասարկում - Ամսական սկսած 20,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('logo')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="logo" data-price="80000">
+                                    <input type="checkbox" id="logo" data-price="50000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="logo">Լոգոների պատրաստում</label>
+                                <label class="service-label" for="logo">Լոգոների պատրաստում - 50,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('business-cards')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="business-cards" data-price="45000">
+                                    <input type="checkbox" id="business-cards" data-price="25000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="business-cards">Այցեքարտերի դիզայն</label>
+                                <label class="service-label" for="business-cards">Այցեքարտերի դիզայն - 25,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('booklets')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="booklets" data-price="70000">
+                                    <input type="checkbox" id="booklets" data-price="25000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="booklets">Բուկլետների դիզայն</label>
+                                <label class="service-label" for="booklets">Բուկլետների դիզայն - 25,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('flyers')">
                                 <div class="custom-checkbox">
-                                    <input type="checkbox" id="flyers" data-price="50000">
+                                    <input type="checkbox" id="flyers" data-price="25000">
                                     <span class="checkmark"></span>
                                 </div>
-                                <label class="service-label" for="flyers">Ֆլայերների դիզայն</label>
+                                <label class="service-label" for="flyers">Ֆլայերների դիզայն - 25,000 դրամ</label>
                             </div>
-                            <div class="service-item">
+                            <div class="service-item" onclick="toggleService('web-courses')">
                                 <div class="custom-checkbox">
                                     <input type="checkbox" id="web-courses" data-price="180000">
                                     <span class="checkmark"></span>
@@ -888,93 +994,67 @@
                 </div>
 
                 <div class="glass-card animate-in">
-                    <h2 class="card-title">Լրացուցիչ Պարամետրներ</h2>
+                    <h2 class="card-title">Բովանդակություն</h2>
+                    
+                    <div class="content-grid">
+                        <div class="content-section">
+                            <h3 class="content-title">Պոստերի քանակ</h3>
+                            <div class="number-control">
+                                <button class="number-btn" onclick="changeValue('posts', -1)">−</button>
+                                <input type="number" id="posts-input" class="number-input" value="0" min="0" max="100" onchange="updatePosts()">
+                                <button class="number-btn" onclick="changeValue('posts', 1)">+</button>
+                            </div>
+                            <div class="price-label">1 պոստ՝ 10,000 դրամ</div>
+                        </div>
+                        
+                        <div class="content-section">
+                            <h3 class="content-title">Սթորիների քանակ</h3>
+                            <div class="number-control">
+                                <button class="number-btn" onclick="changeValue('stories', -1)">−</button>
+                                <input type="number" id="stories-input" class="number-input" value="0" min="0" max="100" onchange="updateStories()">
+                                <button class="number-btn" onclick="changeValue('stories', 1)">+</button>
+                            </div>
+                            <div class="price-label">1 սթորի՝ 2,000 դրամ</div>
+                        </div>
+                        
+                        <div class="content-section">
+                            <h3 class="content-title">Ռիլերի քանակ</h3>
+                            <div class="number-control">
+                                <button class="number-btn" onclick="changeValue('reels', -1)">−</button>
+                                <input type="number" id="reels-input" class="number-input" value="0" min="0" max="100" onchange="updateReels()">
+                                <button class="number-btn" onclick="changeValue('reels', 1)">+</button>
+                            </div>
+                            <div class="price-label">1 ռիլ՝ 20,000 դրամ</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-in">
+                    <h2 class="card-title">Լրացուցիչ ծառայություններ</h2>
                     
                     <div class="factors-grid">
                         <div class="factor-group">
-                            <div class="factor-title">Ծրագրի բարդության աստիճան</div>
-                            <div class="radio-group">
-                                <div class="radio-item">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="complexity" value="1" id="simple" checked>
-                                        <span class="radio-mark"></span>
+                            <div class="checkbox-group" style="display: flex; flex-direction: column; gap: 15px;">
+                                <div class="checkbox-item" style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="toggleService('drone-filming')">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" id="drone-filming" data-price="150000">
+                                        <span class="checkmark"></span>
                                     </div>
-                                    <label class="radio-label" for="simple">Պարզ (x1.0)</label>
+                                    <label class="service-label" for="drone-filming">Դրոն նկարահանումներ (+150,000 դրամ)</label>
                                 </div>
-                                <div class="radio-item">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="complexity" value="1.3" id="medium">
-                                        <span class="radio-mark"></span>
+                                <div class="checkbox-item" style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="toggleService('model-involvement')">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" id="model-involvement" data-price="200000">
+                                        <span class="checkmark"></span>
                                     </div>
-                                    <label class="radio-label" for="medium">Միջին (x1.3)</label>
+                                    <label class="service-label" for="model-involvement">Մոդելի ներգրավում (+200,000 դրամ)</label>
                                 </div>
-                                <div class="radio-item">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="complexity" value="1.7" id="complex">
-                                        <span class="radio-mark"></span>
+                                <div class="checkbox-item" style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="toggleService('professional-photography')">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" id="professional-photography" data-price="180000">
+                                        <span class="checkmark"></span>
                                     </div>
-                                    <label class="radio-label" for="complex">Բարդ (x1.7)</label>
-                                </div>
-                                <div class="radio-item">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="complexity" value="2" id="very-complex">
-                                        <span class="radio-mark"></span>
-                                    </div>
-                                    <label class="radio-label" for="very-complex">Շատ բարդ (x2.0)</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="factor-group">
-                            <div class="factor-title">Ժամկետ</div>
-                            <div class="radio-group">
-                                <div class="radio-item">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="urgency" value="1" id="standard" checked>
-                                        <span class="radio-mark"></span>
-                                    </div>
-                                    <label class="radio-label" for="standard">Ստանդարտ (x1.0)</label>
-                                </div>
-                                <div class="radio-item">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="urgency" value="1.2" id="fast">
-                                        <span class="radio-mark"></span>
-                                    </div>
-                                    <label class="radio-label" for="fast">Արագ (x1.2)</label>
-                                </div>
-                                <div class="radio-item">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="urgency" value="1.5" id="urgent">
-                                        <span class="radio-mark"></span>
-                                    </div>
-                                    <label class="radio-label" for="urgent">Շտապ (x1.5)</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="factor-group">
-                            <div class="factor-title">Ծրագրի ծավալ</div>
-                            <div class="radio-group">
-                                <div class="radio-item">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="scope" value="1" id="small" checked>
-                                        <span class="radio-mark"></span>
-                                    </div>
-                                    <label class="radio-label" for="small">Փոքր (x1.0)</label>
-                                </div>
-                                <div class="radio-item">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="scope" value="1.2" id="medium-scope">
-                                        <span class="radio-mark"></span>
-                                    </div>
-                                    <label class="radio-label" for="medium-scope">Միջին (x1.2)</label>
-                                </div>
-                                <div class="radio-item">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="scope" value="1.4" id="large">
-                                        <span class="radio-mark"></span>
-                                    </div>
-                                    <label class="radio-label" for="large">Մեծ (x1.4)</label>
+                                    <label class="service-label" for="professional-photography">Պրոֆեսիոնալ լուսանկարահանում (+180,000 դրամ)</label>
                                 </div>
                             </div>
                         </div>
@@ -991,7 +1071,7 @@
                         <div class="base-price"><span id="base-price">0</span> դրամ</div>
                         
                         <div class="final-price-container">
-                            <div style="font-size: 25px;">Արժեքը ըստ գործակցի</div>
+                            <div style="font-size: 25px;">Ընդհանուր գին</div>
                             <div class="final-price" id="final-price">0</div>
                             <div class="currency">դրամ</div>
                         </div>
@@ -1003,16 +1083,20 @@
                             <span class="breakdown-value" id="services-total">40,000 դրամ</span>
                         </div>
                         <div class="breakdown-item">
-                            <span class="breakdown-label">Բարդության գործակից:</span>
-                            <span class="breakdown-value" id="complexity-factor">x1.0</span>
+                            <span class="breakdown-label">Պոստերի քանակ:</span>
+                            <span class="breakdown-value" id="posts-total">50,000 դրամ</span>
                         </div>
                         <div class="breakdown-item">
-                            <span class="breakdown-label">Ժամկետի գործակից:</span>
-                            <span class="breakdown-value" id="urgency-factor">x1.0</span>
+                            <span class="breakdown-label">Սթորիների քանակ:</span>
+                            <span class="breakdown-value" id="stories-total">30,000 դրամ</span>
                         </div>
                         <div class="breakdown-item">
-                            <span class="breakdown-label">Ծավալի գործակից:</span>
-                            <span class="breakdown-value" id="scope-factor">x1.0</span>
+                            <span class="breakdown-label">Ռիլերի քանակ:</span>
+                            <span class="breakdown-value" id="reels-total">80,000 դրամ</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Լրացուցիչ ծառայություններ:</span>
+                            <span class="breakdown-value" id="additional-services-total">0 դրամ</span>
                         </div>
                     </div>
 
@@ -1056,33 +1140,97 @@
             }
         }
 
+        function changeValue(type, change) {
+            const input = document.getElementById(`${type}-input`);
+            let currentValue = parseInt(input.value) || 0;
+            let newValue = Math.max(0, currentValue + change);
+            if (newValue <= 100) {
+                input.value = newValue;
+                calculatePrice();
+            }
+        }
+
+        function updatePosts() {
+            calculatePrice();
+        }
+
+        function updateStories() {
+            calculatePrice();
+        }
+
+        function updateReels() {
+            calculatePrice();
+        }
+
+        function toggleService(serviceId) {
+            const checkbox = document.getElementById(serviceId);
+            if (checkbox) {
+                checkbox.checked = !checkbox.checked;
+                calculatePrice();
+            }
+        }
+
         function calculatePrice() {
-            let basePrice = 0;
             let servicesTotal = 0;
+            let additionalServicesTotal = 0;
             
+            // Calculate main services
             const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
             checkboxes.forEach(checkbox => {
-                servicesTotal += parseInt(checkbox.dataset.price);
+                const price = parseInt(checkbox.dataset.price);
+                if (checkbox.id === 'drone-filming' || checkbox.id === 'model-involvement' || checkbox.id === 'professional-photography') {
+                    additionalServicesTotal += price;
+                } else {
+                    servicesTotal += price;
+                }
             });
             
-            if (servicesTotal === 0) {
-                servicesTotal = basePrice;
-            }
+            // Get content quantities
+            const postsCount = parseInt(document.getElementById('posts-input').value) || 0;
+            const storiesCount = parseInt(document.getElementById('stories-input').value) || 0;
+            const reelsCount = parseInt(document.getElementById('reels-input').value) || 0;
             
-            const complexity = parseFloat(document.querySelector('input[name="complexity"]:checked').value);
-            const urgency = parseFloat(document.querySelector('input[name="urgency"]:checked').value);
-            const scope = parseFloat(document.querySelector('input[name="scope"]:checked').value);
+            // Calculate content totals
+            const postsPrice = postsCount * 10000;
+            const storiesPrice = storiesCount * 2000;
+            const reelsPrice = reelsCount * 20000;
+            const contentTotal = postsPrice + storiesPrice + reelsPrice;
             
-            const finalPrice = Math.round(servicesTotal * complexity * urgency * scope);
+            const finalPrice = servicesTotal + contentTotal + additionalServicesTotal;
             
-            // Smooth number animation
+            // Update display
             animateNumber('base-price', parseInt(document.getElementById('base-price').textContent.replace(/,/g, '')), servicesTotal);
             animateNumber('final-price', parseInt(document.getElementById('final-price').textContent.replace(/,/g, '')), finalPrice);
             
+            // Update breakdown
             document.getElementById('services-total').textContent = servicesTotal.toLocaleString() + ' դրամ';
-            document.getElementById('complexity-factor').textContent = 'x' + complexity;
-            document.getElementById('urgency-factor').textContent = 'x' + urgency;
-            document.getElementById('scope-factor').textContent = 'x' + scope;
+            document.getElementById('posts-total').textContent = postsPrice.toLocaleString() + ' դրամ';
+            document.getElementById('stories-total').textContent = storiesPrice.toLocaleString() + ' դրամ';
+            document.getElementById('reels-total').textContent = reelsPrice.toLocaleString() + ' դրամ';
+            document.getElementById('additional-services-total').textContent = additionalServicesTotal.toLocaleString() + ' դրամ';
+        }
+
+        function formatServicesText() {
+            const services = [];
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                if (checkbox.id !== 'drone-filming' && checkbox.id !== 'model-involvement' && checkbox.id !== 'professional-photography') {
+                    const label = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
+                    services.push(`• ${label}`);
+                }
+            });
+            return services.length > 0 ? services.join('\n') : 'Ծառայություն չի ընտրվել';
+        }
+
+        function formatAdditionalServices() {
+            const services = [];
+            ['drone-filming', 'model-involvement', 'professional-photography'].forEach(id => {
+                const checkbox = document.getElementById(id);
+                if (checkbox && checkbox.checked) {
+                    const label = document.querySelector(`label[for="${id}"]`).textContent;
+                    services.push(`• ${label}`);
+                }
+            });
+            return services.length > 0 ? services.join('\n') : 'Լրացուցիչ ծառայություն չի ընտրվել';
         }
 
         function animateNumber(elementId, start, end) {
@@ -1154,7 +1302,8 @@
                 totalServicesPrice: 0,
                 basePrice: 0,
                 finalPrice: 0,
-                factors: {},
+                contentOptions: {},
+                additionalServices: [],
                 breakdown: {},
                 deviceType: getDeviceType(),
                 timestamp: new Date().toLocaleString('hy-AM', {
@@ -1167,23 +1316,61 @@
                 })
             };
 
-            // Collect selected services with detailed information
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-            checkboxes.forEach(checkbox => {
+            // Collect main services
+            const mainCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            mainCheckboxes.forEach(checkbox => {
                 if (checkbox && checkbox.id) {
                     const label = document.querySelector(`label[for="${checkbox.id}"]`);
                     const price = parseInt(checkbox.dataset.price) || 0;
                     const serviceName = label && label.textContent ? label.textContent.trim() : checkbox.id;
                     
-                    data.selectedServices.push({
-                        id: checkbox.id,
-                        name: serviceName,
-                        price: price,
-                        formattedPrice: price.toLocaleString() + ' դրամ'
-                    });
-                    data.totalServicesPrice += price;
+                    if (checkbox.id === 'drone-filming' || checkbox.id === 'model-involvement' || checkbox.id === 'professional-photography') {
+                        data.additionalServices.push({
+                            id: checkbox.id,
+                            name: serviceName,
+                            price: price,
+                            formattedPrice: price.toLocaleString() + ' դրամ'
+                        });
+                    } else {
+                        data.selectedServices.push({
+                            id: checkbox.id,
+                            name: serviceName,
+                            price: price,
+                            formattedPrice: price.toLocaleString() + ' դրամ'
+                        });
+                        data.totalServicesPrice += price;
+                    }
                 }
             });
+
+            // Collect content options
+            const postsEl = document.querySelector('input[name="posts"]:checked');
+            const storiesEl = document.querySelector('input[name="stories"]:checked');
+            const reelsEl = document.querySelector('input[name="reels"]:checked');
+
+            const getOptionLabel = (radioEl) => {
+                if (!radioEl) return null;
+                const label = document.querySelector(`label[for="${radioEl.id}"]`);
+                return label ? label.textContent.trim() : null;
+            };
+
+            data.contentOptions = {
+                posts: {
+                    value: postsEl ? parseInt(postsEl.value) : 0,
+                    label: getOptionLabel(postsEl) || 'Չկա (0 դրամ)',
+                    id: postsEl ? postsEl.id : 'posts-0'
+                },
+                stories: {
+                    value: storiesEl ? parseInt(storiesEl.value) : 0,
+                    label: getOptionLabel(storiesEl) || 'Չկա (0 դրամ)',
+                    id: storiesEl ? storiesEl.id : 'stories-0'
+                },
+                reels: {
+                    value: reelsEl ? parseInt(reelsEl.value) : 0,
+                    label: getOptionLabel(reelsEl) || 'Չկա (0 դրամ)',
+                    id: reelsEl ? reelsEl.id : 'reels-0'
+                }
+            };
 
             // Calculate base price (minimum 40,000 if no services selected)
             data.basePrice = data.totalServicesPrice > 0 ? data.totalServicesPrice : 40000;
@@ -1192,42 +1379,9 @@
             const finalPriceEl = document.getElementById('final-price');
             data.finalPrice = finalPriceEl ? parseInt(finalPriceEl.textContent.replace(/,/g, '')) : data.basePrice;
 
-            // Collect factor selections with both values and labels
-            const complexityEl = document.querySelector('input[name="complexity"]:checked');
-            const urgencyEl = document.querySelector('input[name="urgency"]:checked');
-            const scopeEl = document.querySelector('input[name="scope"]:checked');
-
-            // Get factor labels from the radio button labels
-            const getFactorLabel = (radioEl) => {
-                if (!radioEl) return null;
-                const label = document.querySelector(`label[for="${radioEl.id}"]`);
-                return label ? label.textContent.trim() : null;
-            };
-
-            data.factors = {
-                complexity: {
-                    value: complexityEl ? parseFloat(complexityEl.value) : 1,
-                    label: getFactorLabel(complexityEl) || 'Պարզ (x1.0)',
-                    id: complexityEl ? complexityEl.id : 'simple'
-                },
-                urgency: {
-                    value: urgencyEl ? parseFloat(urgencyEl.value) : 1,
-                    label: getFactorLabel(urgencyEl) || 'Ստանդարտ (x1.0)',
-                    id: urgencyEl ? urgencyEl.id : 'standard'
-                },
-                scope: {
-                    value: scopeEl ? parseFloat(scopeEl.value) : 1,
-                    label: getFactorLabel(scopeEl) || 'Փոքր (x1.0)',
-                    id: scopeEl ? scopeEl.id : 'small'
-                }
-            };
-
             // Collect current breakdown display values
             data.breakdown = {
-                servicesTotal: document.getElementById('services-total')?.textContent || '0 դրամ',
-                complexityFactor: document.getElementById('complexity-factor')?.textContent || 'x1.0',
-                urgencyFactor: document.getElementById('urgency-factor')?.textContent || 'x1.0',
-                scopeFactor: document.getElementById('scope-factor')?.textContent || 'x1.0'
+                servicesTotal: document.getElementById('services-total')?.textContent || '0 դրամ'
             };
 
             return data;
@@ -1238,6 +1392,7 @@
             let content = `🚀 Level Studio - Ծառայությունների Հարցում\n\n`;
             content += `📅 Ամսաթիվ: ${data.timestamp}\n\n`;
             
+            // Main services
             content += `📋 Ընտրված ծառայություններ:\n`;
             if (data.selectedServices.length > 0) {
                 data.selectedServices.forEach(service => {
@@ -1248,13 +1403,30 @@
                 content += `• Հիմնական ծառայություն - ${data.basePrice.toLocaleString()} դրամ\n`;
             }
             
-            content += `\n📊 Գործակիցներ:\n`;
-            content += `• Բարդություն: ${data.factors.complexity.label}\n`;
-            content += `• Ժամկետ: ${data.factors.urgency.label}\n`;
-            content += `• Ծավալ: ${data.factors.scope.label}\n\n`;
+            // Content options
+            content += `\n📱 Բովանդակության ընտրանքներ:\n`;
+            content += `• Պոստեր: ${data.contentOptions.posts.label}\n`;
+            content += `• Սթորիներ: ${data.contentOptions.stories.label}\n`;
+            content += `• Ռիլեր: ${data.contentOptions.reels.label}\n`;
+            content += `\nԲովանդակության ընդհանուր գին: ${(data.contentOptions.posts.value + data.contentOptions.stories.value + data.contentOptions.reels.value).toLocaleString()} դրամ\n`;
             
-            content += `💰 Գնային մանրամասներ:\n`;
-            content += `• Հիմնական գին: ${data.basePrice.toLocaleString()} դրամ\n`;
+            // Additional services
+            if (data.additionalServices.length > 0) {
+                content += `\n🎯 Լրացուցիչ ծառայություններ:\n`;
+                data.additionalServices.forEach(service => {
+                    content += `• ${service.name} - ${service.formattedPrice}\n`;
+                });
+                const additionalTotal = data.additionalServices.reduce((sum, service) => sum + service.price, 0);
+                content += `\nԼրացուցիչ ծառայությունների ընդհանուր գին: ${additionalTotal.toLocaleString()} դրամ\n`;
+            }
+            
+            content += `\n💰 Գնային մանրամասներ:\n`;
+            content += `• Ծառայությունների գին: ${data.totalServicesPrice.toLocaleString()} դրամ\n`;
+            content += `• Բովանդակության գին: ${(data.contentOptions.posts.value + data.contentOptions.stories.value + data.contentOptions.reels.value).toLocaleString()} դրամ\n`;
+            if (data.additionalServices.length > 0) {
+                const additionalTotal = data.additionalServices.reduce((sum, service) => sum + service.price, 0);
+                content += `• Լրացուցիչ ծառայություններ: ${additionalTotal.toLocaleString()} դրամ\n`;
+            }
             content += `• Վերջնական գին: ${data.finalPrice.toLocaleString()} դրամ\n\n`;
             
             content += `📞 Հաճախորդը սպասում է կապի հաստատմանը:`;
@@ -1276,9 +1448,11 @@
         // Format calculation breakdown for email
         function formatCalculationBreakdown(data) {
             let breakdown = `Ծառայությունների գին: ${data.totalServicesPrice > 0 ? data.totalServicesPrice.toLocaleString() : data.basePrice.toLocaleString()} դրամ\n`;
-            breakdown += `Բարդության գործակից: ${data.factors.complexity.label}\n`;
-            breakdown += `Ժամկետի գործակից: ${data.factors.urgency.label}\n`;
-            breakdown += `Ծավալի գործակից: ${data.factors.scope.label}\n`;
+            breakdown += `Բովանդակության գին: ${(data.contentOptions.posts.value + data.contentOptions.stories.value + data.contentOptions.reels.value).toLocaleString()} դրամ\n`;
+            if (data.additionalServices.length > 0) {
+                const additionalTotal = data.additionalServices.reduce((sum, service) => sum + service.price, 0);
+                breakdown += `Լրացուցիչ ծառայություններ: ${additionalTotal.toLocaleString()} դրամ\n`;
+            }
             breakdown += `\nՎերջնական գին: ${data.finalPrice.toLocaleString()} դրամ`;
             return breakdown;
         }
@@ -1298,9 +1472,6 @@
                 selected_services: formatServicesForEmail(formData.selectedServices),
                 base_total: (formData.totalServicesPrice > 0 ? formData.totalServicesPrice : formData.basePrice).toLocaleString() + ' դրամ',
                 final_price: formData.finalPrice.toLocaleString() + ' դրամ',
-                complexity_selection: formData.factors.complexity.label,
-                urgency_selection: formData.factors.urgency.label,
-                scope_selection: formData.factors.scope.label,
                 inquiry_date: formData.timestamp,
                 device_type: formData.deviceType,
                 
@@ -1313,16 +1484,6 @@
                 services_total: (formData.totalServicesPrice > 0 ? formData.totalServicesPrice : formData.basePrice).toLocaleString() + ' դրամ',
                 total_price: formData.finalPrice.toLocaleString() + ' դրամ',
                 
-                // Factor details with values
-                complexity_factor: formData.factors.complexity.label,
-                complexity_value: 'x' + formData.factors.complexity.value,
-                complexity_multiplier: formData.factors.complexity.value,
-                urgency_factor: formData.factors.urgency.label,
-                urgency_value: 'x' + formData.factors.urgency.value,
-                urgency_multiplier: formData.factors.urgency.value,
-                scope_factor: formData.factors.scope.label,
-                scope_value: 'x' + formData.factors.scope.value,
-                scope_multiplier: formData.factors.scope.value,
                 
                 // Complete calculation breakdown
                 calculation_breakdown: formatCalculationBreakdown(formData),
@@ -1345,6 +1506,26 @@
                 service_5_price: formData.selectedServices[4]?.formattedPrice || '',
                 service_6: formData.selectedServices[5]?.name || '',
                 service_6_price: formData.selectedServices[5]?.formattedPrice || '',
+                
+                // Content options parameters
+                posts_selection: formData.contentOptions.posts.label,
+                posts_price: formData.contentOptions.posts.value.toLocaleString() + ' դրամ',
+                stories_selection: formData.contentOptions.stories.label,
+                stories_price: formData.contentOptions.stories.value.toLocaleString() + ' դրամ',
+                reels_selection: formData.contentOptions.reels.label,
+                reels_price: formData.contentOptions.reels.value.toLocaleString() + ' դրամ',
+                content_total: (formData.contentOptions.posts.value + formData.contentOptions.stories.value + formData.contentOptions.reels.value).toLocaleString() + ' դրամ',
+                
+                // Additional services parameters
+                additional_services_count: formData.additionalServices.length,
+                additional_services_list: formData.additionalServices.map(s => s.name).join(', ') || 'Չկան',
+                additional_services_total: formData.additionalServices.reduce((sum, service) => sum + service.price, 0).toLocaleString() + ' դրամ',
+                additional_service_1: formData.additionalServices[0]?.name || '',
+                additional_service_1_price: formData.additionalServices[0]?.formattedPrice || '',
+                additional_service_2: formData.additionalServices[1]?.name || '',
+                additional_service_2_price: formData.additionalServices[1]?.formattedPrice || '',
+                additional_service_3: formData.additionalServices[2]?.name || '',
+                additional_service_3_price: formData.additionalServices[2]?.formattedPrice || '',
                 
                 // Currency and formatting
                 currency: 'դրամ',
@@ -1465,34 +1646,55 @@
             }
         }
 
-        // Legacy WhatsApp function (kept for compatibility)
+        // Enhanced WhatsApp function with new pricing parameters
         function contactUs() {
-            const selectedServices = [];
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-            checkboxes.forEach(checkbox => {
-                const label = document.querySelector(`label[for="${checkbox.id}"]`);
-                selectedServices.push(label.textContent);
-            });
+            const formData = collectFormData();
             
-            const complexity = document.querySelector('input[name="complexity"]:checked').nextElementSibling.nextElementSibling.textContent;
-            const urgency = document.querySelector('input[name="urgency"]:checked').nextElementSibling.nextElementSibling.textContent;
-            const scope = document.querySelector('input[name="scope"]:checked').nextElementSibling.nextElementSibling.textContent;
-            const finalPrice = document.getElementById('final-price').textContent;
+            // Validate form data
+            const validation = validateFormData(formData);
+            if (!validation.valid) {
+                showMessage(validation.message, 'error');
+                return;
+            }
             
             let message = `🚀 Level Studio - Ծառայությունների Հարցում\n\n`;
+            message += `📅 Ամսաթիվ: ${formData.timestamp}\n\n`;
+            
+            // Main services
             message += `📋 Ընտրված ծառայություններ:\n`;
-            if (selectedServices.length > 0) {
-                selectedServices.forEach(service => {
-                    message += `• ${service}\n`;
+            if (formData.selectedServices.length > 0) {
+                formData.selectedServices.forEach(service => {
+                    message += `• ${service.name} - ${service.formattedPrice}\n`;
                 });
             } else {
-                message += `• Հիմնական ծառայություն\n`;
+                message += `• Հիմնական ծառայություն - ${formData.basePrice.toLocaleString()} դրամ\n`;
             }
-            message += `\n📊 Պարամետրներ:\n`;
-            message += `• Բարդություն: ${complexity}\n`;
-            message += `• Ժամկետ: ${urgency}\n`;
-            message += `• Ծավալ: ${scope}\n\n`;
-            message += `💰 Գնահատական: ${finalPrice} դրամ\n\n`;
+            
+            // Content options
+            message += `\n📱 Բովանդակության ընտրանքներ:\n`;
+            message += `• Պոստեր: ${formData.contentOptions.posts.label}\n`;
+            message += `• Սթորիներ: ${formData.contentOptions.stories.label}\n`;
+            message += `• Ռիլեր: ${formData.contentOptions.reels.label}\n`;
+            
+            // Additional services
+            if (formData.additionalServices.length > 0) {
+                message += `\n🎯 Լրացուցիչ ծառայություններ:\n`;
+                formData.additionalServices.forEach(service => {
+                    message += `• ${service.name} - ${service.formattedPrice}\n`;
+                });
+            }
+            
+            
+            // Final pricing
+            message += `💰 Գնային մանրամասներ:\n`;
+            message += `• Ծառայությունների գին: ${formData.totalServicesPrice.toLocaleString()} դրամ\n`;
+            message += `• Բովանդակության գին: ${(formData.contentOptions.posts.value + formData.contentOptions.stories.value + formData.contentOptions.reels.value).toLocaleString()} դրամ\n`;
+            if (formData.additionalServices.length > 0) {
+                const additionalTotal = formData.additionalServices.reduce((sum, service) => sum + service.price, 0);
+                message += `• Լրացուցիչ ծառայություններ: ${additionalTotal.toLocaleString()} դրամ\n`;
+            }
+            message += `• Վերջնական գին: ${formData.finalPrice.toLocaleString()} դրամ\n\n`;
+            
             message += `Խնդրում եմ կապ հաստատել ինձ հետ մանրամասն քննարկման համար: 😊`;
             
             const phoneNumber = '+37443043003';
@@ -1502,17 +1704,14 @@
         }
 
         // Event listeners
-        document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+        document.querySelectorAll('input[type="checkbox"], .number-input').forEach(input => {
             input.addEventListener('change', calculatePrice);
         });
 
         // Initialize
         calculatePrice();
         
-        // EmailJS Configuration Check
-        if (EMAILJS_CONFIG.publicKey === 'b7GDWdZ4Eu-Xc5PFL') {
-            console.warn('⚠️ EmailJS not configured. Please set up your EmailJS credentials in EMAILJS_CONFIG.');
-        }
+        // EmailJS is now configured and ready to use
 
         // Smooth scrolling for mobile
         if (window.innerWidth <= 768) {
