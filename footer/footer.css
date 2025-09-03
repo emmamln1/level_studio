@@ -178,11 +178,13 @@
 .contact-item a {
     color: #ccc;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .contact-item a:hover {
     color: #01B95F;
+    transform: translateX(3px);
 }
 
 .contact-item svg {

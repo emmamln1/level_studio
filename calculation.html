@@ -2241,18 +2241,41 @@
                         formData.customerContact = contact;
                         
                         // Send via EmailJS using existing configuration
+                        // Get actual current values from UI instead of formData
+                        const postsCount = parseInt(document.getElementById('posts-input').value) || 0;
+                        const storiesCount = parseInt(document.getElementById('stories-input').value) || 0;
+                        const reelsCount = parseInt(document.getElementById('reels-input').value) || 0;
+                        
+                        // Get selected services from checkboxes
+                        const selectedServices = [];
+                        const additionalServices = [];
+                        document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                            const label = document.querySelector(`label[for="${checkbox.id}"]`);
+                            const price = parseInt(checkbox.dataset.price) || 0;
+                            const serviceName = label ? label.textContent.trim() : checkbox.id;
+                            
+                            if (checkbox.id === 'drone-filming' || checkbox.id === 'model-involvement' || checkbox.id === 'professional-photography') {
+                                additionalServices.push(`• ${serviceName} - ${price.toLocaleString()} դրամ`);
+                            } else {
+                                selectedServices.push(`• ${serviceName} - ${price.toLocaleString()} դրամ`);
+                            }
+                        });
+                        
+                        // Get final price from UI
+                        const finalPrice = parseInt(document.getElementById('final-price').textContent.replace(/[^0-9]/g, '')) || 0;
+                        
                         const templateParams = {
                             customer_name: formData.customerName,
                             customer_contact: formData.customerContact,
-                            selected_services: formData.selectedServices.map(s => `• ${s.name} - ${s.formattedPrice}`).join('\n') || 'Չկա',
-                            posts_count: formData.contentOptions.posts.value,
-                            posts_price: (formData.contentOptions.posts.value * 10000).toLocaleString() + ' դրամ',
-                            stories_count: formData.contentOptions.stories.value,
-                            stories_price: (formData.contentOptions.stories.value * 2000).toLocaleString() + ' դրամ',
-                            reels_count: formData.contentOptions.reels.value,
-                            reels_price: (formData.contentOptions.reels.value * 20000).toLocaleString() + ' դրամ',
-                            additional_services: formData.additionalServices.map(s => `• ${s.name} - ${s.formattedPrice}`).join('\n') || 'Չկա',
-                            final_price: formData.finalPrice.toLocaleString() + ' դրամ',
+                            selected_services: selectedServices.join('\n') || 'Չկա',
+                            posts_count: postsCount,
+                            posts_price: (postsCount * 10000).toLocaleString() + ' դրամ',
+                            stories_count: storiesCount,
+                            stories_price: (storiesCount * 2000).toLocaleString() + ' դրամ',
+                            reels_count: reelsCount,
+                            reels_price: (reelsCount * 20000).toLocaleString() + ' դրամ',
+                            additional_services: additionalServices.join('\n') || 'Չկա',
+                            final_price: finalPrice.toLocaleString() + ' դրամ',
                             device_type: formData.deviceType,
                             timestamp: formData.timestamp
                         };
@@ -2350,8 +2373,39 @@
                         }
                     });
                     
+                    // Update all translatable elements including totalPrice
+                    const translatableElements = document.querySelectorAll('[data-translate]');
+                    translatableElements.forEach(el => {
+                        const key = el.getAttribute('data-translate');
+                        const translation = getTranslationByKey(key, langCode);
+                        if (translation) {
+                            el.textContent = translation;
+                        }
+                    });
+                    
                     // Recalculate prices to update currency in breakdown
                     calculatePrice();
+                }
+                
+                // Helper function to get translation by key
+                function getTranslationByKey(key, langCode) {
+                    if (!window.languageSwitcher || !window.languageSwitcher.translations) return null;
+                    
+                    const translations = window.languageSwitcher.translations[langCode];
+                    if (!translations) return null;
+                    
+                    const keys = key.split('.');
+                    let value = translations;
+                    
+                    for (const k of keys) {
+                        if (value && typeof value === 'object' && k in value) {
+                            value = value[k];
+                        } else {
+                            return null;
+                        }
+                    }
+                    
+                    return typeof value === 'string' ? value : null;
                 }
                 
                 // Initialize calculator messages when page loads
