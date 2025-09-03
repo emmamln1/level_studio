@@ -9,6 +9,7 @@
       "contact": "Կապ",
       "calculateBtn": "Հաշվարկ"
     },
+    "comingSoon": "Շուտով",
     "home": {
       "title": "Level Studio",
       "subtitle": "Եղի՛ր տեսանելի",
@@ -539,9 +540,9 @@
         "webCourses": "Վեբ դասընթացներ լիցենզիայով"
       },
       "contentOptions": {
-        "posts": "Պոստերի քանակ",
-        "stories": "Սթորիների քանակ",
-        "reels": "Ռիլերի քանակ",
+        "posts": "Պոստեր",
+        "stories": "Սթորիներ",
+        "reels": "Ռիլեր",
         "postsPrice": "1 պոստ՝ 10,000 դրամ",
         "storiesPrice": "1 սթորի՝ 2,000 դրամ",
         "reelsPrice": "1 ռիլ՝ 20,000 դրամ"
@@ -555,9 +556,9 @@
         "basePrice": "Հիմնական գին",
         "totalPrice": "Ընդհանուր գին",
         "services": "Ծառայություններ:",
-        "posts": "Պոստերի քանակ:",
-        "stories": "Սթորիների քանակ:",
-        "reels": "Ռիլերի քանակ:",
+        "posts": "Պոստեր:",
+        "stories": "Սթորիներ:",
+        "reels": "Ռիլեր:",
         "additionalServices": "Լրացուցիչ ծառայություններ:",
         "currency": "դրամ"
       },
@@ -600,8 +601,9 @@
       "portfolio": "Портфолио",
       "partners": "Партнеры",
       "contact": "Контакты",
-      "calculateBtn": "Рассчитать"
+      "calculateBtn": "Расчет"
     },
+    "comingSoon": "Скоро",
     "home": {
       "title": "Level Studio",
       "subtitle": "Выведи свой бренд на новый уровень",
@@ -1130,9 +1132,9 @@
         "basePrice": "Базовая цена",
         "totalPrice": "Общая цена",
         "services": "Услуги:",
-        "posts": "Количество постов:",
-        "stories": "Количество сторис:",
-        "reels": "Количество рилс:",
+        "posts": "Посты:",
+        "stories": "Сторис:",
+        "reels": "Рилс:",
         "additionalServices": "Дополнительные услуги:",
         "currency": "драм"
       },
@@ -1188,13 +1190,14 @@
   "eng": {
     "nav": {
       "home": "Home",
-      "about": "About Us",
+      "about": "About",
       "services": "Services",
       "portfolio": "Portfolio",
       "partners": "Partners",
       "contact": "Contact",
       "calculateBtn": "Calculate"
     },
+    "comingSoon": "Coming Soon",
     "home": {
       "title": "Level Studio",
       "subtitle": "Level Up your brand",
@@ -1723,9 +1726,9 @@
         "basePrice": "Base Price",
         "totalPrice": "Total Price",
         "services": "Services:",
-        "posts": "Number of Posts:",
-        "stories": "Number of Stories:",
-        "reels": "Number of Reels:",
+        "posts": "Posts:",
+        "stories": "Stories:",
+        "reels": "Reels:",
         "additionalServices": "Additional Services:",
         "currency": "drams"
       },

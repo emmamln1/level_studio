@@ -1198,23 +1198,23 @@
                             <div class="breakdown">
                                 <div class="breakdown-item">
                                     <span class="breakdown-label" data-translate="calculator.pricing.services">Ծառայություններ:</span>
-                                    <span class="breakdown-value" id="services-total">40,000 դրամ</span>
+                                    <span class="breakdown-value" id="services-total">40,000 <span data-translate="calculator.pricing.currency">դրամ</span></span>
                                 </div>
                                 <div class="breakdown-item">
-                                    <span class="breakdown-label" data-translate="calculator.pricing.posts">Պոստերի քանակ:</span>
-                                    <span class="breakdown-value" id="posts-total">50,000 դրամ</span>
+                                    <span class="breakdown-label" data-translate="calculator.pricing.posts">Պոստեր:</span>
+                                    <span class="breakdown-value" id="posts-total">50,000 <span data-translate="calculator.pricing.currency">դրամ</span></span>
                                 </div>
                                 <div class="breakdown-item">
-                                    <span class="breakdown-label" data-translate="calculator.pricing.stories">Սթորիների քանակ:</span>
-                                    <span class="breakdown-value" id="stories-total">30,000 դրամ</span>
+                                    <span class="breakdown-label" data-translate="calculator.pricing.stories">Սթորիներ:</span>
+                                    <span class="breakdown-value" id="stories-total">30,000 <span data-translate="calculator.pricing.currency">դրամ</span></span>
                                 </div>
                                 <div class="breakdown-item">
-                                    <span class="breakdown-label" data-translate="calculator.pricing.reels">Ռիլերի քանակ:</span>
-                                    <span class="breakdown-value" id="reels-total">80,000 դրամ</span>
+                                    <span class="breakdown-label" data-translate="calculator.pricing.reels">Ռիլեր:</span>
+                                    <span class="breakdown-value" id="reels-total">80,000 <span data-translate="calculator.pricing.currency">դրամ</span></span>
                                 </div>
                                 <div class="breakdown-item">
                                     <span class="breakdown-label" data-translate="calculator.pricing.additionalServices">Լրացուցիչ ծառայություններ:</span>
-                                    <span class="breakdown-value" id="additional-services-total">0 դրամ</span>
+                                    <span class="breakdown-value" id="additional-services-total">0 <span data-translate="calculator.pricing.currency">դրամ</span></span>
                                 </div>
                             </div>
 
@@ -1320,12 +1320,13 @@
                     animateNumber('base-price', parseInt(document.getElementById('base-price').textContent.replace(/,/g, '')), servicesTotal);
                     animateNumber('final-price', parseInt(document.getElementById('final-price').textContent.replace(/,/g, '')), finalPrice);
                     
-                    // Update breakdown
-                    document.getElementById('services-total').textContent = servicesTotal.toLocaleString() + ' դրամ';
-                    document.getElementById('posts-total').textContent = postsPrice.toLocaleString() + ' դրամ';
-                    document.getElementById('stories-total').textContent = storiesPrice.toLocaleString() + ' դրամ';
-                    document.getElementById('reels-total').textContent = reelsPrice.toLocaleString() + ' դրամ';
-                    document.getElementById('additional-services-total').textContent = additionalServicesTotal.toLocaleString() + ' դրամ';
+                    // Update breakdown with translated currency
+                    const currency = window.calculatorMessages?.currency || 'դրամ';
+                    document.getElementById('services-total').innerHTML = servicesTotal.toLocaleString() + ' <span data-translate="calculator.pricing.currency">' + currency + '</span>';
+                    document.getElementById('posts-total').innerHTML = postsPrice.toLocaleString() + ' <span data-translate="calculator.pricing.currency">' + currency + '</span>';
+                    document.getElementById('stories-total').innerHTML = storiesPrice.toLocaleString() + ' <span data-translate="calculator.pricing.currency">' + currency + '</span>';
+                    document.getElementById('reels-total').innerHTML = reelsPrice.toLocaleString() + ' <span data-translate="calculator.pricing.currency">' + currency + '</span>';
+                    document.getElementById('additional-services-total').innerHTML = additionalServicesTotal.toLocaleString() + ' <span data-translate="calculator.pricing.currency">' + currency + '</span>';
                 }
 
                 function formatServicesText() {
@@ -1873,13 +1874,16 @@
                         currency: calcTranslations.pricing?.currency || 'դրամ'
                     };
                     
-                    // Also update any visible currency displays
+                    // Also update any visible currency displays and recalculate prices
                     const currencyElements = document.querySelectorAll('.currency, [data-translate="calculator.pricing.currency"]');
                     currencyElements.forEach(el => {
                         if (el.getAttribute('data-translate') === 'calculator.pricing.currency') {
                             el.textContent = window.calculatorMessages.currency;
                         }
                     });
+                    
+                    // Recalculate prices to update currency in breakdown
+                    calculatePrice();
                 }
                 
                 // Initialize calculator messages when page loads
