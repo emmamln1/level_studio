@@ -3,6 +3,21 @@
     emailjs.init("AXWAU8biqHWTPexJK"); // Replace with your actual EmailJS public key
 })();
 
+// Handle phone icon click - responsive behavior
+function handlePhoneClick(event) {
+    event.preventDefault();
+    
+    // Check if device is mobile
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // Mobile: Open phone dialer
+        window.location.href = 'tel:+37443933330';
+    } else {
+        // Desktop: Open Telegram
+        window.open('https://t.me/levelstudiosmm', '_blank');
+    }
+}
 
 // Custom Cursor Implementation
 class CustomCursor {
