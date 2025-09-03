@@ -1834,119 +1834,35 @@
                 // Initialize
                 calculatePrice();
                 
-                // Language switching functionality
-                let currentLanguage = 'arm';
-                let translations = {};
+                // Calculator-specific language integration
+                // Listen for language changes from the main language switcher
+                document.addEventListener('languageChanged', (event) => {
+                    const newLanguage = event.detail.language;
+                    updateCalculatorMessages(newLanguage);
+                    console.log('Calculator language updated to:', newLanguage);
+                });
                 
-                // Load translations and initialize language switcher
-                async function initLanguageSwitcher() {
-                    try {
-                        const response = await fetch('./translations.json');
-                        if (response.ok) {
-                            translations = await response.json();
-                            
-                            // Get saved language from localStorage
-                            const savedLanguage = localStorage.getItem('level-studio-language') || 'arm';
-                            await setLanguage(savedLanguage);
-                            
-                            console.log('Calculator language switcher initialized');
-                        }
-                    } catch (error) {
-                        console.error('Failed to load translations:', error);
-                    }
-                }
-                
-                // Set language function
-                async function setLanguage(langCode) {
-                    if (!translations[langCode]) {
-                        console.warn(`Language ${langCode} not found, falling back to Armenian`);
-                        langCode = 'arm';
-                    }
-                    
-                    currentLanguage = langCode;
-                    localStorage.setItem('level-studio-language', langCode);
-                    
-                    // Update language switcher display
-                    updateLanguageDisplay(langCode);
-                    
-                    // Translate all elements
-                    translateCalculatorElements();
-                    
-                    // Update messages in JavaScript functions
-                    updateMessageTranslations();
-                }
-                
-                // Update language switcher display
-                function updateLanguageDisplay(langCode) {
-                    const displayMap = {
-                        'arm': 'Հայ',
-                        'rus': 'Рус', 
-                        'eng': 'Eng'
-                    };
-                    
-                    const currentLanguageSpan = document.querySelector('.current-language');
-                    if (currentLanguageSpan) {
-                        currentLanguageSpan.textContent = displayMap[langCode] || 'Հայ';
-                    }
-                    
-                    // Update active state in dropdown
-                    const languageOptions = document.querySelectorAll('.language-option');
-                    languageOptions.forEach(option => {
-                        option.classList.remove('active');
-                        const optionLang = option.dataset.lang;
-                        const langMap = { 'ARM': 'arm', 'RUS': 'rus', 'ENG': 'eng' };
-                        if (langMap[optionLang] === langCode) {
-                            option.classList.add('active');
-                        }
-                    });
-                }
-                
-                // Translate calculator elements
-                function translateCalculatorElements() {
-                    const currentTranslations = translations[currentLanguage];
-                    if (!currentTranslations || !currentTranslations.calculator) return;
-                    
-                    // Translate elements with data-translate attributes
-                    const translatableElements = document.querySelectorAll('[data-translate]');
-                    translatableElements.forEach(element => {
-                        const translateKey = element.getAttribute('data-translate');
-                        const translation = getNestedTranslation(currentTranslations, translateKey);
+                // Force language sync on page visibility change (when returning from other pages)
+                document.addEventListener('visibilitychange', () => {
+                    if (!document.hidden && window.languageSwitcher) {
+                        const savedLanguage = localStorage.getItem('level-studio-language') || 'arm';
+                        const currentLanguage = window.languageSwitcher.getCurrentLanguage();
                         
-                        if (translation) {
-                            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                                if (element.hasAttribute('placeholder')) {
-                                    element.placeholder = translation;
-                                } else {
-                                    element.value = translation;
-                                }
-                            } else {
-                                element.textContent = translation;
-                            }
+                        if (savedLanguage !== currentLanguage) {
+                            console.log('Syncing language from localStorage:', savedLanguage);
+                            window.languageSwitcher.setLanguage(savedLanguage);
                         }
-                    });
-                    
-                    // Update page title and lang attribute
-                    const calcTranslations = currentTranslations.calculator;
-                    if (calcTranslations.title) {
-                        document.title = `Level Studio - ${calcTranslations.title}`;
                     }
+                });
+                
+                // Update calculator messages when language changes
+                function updateCalculatorMessages(langCode) {
+                    if (!window.languageSwitcher || !window.languageSwitcher.translations) return;
                     
-                    // Update HTML lang attribute
-                    const htmlLangMap = { 'arm': 'hy', 'rus': 'ru', 'eng': 'en' };
-                    document.documentElement.lang = htmlLangMap[currentLanguage] || 'hy';
-                }
-                
-                // Get nested translation by key
-                function getNestedTranslation(translations, key) {
-                    return key.split('.').reduce((obj, k) => obj && obj[k], translations);
-                }
-                
-                // Update message translations in JavaScript functions
-                function updateMessageTranslations() {
-                    const calcTranslations = translations[currentLanguage]?.calculator;
+                    const calcTranslations = window.languageSwitcher.translations[langCode]?.calculator;
                     if (!calcTranslations) return;
                     
-                    // Update global message variables for use in other functions
+                    // Update global message variables for use in calculator functions
                     window.calculatorMessages = {
                         loading: calcTranslations.messages?.loading || '...',
                         success: calcTranslations.messages?.success || 'Ձեր հարցումը հաջողությամբ ուղարկվեց! Մենք շուտով կկապվենք ձեզ հետ:',
@@ -1956,57 +1872,46 @@
                         selectService: calcTranslations.messages?.selectService || 'Խնդրում ենք ընտրել առնվազն մեկ ծառայություն',
                         currency: calcTranslations.pricing?.currency || 'դրամ'
                     };
-                }
-                
-                // Initialize language switcher event listeners
-                function initLanguageSwitcherEvents() {
-                    const trigger = document.querySelector('.language-switcher-trigger');
-                    const dropdown = document.querySelector('.language-dropdown');
-                    const languageOptions = document.querySelectorAll('.language-option');
                     
-                    if (!trigger || !dropdown) return;
-                    
-                    // Toggle dropdown
-                    trigger.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const isOpen = dropdown.getAttribute('aria-hidden') === 'false';
-                        dropdown.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
-                        trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-                    });
-                    
-                    // Handle language selection
-                    languageOptions.forEach(option => {
-                        option.addEventListener('click', (e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            
-                            const selectedLang = option.dataset.lang;
-                            const langMap = { 'ARM': 'arm', 'RUS': 'rus', 'ENG': 'eng' };
-                            const langCode = langMap[selectedLang] || 'arm';
-                            
-                            setLanguage(langCode);
-                            
-                            // Close dropdown
-                            dropdown.setAttribute('aria-hidden', 'true');
-                            trigger.setAttribute('aria-expanded', 'false');
-                        });
-                    });
-                    
-                    // Close dropdown when clicking outside
-                    document.addEventListener('click', (e) => {
-                        const container = document.querySelector('.language-switcher-container');
-                        if (container && !container.contains(e.target)) {
-                            dropdown.setAttribute('aria-hidden', 'true');
-                            trigger.setAttribute('aria-expanded', 'false');
+                    // Also update any visible currency displays
+                    const currencyElements = document.querySelectorAll('.currency, [data-translate="calculator.pricing.currency"]');
+                    currencyElements.forEach(el => {
+                        if (el.getAttribute('data-translate') === 'calculator.pricing.currency') {
+                            el.textContent = window.calculatorMessages.currency;
                         }
                     });
                 }
                 
-                // Initialize everything when DOM is loaded
+                // Initialize calculator messages when page loads
                 document.addEventListener('DOMContentLoaded', () => {
-                    initLanguageSwitcherEvents();
-                    initLanguageSwitcher();
+                    // Wait for language switcher to initialize, then update messages
+                    setTimeout(() => {
+                        if (window.languageSwitcher) {
+                            const currentLang = window.languageSwitcher.getCurrentLanguage();
+                            updateCalculatorMessages(currentLang);
+                            
+                            // Force update the dropdown display to match saved language
+                            if (window.languageSwitcher.dropdownElements) {
+                                window.languageSwitcher.updateDropdownLanguage();
+                            }
+                        }
+                    }, 100);
+                });
+                
+                // Additional check to ensure language sync after full page load
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        if (window.languageSwitcher && window.languageSwitcher.isLoaded) {
+                            // Get the saved language and ensure UI is updated
+                            const savedLanguage = localStorage.getItem('level-studio-language') || 'arm';
+                            if (window.languageSwitcher.currentLanguage !== savedLanguage) {
+                                window.languageSwitcher.setLanguage(savedLanguage);
+                            } else {
+                                // Force UI update even if language is correct
+                                window.languageSwitcher.updateLanguageButtons();
+                            }
+                        }
+                    }, 200);
                 });
                 
                 // EmailJS is now configured and ready to use
