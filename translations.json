@@ -572,6 +572,14 @@
         "error": "Սխալ է տեղի ունեցել: Խնդրում ենք փորձել կրկին կամ զանգահարել +374 43 043 003",
         "errorMobile": "Սխալ է տեղի ունեցել: Խնդրում ենք զանգահարել +374 43 043 003",
         "selectService": "Խնդրում ենք ընտրել առնվազն մեկ ծառայություն"
+      },
+      "modal": {
+        "title": "Կապ հաստատել",
+        "summary": "Ընտրված ծառայությունների ամփոփում",
+        "name": "Անուն",
+        "contact": "Էլ. փոստ կամ հեռախոսահամար",
+        "cancel": "Չեղարկել",
+        "send": "Ուղարկել"
       }
     },
     "footer": {
@@ -1148,6 +1156,14 @@
         "error": "Произошла ошибка. Пожалуйста, попробуйте еще раз или позвоните +374 43 043 003",
         "errorMobile": "Произошла ошибка. Пожалуйста, позвоните +374 43 043 003",
         "selectService": "Пожалуйста, выберите хотя бы одну услугу"
+      },
+      "modal": {
+        "title": "Связаться с нами",
+        "summary": "Сводка выбранных услуг",
+        "name": "Имя",
+        "contact": "Эл. почта или телефон",
+        "cancel": "Отменить",
+        "send": "Отправить"
       }
     },
     "contact": {
@@ -1742,6 +1758,14 @@
         "error": "An error occurred. Please try again or call +374 43 043 003",
         "errorMobile": "An error occurred. Please call +374 43 043 003",
         "selectService": "Please select at least one service"
+      },
+      "modal": {
+        "title": "Contact Us",
+        "summary": "Selected Services Summary",
+        "name": "Name",
+        "contact": "Email or Phone",
+        "cancel": "Cancel",
+        "send": "Send"
       }
     },
     "contact": {
