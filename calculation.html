@@ -2164,34 +2164,42 @@
                     const reelsCount = parseInt(document.getElementById('reels-input').value) || 0;
                     
                     // Build summary HTML
+                    const currentLang = window.languageSwitcher ? window.languageSwitcher.getCurrentLanguage() : 'hy';
+                    
                     if (selectedServices.length > 0) {
-                        summaryHTML += `<div class="summary-item"><span class="summary-label">Ծառայություններ:</span><span class="summary-value">${servicesTotal.toLocaleString()} ${currency}</span></div>`;
+                        const servicesLabel = getTranslationByKey('calculator.pricing.services', currentLang) || 'Ծառայություններ:';
+                        summaryHTML += `<div class="summary-item"><span class="summary-label">${servicesLabel}</span><span class="summary-value">${servicesTotal.toLocaleString()} ${currency}</span></div>`;
                         selectedServices.forEach(service => {
                             summaryHTML += `<div style="margin-left: 16px; color: var(--text-secondary); font-size: 0.85rem;">• ${service}</div>`;
                         });
                     }
                     
                     if (postsCount > 0) {
-                        summaryHTML += `<div class="summary-item"><span class="summary-label">Պոստեր (${postsCount}):</span><span class="summary-value">${postsTotal.toLocaleString()} ${currency}</span></div>`;
+                        const postsLabel = getTranslationByKey('calculator.pricing.posts', currentLang) || 'Պոստեր';
+                        summaryHTML += `<div class="summary-item"><span class="summary-label">${postsLabel} (${postsCount}):</span><span class="summary-value">${postsTotal.toLocaleString()} ${currency}</span></div>`;
                     }
                     
                     if (storiesCount > 0) {
-                        summaryHTML += `<div class="summary-item"><span class="summary-label">Սթորիներ (${storiesCount}):</span><span class="summary-value">${storiesTotal.toLocaleString()} ${currency}</span></div>`;
+                        const storiesLabel = getTranslationByKey('calculator.pricing.stories', currentLang) || 'Սթորիներ';
+                        summaryHTML += `<div class="summary-item"><span class="summary-label">${storiesLabel} (${storiesCount}):</span><span class="summary-value">${storiesTotal.toLocaleString()} ${currency}</span></div>`;
                     }
                     
                     if (reelsCount > 0) {
-                        summaryHTML += `<div class="summary-item"><span class="summary-label">Ռիլեր (${reelsCount}):</span><span class="summary-value">${reelsTotal.toLocaleString()} ${currency}</span></div>`;
+                        const reelsLabel = getTranslationByKey('calculator.pricing.reels', currentLang) || 'Ռիլեր';
+                        summaryHTML += `<div class="summary-item"><span class="summary-label">${reelsLabel} (${reelsCount}):</span><span class="summary-value">${reelsTotal.toLocaleString()} ${currency}</span></div>`;
                     }
                     
                     if (additionalServices.length > 0) {
-                        summaryHTML += `<div class="summary-item"><span class="summary-label">Լրացուցիչ ծառայություններ:</span><span class="summary-value">${additionalTotal.toLocaleString()} ${currency}</span></div>`;
+                        const additionalLabel = getTranslationByKey('calculator.pricing.additionalServices', currentLang) || 'Լրացուցիչ ծառայություններ:';
+                        summaryHTML += `<div class="summary-item"><span class="summary-label">${additionalLabel}</span><span class="summary-value">${additionalTotal.toLocaleString()} ${currency}</span></div>`;
                         additionalServices.forEach(service => {
                             summaryHTML += `<div style="margin-left: 16px; color: var(--text-secondary); font-size: 0.85rem;">• ${service}</div>`;
                         });
                     }
                     
                     // Final price
-                    summaryHTML += `<div class="summary-item"><span class="summary-label">Ընդհանուր գին:</span><span class="summary-value">${finalPrice.toLocaleString()} ${currency}</span></div>`;
+                    const totalLabel = getTranslationByKey('calculator.pricing.totalPrice', currentLang) || 'Ընդհանուր գին:';
+                    summaryHTML += `<div class="summary-item"><span class="summary-label">${totalLabel}</span><span class="summary-value">${finalPrice.toLocaleString()} ${currency}</span></div>`;
                     
                     summaryContent.innerHTML = summaryHTML;
                 }
