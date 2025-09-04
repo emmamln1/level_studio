@@ -533,10 +533,10 @@
         "mobileApp": "Մոբայլ հավելվածների ստեղծում - Սկսած 300,000 դրամ",
         "hosting": "Դոմեյն և հոսթինգ",
         "support": "Տեխնիկական սպասարկում - Ամսական սկսած 20,000 դրամ",
-        "logo": "Լոգոների պատրաստում - 50,000 դրամ",
-        "businessCards": "Այցեքարտերի դիզայն - 25,000 դրամ",
-        "booklets": "Բուկլետների դիզայն - 25,000 դրամ",
-        "flyers": "Ֆլայերների դիզայն - 25,000 դրամ",
+        "logo": "Լոգոների պատրաստում - 30,000 դրամ",
+        "businessCards": "Այցեքարտերի դիզայն - 20,000 դրամ",
+        "booklets": "Բուկլետների դիզայն - 20,000 դրամ",
+        "flyers": "Ֆլայերների դիզայն - 20,000 դրամ",
         "webCourses": "Վեբ դասընթացներ լիցենզիայով",
         "droneFilming": "Դրոն նկարահանումներ - 25,000 դրամ",
         "eventFilming": "Միջոցառումների նկարահանումներ (շուտով)"
@@ -548,8 +548,8 @@
       },
       "additionalServiceItems": {
         "droneFilming": "Դրոն նկարահանումներ (+150,000 դրամ)",
-        "modelInvolvement": "Մոդելի ներգրավում (+200,000 դրամ)",
-        "professionalPhotography": "Պրոֆեսիոնալ լուսանկարահանում (+180,000 դրամ)"
+        "modelInvolvement": "Մոդելի ներգրավում (+25,000 դրամ)",
+        "professionalPhotography": "Պրոֆեսիոնալ լուսանկարահանում (+20,000 դրամ)"
       },
       "pricing": {
         "basePrice": "Հիմնական գին",
@@ -1120,10 +1120,10 @@
         "mobileApp": "Создание мобильных приложений - От 300,000 драм",
         "hosting": "Домен и хостинг",
         "support": "Техническое обслуживание - Ежемесячно от 20,000 драм",
-        "logo": "Создание логотипов - 50,000 драм",
-        "businessCards": "Дизайн визиток - 25,000 драм",
-        "booklets": "Дизайн буклетов - 25,000 драм",
-        "flyers": "Дизайн флаеров - 25,000 драм",
+        "logo": "Создание логотипов - 30,000 драм",
+        "businessCards": "Дизайн визиток - 20,000 драм",
+        "booklets": "Дизайн буклетов - 20,000 драм",
+        "flyers": "Дизайн флаеров - 20,000 драм",
         "webCourses": "Веб-курсы с лицензией",
         "droneFilming": "Съемка дроном - 25,000 драм",
         "eventFilming": "Видеосъёмка мероприятий (скоро)"
@@ -1135,8 +1135,8 @@
       },
       "additionalServiceItems": {
         "droneFilming": "Съемка дроном (+150,000 драм)",
-        "modelInvolvement": "Привлечение модели (+200,000 драм)",
-        "professionalPhotography": "Профессиональная фотосъемка (+180,000 драм)"
+        "modelInvolvement": "Привлечение модели (+25,000 драм)",
+        "professionalPhotography": "Профессиональная фотосъемка (+20,000 драм)"
       },
       "pricing": {
         "basePrice": "Базовая цена",
@@ -1725,10 +1725,10 @@
         "mobileApp": "Mobile App Development - Starting from 300,000 drams",
         "hosting": "Domain & Hosting",
         "support": "Technical Support - Monthly starting from 20,000 drams",
-        "logo": "Logo Design - 50,000 drams",
-        "businessCards": "Business Card Design - 25,000 drams",
-        "booklets": "Brochure Design - 25,000 drams",
-        "flyers": "Flyer Design - 25,000 drams",
+        "logo": "Logo Design - 30,000 drams",
+        "businessCards": "Business Card Design - 20,000 drams",
+        "booklets": "Brochure Design - 20,000 drams",
+        "flyers": "Flyer Design - 20,000 drams",
         "webCourses": "Licensed Web Courses",
         "droneFilming": "Drone Filming - 25,000 drams",
         "eventFilming": "Event Videography (coming soon)"
@@ -1740,8 +1740,8 @@
       },
       "additionalServiceItems": {
         "droneFilming": "Drone Filming (+150,000 drams)",
-        "modelInvolvement": "Model Involvement (+200,000 drams)",
-        "professionalPhotography": "Professional Photography (+180,000 drams)"
+        "modelInvolvement": "Model Involvement (+25,000 drams)",
+        "professionalPhotography": "Professional Photography (+20,000 drams)"
       },
       "pricing": {
         "basePrice": "Base Price",
