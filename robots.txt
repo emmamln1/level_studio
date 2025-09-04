@@ -1,0 +1,35 @@
+User-agent: *
+Allow: /
+
+# Important pages
+Allow: /index.html
+Allow: /Index.html
+Allow: /calculation.html
+
+# CSS and JS files
+Allow: /Index.css
+Allow: /typography.css
+Allow: /*.css$
+Allow: /*.js$
+
+# Images
+Allow: /image/
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.gif$
+Allow: /*.svg$
+
+# Fonts
+Allow: /fonts/
+
+# Disallow admin or sensitive areas (if any exist in future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://levelstudio.am/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
