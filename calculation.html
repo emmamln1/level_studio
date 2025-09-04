@@ -307,20 +307,33 @@
                     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 }
 
-                .category-content.open {
-                    padding: 20px 24px 24px;
-                    max-height: 500px;
-                }
+.category-content.open {
+    padding: 20px 24px 24px;
+    max-height: 500px;
+}
 
-                .service-item {
-                    display: flex;
-                    align-items: center;
-                    gap: 16px;
-                    padding: 12px 0;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                    transition: all 0.2s ease;
-                    cursor: pointer;
-                }
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.service-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.service-item.disabled .service-label {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.service-item.disabled .custom-checkbox {
+    opacity: 0.4;
+}
 
                 /* Hide default number input arrows */
                 input[type="number"]::-webkit-outer-spin-button,
@@ -1360,7 +1373,7 @@
                                             <input type="checkbox" id="mailing" data-price="50000">
                                             <span class="checkmark"></span>
                                         </div>
-                                        <label class="service-label" for="mailing" data-translate="calculator.serviceItems.mailing">Mailing - Ամսական սկսած 50,000 դրամ</label>
+                                        <label class="service-label" for="mailing" data-translate="calculator.serviceItems.mailing">Email մարքեթինգ - Ամսական սկսած 50,000 դրամ</label>
                                     </div>
                                     <div class="service-item" onclick="toggleService('branding')">
                                         <div class="custom-checkbox">
@@ -1383,14 +1396,14 @@
                                             <input type="checkbox" id="website" data-price="100000">
                                             <span class="checkmark"></span>
                                         </div>
-                                        <label class="service-label" for="website" data-translate="calculator.serviceItems.website">Վեբ կայքերի պատրաստում - Ամսական սկսած 100,000 դրամ</label>
+                                        <label class="service-label" for="website" data-translate="calculator.serviceItems.website">Վեբ կայքերի պատրաստում - Սկսած 100,000 դրամ</label>
                                     </div>
                                     <div class="service-item" onclick="toggleService('web-design')">
                                         <div class="custom-checkbox">
                                             <input type="checkbox" id="web-design" data-price="50000">
                                             <span class="checkmark"></span>
                                         </div>
-                                        <label class="service-label" for="web-design" data-translate="calculator.serviceItems.webDesign">Վեբ դիզայն - Ամսական սկսած 50,000 դրամ</label>
+                                        <label class="service-label" for="web-design" data-translate="calculator.serviceItems.webDesign">Վեբ դիզայն - Սկսած 50,000 դրամ</label>
                                     </div>
                                     <div class="service-item" onclick="toggleService('seo-promotion')">
                                         <div class="custom-checkbox">
@@ -1404,7 +1417,7 @@
                                             <input type="checkbox" id="ecommerce" data-price="150000">
                                             <span class="checkmark"></span>
                                         </div>
-                                        <label class="service-label" for="ecommerce" data-translate="calculator.serviceItems.ecommerce">Առցանց գնումների խանութ - Ամսական սկսած 150,000 դրամ</label>
+                                        <label class="service-label" for="ecommerce" data-translate="calculator.serviceItems.ecommerce">Առցանց գնումների խանութ - Սկսած 150,000 դրամ</label>
                                     </div>
                                     <div class="service-item" onclick="toggleService('automation')">
                                         <div class="custom-checkbox">
@@ -1418,7 +1431,7 @@
                                             <input type="checkbox" id="mobile-app" data-price="300000">
                                             <span class="checkmark"></span>
                                         </div>
-                                        <label class="service-label" for="mobile-app" data-translate="calculator.serviceItems.mobileApp">Մոբայլ հավելվածների ստեղծում - Ամսական սկսած 300,000 դրամ</label>
+                                        <label class="service-label" for="mobile-app" data-translate="calculator.serviceItems.mobileApp">Մոբայլ հավելվածների ստեղծում - Սկսած 300,000 դրամ</label>
                                     </div>
                                 </div>
                             </div>
@@ -1478,6 +1491,20 @@
                                         </div>
                                         <label class="service-label" for="web-courses" data-translate="calculator.serviceItems.webCourses">Վեբ դասընթացներ լիցենզիայով</label>
                                     </div>
+                                    <div class="service-item" onclick="toggleService('drone-filming')">
+                                        <div class="custom-checkbox">
+                                            <input type="checkbox" id="drone-filming" data-price="25000">
+                                            <span class="checkmark"></span>
+                                        </div>
+                                        <label class="service-label" for="drone-filming" data-translate="calculator.serviceItems.droneFilming">Դրոն նկարահանումներ - 25,000 դրամ</label>
+                                    </div>
+                                    <div class="service-item disabled">
+                                        <div class="custom-checkbox">
+                                            <input type="checkbox" id="event-filming" data-price="0" disabled>
+                                            <span class="checkmark"></span>
+                                        </div>
+                                        <label class="service-label" for="event-filming" data-translate="calculator.serviceItems.eventFilming">Միջոցառումների նկարահանումներ (շուտով)</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1493,7 +1520,6 @@
                                         <input type="number" id="posts-input" class="number-input" value="0" min="0" max="100" onchange="updatePosts()">
                                         <button class="number-btn" onclick="changeValue('posts', 1)">+</button>
                                     </div>
-                                    <div class="price-label" data-translate="calculator.contentOptions.postsPrice">1 պոստ՝ 10,000 դրամ</div>
                                 </div>
                                 
                                 <div class="content-section">
@@ -1503,7 +1529,6 @@
                                         <input type="number" id="stories-input" class="number-input" value="0" min="0" max="100" onchange="updateStories()">
                                         <button class="number-btn" onclick="changeValue('stories', 1)">+</button>
                                     </div>
-                                    <div class="price-label" data-translate="calculator.contentOptions.storiesPrice">1 սթորի՝ 2,000 դրամ</div>
                                 </div>
                                 
                                 <div class="content-section">
@@ -1513,7 +1538,6 @@
                                         <input type="number" id="reels-input" class="number-input" value="0" min="0" max="100" onchange="updateReels()">
                                         <button class="number-btn" onclick="changeValue('reels', 1)">+</button>
                                     </div>
-                                    <div class="price-label" data-translate="calculator.contentOptions.reelsPrice">1 ռիլ՝ 20,000 դրամ</div>
                                 </div>
                             </div>
                         </div>
@@ -1719,9 +1743,9 @@
                     const reelsCount = parseInt(document.getElementById('reels-input').value) || 0;
                     
                     // Calculate content totals
-                    const postsPrice = postsCount * 10000;
+                    const postsPrice = postsCount * 5000;
                     const storiesPrice = storiesCount * 2000;
-                    const reelsPrice = reelsCount * 20000;
+                    const reelsPrice = reelsCount * 15000;
                     const contentTotal = postsPrice + storiesPrice + reelsPrice;
                     
                     const finalPrice = servicesTotal + contentTotal + additionalServicesTotal;
@@ -2422,11 +2446,11 @@
                             customer_contact: formData.customerContact,
                             selected_services: selectedServices.join('\n') || 'Չկա',
                             posts_count: postsCount,
-                            posts_price: (postsCount * 10000).toLocaleString() + ' դրամ',
+                            posts_price: (postsCount * 5000).toLocaleString() + ' դրամ',
                             stories_count: storiesCount,
                             stories_price: (storiesCount * 2000).toLocaleString() + ' դրամ',
                             reels_count: reelsCount,
-                            reels_price: (reelsCount * 20000).toLocaleString() + ' դրամ',
+                            reels_price: (reelsCount * 15000).toLocaleString() + ' դրամ',
                             additional_services: additionalServices.join('\n') || 'Չկա',
                             final_price: finalPrice.toLocaleString() + ' դրամ',
                             device_type: formData.deviceType,
