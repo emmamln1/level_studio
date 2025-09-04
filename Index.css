@@ -238,3 +238,140 @@ body {
         padding: 15px 10px;
     }
 }
+
+/* Fixed Phone Button Styles */
+.fixed-phone-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+    border-radius: 50px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    animation: phoneSlideIn 1s ease-out 2s both;
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.fixed-phone-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(255, 0, 0, 0.4);
+}
+
+.fixed-phone-btn .phone-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: phoneIconPulse 2s infinite;
+}
+
+.fixed-phone-btn .phone-icon svg {
+    color: white;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.fixed-phone-btn .phone-number {
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+/* Phone Button Animations */
+@keyframes phoneSlideIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes phoneIconPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+}
+
+/* Responsive Design for Phone Button */
+@media (max-width: 768px) {
+    .fixed-phone-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        border-radius: 40px;
+    }
+    
+    .fixed-phone-btn .phone-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .fixed-phone-btn .phone-number {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fixed-phone-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        gap: 8px;
+    }
+    
+    .fixed-phone-btn .phone-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .fixed-phone-btn .phone-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .fixed-phone-btn .phone-number {
+        font-size: 12px;
+    }
+}
+
+/* Hide phone number text on very small screens */
+@media (max-width: 360px) {
+    .fixed-phone-btn .phone-number {
+        display: none;
+    }
+    
+    .fixed-phone-btn {
+        padding: 12px;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        justify-content: center;
+    }
+    
+    .fixed-phone-btn .phone-icon {
+        background: transparent;
+        width: auto;
+        height: auto;
+    }
+}

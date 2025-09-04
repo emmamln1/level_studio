@@ -3,6 +3,35 @@
     emailjs.init("AXWAU8biqHWTPexJK"); // Replace with your actual EmailJS public key
 })();
 
+// Fixed Phone Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const phoneBtn = document.getElementById('fixedPhoneBtn');
+    
+    if (phoneBtn) {
+        phoneBtn.addEventListener('click', function() {
+            // Detect if device is mobile
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+            
+            if (isMobile) {
+                // Mobile: Open phone dialer
+                window.location.href = 'tel:+37443933330';
+            } else {
+                // Desktop: Open Telegram
+                window.open('https://t.me/levelstudiosmm', '_blank');
+            }
+        });
+        
+        // Add hover effect for better UX
+        phoneBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.05)';
+        });
+        
+        phoneBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    }
+});
+
 // Handle phone icon click - responsive behavior
 function handlePhoneClick(event) {
     event.preventDefault();
