@@ -61,6 +61,9 @@
     
     <!-- Google Fonts for Armenian Text -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -227,6 +230,8 @@
     <link rel="stylesheet" href="home/mediahome.css">
     <link rel="stylesheet" href="about/about.css">
     <link rel="stylesheet" href="about/mediaabout.css">
+    <link rel="stylesheet" href="collaboration/collaboration.css">
+    <link rel="stylesheet" href="collaboration/mediacollaboration.css">
     <link rel="stylesheet" href="service/service.css">
     <link rel="stylesheet" href="portfolio/portfolio.css">
     <link rel="stylesheet" href="portfolio/mediaportfolio.css">
@@ -604,6 +609,123 @@
                 </div>
             </div>
         </section>
+
+        <!-- Collaboration Benefits Section -->
+        <section class="collaboration-benefits-section" id="collaborationBenefitsSection">
+            <div class="collaboration-benefits-container">
+                <div class="collaboration-benefits-header">
+                    <h2 class="collaboration-benefits-title" data-translate="collaboration.title">
+                        Ի՞նչ կտա մեզ հետ համագործակցությունը
+                    </h2>
+                    <div class="collaboration-benefits-divider"></div>
+                </div>
+                
+                <div class="collaboration-benefits-grid">
+                    <div class="collaboration-benefit-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="collaboration-benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="collaboration-benefit-title" data-translate="collaboration.benefits.design">
+                            Փորձառու Graphic Design & Video editing ծառայություններ
+                        </h3>
+                    </div>
+                    
+                    <div class="collaboration-benefit-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="collaboration-benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20 8V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M23 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="collaboration-benefit-title" data-translate="collaboration.benefits.followers">
+                            Հետևորդների ավելացում
+                        </h3>
+                    </div>
+                    
+                    <div class="collaboration-benefit-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="collaboration-benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="11" cy="8" r="2" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="collaboration-benefit-title" data-translate="collaboration.benefits.targeting">
+                            Թիրախավորված գովազդ
+                        </h3>
+                    </div>
+                    
+                    <div class="collaboration-benefit-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="collaboration-benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 12L10.5 14.5L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="collaboration-benefit-title" data-translate="collaboration.benefits.orders">
+                            Պատվերների շոշափելի ավելացում
+                        </h3>
+                    </div>
+                    
+                    <div class="collaboration-benefit-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="collaboration-benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 12H18L15 21L9 3L6 12H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="collaboration-benefit-title" data-translate="collaboration.benefits.activity">
+                            Ակտիվություն
+                        </h3>
+                    </div>
+                    
+                    <div class="collaboration-benefit-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="collaboration-benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23 19C23 19.5304 22.7893 20.0391 22.4142 20.4142C22.0391 20.7893 21.5304 21 21 21C20.4696 21 19.9609 20.7893 19.5858 20.4142C19.2107 20.0391 19 19.5304 19 19C19 18.4696 19.2107 17.9609 19.5858 17.5858C19.9609 17.2107 20.4696 17 21 17C21.5304 17 22.0391 17.2107 22.4142 17.5858C22.7893 17.9609 23 18.4696 23 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 19C9 19.5304 8.78929 20.0391 8.41421 20.4142C8.03914 20.7893 7.53043 21 7 21C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19C5 18.4696 5.21071 17.9609 5.58579 17.5858C5.96086 17.2107 6.46957 17 7 17C7.53043 17 8.03914 17.2107 8.41421 17.5858C8.78929 17.9609 9 18.4696 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="collaboration-benefit-title" data-translate="collaboration.benefits.filming">
+                            Նկարահանումներ,(աշխատում ենք նաև պատրաստի նյութերի հիման վրա)
+                        </h3>
+                    </div>
+                    
+                    <div class="collaboration-benefit-card" data-aos="fade-up" data-aos-delay="700">
+                        <div class="collaboration-benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.24 12.24C21.3658 11.1142 21.9983 9.58722 21.9983 7.99504C21.9983 6.40285 21.3658 4.87588 20.24 3.75004C19.1142 2.62419 17.5872 1.9917 15.995 1.9917C14.4028 1.9917 12.8758 2.62419 11.75 3.75004L5 10.5V19H13.5L20.24 12.24Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 8L2 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17.5 15H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="collaboration-benefit-title" data-translate="collaboration.benefits.blogging">
+                            Բլոգերական աշխատանք
+                        </h3>
+                    </div>
+                    
+                    <div class="collaboration-benefit-card" data-aos="fade-up" data-aos-delay="800">
+                        <div class="collaboration-benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L3.09 8.26L12 14L20.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M3.09 15.74L12 22L20.91 15.74" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M3.09 8.26L12 14.52L20.91 8.26" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="collaboration-benefit-title" data-translate="collaboration.benefits.branding">
+                            Իմիջ,ոճ,ճանաչելիություն
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="marketing-services-container" id="xaiQuantumContainer">
             <div class="services-animation-field" id="xaiNebulaField"></div>
             <div class="services-header">
@@ -2679,6 +2801,17 @@
     <script src="contact/contact.js"></script>
     <script src="results/results.js"></script>
     <script src="Index.js"></script>
+
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    </script>
 
     <!-- Language Switcher - загружается последним -->
     <script src="language-switcher.js"></script>

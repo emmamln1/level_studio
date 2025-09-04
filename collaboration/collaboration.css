@@ -1,0 +1,291 @@
+/* Collaboration Benefits Section Styles */
+/* Begin: Collaboration Benefits Section */
+.collaboration-benefits-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    background: black;
+    position: relative;
+    overflow: hidden;
+}
+
+.collaboration-benefits-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 20%, rgba(255, 49, 49, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(4, 167, 86, 0.1) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.collaboration-benefits-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.collaboration-benefits-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.collaboration-benefits-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.collaboration-benefits-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, red, green);
+    margin: 0 auto;
+    border-radius: 2px;
+    position: relative;
+}
+
+.collaboration-benefits-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, red, green);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 49, 49, 0.5);
+}
+
+.collaboration-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.collaboration-benefit-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.collaboration-benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.collaboration-benefit-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.6s ease;
+}
+
+.collaboration-benefit-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.collaboration-benefit-card:hover::after {
+    left: 100%;
+}
+
+.collaboration-benefit-card:hover .collaboration-benefit-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.collaboration-benefit-card:hover .collaboration-benefit-icon svg {
+    stroke: #04a756;
+    filter: drop-shadow(0 0 10px rgba(4, 167, 86, 0.5));
+}
+
+.collaboration-benefit-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.collaboration-benefit-icon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, red, green);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.collaboration-benefit-card:hover .collaboration-benefit-icon::before {
+    opacity: 1;
+}
+
+.collaboration-benefit-icon svg {
+    width: 30px;
+    height: 30px;
+    stroke: #ff3131;
+    stroke-width: 2;
+    fill: none;
+    transition: all 0.4s ease;
+}
+
+.collaboration-benefit-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.3;
+    background: linear-gradient(135deg, #ffffff, #ff3131);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .collaboration-benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    
+    .collaboration-benefit-card {
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .collaboration-benefits-section {
+        min-height: auto;
+        padding: 60px 0;
+    }
+    
+    .collaboration-benefits-container {
+        padding: 0 15px;
+    }
+    
+    .collaboration-benefits-header {
+        margin-bottom: 40px;
+    }
+    
+    .collaboration-benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .collaboration-benefit-card {
+        padding: 30px 20px;
+    }
+    
+    .collaboration-benefit-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 25px;
+    }
+    
+    .collaboration-benefit-icon svg {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .collaboration-benefit-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .collaboration-benefits-section {
+        padding: 40px 0;
+    }
+    
+    .collaboration-benefits-header {
+        margin-bottom: 30px;
+    }
+    
+    .collaboration-benefit-card {
+        padding: 25px 15px;
+    }
+    
+    .collaboration-benefit-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    
+    .collaboration-benefit-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .collaboration-benefit-title {
+        font-size: 1rem;
+    }
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* AOS Animation Overrides */
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* End: Collaboration Benefits Section */

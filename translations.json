@@ -30,6 +30,19 @@
       "text3": "Այժմ մեր բոլոր վիզուալ լուծումները ծնվում են հենց մեր ստուդիայում ապահովելով բարձր որակ, ամբողջականություն և ստեղծագործ մոտեցում յուրաքանչյուր նախագծում։",
       "text4": "Level Studio-ն այսօր այն վայրն է, որտեղ գաղափարները դառնում են իրականություն, իսկ բրենդները՝հիշվող:"
     },
+    "collaboration": {
+      "title": "Ի՞նչ կտա մեզ հետ համագործակցությունը",
+      "benefits": {
+        "design": "Փորձառու Graphic Design & Video editing ծառայություններ",
+        "followers": "Հետևորդների ավելացում",
+        "targeting": "Թիրախավորված գովազդ",
+        "orders": "Պատվերների շոշափելի ավելացում",
+        "activity": "Ակտիվություն",
+        "filming": "Նկարահանումներ,(աշխատում ենք նաև պատրաստի նյութերի հիման վրա)",
+        "blogging": "Բլոգերական աշխատանք",
+        "branding": "Իմիջ,ոճ,ճանաչելիություն"
+      }
+    },
     "services": {
       "title": "Մեր ծառայությունները",
       "items": {
@@ -635,6 +648,19 @@
       "text3": "Теперь все наши визуальные решения создаются прямо в нашей студии, обеспечивая высокое качество, целостность и творческий подход в каждом проекте.",
       "text4": "Level Studio сегодня - это место, где идеи становятся реальностью, а бренды становятся запоминающимися."
     },
+    "collaboration": {
+      "title": "Что даст сотрудничество с нами",
+      "benefits": {
+        "design": "Опытные услуги Graphic Design & Video editing",
+        "followers": "Увеличение подписчиков",
+        "targeting": "Таргетированная реклама",
+        "orders": "Ощутимое увеличение заказов",
+        "activity": "Активность",
+        "filming": "Съемки (работаем также на основе готовых материалов)",
+        "blogging": "Блогерская работа",
+        "branding": "Имидж, стиль, узнаваемость"
+      }
+    },
     "services": {
       "title": "Наши услуги",
       "items": {
@@ -1239,6 +1265,19 @@
       "text2": "Level Studio also offers drone filming and other professional visual solutions that give our clients an advantage in presenting their brand in a modern and impressive way.",
       "text3": "Now all our visual solutions are created right in our studio, ensuring high quality, completeness, and creative approach in every project.",
       "text4": "Level Studio is now the place where ideas become reality, and brands become memorable."
+    },
+    "collaboration": {
+      "title": "What will collaboration with us give you",
+      "benefits": {
+        "design": "Experienced Graphic Design & Video editing services",
+        "followers": "Follower growth",
+        "targeting": "Targeted advertising",
+        "orders": "Tangible increase in orders",
+        "activity": "Activity",
+        "filming": "Filming (we also work with ready-made materials)",
+        "blogging": "Blogging work",
+        "branding": "Image, style, recognition"
+      }
     },
     "services": {
       "title": "Our Services",
