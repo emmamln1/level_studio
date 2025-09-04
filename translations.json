@@ -519,7 +519,7 @@
         "otherServices": "Այլ ծառայություններ"
       },
       "serviceItems": {
-        "smm": "SMM - Ամսական սկսած 80,000 դրամ",
+        "smm": "SMM - Ամսական սկսած 50,000 դրամ",
         "smmCourse": "SMM դասընթացներ - Ամսական սկսած 100,000 դրամ",
         "copywriting": "Copywriting - Ամսական սկսած 20,000 դրամ",
         "seo": "SEO - Ամսական սկսած 150,000 դրամ",
@@ -547,7 +547,7 @@
         "reels": "Ռիլեր"
       },
       "additionalServiceItems": {
-        "droneFilming": "Դրոն նկարահանումներ (+150,000 դրամ)",
+        "droneFilming": "Դրոն նկարահանումներ (+25,000 դրամ)",
         "modelInvolvement": "Մոդելի ներգրավում (+25,000 դրամ)",
         "professionalPhotography": "Պրոֆեսիոնալ լուսանկարահանում (+20,000 դրամ)"
       },
@@ -1106,7 +1106,7 @@
         "otherServices": "Другие услуги"
       },
       "serviceItems": {
-        "smm": "SMM - Ежемесячно от 80,000 драм",
+        "smm": "SMM - Ежемесячно от 50,000 драм",
         "smmCourse": "SMM курсы - Ежемесячно от 100,000 драм",
         "copywriting": "Копирайтинг - Ежемесячно от 20,000 драм",
         "seo": "SEO - Ежемесячно от 150,000 драм",
@@ -1134,7 +1134,7 @@
         "reels": "Количество рилс"
       },
       "additionalServiceItems": {
-        "droneFilming": "Съемка дроном (+150,000 драм)",
+        "droneFilming": "Съемка дроном (+25,000 драм)",
         "modelInvolvement": "Привлечение модели (+25,000 драм)",
         "professionalPhotography": "Профессиональная фотосъемка (+20,000 драм)"
       },
@@ -1711,7 +1711,7 @@
         "otherServices": "Other Services"
       },
       "serviceItems": {
-        "smm": "SMM - Monthly starting from 80,000 drams",
+        "smm": "SMM - Monthly starting from 50,000 drams",
         "smmCourse": "SMM Courses - Monthly starting from 100,000 drams",
         "copywriting": "Copywriting - Monthly starting from 20,000 drams",
         "seo": "SEO - Monthly starting from 150,000 drams",
@@ -1739,7 +1739,7 @@
         "reels": "Number of Reels"
       },
       "additionalServiceItems": {
-        "droneFilming": "Drone Filming (+150,000 drams)",
+        "droneFilming": "Drone Filming (+25,000 drams)",
         "modelInvolvement": "Model Involvement (+25,000 drams)",
         "professionalPhotography": "Professional Photography (+20,000 drams)"
       },

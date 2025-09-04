@@ -1342,10 +1342,10 @@
                                 <div class="category-content" id="digital-marketing">
                                     <div class="service-item" onclick="toggleService('smm')">
                                         <div class="custom-checkbox">
-                                            <input type="checkbox" id="smm" data-price="80000">
+                                            <input type="checkbox" id="smm" data-price="50000">
                                             <span class="checkmark"></span>
                                         </div>
-                                        <label class="service-label" for="smm" data-translate="calculator.serviceItems.smm">SMM - Ամսական սկսած 80,000 դրամ</label>
+                                        <label class="service-label" for="smm" data-translate="calculator.serviceItems.smm">SMM - Ամսական սկսած 50,000 դրամ</label>
                                     </div>
                                     <div class="service-item" onclick="toggleService('smm-course')">
                                         <div class="custom-checkbox">
@@ -1548,12 +1548,12 @@
                             <div class="factors-grid">
                                 <div class="factor-group">
                                     <div class="checkbox-group" style="display: flex; flex-direction: column; gap: 15px;">
-                                        <div class="checkbox-item" style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="toggleService('drone-filming')">
+                                        <div class="checkbox-item" style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="toggleService('drone-filming-additional')">
                                             <div class="custom-checkbox">
-                                                <input type="checkbox" id="drone-filming" data-price="150000">
+                                                <input type="checkbox" id="drone-filming-additional" data-price="25000">
                                                 <span class="checkmark"></span>
                                             </div>
-                                            <label class="service-label" for="drone-filming" data-translate="calculator.additionalServiceItems.droneFilming">Դրոն նկարահանումներ (+150,000 դրամ)</label>
+                                            <label class="service-label" for="drone-filming-additional" data-translate="calculator.additionalServiceItems.droneFilming">Դրոն նկարահանումներ (+25,000 դրամ)</label>
                                         </div>
                                         <div class="checkbox-item" style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="toggleService('model-involvement')">
                                             <div class="custom-checkbox">
@@ -1718,6 +1718,20 @@
                     const checkbox = document.getElementById(serviceId);
                     if (checkbox) {
                         checkbox.checked = !checkbox.checked;
+                        
+                        // Synchronize drone filming checkboxes
+                        if (serviceId === 'drone-filming') {
+                            const additionalDroneCheckbox = document.getElementById('drone-filming-additional');
+                            if (additionalDroneCheckbox) {
+                                additionalDroneCheckbox.checked = checkbox.checked;
+                            }
+                        } else if (serviceId === 'drone-filming-additional') {
+                            const mainDroneCheckbox = document.getElementById('drone-filming');
+                            if (mainDroneCheckbox) {
+                                mainDroneCheckbox.checked = checkbox.checked;
+                            }
+                        }
+                        
                         calculatePrice();
                     }
                 }
@@ -1725,12 +1739,20 @@
                 function calculatePrice() {
                     let servicesTotal = 0;
                     let additionalServicesTotal = 0;
+                    let droneFilmingCounted = false;
                     
                     // Calculate main services
                     const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
                     checkboxes.forEach(checkbox => {
                         const price = parseInt(checkbox.dataset.price);
-                        if (checkbox.id === 'drone-filming' || checkbox.id === 'model-involvement' || checkbox.id === 'professional-photography') {
+                        
+                        // Handle drone filming - only count once even if both checkboxes are checked
+                        if (checkbox.id === 'drone-filming' || checkbox.id === 'drone-filming-additional') {
+                            if (!droneFilmingCounted) {
+                                additionalServicesTotal += 25000; // Always use 25000 for drone filming
+                                droneFilmingCounted = true;
+                            }
+                        } else if (checkbox.id === 'model-involvement' || checkbox.id === 'professional-photography') {
                             additionalServicesTotal += price;
                         } else {
                             servicesTotal += price;
@@ -1776,11 +1798,22 @@
 
                 function formatAdditionalServices() {
                     const services = [];
-                    ['drone-filming', 'model-involvement', 'professional-photography'].forEach(id => {
+                    let droneFilmingAdded = false;
+                    
+                    ['drone-filming', 'drone-filming-additional', 'model-involvement', 'professional-photography'].forEach(id => {
                         const checkbox = document.getElementById(id);
                         if (checkbox && checkbox.checked) {
-                            const label = document.querySelector(`label[for="${id}"]`).textContent;
-                            services.push(`• ${label}`);
+                            // For drone filming, only add once even if both checkboxes are checked
+                            if (id === 'drone-filming' || id === 'drone-filming-additional') {
+                                if (!droneFilmingAdded) {
+                                    const label = document.querySelector(`label[for="${id}"]`).textContent;
+                                    services.push(`• ${label}`);
+                                    droneFilmingAdded = true;
+                                }
+                            } else {
+                                const label = document.querySelector(`label[for="${id}"]`).textContent;
+                                services.push(`• ${label}`);
+                            }
                         }
                     });
                     return services.length > 0 ? services.join('\n') : 'Լրացուցիչ ծառայություն չի ընտրվել';
