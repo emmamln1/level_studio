@@ -1,97 +1,93 @@
-/* Media Queries for Collaboration Benefits Section */
-/* Begin: Collaboration Benefits Media Queries */
+/* Media Queries for Page Management Section */
+/* Begin: Page Management Media Queries */
 
 /* Large Desktop */
 @media (min-width: 1400px) {
-    .collaboration-benefits-container {
+    .page-management-container {
         max-width: 1600px;
     }
     
-    .collaboration-benefits-grid {
+    .page-management-grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: 25px;
+        gap: 35px;
     }
     
-    .collaboration-benefit-card {
-        padding: 30px 25px;
+    .page-management-card {
+        padding: 45px 35px;
     }
     
-    .collaboration-benefit-icon {
-        width: 65px;
-        height: 65px;
-        margin-bottom: 25px;
+    .page-management-icon {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 35px;
     }
     
-    .collaboration-benefit-icon svg {
-        width: 32px;
-        height: 32px;
+    .page-management-icon svg {
+        width: 45px;
+        height: 45px;
     }
     
-    .collaboration-benefit-title {
-        font-size: 1.1rem;
+    .page-management-card-title {
+        font-size: 1.3rem;
     }
 }
 
 /* Desktop */
 @media (max-width: 1399px) and (min-width: 1200px) {
-    .collaboration-benefits-grid {
+    .page-management-grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-    }
-    
-    .collaboration-benefit-card {
-        padding: 25px 20px;
+        gap: 30px;
     }
 }
 
 /* Large Tablet */
 @media (max-width: 1199px) and (min-width: 992px) {
-    .collaboration-benefits-section {
+    .page-management-section {
         padding: 70px 0;
     }
     
-    .collaboration-benefits-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .page-management-grid {
+        grid-template-columns: repeat(2, 1fr);
         gap: 25px;
     }
     
-    .collaboration-benefit-card {
+    .page-management-card {
         padding: 35px 25px;
     }
     
-    .collaboration-benefit-title {
+    .page-management-card-title {
         font-size: 1.1rem;
     }
 }
 
 /* Tablet */
 @media (max-width: 991px) and (min-width: 769px) {
-    .collaboration-benefits-section {
+    .page-management-section {
         min-height: auto;
         padding: 60px 0;
     }
     
-    .collaboration-benefits-grid {
+    .page-management-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
     }
     
-    .collaboration-benefit-card {
+    .page-management-card {
         padding: 30px 20px;
     }
     
-    .collaboration-benefit-icon {
+    .page-management-icon {
         width: 75px;
         height: 75px;
         margin-bottom: 25px;
     }
     
-    .collaboration-benefit-icon svg {
+    .page-management-icon svg {
         width: 38px;
         height: 38px;
     }
     
-    .collaboration-benefit-title {
+    .page-management-card-title {
         font-size: 1.1rem;
         line-height: 1.3;
     }
@@ -99,45 +95,41 @@
 
 /* Mobile Large */
 @media (max-width: 768px) and (min-width: 481px) {
-    .collaboration-benefits-section {
+    .page-management-section {
         padding: 50px 0;
     }
     
-    .collaboration-benefits-container {
+    .page-management-container {
         padding: 0 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
     }
     
-    .collaboration-benefits-header {
+    .page-management-header {
         margin-bottom: 35px;
     }
     
-    .collaboration-benefits-grid {
+    .page-management-grid {
         grid-template-columns: 1fr;
         gap: 20px;
         max-width: 400px;
         margin: 0 auto;
     }
     
-    .collaboration-benefit-card {
+    .page-management-card {
         padding: 25px 20px;
     }
     
-    .collaboration-benefit-icon {
+    .page-management-icon {
         width: 70px;
         height: 70px;
         margin-bottom: 20px;
     }
     
-    .collaboration-benefit-icon svg {
+    .page-management-icon svg {
         width: 35px;
         height: 35px;
     }
     
-    .collaboration-benefit-title {
+    .page-management-card-title {
         font-size: 1rem;
         line-height: 1.4;
     }
@@ -145,60 +137,56 @@
 
 /* Mobile Small */
 @media (max-width: 480px) {
-    .collaboration-benefits-section {
+    .page-management-section {
         padding: 40px 0;
     }
     
-    .collaboration-benefits-container {
+    .page-management-container {
         padding: 0 15px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
     }
     
-    .collaboration-benefits-header {
+    .page-management-header {
         margin-bottom: 30px;
     }
     
-    .collaboration-benefits-title {
+    .page-management-title {
         font-size: clamp(1.8rem, 6vw, 2.5rem);
         line-height: 1.1;
         margin-bottom: 15px;
     }
     
-    .collaboration-benefits-divider {
+    .page-management-divider {
         width: 60px;
         height: 3px;
     }
     
-    .collaboration-benefits-divider::after {
+    .page-management-divider::after {
         width: 10px;
         height: 10px;
     }
     
-    .collaboration-benefits-grid {
+    .page-management-grid {
         gap: 15px;
         max-width: 320px;
     }
     
-    .collaboration-benefit-card {
+    .page-management-card {
         padding: 20px 15px;
         border-radius: 15px;
     }
     
-    .collaboration-benefit-icon {
+    .page-management-icon {
         width: 60px;
         height: 60px;
         margin-bottom: 15px;
     }
     
-    .collaboration-benefit-icon svg {
+    .page-management-icon svg {
         width: 30px;
         height: 30px;
     }
     
-    .collaboration-benefit-title {
+    .page-management-card-title {
         font-size: 0.95rem;
         line-height: 1.3;
     }
@@ -206,83 +194,79 @@
 
 /* Extra Small Mobile */
 @media (max-width: 360px) {
-    .collaboration-benefits-section {
+    .page-management-section {
         padding: 35px 0;
     }
     
-    .collaboration-benefits-container {
+    .page-management-container {
         padding: 0 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
     }
     
-    .collaboration-benefits-title {
+    .page-management-title {
         font-size: clamp(1.5rem, 7vw, 2rem);
     }
     
-    .collaboration-benefits-grid {
+    .page-management-grid {
         max-width: 280px;
     }
     
-    .collaboration-benefit-card {
+    .page-management-card {
         padding: 18px 12px;
     }
     
-    .collaboration-benefit-icon {
+    .page-management-icon {
         width: 55px;
         height: 55px;
         margin-bottom: 12px;
     }
     
-    .collaboration-benefit-icon svg {
+    .page-management-icon svg {
         width: 28px;
         height: 28px;
     }
     
-    .collaboration-benefit-title {
+    .page-management-card-title {
         font-size: 0.9rem;
     }
 }
 
 /* Landscape Mobile */
 @media (max-height: 500px) and (orientation: landscape) {
-    .collaboration-benefits-section {
+    .page-management-section {
         min-height: auto;
         padding: 30px 0;
     }
     
-    .collaboration-benefits-header {
+    .page-management-header {
         margin-bottom: 25px;
     }
     
-    .collaboration-benefits-title {
+    .page-management-title {
         font-size: clamp(1.5rem, 4vw, 2.5rem);
         margin-bottom: 10px;
     }
     
-    .collaboration-benefits-grid {
+    .page-management-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 15px;
     }
     
-    .collaboration-benefit-card {
+    .page-management-card {
         padding: 20px 15px;
     }
     
-    .collaboration-benefit-icon {
+    .page-management-icon {
         width: 50px;
         height: 50px;
         margin-bottom: 10px;
     }
     
-    .collaboration-benefit-icon svg {
+    .page-management-icon svg {
         width: 25px;
         height: 25px;
     }
     
-    .collaboration-benefit-title {
+    .page-management-card-title {
         font-size: 0.85rem;
         line-height: 1.2;
     }
@@ -290,7 +274,7 @@
 
 /* High DPI Displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .collaboration-benefit-icon::before {
+    .page-management-icon::before {
         background: linear-gradient(135deg, #ff3131, #04a756);
         background-size: 200% 200%;
         animation: gradientShift 3s ease infinite;
@@ -305,16 +289,16 @@
 
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
-    .collaboration-benefits-section {
+    .page-management-section {
         background: linear-gradient(135deg, #000000 0%, #111111 50%, #000000 100%);
     }
     
-    .collaboration-benefit-card {
+    .page-management-card {
         background: rgba(255, 255, 255, 0.02);
         border-color: rgba(255, 255, 255, 0.08);
     }
     
-    .collaboration-benefit-card:hover {
+    .page-management-card:hover {
         background: rgba(255, 255, 255, 0.04);
         border-color: rgba(255, 255, 255, 0.15);
     }
@@ -322,19 +306,19 @@
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-    .collaboration-benefit-card {
+    .page-management-card {
         transition: none;
     }
     
-    .collaboration-benefit-card:hover {
+    .page-management-card:hover {
         transform: none;
     }
     
-    .collaboration-benefit-icon {
+    .page-management-icon {
         transition: none;
     }
     
-    .collaboration-benefit-card:hover .collaboration-benefit-icon {
+    .page-management-card:hover .page-management-icon {
         transform: none;
     }
     
@@ -346,34 +330,34 @@
 
 /* Print Styles */
 @media print {
-    .collaboration-benefits-section {
+    .page-management-section {
         background: white !important;
         color: black !important;
         padding: 20px 0;
     }
     
-    .collaboration-benefit-card {
+    .page-management-card {
         background: white !important;
         border: 1px solid #ccc !important;
         break-inside: avoid;
         margin-bottom: 10px;
     }
     
-    .collaboration-benefits-title {
+    .page-management-title {
         color: black !important;
         background: none !important;
         -webkit-text-fill-color: black !important;
     }
     
-    .collaboration-benefit-title {
+    .page-management-card-title {
         color: black !important;
         background: none !important;
         -webkit-text-fill-color: black !important;
     }
     
-    .collaboration-benefit-icon svg {
+    .page-management-icon svg {
         stroke: black !important;
     }
 }
 
-/* End: Collaboration Benefits Media Queries */
+/* End: Page Management Media Queries */

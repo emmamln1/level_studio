@@ -43,6 +43,32 @@
         "branding": "Իմիջ,ոճ,ճանաչելիություն"
       }
     },
+    "management": {
+      "title": "Վարում և կառավարում ենք",
+      "types": {
+        "personal": "Անձնական էջեր",
+        "business": "Բիզնես էջեր",
+        "corporate": "Կորպորատիվ էջեր",
+        "commerce": "Առևտրի էջեր"
+      }
+    },
+    "platforms": {
+      "title": "Աշխատում ենք նշված հարթակներում",
+      "items": {
+        "facebook": "Facebook(Meta)",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "vk": "VK",
+        "ok": "OK",
+        "yappy": "Yappy",
+        "google": "Google & Yandex",
+        "telegram": "Telegram",
+        "web": "Web",
+        "youtube": "YouTube",
+        "android": "Android",
+        "others": "և այլն"
+      }
+    },
     "services": {
       "title": "Մեր ծառայությունները",
       "items": {
@@ -661,6 +687,32 @@
         "branding": "Имидж, стиль, узнаваемость"
       }
     },
+    "management": {
+      "title": "Ведем и управляем",
+      "types": {
+        "personal": "Личные страницы",
+        "business": "Бизнес страницы",
+        "corporate": "Корпоративные страницы",
+        "commerce": "Торговые страницы"
+      }
+    },
+    "platforms": {
+      "title": "Работаем на указанных платформах",
+      "items": {
+        "facebook": "Facebook(Meta)",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "vk": "VK",
+        "ok": "OK",
+        "yappy": "Yappy",
+        "google": "Google & Yandex",
+        "telegram": "Telegram",
+        "web": "Web",
+        "youtube": "YouTube",
+        "android": "Android",
+        "others": "и другие"
+      }
+    },
     "services": {
       "title": "Наши услуги",
       "items": {
@@ -1277,6 +1329,32 @@
         "filming": "Filming (we also work with ready-made materials)",
         "blogging": "Blogging work",
         "branding": "Image, style, recognition"
+      }
+    },
+    "management": {
+      "title": "We Manage and Operate",
+      "types": {
+        "personal": "Personal Pages",
+        "business": "Business Pages",
+        "corporate": "Corporate Pages",
+        "commerce": "Commerce Pages"
+      }
+    },
+    "platforms": {
+      "title": "We Work on These Platforms",
+      "items": {
+        "facebook": "Facebook(Meta)",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "vk": "VK",
+        "ok": "OK",
+        "yappy": "Yappy",
+        "google": "Google & Yandex",
+        "telegram": "Telegram",
+        "web": "Web",
+        "youtube": "YouTube",
+        "android": "Android",
+        "others": "and others"
       }
     },
     "services": {
