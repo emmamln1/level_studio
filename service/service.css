@@ -233,12 +233,12 @@
 .coming-soon-text {
     font-size: 2.5rem;
     font-weight: 900;
-    color: #ff0000;
+    color: #09ff00;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
     animation: comingSoonPulse 2s ease-in-out infinite;
-    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    text-shadow: 0 0 20px rgba(4, 255, 0, 0.5);
 }
 
 
