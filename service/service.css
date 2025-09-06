@@ -161,7 +161,7 @@
 }
 
 .service-title-heading {
-    font-family: 'BraindYerevan', sans-serif;
+    /* font-family: 'BraindYerevan', sans-serif; */
     font-size: clamp(24px, 4vw, 28px);
     font-weight: 600;
     color: #ffffff;
