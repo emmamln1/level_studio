@@ -41,40 +41,6 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://levelstudio.am/ru/" />
   </url>
   
-  <!-- Service Pages (Virtual URLs for SEO) -->
-  <url>
-    <loc>https://levelstudio.am/services/web-development</loc>
-    <lastmod>2025-01-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://levelstudio.am/services/digital-marketing</loc>
-    <lastmod>2025-01-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://levelstudio.am/services/photography</loc>
-    <lastmod>2025-01-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://levelstudio.am/services/videography</loc>
-    <lastmod>2025-01-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://levelstudio.am/services/graphic-design</loc>
-    <lastmod>2025-01-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- Service sections are part of the main page, not separate URLs -->
   
 </urlset>
