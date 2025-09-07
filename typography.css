@@ -2,6 +2,19 @@
    RESPONSIVE TYPOGRAPHY SYSTEM
    ========================================================================== */
 
+/* Apply Amaras when page language is Armenian */
+body,
+button,
+input,
+select,
+textarea {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+ * {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+}
+
 /* Typography Scale Variables */
 :root {
     /* Base font sizes */
