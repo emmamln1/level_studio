@@ -13,6 +13,15 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteCond %{THE_REQUEST} /Index\.html[\s?] [NC]
 RewriteRule ^Index\.html$ / [R=301,L]
 
+# Remove .html extension from URLs
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
+# Add .html extension internally
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^.]*)$ $1.html [L]
+
 # Cache control for better performance
 <IfModule mod_expires.c>
     ExpiresActive On
