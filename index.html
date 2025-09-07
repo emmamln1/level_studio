@@ -35,12 +35,17 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Level Studio - Մարքեթինգ ստուդիա և ֆոտո-վիդեո նկարահանումներ">
     
-    <!-- Additional Logo for Google -->
-    <meta property="og:logo" content="https://levelstudio.am/image/levelimage/photo_2025-09-06_09-05-18.jpg">
+    <!-- Logo for Google Knowledge Panel -->
+    <meta property="og:logo" content="https://levelstudio.am/image/levelimage/Screenshot_2025-08-20_161348-removebg-preview.png">
     <meta property="og:site_name" content="Level Studio">
     <meta property="og:locale" content="hy_AM">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="ru_RU">
+    
+    <!-- Additional meta for logo recognition -->
+    <link rel="icon" type="image/png" sizes="512x512" href="image/levelimage/Screenshot_2025-08-20_161348-removebg-preview.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="image/levelimage/Screenshot_2025-08-20_161348-removebg-preview.png">
+    <meta name="msapplication-TileImage" content="https://levelstudio.am/image/levelimage/Screenshot_2025-08-20_161348-removebg-preview.png">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -70,21 +75,40 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- Organization Logo Schema for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://levelstudio.am/#organization",
+      "name": "Level Studio",
+      "alternateName": ["Լևել Ստուդիո", "levl studio", "լեվըլ ստուդիո", "levelstudio", "levelstudio.am"],
+      "url": "https://levelstudio.am",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://levelstudio.am/image/levelimage/Screenshot_2025-08-20_161348-removebg-preview.png",
+        "width": 512,
+        "height": 512,
+        "caption": "Level Studio Logo"
+      }
+    }
+    </script>
+
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "MarketingAgency", "PhotographyBusiness"],
-      "@id": "https://levelstudio.am/#organization",
+      "@id": "https://levelstudio.am/#business",
       "name": "Level Studio",
       "alternateName": ["Լևել Ստուդիո", "levl studio", "լեվըլ ստուդիո", "levelstudio", "levelstudio.am"],
       "description": "Պրոֆեսիոնալ մարքեթինգ ստուդիա և ֆոտո-վիդեո նկարահանումներ Երևանում: Վեբ կայքեր, գրաֆիկ դիզայն, թվային մարքեթինգ, SEO, սոցցանցերի մարքեթինգ:",
       "url": "https://levelstudio.am",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://levelstudio.am/image/levelimage/photo_2025-09-06_09-05-18.jpg",
-        "width": 400,
-        "height": 400
+        "url": "https://levelstudio.am/image/levelimage/Screenshot_2025-08-20_161348-removebg-preview.png",
+        "width": 512,
+        "height": 512
       },
       "image": {
         "@type": "ImageObject",
