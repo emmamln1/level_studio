@@ -3,9 +3,15 @@
     display: flex;
     align-items: center;
     background: black;
+    background-image: url('../image/a7c2a5077447a00d7d24d08efac1c3a8\ \(1\).jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     width: 100vw;
+    position: relative;
 }
 
 .creative-section::before {

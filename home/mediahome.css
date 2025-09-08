@@ -33,12 +33,19 @@
     }
 }
 
+@media (max-width: 768px) {
+    .creative-section {
+        background-attachment: scroll;
+    }
+}
+
 @media (max-width: 480px) {
 
     .creative-section {
         height: auto;
         min-height: 80vh;
         padding: 2rem 0;
+        background-attachment: scroll;
     }
 
     .container {
