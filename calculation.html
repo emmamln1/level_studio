@@ -144,7 +144,7 @@
                 .container {
                     max-width: 1400px;
                     margin: 0 auto;
-                    padding: 20px;
+                    padding: 0 20px 20px 20px;
                 }
 
                 .header {
@@ -1197,8 +1197,8 @@
                 /* Language Switcher Styles */
                 .language-switcher-container {
                     position: absolute;
-                    top: 20px;
-                    right: 20px;
+                    top: 0;
+                    right: 0;
                     z-index: 1000;
                 }
 
@@ -1207,13 +1207,13 @@
                     backdrop-filter: blur(20px);
                     border: 1px solid var(--glass-border);
                     border-radius: 12px;
-                    padding: 8px 16px;
+                    padding: 8px 20px;
                     color: var(--text-primary);
                     cursor: pointer;
                     display: flex;
                     align-items: center;
                     gap: 8px;
-                    font-size: 0.9rem;
+                    font-size: 1rem;
                     font-weight: 500;
                     transition: all 0.3s ease;
                     min-width: 80px;
@@ -1300,30 +1300,32 @@
             <div class="container">
                 <header class="header animate-in">
                     <div class="logo-section">
-                        <div class="logo">
+                        <div class="logo"  style="cursor: pointer;">
                             LEVEL STUDIO
                         </div>
                         <!-- Home Button -->
                         <button class="home-btn" onclick="window.location.href='Index.html'" data-translate="calculator.buttons.backToHome">Տուն գնալ</button>
-                    </div>
-                    <!-- Language Switcher -->
-                    <div class="language-switcher-container">
-                        <button class="language-switcher-trigger" aria-expanded="false" aria-haspopup="true">
-                            <span class="current-language">Հայ</span>
-                            <span class="dropdown-arrow">▼</span>
-                        </button>
-                        <div class="language-dropdown" aria-hidden="true">
-                            <div class="language-option active" data-lang="ARM">
-                                <span class="lang-text">Հայ</span>
-                            </div>
-                            <div class="language-option" data-lang="RUS">
-                                <span class="lang-text">Рус</span>
-                            </div>
-                            <div class="language-option" data-lang="ENG">
-                                <span class="lang-text">Eng</span>
+
+                        <div class="language-switcher-container">
+                            <button class="language-switcher-trigger" aria-expanded="false" aria-haspopup="true">
+                                <span class="current-language">Հայ</span>
+                                <span class="dropdown-arrow">▼</span>
+                            </button>
+                            <div class="language-dropdown" aria-hidden="true">
+                                <div class="language-option active" data-lang="ARM">
+                                    <span class="lang-text">Հայ</span>
+                                </div>
+                                <div class="language-option" data-lang="RUS">
+                                    <span class="lang-text">Рус</span>
+                                </div>
+                                <div class="language-option" data-lang="ENG">
+                                    <span class="lang-text">Eng</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Language Switcher -->
+                   
                     
                     <h1 class="subtitle" data-translate="calculator.title">Ծառայությունների Գնի Հաշվիչ</h1>
                     <p class="description" data-translate="calculator.subtitle">Ընտրեք ձեր ծառայությունները և ստացեք ճշգրիտ գնահատական մեր արագ և հարմար հաշվիչի միջոցով</p>
@@ -1331,6 +1333,89 @@
 
                 <div class="main-grid">
                     <div class="services-container">
+                        <!-- Business Sector Selection Section -->
+                        <div class="glass-card animate-in">
+                            <h2 class="card-title" data-translate="calculator.businessSector">Գործունեության ոլորտ</h2>
+                            
+                            <div class="factors-grid">
+                                <div class="factor-group">
+                                    <div class="factor-title" data-translate="calculator.selectSector">Ընտրեք ձեր գործունեության ոլորտը</div>
+                                    <div class="radio-group">
+                                        <div class="radio-item" onclick="selectSector('restaurant')">
+                                            <div class="custom-radio">
+                                                <input type="radio" id="sector-restaurant" name="business-sector" value="restaurant" data-multiplier="1.2">
+                                                <span class="radio-mark"></span>
+                                            </div>
+                                            <label class="radio-label" for="sector-restaurant" data-translate="calculator.sectors.restaurant">Ռեստորան / Սննդի ծառայություններ (+20%)</label>
+                                        </div>
+                                        <div class="radio-item" onclick="selectSector('beauty')">
+                                            <div class="custom-radio">
+                                                <input type="radio" id="sector-beauty" name="business-sector" value="beauty" data-multiplier="1.3">
+                                                <span class="radio-mark"></span>
+                                            </div>
+                                            <label class="radio-label" for="sector-beauty" data-translate="calculator.sectors.beauty">Գեղեցկության սալոն / SPA (+30%)</label>
+                                        </div>
+                                        <div class="radio-item" onclick="selectSector('fashion')">
+                                            <div class="custom-radio">
+                                                <input type="radio" id="sector-fashion" name="business-sector" value="fashion" data-multiplier="1.4">
+                                                <span class="radio-mark"></span>
+                                            </div>
+                                            <label class="radio-label" for="sector-fashion" data-translate="calculator.sectors.fashion">Նորաձևություն / Հագուստ (+40%)</label>
+                                        </div>
+                                        <div class="radio-item" onclick="selectSector('healthcare')">
+                                            <div class="custom-radio">
+                                                <input type="radio" id="sector-healthcare" name="business-sector" value="healthcare" data-multiplier="1.1">
+                                                <span class="radio-mark"></span>
+                                            </div>
+                                            <label class="radio-label" for="sector-healthcare" data-translate="calculator.sectors.healthcare">Առողջապահություն / Բժշկություն (+10%)</label>
+                                        </div>
+                                        <div class="radio-item" onclick="selectSector('education')">
+                                            <div class="custom-radio">
+                                                <input type="radio" id="sector-education" name="business-sector" value="education" data-multiplier="0.9">
+                                                <span class="radio-mark"></span>
+                                            </div>
+                                            <label class="radio-label" for="sector-education" data-translate="calculator.sectors.education">Կրթություն / Դասընթացներ (-10%)</label>
+                                        </div>
+                                        <div class="radio-item" onclick="selectSector('technology')">
+                                            <div class="custom-radio">
+                                                <input type="radio" id="sector-technology" name="business-sector" value="technology" data-multiplier="1.25">
+                                                <span class="radio-mark"></span>
+                                            </div>
+                                            <label class="radio-label" for="sector-technology" data-translate="calculator.sectors.technology">Տեխնոլոգիա / IT (+25%)</label>
+                                        </div>
+                                        <div class="radio-item" onclick="selectSector('realestate')">
+                                            <div class="custom-radio">
+                                                <input type="radio" id="sector-realestate" name="business-sector" value="realestate" data-multiplier="1.35">
+                                                <span class="radio-mark"></span>
+                                            </div>
+                                            <label class="radio-label" for="sector-realestate" data-translate="calculator.sectors.realestate">Անշարժ գույք (+35%)</label>
+                                        </div>
+                                        <div class="radio-item" onclick="selectSector('automotive')">
+                                            <div class="custom-radio">
+                                                <input type="radio" id="sector-automotive" name="business-sector" value="automotive" data-multiplier="1.15">
+                                                <span class="radio-mark"></span>
+                                            </div>
+                                            <label class="radio-label" for="sector-automotive" data-translate="calculator.sectors.automotive">Ավտոմոբիլային (+15%)</label>
+                                        </div>
+                                        <div class="radio-item" onclick="selectSector('retail')">
+                                            <div class="custom-radio">
+                                                <input type="radio" id="sector-retail" name="business-sector" value="retail" data-multiplier="1.0">
+                                                <span class="radio-mark"></span>
+                                            </div>
+                                            <label class="radio-label" for="sector-retail" data-translate="calculator.sectors.retail">Մանրածախ առևտուր (հիմնական գին)</label>
+                                        </div>
+                                        <div class="radio-item" onclick="selectSector('other')">
+                                            <div class="custom-radio">
+                                                <input type="radio" id="sector-other" name="business-sector" value="other" data-multiplier="1.0">
+                                                <span class="radio-mark"></span>
+                                            </div>
+                                            <label class="radio-label" for="sector-other" data-translate="calculator.sectors.other">Այլ (հիմնական գին)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="glass-card animate-in">
                             <h2 class="card-title" data-translate="calculator.services">Ծառայություններ</h2>
                             
@@ -1592,6 +1677,10 @@
 
                             <div class="breakdown">
                                 <div class="breakdown-item">
+                                    <span class="breakdown-label" data-translate="calculator.pricing.sector">Ոլորտ:</span>
+                                    <span class="breakdown-value" id="sector-info">Ընտրված չէ</span>
+                                </div>
+                                <div class="breakdown-item">
                                     <span class="breakdown-label" data-translate="calculator.pricing.services">Ծառայություններ:</span>
                                     <span class="breakdown-value" id="services-total">40,000 <span data-translate="calculator.pricing.currency">դրամ</span></span>
                                 </div>
@@ -1714,6 +1803,19 @@
                     calculatePrice();
                 }
 
+                function selectSector(sectorValue) {
+                    const sectorRadio = document.getElementById(`sector-${sectorValue}`);
+                    if (sectorRadio) {
+                        sectorRadio.checked = true;
+                        calculatePrice();
+                    }
+                }
+
+                function getSectorMultiplier() {
+                    const selectedSector = document.querySelector('input[name="business-sector"]:checked');
+                    return selectedSector ? parseFloat(selectedSector.dataset.multiplier) : 1.0;
+                }
+
                 function toggleService(serviceId) {
                     const checkbox = document.getElementById(serviceId);
                     if (checkbox) {
@@ -1741,21 +1843,25 @@
                     let additionalServicesTotal = 0;
                     let droneFilmingCounted = false;
                     
+                    // Get sector multiplier
+                    const sectorMultiplier = getSectorMultiplier();
+                    
                     // Calculate main services
                     const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
                     checkboxes.forEach(checkbox => {
-                        const price = parseInt(checkbox.dataset.price);
+                        const basePrice = parseInt(checkbox.dataset.price);
+                        const adjustedPrice = Math.round(basePrice * sectorMultiplier);
                         
                         // Handle drone filming - only count once even if both checkboxes are checked
                         if (checkbox.id === 'drone-filming' || checkbox.id === 'drone-filming-additional') {
                             if (!droneFilmingCounted) {
-                                additionalServicesTotal += 25000; // Always use 25000 for drone filming
+                                additionalServicesTotal += Math.round(25000 * sectorMultiplier); // Apply sector multiplier to drone filming
                                 droneFilmingCounted = true;
                             }
                         } else if (checkbox.id === 'model-involvement' || checkbox.id === 'professional-photography') {
-                            additionalServicesTotal += price;
+                            additionalServicesTotal += adjustedPrice;
                         } else {
-                            servicesTotal += price;
+                            servicesTotal += adjustedPrice;
                         }
                     });
                     
@@ -1764,10 +1870,10 @@
                     const storiesCount = parseInt(document.getElementById('stories-input').value) || 0;
                     const reelsCount = parseInt(document.getElementById('reels-input').value) || 0;
                     
-                    // Calculate content totals
-                    const postsPrice = postsCount * 5000;
-                    const storiesPrice = storiesCount * 2000;
-                    const reelsPrice = reelsCount * 15000;
+                    // Calculate content totals with sector multiplier
+                    const postsPrice = Math.round(postsCount * 5000 * sectorMultiplier);
+                    const storiesPrice = Math.round(storiesCount * 2000 * sectorMultiplier);
+                    const reelsPrice = Math.round(reelsCount * 15000 * sectorMultiplier);
                     const contentTotal = postsPrice + storiesPrice + reelsPrice;
                     
                     const finalPrice = servicesTotal + contentTotal + additionalServicesTotal;
@@ -1775,6 +1881,17 @@
                     // Update display
                     animateNumber('base-price', parseInt(document.getElementById('base-price').textContent.replace(/,/g, '')), servicesTotal);
                     animateNumber('final-price', parseInt(document.getElementById('final-price').textContent.replace(/,/g, '')), finalPrice);
+                    
+                    // Update sector info display
+                    const selectedSector = document.querySelector('input[name="business-sector"]:checked');
+                    const sectorInfoEl = document.getElementById('sector-info');
+                    if (selectedSector) {
+                        const sectorLabel = document.querySelector(`label[for="${selectedSector.id}"]`);
+                        const multiplierText = sectorMultiplier === 1.0 ? '' : ` (${sectorMultiplier > 1 ? '+' : ''}${Math.round((sectorMultiplier - 1) * 100)}%)`;
+                        sectorInfoEl.textContent = sectorLabel ? sectorLabel.textContent.split(' (')[0] + multiplierText : 'Ընտրված';
+                    } else {
+                        sectorInfoEl.textContent = 'Ընտրված չէ';
+                    }
                     
                     // Update breakdown with translated currency
                     const currency = window.calculatorMessages?.currency || 'դրամ';
@@ -2297,6 +2414,11 @@
                 // Event listeners
                 document.querySelectorAll('input[type="checkbox"], .number-input').forEach(input => {
                     input.addEventListener('change', calculatePrice);
+                });
+
+                // Add event listeners for sector radio buttons
+                document.querySelectorAll('input[name="business-sector"]').forEach(radio => {
+                    radio.addEventListener('change', calculatePrice);
                 });
 
                 // Initialize
