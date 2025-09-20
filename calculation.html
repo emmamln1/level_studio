@@ -2020,29 +2020,47 @@
                         })
                     };
 
+                    // Get sector multiplier for price calculations
+                    const sectorMultiplier = getSectorMultiplier();
+                    
                     // Collect main services
                     const mainCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                    let droneFilmingCounted = false;
+                    
                     mainCheckboxes.forEach(checkbox => {
                         if (checkbox && checkbox.id) {
                             const label = document.querySelector(`label[for="${checkbox.id}"]`);
-                            const price = parseInt(checkbox.dataset.price) || 0;
+                            const basePrice = parseInt(checkbox.dataset.price) || 0;
+                            const adjustedPrice = Math.round(basePrice * sectorMultiplier);
                             const serviceName = label && label.textContent ? label.textContent.trim() : checkbox.id;
                             
-                            if (checkbox.id === 'drone-filming' || checkbox.id === 'model-involvement' || checkbox.id === 'professional-photography') {
+                            if (checkbox.id === 'drone-filming' || checkbox.id === 'drone-filming-additional') {
+                                // Handle drone filming - only count once even if both checkboxes are checked
+                                if (!droneFilmingCounted) {
+                                    const dronePrice = Math.round(25000 * sectorMultiplier);
+                                    data.additionalServices.push({
+                                        id: 'drone-filming',
+                                        name: serviceName,
+                                        price: dronePrice,
+                                        formattedPrice: dronePrice.toLocaleString() + ' դրամ'
+                                    });
+                                    droneFilmingCounted = true;
+                                }
+                            } else if (checkbox.id === 'model-involvement' || checkbox.id === 'professional-photography') {
                                 data.additionalServices.push({
                                     id: checkbox.id,
                                     name: serviceName,
-                                    price: price,
-                                    formattedPrice: price.toLocaleString() + ' դրամ'
+                                    price: adjustedPrice,
+                                    formattedPrice: adjustedPrice.toLocaleString() + ' դրամ'
                                 });
                             } else {
                                 data.selectedServices.push({
                                     id: checkbox.id,
                                     name: serviceName,
-                                    price: price,
-                                    formattedPrice: price.toLocaleString() + ' դրամ'
+                                    price: adjustedPrice,
+                                    formattedPrice: adjustedPrice.toLocaleString() + ' դրամ'
                                 });
-                                data.totalServicesPrice += price;
+                                data.totalServicesPrice += adjustedPrice;
                             }
                         }
                     });
@@ -2058,20 +2076,32 @@
                         return label ? label.textContent.trim() : null;
                     };
 
+                    // Calculate content prices with sector multiplier
+                    const postsCount = parseInt(document.getElementById('posts-input').value) || 0;
+                    const storiesCount = parseInt(document.getElementById('stories-input').value) || 0;
+                    const reelsCount = parseInt(document.getElementById('reels-input').value) || 0;
+                    
+                    const postsPrice = Math.round(postsCount * 5000 * sectorMultiplier);
+                    const storiesPrice = Math.round(storiesCount * 2000 * sectorMultiplier);
+                    const reelsPrice = Math.round(reelsCount * 15000 * sectorMultiplier);
+
                     data.contentOptions = {
                         posts: {
-                            value: postsEl ? parseInt(postsEl.value) : 0,
-                            label: getOptionLabel(postsEl) || 'Չկա (0 դրամ)',
+                            value: postsPrice,
+                            count: postsCount,
+                            label: postsCount > 0 ? `${postsCount} հատ - ${postsPrice.toLocaleString()} դրամ` : 'Չկա (0 դրամ)',
                             id: postsEl ? postsEl.id : 'posts-0'
                         },
                         stories: {
-                            value: storiesEl ? parseInt(storiesEl.value) : 0,
-                            label: getOptionLabel(storiesEl) || 'Չկա (0 դրամ)',
+                            value: storiesPrice,
+                            count: storiesCount,
+                            label: storiesCount > 0 ? `${storiesCount} հատ - ${storiesPrice.toLocaleString()} դրամ` : 'Չկա (0 դրամ)',
                             id: storiesEl ? storiesEl.id : 'stories-0'
                         },
                         reels: {
-                            value: reelsEl ? parseInt(reelsEl.value) : 0,
-                            label: getOptionLabel(reelsEl) || 'Չկա (0 դրամ)',
+                            value: reelsPrice,
+                            count: reelsCount,
+                            label: reelsCount > 0 ? `${reelsCount} հատ - ${reelsPrice.toLocaleString()} դրամ` : 'Չկա (0 դրամ)',
                             id: reelsEl ? reelsEl.id : 'reels-0'
                         }
                     };
