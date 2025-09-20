@@ -1161,7 +1161,7 @@
                 }
 
                 .btn-primary:hover {
-                    background: #cc0000;
+                    background: #22c55e;
                     transform: translateY(-2px);
                 }
 
@@ -2008,6 +2008,7 @@
                         contentOptions: {},
                         additionalServices: [],
                         breakdown: {},
+                        businessSector: null,
                         deviceType: getDeviceType(),
                         timestamp: new Date().toLocaleString('hy-AM', {
                             timeZone: 'Asia/Yerevan',
@@ -2075,6 +2076,28 @@
                         }
                     };
 
+                    // Collect business sector information
+                    const selectedSector = document.querySelector('input[name="business-sector"]:checked');
+                    if (selectedSector) {
+                        const sectorLabel = document.querySelector(`label[for="${selectedSector.id}"]`);
+                        const multiplier = parseFloat(selectedSector.dataset.multiplier) || 1.0;
+                        data.businessSector = {
+                            value: selectedSector.value,
+                            id: selectedSector.id,
+                            label: sectorLabel ? sectorLabel.textContent.trim() : selectedSector.value,
+                            multiplier: multiplier,
+                            multiplierText: multiplier === 1.0 ? 'հիմնական գին' : `${multiplier > 1 ? '+' : ''}${Math.round((multiplier - 1) * 100)}%`
+                        };
+                    } else {
+                        data.businessSector = {
+                            value: 'not-selected',
+                            id: 'not-selected',
+                            label: 'Ընտրված չէ',
+                            multiplier: 1.0,
+                            multiplierText: 'հիմնական գին'
+                        };
+                    }
+
                     // Calculate base price (minimum 40,000 if no services selected)
                     data.basePrice = data.totalServicesPrice > 0 ? data.totalServicesPrice : 40000;
 
@@ -2121,6 +2144,15 @@
                         });
                         const additionalTotal = data.additionalServices.reduce((sum, service) => sum + service.price, 0);
                         content += `\nԼրացուցիչ ծառայությունների ընդհանուր գին: ${additionalTotal.toLocaleString()} դրամ\n`;
+                    }
+                    
+                    // Business sector information
+                    if (data.businessSector) {
+                        content += `\n🏢 Բիզնես ոլորտ:\n`;
+                        content += `• ${data.businessSector.label}\n`;
+                        if (data.businessSector.multiplier !== 1.0) {
+                            content += `• Գնային գործակից: ${data.businessSector.multiplierText}\n`;
+                        }
                     }
                     
                     content += `\n💰 Գնային մանրամասներ:\n`;
@@ -2596,6 +2628,20 @@
                         // Get final price from UI
                         const finalPrice = parseInt(document.getElementById('final-price').textContent.replace(/[^0-9]/g, '')) || 0;
                         
+                        // Get business sector information
+                        const selectedSector = document.querySelector('input[name="business-sector"]:checked');
+                        let businessSectorInfo = 'Ընտրված չէ';
+                        let sectorMultiplier = '1.0';
+                        let sectorMultiplierText = 'հիմնական գին';
+                        
+                        if (selectedSector) {
+                            const sectorLabel = document.querySelector(`label[for="${selectedSector.id}"]`);
+                            const multiplier = parseFloat(selectedSector.dataset.multiplier) || 1.0;
+                            businessSectorInfo = sectorLabel ? sectorLabel.textContent.trim() : selectedSector.value;
+                            sectorMultiplier = multiplier.toString();
+                            sectorMultiplierText = multiplier === 1.0 ? 'հիմնական գին' : `${multiplier > 1 ? '+' : ''}${Math.round((multiplier - 1) * 100)}%`;
+                        }
+
                         const templateParams = {
                             customer_name: formData.customerName,
                             customer_contact: formData.customerContact,
@@ -2608,6 +2654,9 @@
                             reels_price: (reelsCount * 15000).toLocaleString() + ' դրամ',
                             additional_services: additionalServices.join('\n') || 'Չկա',
                             final_price: finalPrice.toLocaleString() + ' դրամ',
+                            business_sector: businessSectorInfo,
+                            sector_multiplier: sectorMultiplier,
+                            sector_multiplier_text: sectorMultiplierText,
                             device_type: formData.deviceType,
                             timestamp: formData.timestamp
                         };
