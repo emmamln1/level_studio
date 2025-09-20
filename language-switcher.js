@@ -8,7 +8,73 @@ class LanguageSwitcher {
         this.currentLanguage = 'arm'; // Армянский по умолчанию
         this.isLoaded = false;
         
+        // Check for language URL patterns and redirect if needed
+        this.handleLanguageUrls();
+        
         this.init();
+    }
+
+    /**
+     * Handle language URL patterns and redirect to main domain with language setting
+     */
+    handleLanguageUrls() {
+        const currentPath = window.location.pathname;
+        const currentUrl = window.location.href;
+        const currentHost = window.location.host;
+        
+        // Check if URL contains language prefixes
+        const languagePatterns = {
+            '/en/': 'eng',
+            '/en': 'eng',
+            '/ru/': 'rus', 
+            '/ru': 'rus',
+            '/am/': 'arm',
+            '/am': 'arm'
+        };
+        
+        // Check for language patterns in the URL
+        for (const [pattern, langCode] of Object.entries(languagePatterns)) {
+            if (currentPath === pattern || currentPath.startsWith(pattern + '/') || 
+                (pattern.endsWith('/') && currentPath === pattern.slice(0, -1))) {
+                
+                console.log('Language URL detected:', pattern, 'Setting language to:', langCode);
+                
+                // Set language in localStorage before redirect
+                localStorage.setItem('level-studio-language', langCode);
+                
+                // Redirect to main domain with proper protocol
+                const protocol = window.location.protocol;
+                const mainUrl = protocol + '//' + currentHost + '/';
+                
+                // Only redirect if we're not already on the main domain
+                if (currentUrl !== mainUrl && currentPath !== '/') {
+                    console.log('Redirecting from', currentUrl, 'to', mainUrl);
+                    window.location.replace(mainUrl);
+                    return;
+                }
+                break;
+            }
+        }
+        
+        // Also handle URLs that might have been accessed with language parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+        if (langParam) {
+            const langMapping = {
+                'en': 'eng',
+                'ru': 'rus',
+                'am': 'arm',
+                'hy': 'arm'
+            };
+            
+            if (langMapping[langParam]) {
+                localStorage.setItem('level-studio-language', langMapping[langParam]);
+                // Remove language parameter from URL
+                urlParams.delete('lang');
+                const newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+                window.history.replaceState({}, document.title, newUrl);
+            }
+        }
     }
 
     /**
